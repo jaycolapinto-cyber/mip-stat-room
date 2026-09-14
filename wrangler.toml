@@ -1,0 +1,28 @@
+# Deploy config for the MIP Stat Room.
+#
+# WHY THIS FILE EXISTS. Until now the site was deployed by dragging the
+# dist folder into the Cloudflare dashboard, and on 2026-09-14 that put the
+# club's live site down for the best part of an hour. The dashboard uploader
+# declared data.js as application/octet-stream; a browser refuses to execute an
+# ES module with that type, so the page rendered its nav bar and nothing else.
+# Worse, the asset is stored by CONTENT HASH with its type fixed at upload, so
+# re-uploading the same file changed nothing and rolling the deployment back
+# changed nothing either - every version pointed at the same broken asset.
+#
+# wrangler sets the Content-Type from the file extension every time, so that
+# failure cannot happen through this path. It also means a deploy is one
+# command rather than a person at a laptop with a mouse.
+#
+#   npx wrangler deploy          # needs CLOUDFLARE_API_TOKEN in the environment
+#
+# The token is NOT in this file and must never be. It lives in the environment
+# of whoever runs the command. Anyone who gets it can edit the site.
+
+name = "mip-stats"
+compatibility_date = "2026-09-14"
+
+# No Worker script: this is a static site. Cloudflare serves dist/ directly and
+# falls back to index.html so the hash-router's deep links resolve.
+[assets]
+directory = "dist"
+not_found_handling = "single-page-application"

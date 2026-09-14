@@ -1,0 +1,723 @@
+<meta charset="utf-8">
+<!-- Without this, a phone lays the page out at 980px and shrinks the result to
+     fit: every font half-size, every tap target half-size, and none of the
+     max-width media queries below ever fire. It is one line and it is the
+     difference between a usable phone page and an unusable one. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIP Stat Room</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230A3B2C%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2716%27 fill=%27%23D9F84B%27/%3E%3Cg fill=%27%230A3B2C%27%3E%3Ccircle cx=%2726%27 cy=%2726%27 r=%272.6%27/%3E%3Ccircle cx=%2738%27 cy=%2726%27 r=%272.6%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%272.6%27/%3E%3Ccircle cx=%2726%27 cy=%2738%27 r=%272.6%27/%3E%3Ccircle cx=%2738%27 cy=%2738%27 r=%272.6%27/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --court:#0A3B2C; --court-deep:#06291E; --court-soft:#11523D; --court-line:rgba(217,248,75,.12);
+  --lime:#D9F84B; --lime-deep:#AFD117; --lime-ink:#1B2708;
+  --ink:#0D1A15; --muted:#64756D; --faint:#8B9A92;
+  --bg:#F1F4F0; --card:#fff; --line:#E2E8E2; --line-soft:#EFF2EE;
+  --win:#17794F; --win-bg:#E4F4EC; --loss:#B23E34; --loss-bg:#FBEAE8;
+  --r:14px; --r-lg:20px;
+  --shadow:0 1px 2px rgba(10,59,44,.05), 0 8px 24px -12px rgba(10,59,44,.18);
+  --display:"Barlow Condensed", "Oswald", "Arial Narrow", system-ui, sans-serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:.01em;line-height:1.03}
+button{font:inherit;color:inherit}
+.num{font-variant-numeric:tabular-nums}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:focus-visible{outline:3px solid var(--lime-deep);outline-offset:2px;border-radius:6px}
+.shell{max-width:1180px;margin:0 auto;padding:0 16px 72px}
+
+/* ---------- top bar ---------- */
+.topbar{background:var(--court-deep);color:#fff;position:sticky;top:0;z-index:40;
+  box-shadow:0 1px 0 rgba(255,255,255,.06), 0 10px 30px -20px rgba(0,0,0,.8)}
+.topbar-in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto}
+.mark{width:38px;height:38px;border-radius:11px;background:var(--lime);color:var(--lime-ink);
+  display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:.02em}
+.brandtext{display:flex;flex-direction:column;line-height:1.05}
+.brandtext b{font-family:var(--display);font-size:17px;letter-spacing:.06em;text-transform:uppercase}
+.brandtext span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.tabs{display:flex;gap:4px;background:rgba(255,255,255,.07);padding:4px;border-radius:999px}
+.tab{border:0;background:transparent;color:rgba(255,255,255,.72);padding:7px 16px;border-radius:999px;
+  font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.15s}
+.tab:hover{color:#fff;background:rgba(255,255,255,.08)}
+.tab[aria-selected="true"]{background:var(--lime);color:var(--lime-ink)}
+.demopill{margin:0;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  color:var(--lime);border:1px solid rgba(217,248,75,.35);padding:5px 11px;border-radius:999px}
+
+/* ---------- landing ---------- */
+/* The four destinations, stated as destinations. The tab strip is a thin row of
+   words a first-time visitor skims past; this is the same navigation given room
+   to say what each place actually holds. */
+.launch{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 22px}
+.launch button{display:flex;flex-direction:column;gap:6px;text-align:left;cursor:pointer;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 15px;
+  transition:.15s;font:inherit;color:inherit}
+.launch button:hover{border-color:var(--court);transform:translateY(-2px);
+  box-shadow:0 12px 24px -18px rgba(6,41,30,.7)}
+.launch button:focus-visible{outline:2px solid var(--court);outline-offset:2px}
+.launch .lt{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:-.01em}
+.launch .ld{font-size:12.5px;color:var(--muted);line-height:1.45}
+.launch .lg{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--court)}
+
+/* Last night's play, so the front page is never a museum piece. */
+.lastnight{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px 18px;margin:0 0 22px;display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline}
+.lastnight h3{margin:0;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  width:100%;font-weight:700}
+.lastnight b{font-family:var(--display);font-size:22px;font-weight:700}
+.lastnight span{font-size:13px;color:var(--muted)}
+
+/* The provenance note. It used to shout from a yellow box above every page;
+   it belongs at the foot of the landing page, open to anyone who wants it. */
+.about{margin:24px 0 0;border-top:1px solid var(--line);padding-top:16px}
+.about summary{cursor:pointer;font-size:12.5px;font-weight:700;color:var(--court);list-style:none}
+.about summary::-webkit-details-marker{display:none}
+.about summary::after{content:" \25BE";font-size:10px}
+.about[open] summary::after{content:" \25B4"}
+.about > div{margin-top:10px;font-size:12.5px;color:var(--muted);line-height:1.6;max-width:78ch}
+.about b{color:var(--ink)}
+/* The lead-in above the buttons. Without it the cards read as decoration. */
+.goto-h{display:flex;align-items:baseline;gap:10px;margin:0 0 10px;flex-wrap:wrap}
+.goto-h h2{margin:0;font-family:var(--display);font-size:20px;font-weight:700}
+.goto-h span{font-size:12.5px;color:var(--muted)}
+.launch button .lt::after{content:" \2192";color:var(--court);font-weight:700}
+@media (max-width:880px){ .launch{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:430px){ .launch{grid-template-columns:1fr} }
+
+/* ---------- home ---------- */
+.hero{position:relative;overflow:hidden;border-radius:var(--r-lg);background:
+  radial-gradient(120% 140% at 85% 0%, var(--court-soft), var(--court) 55%, var(--court-deep));
+  color:#fff;padding:clamp(26px,4vw,44px) clamp(20px,3.5vw,44px);margin:4px 0 18px}
+/* Court lines, drawn rather than loaded - one less request and it scales. */
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(var(--court-line) 1px, transparent 1px) 0 0/100% 88px,
+    linear-gradient(90deg, var(--court-line) 1px, transparent 1px) 0 0/128px 100%;
+  mask-image:linear-gradient(180deg, #000 0%, transparent 85%)}
+.hero > *{position:relative}
+/* Two columns on a desktop: the headline on the left, the club's growth on the
+   right. The right half used to be empty green, which on a wide screen read as
+   a mistake rather than as breathing room. */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(20px,4vw,48px);align-items:center}
+.hero-kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);font-weight:700}
+/* The one line that tells a visitor arriving from Facebook what they opened. */
+.hero-title{font-family:var(--display);font-size:clamp(26px,4.4vw,42px);font-weight:700;
+  letter-spacing:-.01em;line-height:1;margin:6px 0 0}
+.hero-what{margin:8px 0 0;color:rgba(255,255,255,.8);font-size:15px;max-width:46ch;line-height:1.5}
+
+/* Games on record each year. One series, one hue, so no legend - the caption
+   names it. Values sit above the bars; nothing is encoded by color alone. */
+.yearchart{align-self:center}
+.yearchart h3{margin:0 0 14px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.66);font-weight:700}
+.ybars{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;height:160px}
+/* Three rows: value, plot, label. The bar's percentage height has to be a
+   percentage of the PLOT, not of the whole column - measured against the column
+   the labels eat the top of the scale, and the two tallest bars come out nearly
+   the same height however far apart their numbers are. */
+.ybar{display:grid;grid-template-rows:auto 1fr auto;gap:6px;text-align:center;height:100%}
+.ybar .yv{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;line-height:1}
+.ytrack{display:flex;align-items:flex-end}
+.ybar .yf{width:100%;background:var(--lime);border-radius:4px 4px 0 0;min-height:3px;
+  transition:height .9s cubic-bezier(.2,.8,.25,1)}
+.ybar .yl{font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.66);font-weight:700}
+.ycap{margin:12px 0 0;font-size:11px;color:rgba(255,255,255,.5);line-height:1.5}
+/* Must come AFTER .hero-grid, not before it - a media query that loses the
+   cascade is a media query that does nothing. */
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:24px}
+  .ybars{height:112px}
+  .ycap{max-width:none}
+}
+.counter{font-family:var(--display);font-weight:700;line-height:.84;letter-spacing:-.02em;
+  font-size:clamp(54px,9.5vw,126px);margin:18px 0 2px;font-variant-numeric:tabular-nums}
+.counter .unit{display:block;font-size:clamp(15px,2.6vw,26px);letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:14px;line-height:1}
+.hero-sub{margin:18px 0 0;color:rgba(255,255,255,.78);font-size:14.5px;max-width:62ch}
+.hero-sub b{color:var(--lime);font-weight:700}
+
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 22px}
+.strip div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px 18px;box-shadow:var(--shadow)}
+.strip b{display:block;font-family:var(--display);font-size:30px;font-weight:700;line-height:1;
+  font-variant-numeric:tabular-nums}
+.strip span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);font-weight:700;margin-top:7px}
+
+/* ---------- wall of fame: the opening band ---------- */
+/* The wall used to begin on its first card. Nineteen equal boxes with no
+   entrance is a filing cabinet; this is the thing people were sent here to
+   see, so it gets the same dark court ground the home page uses and four
+   records printed big enough to read across a room. */
+.wof-hero{position:relative;overflow:hidden;border-radius:var(--r-lg);margin:4px 0 22px;
+  background:radial-gradient(120% 140% at 85% 0%, var(--court-soft), var(--court) 55%, var(--court-deep));
+  color:#fff}
+.wof-hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(var(--court-line) 1px, transparent 1px) 0 0/100% 88px,
+             linear-gradient(90deg, var(--court-line) 1px, transparent 1px) 0 0/128px 100%}
+.wof-hero-in{position:relative;padding:22px 24px 24px}
+.wof-hero-title{font-family:var(--display);font-size:clamp(28px,4.6vw,44px);font-weight:700;
+  letter-spacing:-.01em;margin:4px 0 6px;text-transform:uppercase}
+.wof-hero-sub{margin:0;font-size:13.5px;color:rgba(255,255,255,.76);max-width:62ch;line-height:1.55}
+.wof-hero-sub b{color:var(--lime);font-weight:700}
+
+.mqrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px;margin-top:20px}
+.mq{background:rgba(6,41,30,.55);border:1px solid rgba(217,248,75,.22);border-radius:var(--r);backdrop-filter:blur(2px);
+  padding:13px 14px 12px;display:flex;flex-direction:column;gap:1px;min-width:0}
+.mq-label{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  color:var(--lime);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mq-val{font-family:var(--display);font-weight:700;line-height:1;margin:7px 0 4px;
+  display:flex;align-items:baseline;gap:4px}
+.mq-val b{font-size:38px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.mq-val i{font-style:normal;font-size:13px;color:rgba(255,255,255,.6);letter-spacing:.04em;
+  font-family:var(--sans);font-weight:600}
+.mq-who{font-size:14px;font-weight:700;line-height:1.25}
+.mq-ctx{font-size:11.5px;color:rgba(255,255,255,.6);line-height:1.4;margin-top:2px}
+
+/* ---------- wall of fame: sections ---------- */
+/* A title and one line of context before each group, so the reader knows what
+   kind of thing they are looking at before the numbers arrive. */
+.wsec{margin:0 0 26px}
+.wsec-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0 0 11px;
+  padding-bottom:8px;border-bottom:2px solid var(--court)}
+.wsec-h h3{font-family:var(--display);font-size:21px;font-weight:700;letter-spacing:.01em;
+  text-transform:uppercase}
+.wsec-h span{font-size:12.5px;color:var(--muted)}
+
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(266px,1fr));gap:12px;
+  /* Without this, opening one card stretches every other card in its row to
+     match, leaving a wall of tall empty boxes. */
+  align-items:start}
+/* Named `wof`, not `rec`: the compare hero already had a `.rec` for a player's
+   won-lost line, and a card background bleeding onto it painted white text on a
+   white box - invisible, and only on that one panel. */
+.wof{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 16px;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;gap:2px;text-align:left;
+  font:inherit;color:inherit;width:100%;transition:transform .14s ease, box-shadow .14s ease}
+button.wof{cursor:pointer}
+button.wof:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(10,59,44,.06),0 14px 30px -14px rgba(10,59,44,.3)}
+button.wof:focus-visible{outline:2px solid var(--court);outline-offset:2px}
+.wof-label{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.wof-val{font-family:var(--display);font-size:44px;font-weight:700;line-height:1;color:var(--court);
+  margin:9px 0 1px;font-variant-numeric:tabular-nums}
+.wof-val i{font-style:normal;font-size:16px;color:var(--muted);margin-left:5px;letter-spacing:.04em}
+/* A grid, not a flex row: a long name used to push the Gold chip onto a line
+   of its own, so the three chips no longer lined up down the card. In two
+   columns the chip always sits in column one and the name wraps in column two,
+   directly above Silver and Bronze. */
+.wof-who{font-weight:700;font-size:16px;margin-top:5px;display:grid;
+  grid-template-columns:auto 1fr;gap:9px;align-items:baseline}
+.wof-goldname{min-width:0}
+.wof-ctx{font-size:12.5px;color:var(--muted);margin-top:3px}
+.wof-tied{display:inline-block;margin-left:6px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--lime-ink);background:var(--lime);border-radius:5px;padding:2px 6px;font-weight:700;vertical-align:2px}
+
+/* ---------- wall of fame: the podium on the face, the story on tap ---------- */
+/* Second and third used to sit inside the disclosure. Hiding them meant the
+   card asked you to go looking for something it should simply have shown, and
+   the expanded panel then read as two unrelated things at once. Now the card
+   states the record - all three places - and the disclosure tells the story. */
+details.wof{padding:0}
+details.wof>summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;gap:2px;
+  padding:18px 18px 16px;border-radius:var(--r);transition:background .14s ease}
+details.wof>summary::-webkit-details-marker{display:none}
+details.wof>summary:hover{background:var(--line-soft)}
+details.wof>summary:focus-visible{outline:2px solid var(--court);outline-offset:-2px}
+.wof-min{display:block;letter-spacing:.04em;text-transform:none;font-weight:500;
+  color:var(--faint);font-size:10.5px;margin-top:2px}
+.wof-who [data-goto]{cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);
+  text-underline-offset:3px}
+.wof-who [data-goto]:hover{text-decoration-color:var(--court)}
+
+/* Gold, silver and bronze said in words. Numbered medallions read as a rank
+   badge of unclear meaning; the words say exactly what they are. */
+.wof-place{flex:0 0 auto;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+  padding:3px 7px;border-radius:5px;line-height:1.2;white-space:nowrap;align-self:center}
+.wof-place.p1{color:#6B5312;background:linear-gradient(160deg,#FFF6D2,#F3DC93);
+  box-shadow:inset 0 0 0 1px #E3C766}
+.wof-place.p2{color:#4A5257;background:linear-gradient(160deg,#F5F8FA,#DFE5EA);
+  box-shadow:inset 0 0 0 1px #CBD3D9}
+.wof-place.p3{color:#6B4423;background:linear-gradient(160deg,#FAEEE0,#EBD3B9);
+  box-shadow:inset 0 0 0 1px #DCBE9C}
+
+/* A one-line note under the label, for the records whose name does not explain
+   them. "Ice in the veins" is a good name and a bad definition. */
+.wof-note{font-size:12px;color:var(--muted);line-height:1.4;margin-top:5px;font-weight:500}
+
+/* The playful records - most heartbreak, chemistry check, the nemesis - carry a
+   warm edge so they read as the jokes they are rather than as a verdict. */
+.wof-fun{border-color:#EAD9B6}
+.wof-fun .wof-val{color:#8A6516}
+.wof-fun .wof-runval{color:#8A6516}
+
+.wof-rest{font-size:12px;color:var(--muted);padding-top:2px}
+
+.wof-runners{display:flex;flex-direction:column;gap:11px;margin-top:12px;
+  padding-top:11px;border-top:1px solid var(--line-soft)}
+/* Baseline-aligned, not centred: silver and bronze now carry a record line of
+   their own underneath, so centring pushed the chip and the number down beside
+   a two-line block. */
+.wof-run{display:grid;grid-template-columns:auto auto 1fr;gap:9px;align-items:baseline;font-size:13.5px}
+.wof-runval{font-weight:700;color:var(--court);text-align:right}
+.wof-runbody{min-width:0;display:flex;flex-direction:column;gap:1px}
+.wof-runwho{color:var(--ink);font-weight:600}
+.wof-runctx{font-size:12px;color:var(--muted)}
+.wof-runwho[data-goto]{cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);
+  text-underline-offset:3px}
+.wof-runwho[data-goto]:hover{text-decoration-color:var(--court)}
+
+/* The affordance. Says what is behind it rather than just "details". */
+.wof-more{margin-top:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+  color:var(--court);display:inline-flex;align-items:center;gap:5px}
+.wof-more::after{content:'';width:6px;height:6px;border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-1px,-1px);
+  transition:transform .16s ease}
+details.wof[open] .wof-more::after{transform:rotate(225deg) translate(-2px,-2px)}
+.wof-open{padding:0 18px 18px;border-top:1px solid var(--line);margin-top:2px;padding-top:14px;
+  background:var(--line-soft);border-radius:0 0 var(--r) var(--r)}
+
+/* One block per place, each under its own heading, so the panel answers
+   "what about silver?" instead of restating gold three times. */
+.dd-block + .dd-block{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.dd-head{display:flex;align-items:baseline;gap:9px;margin:0 0 8px;font-weight:700;font-size:14px}
+.dd-head>span:last-child{min-width:0}
+.dd-lead{font-size:13.5px;font-weight:600;margin:0 0 8px}
+.dd-list{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-direction:column;gap:6px}
+.dd-list li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline;
+  font-size:13px;padding:7px 10px;background:var(--bg);border-radius:8px}
+.dd-list .dd-date{grid-column:1/-1}
+.dd-date{color:var(--muted);font-size:12px;white-space:nowrap}
+.dd-text{color:var(--ink)}
+.dd-score{font-weight:700;color:var(--court);white-space:nowrap}
+.dd-more{font-size:12px;color:var(--muted);margin:0 0 10px}
+.dd-facts{display:flex;flex-wrap:wrap;gap:8px 22px}
+.dd-facts div{display:flex;flex-direction:column;gap:1px}
+.dd-facts span{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.dd-facts b{font-size:14px;color:var(--ink)}
+@media (prefers-reduced-motion:reduce){ .wof-more::after{transition:none} }
+
+/* ---------- the century club ---------- */
+/* A roll, not a podium. Thirty-three people have played a thousand games for
+   this club and the whole point of the honour is how many of them there are,
+   so it is laid out as a list of names that keeps going. */
+.ccwrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(302px,1fr));gap:8px}
+.cc{display:grid;grid-template-columns:auto auto 1fr auto;gap:10px;align-items:center;min-height:52px;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:9px 12px;text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%;
+  transition:transform .12s ease, border-color .12s ease}
+.cc:hover{transform:translateY(-1px);border-color:var(--court)}
+.cc:focus-visible{outline:2px solid var(--court);outline-offset:2px}
+.cc-rank{font-family:var(--display);font-size:13px;font-weight:700;color:var(--faint);
+  min-width:16px;text-align:right;font-variant-numeric:tabular-nums}
+.cc-av{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+  background:var(--court);color:var(--lime);font-family:var(--display);font-weight:700;
+  font-size:13px;letter-spacing:.02em}
+.cc-body{min-width:0;display:flex;flex-direction:column;gap:0}
+/* Wrapping, not truncating. "Christie Sim..." on a roll of honour is worse
+   than a name on two lines. */
+.cc-name{font-weight:700;font-size:13.5px;line-height:1.25}
+.cc-ctx{font-size:11.5px;color:var(--muted)}
+.cc-games{font-family:var(--display);font-size:19px;font-weight:700;color:var(--court);
+  font-variant-numeric:tabular-nums;line-height:1}
+/* The top three wear the club colours, so the roll still has a head to it. */
+.cc:nth-child(-n+3) .cc-av{background:var(--lime);color:var(--lime-ink)}
+
+/* ---------- the notes under the wall ---------- */
+.wof-foot{margin:6px 0 0;padding:16px 18px;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r);font-size:12.5px;color:var(--muted);line-height:1.6;max-width:90ch}
+.wof-foot p{margin:0 0 9px}
+.wof-foot p:last-child{margin-bottom:0}
+.wof-foot b{color:var(--ink)}
+
+/* ---------- on the clock ---------- */
+/* The one measured figure on the site, so it gets its own panel rather than a
+   fourth tile in the counting strip above it. */
+.clk{margin:14px 0 0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px 18px 14px;box-shadow:var(--shadow)}
+.clk-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0 0 12px}
+.clk-h h3{font-family:var(--display);font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:.01em}
+.clk-h span{font-size:12.5px;color:var(--muted)}
+.clk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(214px,1fr));gap:12px}
+.clk-avg,.clk-x{display:flex;flex-direction:column;gap:2px;min-width:0;
+  background:var(--bg);border-radius:10px;padding:12px 14px}
+.clk-avg{background:var(--court);color:#fff}
+.clk-lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--faint)}
+.clk-avg .clk-lab{color:var(--lime)}
+.clk-big{font-family:var(--display);font-size:42px;font-weight:700;line-height:1;margin:6px 0 4px;
+  letter-spacing:-.02em}
+.clk-t{font-family:var(--display);font-size:30px;font-weight:700;line-height:1;margin:6px 0 3px;
+  color:var(--court)}
+.clk-who{font-size:13px;font-weight:600;line-height:1.35}
+.clk-who em{font-style:normal;font-weight:400;color:var(--muted)}
+.clk-meta{font-size:11.5px;color:var(--muted);margin-top:2px}
+.clk-avg .clk-meta{color:rgba(255,255,255,.66)}
+
+.freshbar{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:baseline;margin:20px 0 4px;
+  padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+.freshbar div{font-size:12.5px;color:var(--muted)}
+.buildstamp{display:inline-block;margin-left:8px;padding:2px 7px;border-radius:5px;
+  background:var(--line-soft);color:var(--faint);font-size:10.5px;font-weight:700;
+  letter-spacing:.06em;font-variant-numeric:tabular-nums;cursor:help}
+.freshbar b{color:var(--ink);font-weight:700}
+@media (max-width:760px){
+  .strip{grid-template-columns:repeat(2,1fr)}
+  .wall{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){ button.wof:hover{transform:none} }
+
+/* ---------- demo notice ---------- */
+.notice{display:flex;gap:12px;align-items:flex-start;margin:14px 0 16px;padding:12px 16px;
+  background:#FFFBEB;border:1px solid #F3E3A3;border-left:4px solid #E9C93B;border-radius:var(--r);font-size:13px;color:#5A4A12}
+.notice b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7A6415;margin-bottom:2px}
+.notice details{margin-top:6px}
+.notice summary{cursor:pointer;font-weight:700;font-size:12.5px;color:#7A6415;
+  list-style:none;display:inline-flex;align-items:center;gap:5px}
+.notice summary::-webkit-details-marker{display:none}
+.notice summary::after{content:"";width:5px;height:5px;border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .15s ease;margin-bottom:2px}
+.notice details[open] summary::after{transform:rotate(-135deg);margin-bottom:-2px}
+.notice summary:focus-visible{outline:2px solid #7A6415;outline-offset:3px;border-radius:3px}
+.notice details div{margin-top:7px;max-width:92ch}
+.notice svg{flex:none;margin-top:1px;color:#C9A21A}
+
+/* ---------- control strip ---------- */
+.controls{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:14px;
+  display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;box-shadow:var(--shadow);margin-bottom:16px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 210px}
+.field>label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--faint)}
+select{appearance:none;width:100%;padding:11px 38px 11px 13px;border:1px solid var(--line);border-radius:11px;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%2364756D' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 13px center;
+  font-size:15px;font-weight:600;color:var(--ink);cursor:pointer}
+select:hover{border-color:#C9D3C9}
+.combo{position:relative}
+.comboinput{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:#fff;
+  font-size:15px;font-weight:600;color:var(--ink);font-family:inherit}
+.comboinput::placeholder{color:var(--faint);font-weight:500}
+.comboinput:hover{border-color:#C9D3C9}
+.combolist{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;
+  background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 18px 40px -18px rgba(10,59,44,.45);
+  max-height:320px;overflow-y:auto}
+.combolist li{padding:9px 11px;border-radius:9px;cursor:pointer;display:flex;justify-content:space-between;
+  gap:10px;align-items:baseline;font-size:14.5px}
+.combolist li[aria-selected="true"],.combolist li:hover{background:#EEF6E9}
+.combolist li .sub{font-size:11.5px;color:var(--faint);font-weight:600;white-space:nowrap}
+.combolist .none{color:var(--muted);cursor:default;justify-content:center}
+.combolist .none:hover{background:none}
+.swap{flex:none;border:1px solid var(--line);background:#fff;border-radius:11px;height:44px;padding:0 15px;
+  cursor:pointer;font-weight:600;font-size:13px;display:flex;align-items:center;gap:7px;color:var(--court)}
+.swap:hover{background:var(--bg);border-color:#C9D3C9}
+.ctl-note{flex:1 1 auto;text-align:right;font-size:12px;color:var(--faint);min-width:140px}
+
+/* ---------- scoreboard ---------- */
+.scoreboard{position:relative;overflow:hidden;background:var(--court);color:#fff;border-radius:var(--r-lg);
+  padding:22px 24px;margin-bottom:16px;
+  background-image:radial-gradient(120% 130% at 88% 0%, var(--court-soft) 0%, transparent 58%)}
+.sb-court{position:absolute;inset:0;width:100%;height:100%;color:var(--court-line);pointer-events:none}
+.sb-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 26px;align-items:center}
+.sb-id{min-width:0}
+.dmove{font-style:normal;font-weight:700;margin-left:6px;letter-spacing:0}
+.dmove.up{color:var(--win)} .dmove.down{color:var(--loss)}
+.rankchip.dupr{color:var(--lime-ink);background:var(--lime);border-color:var(--lime);margin-left:8px}
+.rankchip{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--lime);background:rgba(217,248,75,.12);
+  border:1px solid rgba(217,248,75,.25);padding:4px 10px;border-radius:999px;margin-bottom:10px}
+.sb-name{font-size:clamp(34px,6vw,54px);text-transform:uppercase;letter-spacing:.005em}
+.sb-club{margin:6px 0 0;font-size:13px;color:rgba(255,255,255,.62)}
+.sb-form{margin-top:14px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.sb-form .lbl{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-right:4px}
+.chip{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-size:10px;font-weight:700;font-family:var(--display)}
+.chip.w{background:var(--lime);color:var(--lime-ink)}
+.chip.l{background:rgba(255,255,255,.14);color:rgba(255,255,255,.75)}
+.sb-right{display:flex;align-items:center;gap:24px}
+.ringwrap{position:relative;width:132px;height:132px;flex:none}
+.ringwrap svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring-track{fill:none;stroke:rgba(255,255,255,.13);stroke-width:11}
+.ring-fill{fill:none;stroke:var(--lime);stroke-width:11;stroke-linecap:round;
+  animation:ringin .85s cubic-bezier(.22,1,.36,1)}
+@keyframes ringin{from{stroke-dashoffset:var(--full)}}
+.ringmid{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.ringmid strong{font-family:var(--display);font-size:38px;font-weight:700;line-height:1}
+.ringmid strong i{font-style:normal;font-size:19px;opacity:.65}
+.ringmid span{display:block;font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:3px}
+.sb-stats{display:grid;grid-template-columns:repeat(4,minmax(58px,auto));gap:22px}
+.stat{text-align:left}
+.stat b{display:block;font-family:var(--display);font-size:38px;font-weight:700;line-height:1}
+.stat span{display:block;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px}
+.stat.pos b{color:var(--lime)}
+
+/* ---------- cards / layout ---------- */
+.grid{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:16px;margin-bottom:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 20px;box-shadow:var(--shadow);min-width:0}
+.card-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:2px}
+.card-h h2{font-size:21px;text-transform:uppercase;letter-spacing:.02em}
+.card-h .meta{font-size:11px;color:var(--faint);font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-align:right}
+.badge{display:inline-block;white-space:nowrap;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:#FFF6D8;color:#7A6415;border:1px solid #F0DFA0;padding:3px 8px;border-radius:6px}
+.badge.ok{background:var(--win-bg);color:var(--win);border-color:#BFE3D0}
+.badge.warn{background:#FFF1E3;color:#8A4B12;border-color:#F3D6B6}
+.foot{margin:14px 0 0;font-size:11.5px;color:var(--faint);line-height:1.45}
+
+/* ---------- chart ---------- */
+.chart-top{display:flex;align-items:flex-end;gap:14px;margin:10px 0 4px}
+.chart-top b{font-family:var(--display);font-size:46px;font-weight:700;line-height:.9;color:var(--court)}
+.chart-top span{font-size:12px;color:var(--muted);padding-bottom:5px}
+.chart-top .delta{font-size:12px;font-weight:700;padding:3px 8px;border-radius:7px;margin-bottom:4px}
+.delta.up{background:var(--win-bg);color:var(--win)} .delta.down{background:var(--loss-bg);color:var(--loss)}
+.delta.flat{background:var(--line-soft);color:var(--muted)}
+.chartwrap{position:relative;margin-top:4px;border-radius:12px}
+.chartwrap:focus-visible{outline:3px solid var(--lime-deep);outline-offset:3px}
+.chartwrap svg{display:block;width:100%}
+.tip{position:absolute;pointer-events:none;background:var(--court-deep);color:#fff;border-radius:9px;padding:7px 10px;
+  font-size:12px;line-height:1.3;white-space:nowrap;transform:translate(-50%,-118%);opacity:0;transition:opacity .12s;
+  box-shadow:0 8px 20px -8px rgba(0,0,0,.5);z-index:5}
+.tip.on{opacity:1}
+.tip b{font-family:var(--display);font-size:17px;display:block;color:var(--lime)}
+
+/* ---------- partner highlight cards ---------- */
+.edges{display:flex;flex-direction:column;gap:10px}
+.pcard{display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:14px;padding:13px 14px;
+  background:#fff;cursor:pointer;transition:.16s;position:relative}
+.pcard:hover{border-color:var(--court);transform:translateY(-1px);box-shadow:0 10px 22px -14px rgba(10,59,44,.5)}
+.pcard .tag{font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:700}
+.pcard.best .tag{color:var(--win)} .pcard.worst .tag{color:var(--loss)}
+.pcard .row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:5px}
+.pcard .nm{font-family:var(--display);font-size:23px;font-weight:700;text-transform:uppercase;min-width:0;line-height:1.04}
+.pcard .pct{font-family:var(--display);font-size:26px;font-weight:700;flex:none}
+.pcard.best .pct{color:var(--win)} .pcard.worst .pct{color:var(--loss)}
+.pcard .sub{font-size:12px;color:var(--muted);margin-top:3px;display:block;padding-right:78px}
+.pcard .go{position:absolute;right:13px;bottom:11px;font-size:11px;font-weight:700;color:var(--faint)}
+.pcard:hover .go{color:var(--court)}
+.emptybox{border:1px dashed var(--line);border-radius:14px;padding:18px 14px;text-align:center;color:var(--muted);font-size:13px}
+
+/* ---------- tables ---------- */
+/* Tables are wider than a phone. They scroll rather than shrink to
+   illegibility, and a pure-CSS shadow on each edge shows there is more to see -
+   `local` layers move with the content, `scroll` layers stay put, so the
+   shadows appear and disappear on their own with no scroll listener. */
+.scroller{overflow-x:auto;margin:12px -20px -6px;padding:0 20px;
+  background:
+    linear-gradient(to right, #fff 30%, rgba(255,255,255,0)) left center/40px 100% no-repeat local,
+    linear-gradient(to left,  #fff 30%, rgba(255,255,255,0)) right center/40px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(10,59,44,.13), rgba(10,59,44,0)) left center/16px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(10,59,44,.13), rgba(10,59,44,0)) right center/16px 100% no-repeat scroll;}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+th{text-align:right;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+  padding:0 10px 9px;font-weight:700;border-bottom:1px solid var(--line)}
+th:first-child{text-align:left;padding-left:0}
+td{padding:10px;border-bottom:1px solid var(--line-soft);text-align:right;white-space:nowrap}
+td:first-child{text-align:left;padding-left:0;white-space:normal}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:#F7FAF6}
+tbody tr:last-child td{border-bottom:0}
+/* Rows past a capped table's limit. Hidden, not removed - a sort reorders all
+   of them and the cap is re-applied afterwards. */
+tbody tr[hidden]{display:none}
+.namebtn{border:0;background:none;padding:0;font-weight:600;font-size:14.5px;cursor:pointer;text-align:left;color:var(--ink)}
+tbody tr:hover .namebtn{color:var(--court);text-decoration:underline;text-underline-offset:3px}
+.bar{display:inline-block;vertical-align:middle;width:76px;height:7px;border-radius:99px;background:var(--line-soft);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--court)}
+.thin{color:var(--faint);font-size:11px;font-weight:600}
+
+/* ---------- sortable column headings ---------- */
+/* The whole heading is the tap target, not the arrow. A 9px triangle is not
+   something anyone can hit on a phone, and most of this site is read on one.
+   The button inherits the cell's alignment so the headings stay where they
+   were - right for figures, left for the name column. */
+th .sortbtn{display:flex;align-items:center;gap:5px;width:100%;justify-content:flex-end;
+  background:none;border:0;cursor:pointer;font:inherit;color:inherit;letter-spacing:inherit;
+  text-transform:inherit;padding:6px 0;margin:-6px 0;-webkit-tap-highlight-color:transparent}
+th:first-child .sortbtn{justify-content:flex-start}
+th .sortbtn:hover{color:var(--court)}
+th .sortbtn:focus-visible{outline:2px solid var(--court);outline-offset:2px;border-radius:5px}
+/* border-bottom draws a triangle pointing up, border-top one pointing down. */
+.sortar{flex:0 0 auto;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;
+  border-top:5px solid currentColor;opacity:.25;transition:opacity .12s ease}
+th .sortbtn:hover .sortar{opacity:.5}
+th[aria-sort="ascending"] .sortar{border-top:0;border-bottom:5px solid currentColor;opacity:1}
+th[aria-sort="descending"] .sortar{opacity:1}
+th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
+@media (prefers-reduced-motion:reduce){ .sortar{transition:none} }
+.small-chip{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:#8A6D0B;background:#FFF6D8;border:1px solid #F0DFA0;border-radius:5px;padding:1px 5px;margin-left:6px}
+
+/* ---------- match log ---------- */
+.log{display:flex;flex-direction:column;gap:1px;margin-top:12px}
+.logrow{display:grid;grid-template-columns:26px 74px minmax(0,1fr) auto;gap:12px;align-items:center;
+  padding:9px 8px;border-radius:9px}
+.logrow:nth-child(odd){background:#FAFCF9}
+.wl{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font-family:var(--display);
+  font-weight:700;font-size:13px}
+.wl.w{background:var(--win-bg);color:var(--win)} .wl.l{background:var(--loss-bg);color:var(--loss)}
+.logdate{font-size:11.5px;color:var(--faint);font-weight:600;white-space:nowrap;cursor:help}
+/* A game with a real date carries more weight than a batch label, and reads as
+   the confirmed record it is. */
+.logdate.dated{color:var(--muted);letter-spacing:.02em}
+.logwho{font-size:13.5px;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.logwho em{font-style:normal;color:var(--muted)}
+.logscore{font-family:var(--display);font-size:19px;font-weight:700;letter-spacing:.02em}
+.logscore .s2{color:var(--faint)}
+.morebtn{margin-top:14px;width:100%;border:1px solid var(--line);background:#fff;border-radius:11px;padding:11px;
+  font-size:13px;font-weight:600;cursor:pointer;color:var(--court)}
+.morebtn:hover{background:var(--bg);border-color:#C9D3C9}
+.fulllog{max-height:430px;overflow-y:auto;margin-top:10px;border-top:1px solid var(--line);padding-top:6px}
+
+/* ---------- compare ---------- */
+.vs{position:relative;overflow:hidden;background:var(--court);color:#fff;border-radius:var(--r-lg);
+  padding:20px 24px;margin-bottom:16px;
+  background-image:radial-gradient(100% 140% at 50% 0%, var(--court-soft) 0%, transparent 62%)}
+.vs-grid{position:relative;display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center}
+.vs-side{min-width:0}
+.vs-side.r{text-align:right}
+.vs-side.r .nm{justify-content:flex-end}
+.vs-side .nm{font-family:var(--display);font-size:clamp(24px,3.6vw,38px);font-weight:700;text-transform:uppercase;line-height:1.04;min-height:2.08em;display:flex;align-items:center}
+.vs-side .rec{margin-top:7px;font-size:13px;color:rgba(255,255,255,.6)}
+.vs-side .rec b{color:#fff;font-weight:600}
+.vs-mid{font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:.14em;color:var(--lime);
+  border:1px solid rgba(217,248,75,.3);border-radius:999px;padding:6px 13px;flex:none}
+.duel{display:flex;align-items:center;justify-content:center;gap:16px;margin:16px 0 6px}
+.duel .side{text-align:center;flex:1}
+.duel .side b{display:block;font-family:var(--display);font-size:58px;font-weight:700;line-height:.92;color:var(--court)}
+.duel .side.lead b{color:var(--lime-deep)}
+.duel .side.dim b{color:#9BA8A1}
+.duel .side span{display:block;font-size:11px;color:var(--muted);margin-top:4px;font-weight:600}
+.duel .dash{font-family:var(--display);font-size:30px;color:var(--line);flex:none}
+.splitbar{display:flex;height:11px;border-radius:99px;overflow:hidden;background:var(--line-soft);margin-top:10px}
+.splitbar i{display:block;height:100%}
+.splitbar i:first-child{background:var(--court)} .splitbar i:last-child{background:var(--lime-deep)}
+.splitbar.wlbar i:first-child{background:var(--lime-deep)} .splitbar.wlbar i:last-child{background:#D5DDD5}
+.keyline{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:7px;font-weight:600}
+.tally{display:flex;justify-content:center;gap:26px;margin-top:12px;padding-top:13px;border-top:1px solid var(--line-soft)}
+.tally div{text-align:center}
+.tally b{display:block;font-family:var(--display);font-size:22px;font-weight:700}
+.tally span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.tagpill{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:2px 7px;border-radius:5px;margin-right:7px}
+.tagpill.tog{background:#E7F1FB;color:#2A5C8A} .tagpill.opp{background:#F4ECFB;color:#6B3E96}
+
+@media (max-width:880px){
+  .grid,.grid2{grid-template-columns:1fr}
+  .sb-grid{grid-template-columns:1fr}
+  .sb-right{flex-direction:column;align-items:flex-start;gap:18px}
+  .sb-stats{grid-template-columns:repeat(4,1fr);gap:12px;width:100%}
+}
+@media (max-width:560px){
+  .shell{padding:0 12px 56px}
+  .topbar-in{padding:10px 12px;gap:10px}
+  /* Four tabs no longer fit a phone. Let the strip scroll rather than shrink
+     the labels to the point of illegibility or clip the last one off-screen. */
+  .tabs{order:3;width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    /* A shadow on whichever edge has more tabs behind it. The `local` layers
+       move with the content and the `scroll` ones stay put, so the hint appears
+       and disappears on its own with no scroll listener. */
+    background:
+      linear-gradient(90deg, rgba(6,41,30,.9), rgba(6,41,30,0)) left center/22px 100% no-repeat local,
+      linear-gradient(270deg, rgba(6,41,30,.9), rgba(6,41,30,0)) right center/22px 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgba(0,0,0,.45), transparent) left center/14px 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.45), transparent) right center/14px 100% no-repeat scroll,
+      rgba(255,255,255,.07)}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;text-align:center;padding:8px 13px;white-space:nowrap}
+  /* A heading and its caption side by side wrap into each other at this width. */
+  details.wof>summary{padding:16px 14px}
+  .wof-open{padding:12px 14px 16px}
+  .card-h{flex-direction:column;align-items:flex-start;gap:2px}
+  .card-h .meta{text-align:left}
+  .demopill{order:2}
+  .scoreboard,.vs{padding:18px 16px}
+  .card-h h2{font-size:18px}
+  .card{padding:16px 14px}
+  .scroller{margin:12px -14px -6px;padding:0 14px}
+  .field{flex:1 1 100%}
+  .sb-right{flex-direction:row;align-items:center;gap:16px}
+  .ringwrap{width:108px;height:108px}
+  .ringmid strong{font-size:31px}
+  .ringmid strong i{font-size:16px}
+  .stat b{font-size:28px}
+  .sb-stats{grid-template-columns:1fr 1fr;gap:10px 12px;flex:1}
+  .stat span{font-size:8.5px;letter-spacing:.08em}
+  .vs-grid{grid-template-columns:1fr;gap:12px;text-align:center}
+  .vs-side.r{text-align:center}
+  .vs-mid{justify-self:center}
+  .duel .side b{font-size:44px}
+  .logrow{grid-template-columns:24px minmax(0,1fr) auto;gap:9px}
+  /* On a phone the batch label is noise, but a real date is worth the column. */
+  .logdate{display:none}
+  .logrow:has(.logdate.dated){grid-template-columns:24px auto minmax(0,1fr) auto}
+  .logdate.dated{display:inline}
+  .ctl-note{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">MIP</span>
+      <span class="brandtext"><b>Merrick</b><span>In a Pickle</span></span>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Stats views">
+      <button class="tab" role="tab" id="tab-home" aria-controls="panel-home" aria-selected="true">Home</button>
+      <button class="tab" role="tab" id="tab-records" aria-controls="panel-records" aria-selected="false" tabindex="-1">Wall of Fame</button>
+      <button class="tab" role="tab" id="tab-player" aria-controls="panel-player" aria-selected="false" tabindex="-1">Player profile</button>
+      <button class="tab" role="tab" id="tab-compare" aria-controls="panel-compare" aria-selected="false" tabindex="-1">Head to head</button>
+      <button class="tab" role="tab" id="tab-standings" aria-controls="panel-standings" aria-selected="false" tabindex="-1">Standings</button>
+    </nav>
+    <p class="demopill">Live data</p>
+  </div>
+</header>
+
+<div class="shell">
+  <section id="panel-home" role="tabpanel" aria-labelledby="tab-home" tabindex="-1"></section>
+
+  <section id="panel-records" role="tabpanel" aria-labelledby="tab-records" tabindex="-1" hidden></section>
+
+  <section id="panel-player" role="tabpanel" aria-labelledby="tab-player" tabindex="-1" hidden>
+    <div class="controls">
+      <div class="field">
+        <label for="selPlayer">Player</label>
+        <div class="combo"><input id="selPlayer" class="comboinput" type="text" role="combobox" aria-expanded="false" aria-controls="listPlayer" aria-autocomplete="list" autocomplete="off" placeholder="Type a name…"><ul id="listPlayer" class="combolist" role="listbox" aria-label="Players" hidden></ul></div>
+      </div>
+      <p class="ctl-note" id="ctlNote"></p>
+    </div>
+    <div id="playerBody"></div>
+  </section>
+
+  <section id="panel-standings" role="tabpanel" aria-labelledby="tab-standings" tabindex="-1" hidden>
+    <div class="controls">
+      <div class="field">
+        <label for="selLeague">League</label>
+        <select id="selLeague"></select>
+      </div>
+      <p class="ctl-note">Tap any player to open their profile</p>
+    </div>
+    <div id="standingsBody"></div>
+  </section>
+
+  <section id="panel-compare" role="tabpanel" aria-labelledby="tab-compare" tabindex="-1" hidden>
+    <div class="controls">
+      <div class="field">
+        <label for="selA">Player</label>
+        <div class="combo"><input id="selA" class="comboinput" type="text" role="combobox" aria-expanded="false" aria-controls="listA" aria-autocomplete="list" autocomplete="off" placeholder="Type a name…"><ul id="listA" class="combolist" role="listbox" aria-label="Player" hidden></ul></div>
+      </div>
+      <button class="swap" id="btnSwap" type="button" title="Swap players">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5h10M9.5 2.5 12 5 9.5 7.5M14 11H4M6.5 8.5 4 11l2.5 2.5"/></svg>
+        Swap
+      </button>
+      <div class="field">
+        <label for="selB">Opponent / partner</label>
+        <div class="combo"><input id="selB" class="comboinput" type="text" role="combobox" aria-expanded="false" aria-controls="listB" aria-autocomplete="list" autocomplete="off" placeholder="Type a name…"><ul id="listB" class="combolist" role="listbox" aria-label="Opponent or partner" hidden></ul></div>
+      </div>
+    </div>
+    <div id="compareBody"></div>
+  </section>
+</div>
+
+<p aria-live="polite" class="sr-only" id="live"></p>
+<script type="module" src="app.js"></script>

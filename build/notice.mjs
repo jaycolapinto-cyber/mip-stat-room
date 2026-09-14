@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const p = await (await b.newContext({viewport:{width:1280,height:1050}})).newPage();
+const errs=[]; p.on('pageerror',e=>errs.push(e.message));
+await p.goto('http://127.0.0.1:8321/', { waitUntil: 'networkidle' });
+await p.waitForTimeout(700);
+console.log('NOTICE:\n' + (await p.$eval('#dataNotice', e => e.textContent.replace(/\s+/g,' ').trim())));
+console.log('\nctlNote:', await p.$eval('#ctlNote', e=>e.textContent));
+console.log('errors:', errs.length?errs:'none');
+await b.close();

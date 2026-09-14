@@ -1,0 +1,30 @@
+# Installed, not written. `npm ci` rebuilds it exactly from package-lock.json.
+node_modules/
+
+# Screenshots from the visual checks - useful while looking at a change, not
+# worth keeping once it is made.
+shots/
+
+# Scratch output from the duplicate sweep. The decisions it led to are recorded
+# in importer/aliases.json, which IS committed; this is just the working file.
+build/dupesweep.json
+
+# Editor and OS litter, including the lock file Excel writes beside a workbook
+# while it is open.
+.DS_Store
+Thumbs.db
+~$*
+*.swp
+.vscode/
+.idea/
+
+# Never commit a deploy token. Cloudflare Pages builds from the repo and needs
+# no token here at all; wrangler, if ever used from a laptop, reads it from the
+# environment.
+.env
+.env.*
+.dev.vars
+.wrangler/
+
+# Superseded importer versions, kept on disk only while the rewrite settled.
+*.bak

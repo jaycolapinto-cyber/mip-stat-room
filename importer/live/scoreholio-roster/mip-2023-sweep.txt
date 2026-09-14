@@ -1,0 +1,675 @@
+##### TOURNAMENT ODTI0gg8hlM2eUdGRBcC
+##### ROSTER
+Milly S.	Milly S.	3.191	KIgfXP3VdEIpEyzsnRKY
+Peter Grawehr	No First No Last	4.123	w6s2Xk7f6i03BmD2rgzJ
+Laurir M.	Laurir M.	3.25	gzjrBs1U3uEwQgur9r0x
+Billy S.	Billy  Scaduto	3.813	UtIa6cyVgMbxHMzswNU7
+Jarred B.	Jarred Barretti	3.113	aUPnyDmUCod6B8i1OUb7
+Eddie R.	Eddie Rizzi	3.642	WHdClEonQEmP0GPKZsOQ
+D-Hub27 🍻 🇺🇸	David Huber	3.784	4CfuKI0RYoJWOAudIjPW
+Alex G.	Alex G.	-999	jHVJPiZvhWtq8VvHHVBz
+Angelina D.	Angelina DiTucci	2.594	9Pzrn5i1gCV85IoovmWJ
+Collin H.	Collin Huber	3.57	uW1bRTZT1XV3MI6zCSg9
+Melissa M.	Melissa M.	-999	a7cgsDLVzhycdFxq2rok
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"16","","2023-08-14T22:59:45.000Z","","1","","Melissa M. & Jarred B.","Angelina D. & Laurir M.","13 - 11","11 - 13","-","-","Unknown","Live","","","rYWDnth8g8Z7BCoKMCs0"
+"15","","2023-08-14T22:53:34.000Z","","2","","Milly S. & Collin H.","D-Hub27 🍻 🇺🇸 & Eddie R.","8 - 11","11 - 8","-","-","Unknown","Live","","","miz1XSmwDb0hD80i0RxI"
+"14","","2023-08-14T22:48:17.000Z","","1","","Peter Grawehr & Alex G.","Angelina D. & Billy S.","12 - 10","10 - 12","-","-","Unknown","Live","","","ZcDt60Ca2FZn0UOYjWE9"
+"13","","2023-08-14T22:46:32.000Z","","2","","Jarred B. & Collin H.","Eddie R. & Laurir M.","9 - 11","11 - 9","-","-","Unknown","Live","","","2cEskf0RfFGK8k5N5qwX"
+"12","","2023-08-14T22:39:44.000Z","","1","","Melissa M. & Milly S.","Billy S. & D-Hub27 🍻 🇺🇸","4 - 11","11 - 4","-","-","Unknown","Live","","","ocHyhyPPirw4hlOrVTDc"
+"11","","2023-08-14T22:38:33.000Z","","2","","Peter Grawehr & Collin H.","Eddie R. & Jarred B.","11 - 8","8 - 11","-","-","Unknown","Live","","","JEvaUiAeetsdk1w4YIa9"
+"10","","2023-08-14T22:33:04.000Z","","1","","Laurir M. & Alex G.","D-Hub27 🍻 🇺🇸 & Angelina D.","11 - 13","13 - 11","-","-","Unknown","Live","","","ih6b8AHivNvIveJ9bxNT"
+"9","","2023-08-14T22:29:54.000Z","","2","","Peter Grawehr & Jarred B.","Eddie R. & Milly S.","11 - 6","6 - 11","-","-","Unknown","Live","","","jtqkvMlBGnaqgA1l7NEv"
+"8","","2023-08-14T22:22:36.000Z","","1","","Collin H. & Angelina D.","Billy S. & Melissa M.","5 - 11","11 - 5","-","-","Unknown","Live","","","BDK3KhVKlLyRHd6XWqaO"
+"7","","2023-08-14T22:17:08.000Z","","1","","D-Hub27 🍻 🇺🇸 & Laurir M.","Melissa M. & Alex G.","11 - 5","5 - 11","-","-","Unknown","Live","","","bc3PHz5EpaE1wdlEBEjq"
+"6","","2023-08-14T22:16:15.000Z","","2","","Eddie R. & Angelina D.","Billy S. & Milly S.","7 - 11","11 - 7","-","-","Unknown","Live","","","wdn8ut3ihmJ139HocLuI"
+"5","","2023-08-14T22:11:13.000Z","","1","","Peter Grawehr & Melissa M.","Alex G. & Collin H.","11 - 4","4 - 11","-","-","Unknown","Live","","","Ux2XNDoGXsz6jqT5wO5d"
+"4","","2023-08-14T22:09:23.000Z","","2","","Jarred B. & Milly S.","Laurir M. & Billy S.","9 - 11","11 - 9","-","-","Unknown","Live","","","vOkg7w8DCzLAdb8aAKCV"
+"3","","2023-08-14T22:03:57.000Z","","1","","Peter Grawehr & Eddie R.","Melissa M. & D-Hub27 🍻 🇺🇸","2 - 11","11 - 2","-","-","Unknown","Live","","","Mj1L2qMjccjAzFDAENkJ"
+"2","","2023-08-14T22:00:17.000Z","","2","","Jarred B. & Laurir M.","Angelina D. & Alex G.","9 - 11","11 - 9","-","-","Unknown","Live","","","OjUskjhlVJZwCFmwKJlh"
+"1","","2023-08-14T21:58:34.000Z","","1","","D-Hub27 🍻 🇺🇸 & Milly S.","Collin H. & Billy S.","11 - 9","9 - 11","-","-","Unknown","Live","","","N48cd2BzfGUet3o7sWqP"
+##### TOURNAMENT mLR4CtuvEAXBD2CfIBE6
+##### ROSTER
+Jack S.	Jack Scaduto	3.2	e7ZEy0bv57uUhJD44fZg
+Eddie R.	Eddie Rizzi	3.642	WHdClEonQEmP0GPKZsOQ
+Jarred B.	Jarred Barretti	3.113	aUPnyDmUCod6B8i1OUb7
+Billy S.	Billy  Scaduto	3.813	UtIa6cyVgMbxHMzswNU7
+Colleen F.	Colleen Fitzpatrick	2.814	tqicCHtXwJNKJ4cY2WkO
+Collin H.	Collin Huber	3.57	uW1bRTZT1XV3MI6zCSg9
+Alfonso N.	Alfonso N.	3.242	4RBEvTo7fpFB5fy3fey6
+Caroline S.	Caroline Scaduto	-999	c0XU7yzaJlHVlAMI32hX
+Casey G.	Casey Grawehr	-999	v3Wsi28BIj8Wt48nb9et
+D-Hub27 🍻 🇺🇸	David Huber	3.784	4CfuKI0RYoJWOAudIjPW
+Peter Grawehr	No First No Last	4.123	w6s2Xk7f6i03BmD2rgzJ
+Angelina D.	Angelina D.	2.594	9Pzrn5i1gCV85IoovmWJ
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"18","","2023-08-21T22:57:16.000Z","","1","","Billy S. & Jarred B.","Colleen F. & Angelina D.","11 - 8","8 - 11","-","-","Unknown","Live","","","ZPx840joUTyHXWixhm5x"
+"17","","2023-08-21T22:53:14.000Z","","2","","D-Hub27 🍻 🇺🇸 & Alfonso N.","Caroline S. & Collin H.","11 - 6","6 - 11","-","-","Unknown","Live","","","kYFqm1B0w3bLcZBLSZ4J"
+"16","","2023-08-21T22:49:23.000Z","","1","","Casey G. & Eddie R.","Peter Grawehr & Jack S.","10 - 11","11 - 10","-","-","Unknown","Live","","","wrjybMizyT8V8DQxVIl7"
+"15","","2023-08-21T22:46:27.000Z","","2","","Billy S. & Alfonso N.","Caroline S. & D-Hub27 🍻 🇺🇸","11 - 8","8 - 11","-","-","Unknown","Live","","","la2NGpeMVki7sp9fLBb0"
+"14","","2023-08-21T22:41:25.000Z","","1","","Eddie R. & Peter Grawehr","Jack S. & Collin H.","11 - 9","9 - 11","-","-","Unknown","Live","","","RamEeTiV4QRQhJLoGJMS"
+"13","","2023-08-21T22:40:56.000Z","","2","","Casey G. & Jarred B.","Colleen F. & Angelina D.","11 - 4","4 - 11","-","-","Unknown","Live","","","2EHhsRFVpPt78vQBBbQG"
+"12","","2023-08-21T22:35:32.000Z","","2","","Caroline S. & Casey G.","D-Hub27 🍻 🇺🇸 & Colleen F.","11 - 9","9 - 11","-","-","Unknown","Live","","","ZHpIiCIXlm9kHhreSVxs"
+"11","","2023-08-21T22:34:10.000Z","","1","","Jarred B. & Alfonso N.","Billy S. & Collin H.","4 - 11","11 - 4","-","-","Unknown","Live","","","SQtfsYSfZgPV6GIHr51d"
+"10","","2023-08-21T22:28:48.000Z","","2","","Colleen F. & Casey G.","D-Hub27 🍻 🇺🇸 & Angelina D.","4 - 11","11 - 4","-","-","Unknown","Live","","","pGY1NZ3MSz7FjIfIZZxW"
+"9","","2023-08-21T22:28:25.000Z","","1","","Jarred B. & Peter Grawehr","Eddie R. & Jack S.","11 - 3","3 - 11","-","-","Unknown","Live","","","xpHxnoDSA44hTCcSVNvF"
+"8","","2023-08-21T22:22:51.000Z","","1","","Jarred B. & Jack S.","Billy S. & Caroline S.","5 - 11","11 - 5","-","-","Unknown","Live","","","0heWv2rjsxovaviDSUYN"
+"7","","2023-08-21T22:21:58.000Z","","2","","Angelina D. & Collin H.","Eddie R. & Alfonso N.","11 - 6","6 - 11","-","-","Unknown","Live","","","Vs5x5MUVMOMBa6YwVTI4"
+"6","","2023-08-21T22:15:17.000Z","","2","","Collin H. & Casey G.","Colleen F. & Peter Grawehr","12 - 10","10 - 12","-","-","Unknown","Live","","","YQgeIbowQ81PN8CMASK1"
+"5","","2023-08-21T22:13:58.000Z","","1","","Jack S. & Caroline S.","Angelina D. & Alfonso N.","9 - 11","11 - 9","-","-","Unknown","Live","","","6rugdrUgpSFX021rR5q9"
+"4","","2023-08-21T22:07:49.000Z","","2","","Billy S. & Eddie R.","D-Hub27 🍻 🇺🇸 & Peter Grawehr","8 - 11","11 - 8","-","-","Unknown","Live","","","F9He3ecJ5XtSTThzlP69"
+"3","","2023-08-21T22:06:21.000Z","","1","","Jarred B. & Collin H.","Jack S. & Casey G.","11 - 5","5 - 11","-","-","Unknown","Live","","","FQEA5x6jFmk4O2I0f2nH"
+"2","","2023-08-21T22:00:36.000Z","","2","","Angelina D. & Caroline S.","Peter Grawehr & Billy S.","4 - 11","11 - 4","-","-","Unknown","Live","","","Q9V2ei8rQhBJLGQjPgaU"
+"1","","2023-08-21T22:00:29.000Z","","1","","Eddie R. & D-Hub27 🍻 🇺🇸","Alfonso N. & Colleen F.","11 - 1","1 - 11","-","-","Unknown","Live","","","6wqLahvXKu3QoWVDuC4B"
+##### TOURNAMENT ITStrQ8j8Ejgbq3nU5g4
+##### ROSTER
+D-Hub27 🍻 🇺🇸	David Huber	3.784	4CfuKI0RYoJWOAudIjPW
+Billy S.	Billy  Scaduto	3.813	UtIa6cyVgMbxHMzswNU7
+Melissa M.	Melissa McManaman	-999	a7cgsDLVzhycdFxq2rok
+Angelina D.	Angelina DiTucci	2.594	9Pzrn5i1gCV85IoovmWJ
+Laurie M	Laurie Mayer	3.25	gzjrBs1U3uEwQgur9r0x
+Collin H.	Collin Huber	3.57	uW1bRTZT1XV3MI6zCSg9
+Jim D.	Jim Duffy	3.299	sPbIz7bPQqPb6vhjcnE3
+Jarred B.	Jarred Barretti	3.113	aUPnyDmUCod6B8i1OUb7
+Eddie R.	Eddie Rizzi	3.642	WHdClEonQEmP0GPKZsOQ
+Chris B.	Chris B	3.237	IyT5b7uxb7yIw8EhVu1K
+Joe I.	Joe Iadevaia	3.3	vm9PRqgKVlALgzZNSLCo
+Colleen F.	Colleen Fitzpatrick	2.814	tqicCHtXwJNKJ4cY2WkO
+Milly S.	Milly Serrano	3.191	KIgfXP3VdEIpEyzsnRKY
+Peter Grawehr	No First No Last	4.123	w6s2Xk7f6i03BmD2rgzJ
+Caroline S.	Caroline S.	-999	c0XU7yzaJlHVlAMI32hX
+Jennifer B.	Jennifer Borg	2.644	5kHMs3gRgcilgwJUGNuP
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"24","","2023-08-28T22:50:28.000Z","","2","","Angelina D. & D-Hub27 🍻 🇺🇸","Laurie M & Jim D.","11 - 6","6 - 11","-","-","Unknown","Live","","","SXfF5djVB4WVXknn9Uzf"
+"23","","2023-08-28T22:47:27.000Z","","3","","Colleen F. & Milly S.","Chris B. & Joe I.","11 - 9","9 - 11","-","-","Unknown","Live","","","YV6ANjfisO6UwRveoW1F"
+"22","","2023-08-28T22:44:27.000Z","","1","","Melissa M. & Caroline S.","Jarred B. & Jennifer B.","11 - 1","1 - 11","-","-","Unknown","Live","","","xNIYdhWO5UKgRaUAhEa5"
+"21","","2023-08-28T22:43:56.000Z","","2","","Angelina D. & Collin H.","Jim D. & Peter Grawehr","2 - 11","11 - 2","-","-","Unknown","Live","","","ZTQCdnz6Jj6T0kL0ypXj"
+"20","","2023-08-28T22:39:51.000Z","","1","","D-Hub27 🍻 🇺🇸 & Jarred B.","Caroline S. & Jennifer B.","11 - 5","5 - 11","-","-","Unknown","Live","","","U8uM0RaBULb8cATRcAIN"
+"19","","2023-08-28T22:39:10.000Z","","3","","Joe I. & Milly S.","Melissa M. & Laurie M","11 - 7","7 - 11","-","-","Unknown","Live","","","LEnaVyUYidMjfsxdahKB"
+"18","","2023-08-28T22:38:39.000Z","","2","","Chris B. & Colleen F.","Billy S. & Eddie R.","3 - 11","11 - 3","-","-","Unknown","Live","","","5GLmPo4I5N89gfizEzBy"
+"17","","2023-08-28T22:33:38.000Z","","2","","Chris B. & Eddie R.","Collin H. & Peter Grawehr","7 - 11","11 - 7","-","-","Unknown","Live","","","KFvtV2r2NxcdXF8SiTEh"
+"16","","2023-08-28T22:32:01.000Z","","1","","D-Hub27 🍻 🇺🇸 & Caroline S.","Jennifer B. & Billy S.","11 - 9","9 - 11","-","-","Unknown","Live","","","ZffaT20swwjov23G6aVI"
+"15","","2023-08-28T22:30:40.000Z","","3","","Angelina D. & Jim D.","Colleen F. & Jarred B.","11 - 3","3 - 11","-","-","Unknown","Live","","","rC2c6xE3YkDMoobsoJzB"
+"14","","2023-08-28T22:26:33.000Z","","2","","Chris B. & Melissa M.","Collin H. & Joe I.","9 - 11","11 - 9","-","-","Unknown","Live","","","uIs7yVFG51gVUmc1UmGS"
+"13","","2023-08-28T22:25:33.000Z","","1","","Caroline S. & Billy S.","Milly S. & Laurie M","11 - 6","6 - 11","-","-","Unknown","Live","","","DNljV1zwhi4zLVqOdl91"
+"12","","2023-08-28T22:23:47.000Z","","3","","Jim D. & Jarred B.","Angelina D. & Eddie R.","8 - 15","15 - 8","-","-","Unknown","Live","","","k4HzmXI9zd5wYjktf12x"
+"11","","2023-08-28T22:19:07.000Z","","1","","Caroline S. & Milly S.","D-Hub27 🍻 🇺🇸 & Colleen F.","12 - 10","10 - 12","-","-","Unknown","Live","","","k7KTfHQNJU5U6oJs7t8I"
+"10","","2023-08-28T22:18:46.000Z","","2","","Jennifer B. & Joe I.","Laurie M & Peter Grawehr","6 - 11","11 - 6","-","-","Unknown","Live","","","In81wIoBxGPlz9flXYxN"
+"9","","2023-08-28T22:15:59.000Z","","3","","Eddie R. & Collin H.","Melissa M. & Billy S.","3 - 11","11 - 3","-","-","Unknown","Live","","","4M6yB22gLmji7nxFVKtg"
+"8","","2023-08-28T22:10:51.000Z","","2","","Jim D. & Chris B.","Joe I. & Jarred B.","4 - 11","11 - 4","-","-","Unknown","Live","","","d0OA5S12ivPVT0dbgYJY"
+"7","","2023-08-28T22:10:01.000Z","","3","","Collin H. & Billy S.","Jennifer B. & Peter Grawehr","11 - 5","5 - 11","-","-","Unknown","Live","","","AUCG59FBznNG3W8cXQbm"
+"6","","2023-08-28T22:07:31.000Z","","1","","Melissa M. & Colleen F.","Angelina D. & Laurie M","8 - 11","11 - 8","-","-","Unknown","Live","","","rokqVOdZ4RbWKFfWuMRK"
+"5","","2023-08-28T22:04:02.000Z","","3","","Milly S. & D-Hub27 🍻 🇺🇸","Eddie R. & Peter Grawehr","3 - 11","11 - 3","-","-","Unknown","Live","","","qJDBaW4Frs6HyNNF4Q4t"
+"4","","2023-08-28T22:03:02.000Z","","2","","Caroline S. & Jim D.","Collin H. & Chris B.","9 - 11","11 - 9","-","-","Unknown","Live","","","YxPEqod5yoNQqQZhr6Wd"
+"3","","2023-08-28T21:58:56.000Z","","1","","Jarred B. & Melissa M.","Joe I. & Billy S.","12 - 14","14 - 12","-","-","Unknown","Live","","","Xp2yXNcrH5ZwkwyeLwS3"
+"2","","2023-08-28T21:58:17.000Z","","3","","Milly S. & Eddie R.","Jennifer B. & Laurie M","12 - 10","10 - 12","-","-","Unknown","Live","","","DFV60k7rV68Ip9cOkYy0"
+"1","","2023-08-28T21:55:42.000Z","","2","","Angelina D. & Colleen F.","D-Hub27 🍻 🇺🇸 & Peter Grawehr","1 - 11","11 - 1","-","-","Unknown","Live","","","kan9SHxT2RGVyj850DJ9"
+##### TOURNAMENT mVQhmc8FqePLxSPN3Xye
+##### ROSTER
+Jennifer B.	Jennifer Borg	2.644	5kHMs3gRgcilgwJUGNuP
+Laurie M	Laurie Mayer	3.25	gzjrBs1U3uEwQgur9r0x
+Mike B	No First No Last	-999	2xaVoFqeCIYq9rK4StOQ
+Jim D.	Jim Duffy	3.299	sPbIz7bPQqPb6vhjcnE3
+Joe I.	Joe Iadevaia	3.3	vm9PRqgKVlALgzZNSLCo
+Collin H.	Collin Huber	3.57	uW1bRTZT1XV3MI6zCSg9
+D-Hub27 🍻 🇺🇸	D-Hub27 🍻 🇺🇸	3.784	4CfuKI0RYoJWOAudIjPW
+Eddie R.	Eddie Rizzi	3.642	WHdClEonQEmP0GPKZsOQ
+David A.	David Amatulli	3.058	WukmFtCcppudWV2u4tHb
+Colleen F.	Colleen Fitzpatrick	2.814	tqicCHtXwJNKJ4cY2WkO
+Mary-Ellen A.	Mary-Ellen Amatulli	2.874	aAKObe6n1gEKiNLUEj1P
+Milly S.	Milly Serrano	3.191	KIgfXP3VdEIpEyzsnRKY
+Billy S.	Billy Scaduto	3.813	UtIa6cyVgMbxHMzswNU7
+Chris B.	Chris B	3.237	IyT5b7uxb7yIw8EhVu1K
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"21","","2023-09-11T23:24:01.000Z","","2","","Jim D. & Milly S.","Joe I. & Chris B.","9 - 11","11 - 9","-","-","Unknown","Live","","","vH49h95ngpjNmPgMlygG"
+"20","","2023-09-11T23:23:02.000Z","","1","","Colleen F. & David A.","Mary-Ellen A. & Collin H.","9 - 11","11 - 9","-","-","Unknown","Live","","","0UMu7uvb1iQQujf65EGJ"
+"19","","2023-09-11T23:17:32.000Z","","2","","Eddie R. & Laurie M","Billy S. & Mike B","11 - 9","9 - 11","-","-","Unknown","Live","","","4W5spiW5SuL3jbZx6FfI"
+"18","","2023-09-11T23:15:29.000Z","","1","","Colleen F. & Milly S.","Jennifer B. & D-Hub27 🍻 🇺🇸","6 - 11","11 - 6","-","-","Unknown","Live","","","h9jXo48n1ORDUZBpZuTy"
+"17","","2023-09-11T23:10:56.000Z","","2","","David A. & Mary-Ellen A.","Laurie M & Chris B.","12 - 10","10 - 12","-","-","Unknown","Live","","","P8BqgSqMHHxH2PA3oGwr"
+"16","","2023-09-11T23:09:22.000Z","","1","","Collin H. & Mike B","Jim D. & Joe I.","6 - 11","11 - 6","-","-","Unknown","Live","","","aBxnyzYd3PhfxvT13YPy"
+"15","","2023-09-11T23:04:35.000Z","","2","","Milly S. & Chris B.","Laurie M & David A.","8 - 11","11 - 8","-","-","Unknown","Live","","","7UlA1JHigNmeSvXmMQSy"
+"14","","2023-09-11T23:03:59.000Z","","1","","Mary-Ellen A. & D-Hub27 🍻 🇺🇸","Eddie R. & Billy S.","3 - 11","11 - 3","-","-","Unknown","Live","","","TQa4DYL2V54DMf6Zihdn"
+"13","","2023-09-11T22:59:17.000Z","","1","","Joe I. & Colleen F.","Jim D. & Jennifer B.","11 - 8","8 - 11","-","-","Unknown","Live","","","OD5ziKNj8bs5DH2RpyzT"
+"12","","2023-09-11T22:58:11.000Z","","2","","Billy S. & Collin H.","D-Hub27 🍻 🇺🇸 & Eddie R.","11 - 8","8 - 11","-","-","Unknown","Live","","","FmuU1mTNhei9s2eFNzeh"
+"11","","2023-09-11T22:53:56.000Z","","1","","David A. & Milly S.","Jennifer B. & Mike B","11 - 3","3 - 11","-","-","Unknown","Live","","","dlrdRR5JPGHvXQeUGwIR"
+"10","","2023-09-11T22:51:33.000Z","","2","","Mary-Ellen A. & Laurie M","Jim D. & Chris B.","10 - 12","12 - 10","-","-","Unknown","Live","","","p6q9MCeHDcFMO8vd7Yve"
+"9","","2023-09-11T22:49:15.000Z","","1","","Colleen F. & Mike B","Billy S. & D-Hub27 🍻 🇺🇸","2 - 11","11 - 2","-","-","Unknown","Live","","","qdQjrqKCDsHopiHLR7zv"
+"8","","2023-09-11T22:44:07.000Z","","1","","Joe I. & Jennifer B.","Eddie R. & Collin H.","3 - 11","11 - 3","-","-","Unknown","Live","","","DmnRPpNekhStejfNvFG6"
+"7","","2023-09-11T22:43:38.000Z","","2","","David A. & D-Hub27 🍻 🇺🇸","Milly S. & Billy S.","11 - 3","3 - 11","-","-","Unknown","Live","","","oHi42fuc0fMxQMDNujz0"
+"6","","2023-09-11T22:38:53.000Z","","1","","Mary-Ellen A. & Jim D.","Collin H. & Jennifer B.","11 - 3","3 - 11","-","-","Unknown","Live","","","fOwEe8qt2leHemBHrk7U"
+"5","","2023-09-11T22:38:35.000Z","","2","","Joe I. & Eddie R.","Chris B. & Colleen F.","11 - 7","7 - 11","-","-","Unknown","Live","","","tsZr0mrnaVuDg4JnOFB1"
+"4","","2023-09-11T22:34:59.000Z","","1","","Billy S. & Jennifer B.","Mike B & Laurie M","11 - 9","9 - 11","-","-","Unknown","Live","","","kuXa2jJ55jyQ03GASKqu"
+"3","","2023-09-11T22:32:32.000Z","","2","","David A. & Chris B.","Colleen F. & Jim D.","8 - 11","11 - 8","-","-","Unknown","Live","","","StTC11qLS8zcW8vPOpob"
+"2","","2023-09-11T22:28:34.000Z","","1","","Joe I. & Mary-Ellen A.","Laurie M & Milly S.","9 - 11","11 - 9","-","-","Unknown","Live","","","uT2gVvOi7w5tVlipNojm"
+"1","","2023-09-11T22:23:51.000Z","","2","","D-Hub27 🍻 🇺🇸 & Collin H.","Eddie R. & Mike B","11 - 7","7 - 11","-","-","Unknown","Live","","","EUBIYtjI6hVgGiJ5WlkL"
+##### TOURNAMENT FYIcSzQsi2kFWZJecRVh
+##### ROSTER
+Adrian L.	Adrian Lim	3.709	DTjnDMq3tvb881gfvrG9
+Eddie ☠️	Eddie Rizzi	3.642	WHdClEonQEmP0GPKZsOQ
+Billy S.	Billy Scaduto	3.813	UtIa6cyVgMbxHMzswNU7
+Andy M.	Andy M.	-999	WnXd53QMv6MLmTXPb50f
+Collin H.	Collin H.	3.57	uW1bRTZT1XV3MI6zCSg9
+Mary-Ellen A.	Mary-Ellen A.	2.874	aAKObe6n1gEKiNLUEj1P
+Lulu L.	Lulu Lim	2.283	Tv6r6bIx9N70mxpeKw40
+D-Hub27 🍻 🇺🇸	D-Hub27 🍻 🇺🇸	3.784	4CfuKI0RYoJWOAudIjPW
+Joe I.	Joe Iadevaia	3.3	vm9PRqgKVlALgzZNSLCo
+Jarred B.	Jarred Barretti	3.113	aUPnyDmUCod6B8i1OUb7
+David A.	David Amatulli	3.058	WukmFtCcppudWV2u4tHb
+Jennifer B.	Jennifer Borg	2.644	5kHMs3gRgcilgwJUGNuP
+Alfonso N.	Alfonso N.	3.242	4RBEvTo7fpFB5fy3fey6
+Chris B.	Chris B	3.237	IyT5b7uxb7yIw8EhVu1K
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"28","","2023-09-19T02:51:04.000Z","","2","","Jarred B. & Eddie ☠️","Jennifer B. & Billy S.","12 - 14","14 - 12","-","-","Unknown","Live","","","xyKfIWGt2YR68lxkjYk9"
+"27","","2023-09-19T02:50:45.000Z","","1","","Alfonso N. & Andy M.","Mary-Ellen A. & Lulu L.","11 - 4","4 - 11","-","-","Unknown","Live","","","9d4nWnkJocvos6MoNrjw"
+"26","","2023-09-19T02:44:26.000Z","","1","","Adrian L. & Joe I.","Collin H. & Chris B.","6 - 11","11 - 6","-","-","Unknown","Live","","","4AYhgvIWQDA6Jo6nh6GS"
+"25","","2023-09-19T02:41:43.000Z","","2","","Lulu L. & Andy M.","David A. & D-Hub27 🍻 🇺🇸","4 - 11","11 - 4","-","-","Unknown","Live","","","CnwQlTzZCRovNM1NmLL4"
+"24","","2023-09-19T02:38:50.000Z","","1","","Eddie ☠️ & Chris B.","Mary-Ellen A. & Jarred B.","11 - 3","3 - 11","-","-","Unknown","Live","","","spd9aT17bJKcv7Cspuk6"
+"23","","2023-09-19T02:36:18.000Z","","2","","D-Hub27 🍻 🇺🇸 & Jennifer B.","David A. & Joe I.","11 - 9","9 - 11","-","-","Unknown","Live","","","ThN2uvaFtdoKpBwH2qwx"
+"22","","2023-09-19T02:33:44.000Z","","1","","Collin H. & Alfonso N.","Adrian L. & Billy S.","11 - 7","7 - 11","-","-","Unknown","Live","","","tobHzcdhOoYQ2nIanDyR"
+"21","","2023-09-19T02:29:08.000Z","","2","","Joe I. & Lulu L.","D-Hub27 🍻 🇺🇸 & Chris B.","4 - 11","11 - 4","-","-","Unknown","Live","","","Z72jZBjC77N62CmdHD3T"
+"20","","2023-09-19T02:27:49.000Z","","1","","Jarred B. & Jennifer B.","Mary-Ellen A. & Andy M.","11 - 9","9 - 11","-","-","Unknown","Live","","","zVWKMvSvup6bImWHkkc2"
+"19","","2023-09-19T02:24:09.000Z","","2","","Billy S. & Alfonso N.","David A. & Eddie ☠️","11 - 5","5 - 11","-","-","Unknown","Live","","","oEvurk3QepxApstLXCNq"
+"18","","2023-09-19T02:21:38.000Z","","1","","Andy M. & Jarred B.","Collin H. & Adrian L.","11 - 2","2 - 11","-","-","Unknown","Live","","","27pxXucSgriefNHRpQ1G"
+"17","","2023-09-19T02:19:30.000Z","","2","","Mary-Ellen A. & Lulu L.","Jennifer B. & Alfonso N.","11 - 13","13 - 11","-","-","Unknown","Live","","","ZiNRIViaBlAIFfBOcDp5"
+"16","","2023-09-19T02:17:21.000Z","","1","","Joe I. & Chris B.","D-Hub27 🍻 🇺🇸 & Eddie ☠️","7 - 11","11 - 7","-","-","Unknown","Live","","","Qc6ghH2uwlFwsGAkXKD1"
+"15","","2023-09-19T02:10:43.000Z","","2","","Alfonso N. & Adrian L.","Billy S. & Collin H.","4 - 11","11 - 4","-","-","Unknown","Live","","","pgxX9dYzvHI7TbkCbCOJ"
+"14","","2023-09-19T02:10:05.000Z","","1","","Jennifer B. & Eddie ☠️","Mary-Ellen A. & David A.","4 - 11","11 - 4","-","-","Unknown","Live","","","k2T4Xm5i4v0fNZeF55lI"
+"13","","2023-09-19T02:05:46.000Z","","2","","Andy M. & Chris B.","Lulu L. & Jarred B.","11 - 2","2 - 11","-","-","Unknown","Live","","","iXcvbfRpwmor5muV0naF"
+"12","","2023-09-19T02:05:01.000Z","","1","","Billy S. & D-Hub27 🍻 🇺🇸","David A. & Adrian L.","11 - 4","4 - 11","-","-","Unknown","Live","","","oflrRgM5bBnKynEk3ve0"
+"11","","2023-09-19T02:00:47.000Z","","2","","Alfonso N. & Mary-Ellen A.","Collin H. & Joe I.","4 - 11","11 - 4","-","-","Unknown","Live","","","zZmlL7pS5lTwBGp9Nvpj"
+"10","","2023-09-19T02:00:21.000Z","","1","","Adrian L. & Lulu L.","David A. & Jarred B.","5 - 11","11 - 5","-","-","Unknown","Live","","","mU7CnFx8jFCIeIknI4Lj"
+"9","","2023-09-19T01:55:31.000Z","","2","","Jennifer B. & Andy M.","Joe I. & D-Hub27 🍻 🇺🇸","9 - 11","11 - 9","-","-","Unknown","Live","","","rzQBzrfmpD4jaQSRYEWJ"
+"8","","2023-09-19T01:55:20.000Z","","1","","Alfonso N. & Eddie ☠️","Billy S. & Chris B.","7 - 11","11 - 7","-","-","Unknown","Live","","","GNvUROUtP0dLR7coUFlG"
+"7","","2023-09-19T01:49:08.000Z","","2","","D-Hub27 🍻 🇺🇸 & Jarred B.","Mary-Ellen A. & Joe I.","11 - 5","5 - 11","-","-","Unknown","Live","","","4craJCrcqWXF9SfrgiJa"
+"6","","2023-09-19T01:48:53.000Z","","1","","Eddie ☠️ & Billy S.","Lulu L. & Collin H.","11 - 6","6 - 11","-","-","Unknown","Live","","","RdBIVztgDpuappX9PaHK"
+"5","","2023-09-19T01:43:46.000Z","","1","","Andy M. & Collin H.","Chris B. & David A.","11 - 2","2 - 11","-","-","Unknown","Live","","","JFhwDpkzjw5WKDci9yFX"
+"4","","2023-09-19T01:43:16.000Z","","2","","Lulu L. & Alfonso N.","Jennifer B. & Adrian L.","11 - 8","8 - 11","-","-","Unknown","Live","","","xYaYPK0ezyL8nGSdArrD"
+"3","","2023-09-19T01:39:36.000Z","","1","","D-Hub27 🍻 🇺🇸 & Andy M.","Collin H. & Eddie ☠️","11 - 5","5 - 11","-","-","Unknown","Live","","","LwMN4ymkoOVXswjWqIdN"
+"2","","2023-09-19T01:36:59.000Z","","2","","Chris B. & Adrian L.","Jennifer B. & Mary-Ellen A.","11 - 9","9 - 11","-","-","Unknown","Live","","","d7K51Ylo6X4LKXmebc8b"
+"1","","2023-09-19T01:34:04.000Z","","1","","Jarred B. & Joe I.","David A. & Billy S.","5 - 11","11 - 5","-","-","Unknown","Live","","","bHmJei1OmGt6oxaZH7kP"
+##### TOURNAMENT HHR4wZsuEHj4NE74tDDA
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"26","","2023-09-24T15:57:28.000Z","","1","","Mike B & Casey G.","James E. & Ashton L.","12 - 14","14 - 12","-","-","Unknown","Live","","","NQfwCl1FyPovOKPhigjB"
+"25","","2023-09-24T15:54:47.000Z","","2","","🏈SillyBaduto🎸 & Colleen F.","Peter Grawehr & Eddie ☠️","6 - 11","11 - 6","-","-","Unknown","Live","","","iOBZ2sVsVQVfpxJim78F"
+"24","","2023-09-24T15:48:49.000Z","","1","","Joe I. & Adrian L.","Juju🇩🇴 & D-Hub27 🍻 🇺🇸","5 - 11","11 - 5","-","-","Unknown","Live","","","voRqjlFp4TamoZPxH03S"
+"23","","2023-09-24T15:48:01.000Z","","2","","Mike B & Ashton L.","Eddie ☠️ & Chase P.","6 - 11","11 - 6","-","-","Unknown","Live","","","4GKEiWYRuiy5p5Kbjg1I"
+"22","","2023-09-24T15:42:52.000Z","","1","","Casey G. & D-Hub27 🍻 🇺🇸","Colleen F. & James E.","11 - 7","7 - 11","-","-","Unknown","Live","","","W3WZFCQ7gBmVFACkLQH2"
+"21","","2023-09-24T15:41:29.000Z","","2","","Juju🇩🇴 & Joe I.","Chase P. & Peter Grawehr","8 - 11","11 - 8","-","-","Unknown","Live","","","DI0fra1HutQ3o2rLT0xS"
+"20","","2023-09-24T15:36:46.000Z","","1","","Mike B & Adrian L.","Eddie ☠️ & 🏈SillyBaduto🎸","4 - 11","11 - 4","-","-","Unknown","Live","","","WTKgXmp84yqD3Q7s2d1J"
+"19","","2023-09-24T15:35:43.000Z","","2","","Ashton L. & Colleen F.","James E. & D-Hub27 🍻 🇺🇸","2 - 11","11 - 2","-","-","Unknown","Live","","","lo3DpnQhTfvBFCFY4TPH"
+"18","","2023-09-24T15:32:26.000Z","","1","","🏈SillyBaduto🎸 & Adrian L.","Chase P. & Joe I.","11 - 9","9 - 11","-","-","Unknown","Live","","","INnTzXnUGhgHJV5ptZos"
+"17","","2023-09-24T15:30:21.000Z","","2","","James E. & Casey G.","Juju🇩🇴 & Peter Grawehr","2 - 11","11 - 2","-","-","Unknown","Live","","","e0hWEETbPu0d5XRzktEQ"
+"16","","2023-09-24T15:26:20.000Z","","1","","Mike B & D-Hub27 🍻 🇺🇸","Joe I. & Eddie ☠️","10 - 12","12 - 10","-","-","Unknown","Live","","","WvPAGUDnwGi0dhWTSldx"
+"15","","2023-09-24T15:25:29.000Z","","2","","Ashton L. & Peter Grawehr","🏈SillyBaduto🎸 & Juju🇩🇴","3 - 11","11 - 3","-","-","Unknown","Live","","","1s4Oo1BIEGdtO6t8wlTh"
+"14","","2023-09-24T15:19:18.000Z","","2","","Juju🇩🇴 & James E.","Peter Grawehr & 🏈SillyBaduto🎸","8 - 11","11 - 8","-","-","Unknown","Live","","","0RwCyL2Ptswg2DEzfX4s"
+"13","","2023-09-24T15:18:32.000Z","","1","","Chase P. & Adrian L.","Colleen F. & Casey G.","11 - 3","3 - 11","-","-","Unknown","Live","","","LVKktgkUcOohAZRLWV3s"
+"12","","2023-09-24T15:13:14.000Z","","1","","Adrian L. & Eddie ☠️","Ashton L. & Chase P.","11 - 7","7 - 11","-","-","Unknown","Live","","","OUT3Hsx58De0KkoMIckw"
+"11","","2023-09-24T15:12:28.000Z","","2","","Peter Grawehr & Casey G.","Joe I. & D-Hub27 🍻 🇺🇸","4 - 11","11 - 4","-","-","Unknown","Live","","","DC1wAOlkmq0qKbDGTa7D"
+"10","","2023-09-24T15:07:51.000Z","","1","","James E. & 🏈SillyBaduto🎸","Mike B & Colleen F.","11 - 5","5 - 11","-","-","Unknown","Live","","","BB5tKwuUNmgI0gB5pIpZ"
+"9","","2023-09-24T15:06:25.000Z","","2","","Adrian L. & Juju🇩🇴","D-Hub27 🍻 🇺🇸 & Ashton L.","13 - 11","11 - 13","-","-","Unknown","Live","","","8eorVYB3YS5ZVElQMPrN"
+"8","","2023-09-24T15:02:52.000Z","","1","","Casey G. & Chase P.","Colleen F. & Eddie ☠️","5 - 11","11 - 5","-","-","Unknown","Live","","","gRPLwGAA2axGXo6AKOJM"
+"7","","2023-09-24T14:58:20.000Z","","2","","🏈SillyBaduto🎸 & Ashton L.","D-Hub27 🍻 🇺🇸 & Peter Grawehr","6 - 11","11 - 6","-","-","Unknown","Live","","","Lbw1BwTH0GdFhoWZnzth"
+"6","","2023-09-24T14:57:00.000Z","","1","","Chase P. & Colleen F.","Mike B & Joe I.","5 - 11","11 - 5","-","-","Unknown","Live","","","2ZksQ2EWmTv9DrgK8Ll0"
+"5","","2023-09-24T14:52:33.000Z","","1","","Juju🇩🇴 & Casey G.","Adrian L. & James E.","7 - 11","11 - 7","-","-","Unknown","Live","","","YEpFFL4fDNzBZhxQIenF"
+"4","","2023-09-24T14:51:37.000Z","","2","","Peter Grawehr & Joe I.","Mike B & Eddie ☠️","13 - 11","11 - 13","-","-","Unknown","Live","","","CrsXjpos1Q6fxob2X5QW"
+"3","","2023-09-24T14:47:11.000Z","","1","","🏈SillyBaduto🎸 & Casey G.","Juju🇩🇴 & Chase P.","9 - 11","11 - 9","-","-","Unknown","Live","","","h7gIRX1Wqkit4Hca64I5"
+"2","","2023-09-24T14:44:20.000Z","","2","","James E. & Mike B","Eddie ☠️ & D-Hub27 🍻 🇺🇸","6 - 11","11 - 6","-","-","Unknown","Live","","","GJP7FScQFuEOpIeu29Kc"
+"1","","2023-09-24T14:41:38.000Z","","1","","Adrian L. & Ashton L.","Joe I. & Colleen F.","5 - 11","11 - 5","-","-","Unknown","Live","","","DC6bse7tDrwVa1IzxSF1"
+##### TOURNAMENT WEbPo2jJBcEGd9BMNGDj
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"32","","2023-09-26T00:13:48.000Z","","2","","Juju🇩🇴 & Laurie M","Lulu & Adrian L.","11 - 5","5 - 11","-","-","Unknown","Live","","","69nkhHMPHAk3xonJnY50"
+"31","","2023-09-26T00:09:36.000Z","","1","","Peter Grawehr & Jennifer B.","Colleen F. & Collin H.","6 - 11","11 - 6","-","-","Unknown","Live","","","iKNvhCCzYtGrrkU3UMS9"
+"30","","2023-09-26T00:09:21.000Z","","3","","Jarred B. & Angelina D.","Eddie ☠️ & Jim D.","6 - 11","11 - 6","-","-","Unknown","Live","","","2dycvxPnBCsLaDW0EPR1"
+"29","","2023-09-26T00:08:09.000Z","","2","","🇺🇸⚔️SillyBaduto🪝🇺🇸 & Joe I.","D-Hub27 🍻 🇺🇸 & Alfonso N.","11 - 4","4 - 11","-","-","Unknown","Live","","","ckIWpJEhcXy5j89SQysM"
+"28","","2023-09-26T00:02:37.000Z","","2","","Alfonso N. & Lulu","Laurie M & Adrian L.","7 - 11","11 - 7","-","-","Unknown","Live","","","8jwqVtbYKQHDO6gx0G15"
+"27","","2023-09-26T00:01:51.000Z","","1","","Jennifer B. & Juju🇩🇴","Colleen F. & Peter Grawehr","8 - 11","11 - 8","-","-","Unknown","Live","","","HuGsjCFPs2D9wA1Ns0Jc"
+"26","","2023-09-26T00:00:35.000Z","","3","","Eddie ☠️ & Angelina D.","Collin H. & Jarred B.","4 - 11","11 - 4","-","-","Unknown","Live","","","5XwBvLaypaa1nwzhIyFX"
+"25","","2023-09-25T23:57:04.000Z","","2","","Adrian L. & Jim D.","Joe I. & D-Hub27 🍻 🇺🇸","6 - 11","11 - 6","-","-","Unknown","Live","","","y0lmIiyu5NPkvHOjwN0b"
+"24","","2023-09-25T23:54:55.000Z","","1","","Alfonso N. & Laurie M","Lulu & 🇺🇸⚔️SillyBaduto🪝🇺🇸","11 - 6","6 - 11","-","-","Unknown","Live","","","hRLRzh1raM6QN7YHXTBh"
+"23","","2023-09-25T23:54:01.000Z","","3","","Jarred B. & Jennifer B.","Eddie ☠️ & Collin H.","5 - 11","11 - 5","-","-","Unknown","Live","","","k4IdLDj5YrxD2wuiTMXW"
+"22","","2023-09-25T23:51:46.000Z","","2","","Jim D. & Colleen F.","Juju🇩🇴 & D-Hub27 🍻 🇺🇸","2 - 11","11 - 2","-","-","Unknown","Live","","","JN9XDfF2ljRcEvbgpuT0"
+"21","","2023-09-25T23:49:27.000Z","","1","","Alfonso N. & Angelina D.","Peter Grawehr & 🇺🇸⚔️SillyBaduto🪝🇺🇸","4 - 11","11 - 4","-","-","Unknown","Live","","","9KyO00WrRprQKHJTOZdv"
+"20","","2023-09-25T23:46:28.000Z","","3","","Laurie M & Eddie ☠️","Jennifer B. & Joe I.","11 - 4","4 - 11","-","-","Unknown","Live","","","IGo60hFonX5K86AT3qYV"
+"19","","2023-09-25T23:45:26.000Z","","2","","Lulu & D-Hub27 🍻 🇺🇸","Adrian L. & Collin H.","11 - 7","7 - 11","-","-","Unknown","Live","","","f4RoJ7pwJlZYdloVxH5x"
+"18","","2023-09-25T23:44:24.000Z","","1","","Angelina D. & Juju🇩🇴","Colleen F. & Jarred B.","11 - 4","4 - 11","-","-","Unknown","Live","","","EOpF9LsFcfq93NRwiaEy"
+"17","","2023-09-25T23:40:53.000Z","","3","","Jennifer B. & Laurie M","Eddie ☠️ & Alfonso N.","7 - 11","11 - 7","-","-","Unknown","Live","","","q11iCmGWlVS9y199SKvM"
+"16","","2023-09-25T23:39:18.000Z","","2","","Collin H. & 🇺🇸⚔️SillyBaduto🪝🇺🇸","Joe I. & Peter Grawehr","11 - 5","5 - 11","-","-","Unknown","Live","","","zesi3dcIOTZGOoGXRYCZ"
+"15","","2023-09-25T23:38:57.000Z","","1","","D-Hub27 🍻 🇺🇸 & Adrian L.","Jarred B. & Jim D.","11 - 7","7 - 11","-","-","Unknown","Live","","","xXmWplUQWKml4PddWhBM"
+"14","","2023-09-25T23:34:47.000Z","","2","","Colleen F. & 🇺🇸⚔️SillyBaduto🪝🇺🇸","Angelina D. & Joe I.","8 - 11","11 - 8","-","-","Unknown","Live","","","1NfUDLm6haaMc1KEO949"
+"13","","2023-09-25T23:33:58.000Z","","1","","Jarred B. & D-Hub27 🍻 🇺🇸","Collin H. & Peter Grawehr","12 - 10","10 - 12","-","-","Unknown","Live","","","xVDRXgGYXroyJrNGDY4U"
+"12","","2023-09-25T23:33:25.000Z","","3","","Laurie M & Jim D.","Juju🇩🇴 & Lulu","6 - 11","11 - 6","-","-","Unknown","Live","","","eUTiXG6M39QnZT603WNc"
+"11","","2023-09-25T23:29:16.000Z","","2","","Alfonso N. & 🇺🇸⚔️SillyBaduto🪝🇺🇸","Jennifer B. & Eddie ☠️","11 - 13","13 - 11","-","-","Unknown","Live","","","ayKV1vYEdRjHukmpeEex"
+"10","","2023-09-25T23:26:13.000Z","","3","","Laurie M & Angelina D.","Adrian L. & Joe I.","6 - 11","11 - 6","-","-","Unknown","Live","","","2oewCgsKJdG2D458MCkp"
+"9","","2023-09-25T23:25:49.000Z","","1","","Juju🇩🇴 & Jim D.","Colleen F. & Lulu","11 - 0","0 - 11","-","-","Unknown","Live","","","FRfrYAcVofS6AcxmPa80"
+"8","","2023-09-25T23:22:35.000Z","","1","","Juju🇩🇴 & Jarred B.","Jim D. & Peter Grawehr","8 - 11","11 - 8","-","-","Unknown","Live","","","2WLYQmN0i8W4n12qzryC"
+"7","","2023-09-25T23:21:42.000Z","","2","","Colleen F. & D-Hub27 🍻 🇺🇸","Eddie ☠️ & 🇺🇸⚔️SillyBaduto🪝🇺🇸","7 - 11","11 - 7","-","-","Unknown","Live","","","XLaxUmdCN9ydpocjr7Aj"
+"6","","2023-09-25T23:19:26.000Z","","3","","Joe I. & Collin H.","Lulu & Adrian L.","11 - 1","1 - 11","-","-","Unknown","Live","","","6MNQjaUQWrwtjWQ8o34E"
+"5","","2023-09-25T23:16:51.000Z","","1","","Angelina D. & Peter Grawehr","Jennifer B. & Alfonso N.","11 - 3","3 - 11","-","-","Unknown","Live","","","vp7l3V1Vgy1YNWQHaYy5"
+"4","","2023-09-25T23:15:23.000Z","","2","","Colleen F. & Juju🇩🇴","D-Hub27 🍻 🇺🇸 & Laurie M","4 - 11","11 - 4","-","-","Unknown","Live","","","eCtaZsnFw8gaMHdfFjt5"
+"3","","2023-09-25T23:14:51.000Z","","3","","Lulu & Joe I.","Jarred B. & Eddie ☠️","8 - 11","11 - 8","-","-","Unknown","Live","","","2S87wR8QeXGLP6xVyTl1"
+"2","","2023-09-25T23:12:10.000Z","","1","","Alfonso N. & Peter Grawehr","Adrian L. & 🇺🇸⚔️SillyBaduto🪝🇺🇸","11 - 8","8 - 11","-","-","Unknown","Live","","","3tuTWMhafH9Dc722XfBe"
+"1","","2023-09-25T23:10:15.000Z","","2","","Jennifer B. & Angelina D.","Jim D. & Collin H.","5 - 11","11 - 5","-","-","Unknown","Live","","","7nlBfCUyBolHE57ZVHco"
+##### TOURNAMENT dTPYlLR70uZjyjWx13Nj
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"14","","2023-10-01T15:59:21.000Z","","1","","Collin H. & Kerrin Huber","Colleen F. & James E.","3 - 11","11 - 3","-","-","Unknown","Live","","","UX0t2yfyzUUT8QU7BvyQ"
+"13","","2023-10-01T15:53:06.000Z","","1","","Kerrin Huber & Eddie ☠️","Ashton L. & Adrian L.","8 - 11","11 - 8","-","-","Unknown","Live","","","MPHX637tGVCjKPVasxzQ"
+"12","","2023-10-01T15:47:24.000Z","","1","","James E. & Adrian L.","Colleen F. & D-Hub27 🍻 🇺🇸","6 - 11","11 - 6","-","-","Unknown","Live","","","j4Si873V8Oh95ww98meq"
+"11","","2023-10-01T15:41:43.000Z","","1","","Ashton L. & Collin H.","Eddie ☠️ & D-Hub27 🍻 🇺🇸","5 - 11","11 - 5","-","-","Unknown","Live","","","RET2ew6bScA7bhPofjRu"
+"10","","2023-10-01T15:35:44.000Z","","1","","Kerrin Huber & Colleen F.","Adrian L. & D-Hub27 🍻 🇺🇸","7 - 11","11 - 7","-","-","Unknown","Live","","","VMYqynZVUWOG6qTzQxAj"
+"9","","2023-10-01T15:29:54.000Z","","1","","Ashton L. & Eddie ☠️","Collin H. & James E.","10 - 12","12 - 10","-","-","Unknown","Live","","","rJHawiRxfc55fUcD4Nsj"
+"8","","2023-10-01T15:22:00.000Z","","1","","Colleen F. & Adrian L.","Collin H. & Eddie ☠️","6 - 11","11 - 6","-","-","Unknown","Live","","","pN9ozrNMaJ2lMm0aDazx"
+"7","","2023-10-01T15:16:45.000Z","","1","","D-Hub27 🍻 🇺🇸 & James E.","Ashton L. & Kerrin Huber","11 - 1","1 - 11","-","-","Unknown","Live","","","TkXoyLsl0DEcfbCkxbIx"
+"6","","2023-10-01T15:11:16.000Z","","1","","Eddie ☠️ & Colleen F.","Adrian L. & Collin H.","11 - 9","9 - 11","-","-","Unknown","Live","","","eMVK9I1Rz2D7tbtyrUeU"
+"5","","2023-10-01T15:04:04.000Z","","1","","Eddie ☠️ & Adrian L.","Kerrin Huber & James E.","11 - 8","8 - 11","-","-","Unknown","Live","","","lBO5NQObzmZ4ymPK2kOI"
+"4","","2023-10-01T14:57:02.000Z","","1","","Collin H. & Colleen F.","D-Hub27 🍻 🇺🇸 & Ashton L.","11 - 5","5 - 11","-","-","Unknown","Live","","","cIJPeBb26T96jJ6Bu1s4"
+"3","","2023-10-01T14:51:29.000Z","","1","","Kerrin Huber & D-Hub27 🍻 🇺🇸","Ashton L. & James E.","3 - 11","11 - 3","-","-","Unknown","Live","","","Mt1YFSX8NnlwcbJWT5QI"
+"2","","2023-10-01T14:47:01.000Z","","1","","James E. & Eddie ☠️","Ashton L. & Colleen F.","11 - 3","3 - 11","-","-","Unknown","Live","","","PIurG1jIRBS2qHQBuNgI"
+"1","","2023-10-01T14:41:10.000Z","","1","","D-Hub27 🍻 🇺🇸 & Collin H.","Adrian L. & Kerrin Huber","11 - 4","4 - 11","-","-","Unknown","Live","","","6C05fDuUPNo5uwf46dqt"
+##### TOURNAMENT 2CV2wREwbZuY0lQ7F6bl
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"13","","2023-10-03T14:55:48.000Z","","1","","chris b. & joe i.","eddie r. & collin h.","5 - 11","11 - 5","-","-","Unknown","Live","","","rfrCvNRuVNpqLi7yU8Ma"
+"12","","2023-10-03T14:55:03.000Z","","1","","jennifer b. & Adrian l.","lulu l. & julio o.","5 - 11","11 - 5","-","-","Unknown","Live","","","F6XqZONQJrjkCULxNu5S"
+"11","","2023-10-03T14:54:08.000Z","","1","","Adrian l. & joe i.","julio o. & collin h.","6 - 11","11 - 6","-","-","Unknown","Live","","","JsusOrUjdFyqTDeeHqqm"
+"10","","2023-10-03T14:53:18.000Z","","1","","chris b. & jennifer b.","lulu l. & eddie r.","9 - 11","11 - 9","-","-","Unknown","Live","","","3pcd7eDeBk0uK3mMCLA1"
+"9","","2023-10-03T14:52:42.000Z","","1","","joe i. & julio o.","Adrian l. & collin h.","11 - 2","2 - 11","-","-","Unknown","Live","","","DZVbOmLz7c6oN0YwT3n0"
+"8","","2023-10-03T14:52:07.000Z","","1","","chris b. & lulu l.","jennifer b. & eddie r.","8 - 11","11 - 8","-","-","Unknown","Live","","","o1MRWcvCa8tdjbLjYjQU"
+"7","","2023-10-03T14:51:17.000Z","","1","","eddie r. & joe i.","chris b. & collin h.","13 - 11","11 - 13","-","-","Unknown","Live","","","Plj8qYbmrmIhD12CVCRc"
+"6","","2023-10-03T14:50:18.000Z","","1","","Adrian l. & lulu l.","julio o. & jennifer b.","7 - 11","11 - 7","-","-","Unknown","Live","","","wi7M4pBg9dA6dqCkve4U"
+"5","","2023-10-03T14:48:00.000Z","","1","","joe i. & jennifer b.","collin h. & lulu l.","12 - 10","10 - 12","-","-","Unknown","Live","","","iRWf6DxTt0MV6MYmEPpo"
+"4","","2023-10-03T14:47:23.000Z","","1","","eddie r. & Adrian l.","julio o. & chris b.","4 - 11","11 - 4","-","-","Unknown","Live","","","bB92rbpHe52EUILMY8hc"
+"3","","2023-10-03T14:46:32.000Z","","1","","collin h. & jennifer b.","joe i. & lulu l.","11 - 7","7 - 11","-","-","Unknown","Live","","","iNLfIaBU03LGqtgQJuXq"
+"2","","2023-10-03T14:41:41.000Z","","1","","eddie r. & julio o.","collin h. & joe i.","11 - 6","6 - 11","-","-","Unknown","Live","","","soVIBeXYDdyjVQdJKzSu"
+"1","","2023-10-03T14:41:00.000Z","","1","","chris b. & Adrian l.","lulu l. & jennifer b.","11 - 5","5 - 11","-","-","Unknown","Live","","","Ty4UHT8EK93s2A9tR4SK"
+##### TOURNAMENT 1xjWaAhBTwdNxoKgAT5T
+##### ROSTER
+Collin H.	Collin Huber	3.57	uW1bRTZT1XV3MI6zCSg9
+Juju🇩🇴	Julio Olivo	4.179	Bv857zE4ItZ5b6I6e0HS
+Adrian L.	Adrian Lim	3.709	DTjnDMq3tvb881gfvrG9
+Jarred B.	Jarred Barretti	3.113	aUPnyDmUCod6B8i1OUb7
+Joe G.	Joe Gallardo	-999	1hwE10MFKhtAsqMmTjcC
+Michael L.	Michael Losak	-999	Ukn2sSyckv6wRJ2zsBda
+D-Hub27 🍻 🇺🇸	David Huber	3.784	4CfuKI0RYoJWOAudIjPW
+Joe I.	Joe Iadevaia	3.3	vm9PRqgKVlALgzZNSLCo
+Jim D.	Jim Duffy	3.299	sPbIz7bPQqPb6vhjcnE3
+Eddie ☠️	Eddie Rizzi	3.642	WHdClEonQEmP0GPKZsOQ
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"22","","2023-11-07T03:21:53.000Z","","1","","Jarred B. & Jim D.","Joe G. & D-Hub27 🍻 🇺🇸","8 - 11","11 - 8","-","-","Unknown","Live","","","9zxbHD5ChqCMBRg2sRR8"
+"21","","2023-11-07T03:12:55.000Z","","2","","Juju🇩🇴 & Eddie ☠️","Adrian L. & Joe I.","11 - 6","6 - 11","-","-","Unknown","Live","","","XatuvKD2VgHhO4ssJtrf"
+"20","","2023-11-07T03:11:26.000Z","","1","","Jim D. & Collin H.","Michael L. & D-Hub27 🍻 🇺🇸","4 - 11","11 - 4","-","-","Unknown","Live","","","Ww7LpjdYRDJN26eC0cHS"
+"19","","2023-11-07T03:07:25.000Z","","2","","Jarred B. & Joe I.","Eddie ☠️ & Joe G.","6 - 11","11 - 6","-","-","Unknown","Live","","","NTvUwbOdWe4INCOVFHjS"
+"18","","2023-11-07T03:06:12.000Z","","1","","Michael L. & Jim D.","Collin H. & Adrian L.","11 - 5","5 - 11","-","-","Unknown","Live","","","ji0S46FQUCMdp0ePeudV"
+"17","","2023-11-07T03:01:27.000Z","","2","","Jarred B. & Eddie ☠️","Joe I. & D-Hub27 🍻 🇺🇸","4 - 11","11 - 4","-","-","Unknown","Live","","","xD42irwkP2uyddv1b2Kv"
+"16","","2023-11-07T03:01:14.000Z","","1","","Collin H. & Joe G.","Adrian L. & Juju🇩🇴","6 - 11","11 - 6","-","-","Unknown","Live","","","O3hb59mT3oIQwx1u52Al"
+"15","","2023-11-07T02:54:58.000Z","","2","","Joe I. & Jim D.","Eddie ☠️ & Michael L.","5 - 11","11 - 5","-","-","Unknown","Live","","","8iMGkoyObeb04f7EsNcS"
+"14","","2023-11-07T02:54:23.000Z","","1","","Adrian L. & Joe G.","D-Hub27 🍻 🇺🇸 & Juju🇩🇴","3 - 11","11 - 3","-","-","Unknown","Live","","","0AUQeVxoYNGb8R4szoAa"
+"13","","2023-11-07T02:49:50.000Z","","1","","Collin H. & Juju🇩🇴","D-Hub27 🍻 🇺🇸 & Jarred B.","12 - 10","10 - 12","-","-","Unknown","Live","","","Q9jkSudMBpvo34dfwKqA"
+"12","","2023-11-07T02:48:41.000Z","","2","","Joe I. & Eddie ☠️","Joe G. & Jim D.","11 - 10","10 - 11","-","-","Unknown","Live","","","2qAYsuDMepWHkhPaWNqV"
+"11","","2023-11-07T02:41:01.000Z","","1","","Collin H. & D-Hub27 🍻 🇺🇸","Jarred B. & Michael L.","11 - 8","8 - 11","-","-","Unknown","Live","","","YOqBwxOTSS9t3i4N1ogV"
+"10","","2023-11-07T02:40:28.000Z","","2","","Jim D. & Juju🇩🇴","Eddie ☠️ & Adrian L.","11 - 2","2 - 11","-","-","Unknown","Live","","","Wm1AGjXOuiNsjC2cj9Og"
+"9","","2023-11-07T02:34:57.000Z","","2","","Jim D. & Eddie ☠️","Joe I. & Juju🇩🇴","13 - 11","11 - 13","-","-","Unknown","Live","","","GVzVinkQXFn1sfGlm7vS"
+"8","","2023-11-07T02:32:42.000Z","","1","","Joe G. & Jarred B.","Michael L. & Adrian L.","3 - 11","11 - 3","-","-","Unknown","Live","","","5my9qOYMy2PusvBKFqyf"
+"7","","2023-11-07T02:28:31.000Z","","1","","Adrian L. & D-Hub27 🍻 🇺🇸","Jarred B. & Collin H.","8 - 11","11 - 8","-","-","Unknown","Live","","","wT1YIfN4kAkAITMkFRes"
+"6","","2023-11-07T02:26:03.000Z","","2","","Joe G. & Juju🇩🇴","Michael L. & Joe I.","12 - 10","10 - 12","-","-","Unknown","Live","","","GiMKdjs3gPEu4KLvHpdx"
+"5","","2023-11-07T02:21:40.000Z","","1","","Jim D. & Adrian L.","D-Hub27 🍻 🇺🇸 & Eddie ☠️","9 - 11","11 - 9","-","-","Unknown","Live","","","J2Z7DdA2l8mTdCDmXQuA"
+"4","","2023-11-07T02:19:07.000Z","","2","","Joe I. & Collin H.","Jarred B. & Juju🇩🇴","9 - 11","11 - 9","-","-","Unknown","Live","","","TaEsB9NWAte3PqsFf9Qb"
+"3","","2023-11-07T02:14:38.000Z","","1","","Jim D. & D-Hub27 🍻 🇺🇸","Joe G. & Michael L.","11 - 7","7 - 11","-","-","Unknown","Live","","","fpXMk7eguDJ2kaYEKcQi"
+"2","","2023-11-07T02:12:22.000Z","","2","","Eddie ☠️ & Collin H.","Jarred B. & Adrian L.","9 - 11","11 - 9","-","-","Unknown","Live","","","Qwjz0PsEzuJghcO3qpom"
+"1","","2023-11-07T02:09:17.000Z","","1","","Joe G. & Joe I.","Michael L. & Juju🇩🇴","11 - 4","4 - 11","-","-","Unknown","Live","","","3BohomWIM2MmSpsRNqwg"
+##### TOURNAMENT 14r73nLvOXmx20FmTR9M
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"27","","2023-11-14T02:30:34.000Z","","1","","Laurie M & Adrian L.","Eddie ☠️ & Juju🇩🇴","8 - 11","11 - 8","-","-","Unknown","Live","","","nohqPx9pOHjxqCgQ3Cx6"
+"26","","2023-11-14T02:23:54.000Z","","2","","Joe I. & Jim D.","Joe G. & Jimmy Z.","9 - 11","11 - 9","-","-","Unknown","Live","","","OMZ0pQMq3VdO4zpaJ9pO"
+"25","","2023-11-14T02:23:54.000Z","","1","","Adrian L. & D-Hub27 🍻 🇺🇸","Juju🇩🇴 & Jarred B.","11 - 9","9 - 11","-","-","Unknown","Live","","","f9O19DfPp5pqSHLHnCzi"
+"24","","2023-11-14T02:16:27.000Z","","2","","Eddie ☠️ & Laurie M","🇺🇸Billy Scaduto🇺🇸 & Joe G.","12 - 10","10 - 12","-","-","Unknown","Live","","","kjWC1GsvM92zPs0FmG1f"
+"23","","2023-11-14T02:16:21.000Z","","1","","Juju🇩🇴 & Jim D.","Jimmy Z. & Joe I.","14 - 12","12 - 14","-","-","Unknown","Live","","","G3Hw631yOy7ZLjRYaTVF"
+"22","","2023-11-14T02:07:39.000Z","","2","","Adrian L. & Jarred B.","Laurie M & D-Hub27 🍻 🇺🇸","11 - 7","7 - 11","-","-","Unknown","Live","","","EPljUtzkWMe1NkQXcDfV"
+"21","","2023-11-14T02:06:22.000Z","","1","","Eddie ☠️ & Joe G.","Jim D. & Jimmy Z.","6 - 11","11 - 6","-","-","Unknown","Live","","","SK7kAE9rvRsegl46rmG9"
+"20","","2023-11-14T02:01:59.000Z","","2","","Jarred B. & Laurie M","Joe I. & D-Hub27 🍻 🇺🇸","3 - 11","11 - 3","-","-","Unknown","Live","","","hJa4HUV4raOjrNIUPYon"
+"19","","2023-11-14T01:59:19.000Z","","1","","Jimmy Z. & Juju🇩🇴","Jim D. & 🇺🇸Billy Scaduto🇺🇸","5 - 11","11 - 5","-","-","Unknown","Live","","","lQHudUdyp4vOCfRjNVNY"
+"18","","2023-11-14T01:56:30.000Z","","2","","Jarred B. & Eddie ☠️","Joe I. & Adrian L.","11 - 7","7 - 11","-","-","Unknown","Live","","","VxuY8tdEchUNa54yh95Z"
+"17","","2023-11-14T01:53:16.000Z","","1","","Jim D. & Joe G.","D-Hub27 🍻 🇺🇸 & 🇺🇸Billy Scaduto🇺🇸","2 - 11","11 - 2","-","-","Unknown","Live","","","5NY0qIdL0Z17tAq2jOAr"
+"16","","2023-11-14T01:48:54.000Z","","2","","Jarred B. & Jimmy Z.","Laurie M & Juju🇩🇴","8 - 11","11 - 8","-","-","Unknown","Live","","","gT1AtowlCgYi84fcw324"
+"15","","2023-11-14T01:47:44.000Z","","1","","Adrian L. & Joe G.","D-Hub27 🍻 🇺🇸 & Eddie ☠️","2 - 11","11 - 2","-","-","Unknown","Live","","","HSzJX48UqiAnsLqvMizx"
+"14","","2023-11-14T01:42:20.000Z","","1","","Adrian L. & 🇺🇸Billy Scaduto🇺🇸","Eddie ☠️ & Joe I.","11 - 8","8 - 11","-","-","Unknown","Live","","","2eEXMRB89rGsxmjBNrWM"
+"13","","2023-11-14T01:40:20.000Z","","2","","Jarred B. & Joe G.","D-Hub27 🍻 🇺🇸 & Jim D.","12 - 10","10 - 12","-","-","Unknown","Live","","","vvZkwJ4UHZfrjhdvCCQi"
+"12","","2023-11-14T01:34:51.000Z","","1","","Laurie M & Joe I.","Jimmy Z. & 🇺🇸Billy Scaduto🇺🇸","6 - 11","11 - 6","-","-","Unknown","Live","","","Qh79YbSfncD0XNqpr0YD"
+"11","","2023-11-14T01:28:08.000Z","","1","","Eddie ☠️ & 🇺🇸Billy Scaduto🇺🇸","Jimmy Z. & Laurie M","7 - 11","11 - 7","-","-","Unknown","Live","","","UTZ212tyImfdx8Xv1ZFY"
+"10","","2023-11-14T01:22:15.000Z","","2","","Jim D. & Adrian L.","Joe I. & Juju🇩🇴","8 - 11","11 - 8","-","-","Unknown","Live","","","2pmFKYSUZMAyjzlVzpSl"
+"9","","2023-11-14T01:14:04.000Z","","2","","Adrian L. & Juju🇩🇴","Joe G. & D-Hub27 🍻 🇺🇸","6 - 11","11 - 6","-","-","Unknown","Live","","","f1JRuYGuTgEDjqw4Dj2t"
+"8","","2023-11-14T01:13:59.000Z","","1","","Jim D. & Laurie M","Eddie ☠️ & Jimmy Z.","6 - 11","11 - 6","-","-","Unknown","Live","","","Sm0EUX61rJCKQstTGnRr"
+"7","","2023-11-14T01:08:38.000Z","","2","","D-Hub27 🍻 🇺🇸 & Jarred B.","Joe I. & 🇺🇸Billy Scaduto🇺🇸","11 - 13","13 - 11","-","-","Unknown","Live","","","rAbcgPly7ErxGTD835ES"
+"6","","2023-11-14T01:07:33.000Z","","1","","Jim D. & Eddie ☠️","Joe G. & Juju🇩🇴","8 - 11","11 - 8","-","-","Unknown","Live","","","x15Xa0LlfvtlUk2AFXSV"
+"5","","2023-11-14T00:59:54.000Z","","2","","Adrian L. & Jimmy Z.","Jarred B. & Joe I.","6 - 11","11 - 6","-","-","Unknown","Live","","","LzTVXGItbYBh7e3z8G6M"
+"4","","2023-11-14T00:58:32.000Z","","1","","🇺🇸Billy Scaduto🇺🇸 & Juju🇩🇴","Laurie M & Joe G.","15 - 14","14 - 15","-","-","Unknown","Live","","","X5WSDee9wZ0zzqIG04Ui"
+"3","","2023-11-14T00:53:14.000Z","","2","","Adrian L. & Eddie ☠️","Jimmy Z. & D-Hub27 🍻 🇺🇸","12 - 10","10 - 12","-","-","Unknown","Live","","","lFW0HrWumr81QrGzzD1D"
+"2","","2023-11-14T00:48:13.000Z","","1","","Jarred B. & Jim D.","Laurie M & 🇺🇸Billy Scaduto🇺🇸","12 - 14","14 - 12","-","-","Unknown","Live","","","J7KstiDyZUcxN9rMEOeq"
+"1","","2023-11-14T00:46:13.000Z","","2","","Joe G. & Joe I.","Juju🇩🇴 & D-Hub27 🍻 🇺🇸","11 - 6","6 - 11","-","-","Unknown","Live","","","71VQj5ghvmSfzmWgUh1J"
+##### TOURNAMENT w7rEU5VLw5DpVwCcnqBy
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"37","","2023-11-21T04:01:13.000Z","","2","","Jimmy Z. & Eddie ☠️","Lou D. & Chris B.","11 - 9","9 - 11","-","-","Unknown","Live","","","D1pt7bJiOogyJZU133g3"
+"36","","2023-11-21T03:59:10.000Z","","1","","Joe I. & Jennifer B.","D-Hub27 🍻 🇺🇸 & Jarred B.","7 - 11","11 - 7","-","-","Unknown","Live","","","YtmY1mMExcJrWFoEbkiz"
+"35","","2023-11-21T03:55:06.000Z","","2","","Lou D. & Adrian L.","Bill R. & Joe G.","3 - 11","11 - 3","-","-","Unknown","Live","","","CEp2Wt4DEFwLL98T6lK3"
+"34","","2023-11-21T03:52:26.000Z","","1","","Chris B. & Jarred B.","Juju🇩🇴 & 🇺🇸Billy Scaduto🇺🇸","3 - 11","11 - 3","-","-","Unknown","Live","","","wJ8GZagUedmOiE8VJA1r"
+"33","","2023-11-21T03:50:36.000Z","","2","","Joe I. & Lou D.","Jennifer B. & Eddie ☠️","8 - 11","11 - 8","-","-","Unknown","Live","","","HzLRC5PCDfKVJpRzSMTf"
+"32","","2023-11-21T03:47:18.000Z","","1","","D-Hub27 🍻 🇺🇸 & 🇺🇸Billy Scaduto🇺🇸","Bill R. & Jarred B.","12 - 10","10 - 12","-","-","Unknown","Live","","","7h9DGrHqIBjaI6eS7kfC"
+"31","","2023-11-21T03:44:03.000Z","","2","","Eddie ☠️ & Adrian L.","Jimmy Z. & Joe G.","6 - 11","11 - 6","-","-","Unknown","Live","","","8sSkpHkoU2b5PEESi5lU"
+"30","","2023-11-21T03:39:50.000Z","","1","","D-Hub27 🍻 🇺🇸 & Jennifer B.","Juju🇩🇴 & Chris B.","2 - 11","11 - 2","-","-","Unknown","Live","","","dm9WQD8qXE5mMt6zOwkD"
+"29","","2023-11-21T03:38:17.000Z","","2","","Lou D. & Bill R.","Jimmy Z. & Joe I.","11 - 7","7 - 11","-","-","Unknown","Live","","","nmAN6s2dybN4YdqQaoL7"
+"28","","2023-11-21T03:35:12.000Z","","1","","🇺🇸Billy Scaduto🇺🇸 & Jarred B.","Joe G. & Chris B.","11 - 6","6 - 11","-","-","Unknown","Live","","","Re0UATfK8v6DQV2vIm95"
+"27","","2023-11-21T03:32:10.000Z","","2","","Eddie ☠️ & Juju🇩🇴","Jennifer B. & Adrian L.","11 - 4","4 - 11","-","-","Unknown","Live","","","jjw04qekasZA8s3gMJ2c"
+"26","","2023-11-21T03:29:45.000Z","","1","","Jimmy Z. & Chris B.","Lou D. & D-Hub27 🍻 🇺🇸","12 - 10","10 - 12","-","-","Unknown","Live","","","aTyrslEi4VfATUtCwCC7"
+"25","","2023-11-21T03:27:05.000Z","","2","","Joe I. & Jarred B.","Adrian L. & Bill R.","11 - 6","6 - 11","-","-","Unknown","Live","","","8tCshz06xnP0YMFpzzAQ"
+"24","","2023-11-21T03:23:07.000Z","","1","","Jennifer B. & 🇺🇸Billy Scaduto🇺🇸","Eddie ☠️ & Joe G.","3 - 11","11 - 3","-","-","Unknown","Live","","","ezzA8CnGoiO2uQTCP5GH"
+"23","","2023-11-21T03:20:49.000Z","","2","","Jarred B. & Adrian L.","Lou D. & Juju🇩🇴","9 - 11","11 - 9","-","-","Unknown","Live","","","wD88stZvodblnty2XWrq"
+"22","","2023-11-21T03:17:58.000Z","","1","","Chris B. & Bill R.","D-Hub27 🍻 🇺🇸 & Jimmy Z.","11 - 8","8 - 11","-","-","Unknown","Live","","","RXd9Un0APklUMB0Ql1XD"
+"21","","2023-11-21T03:14:05.000Z","","2","","Joe I. & Joe G.","Eddie ☠️ & 🇺🇸Billy Scaduto🇺🇸","7 - 11","11 - 7","-","-","Unknown","Live","","","Vud8jXnKW7qbFqvIF8Fy"
+"20","","2023-11-21T03:11:36.000Z","","1","","Jimmy Z. & Jennifer B.","Bill R. & Juju🇩🇴","3 - 11","11 - 3","-","-","Unknown","Live","","","ZBSEXyyZLJfojBcduzaW"
+"19","","2023-11-21T03:07:44.000Z","","2","","Lou D. & Jarred B.","Adrian L. & 🇺🇸Billy Scaduto🇺🇸","12 - 10","10 - 12","-","-","Unknown","Live","","","DgSFCehJlMh4EizbjlLW"
+"18","","2023-11-21T03:06:40.000Z","","1","","D-Hub27 🍻 🇺🇸 & Juju🇩🇴","Chris B. & Joe I.","11 - 4","4 - 11","-","-","Unknown","Live","","","FYo6FrgwN9hRCdceKavM"
+"17","","2023-11-21T03:01:46.000Z","","1","","Bill R. & Eddie ☠️","Jennifer B. & Joe G.","11 - 2","2 - 11","-","-","Unknown","Live","","","1EpYQBVIHhRBDycYWtr2"
+"16","","2023-11-21T02:59:58.000Z","","2","","Juju🇩🇴 & Jimmy Z.","Joe I. & 🇺🇸Billy Scaduto🇺🇸","11 - 9","9 - 11","-","-","Unknown","Live","","","kboR7IjeDEdMacPQ8b3z"
+"15","","2023-11-21T02:56:59.000Z","","1","","Jarred B. & Eddie ☠️","D-Hub27 🍻 🇺🇸 & Chris B.","11 - 9","9 - 11","-","-","Unknown","Live","","","zP5Hshox9VVRLF1WTgMe"
+"14","","2023-11-21T02:53:19.000Z","","2","","Adrian L. & Joe G.","Jennifer B. & Lou D.","11 - 5","5 - 11","-","-","Unknown","Live","","","VmzrCq35UTW45qzFK9vK"
+"13","","2023-11-21T02:48:58.000Z","","1","","D-Hub27 🍻 🇺🇸 & Bill R.","🇺🇸Billy Scaduto🇺🇸 & Chris B.","11 - 5","5 - 11","-","-","Unknown","Live","","","1KqawZQSQPmiVlUTikDb"
+"12","","2023-11-21T02:47:22.000Z","","2","","Eddie ☠️ & Joe I.","Lou D. & Joe G.","11 - 6","6 - 11","-","-","Unknown","Live","","","xPC17MQ0emyOFdS2fLds"
+"11","","2023-11-21T02:43:06.000Z","","1","","Chris B. & Jennifer B.","Adrian L. & Juju🇩🇴","5 - 11","11 - 5","-","-","Unknown","Live","","","PTXfIRvZ7YMEagRvSetD"
+"10","","2023-11-21T02:41:29.000Z","","2","","🇺🇸Billy Scaduto🇺🇸 & Joe G.","Jarred B. & Jimmy Z.","14 - 12","12 - 14","-","-","Unknown","Live","","","fOOm1Mu3AYI3pltVYRhY"
+"9","","2023-11-21T02:37:47.000Z","","1","","Adrian L. & Joe I.","D-Hub27 🍻 🇺🇸 & Eddie ☠️","8 - 11","11 - 8","-","-","Unknown","Live","","","rrfSZGrrvBMbKiDXrvUe"
+"8","","2023-11-21T02:32:17.000Z","","2","","Lou D. & Jimmy Z.","Juju🇩🇴 & Jarred B.","6 - 11","11 - 6","-","-","Unknown","Live","","","LT5wPdBNxEinHzgONBZx"
+"7","","2023-11-21T02:31:25.000Z","","1","","Chris B. & Eddie ☠️","Bill R. & Jennifer B.","8 - 11","11 - 8","-","-","Unknown","Live","","","bp8HjMWMiS2AEzDV5743"
+"6","","2023-11-21T02:26:02.000Z","","2","","Juju🇩🇴 & Joe G.","Adrian L. & D-Hub27 🍻 🇺🇸","11 - 4","4 - 11","-","-","Unknown","Live","","","XZ8c2MObtBMrvKdlYuI2"
+"5","","2023-11-21T02:24:18.000Z","","1","","Jennifer B. & Jarred B.","Joe I. & Bill R.","5 - 11","11 - 5","-","-","Unknown","Live","","","CntDCRDVEz6qi4dX3sbO"
+"4","","2023-11-21T02:21:23.000Z","","2","","Eddie ☠️ & Lou D.","🇺🇸Billy Scaduto🇺🇸 & Jimmy Z.","11 - 9","9 - 11","-","-","Unknown","Live","","","BKbWewYqeumntiH1P0a7"
+"3","","2023-11-21T02:18:48.000Z","","1","","Jennifer B. & Juju🇩🇴","Jarred B. & Joe G.","9 - 11","11 - 9","-","-","Unknown","Live","","","h3wOCNFvf0rC9tldzr0e"
+"2","","2023-11-21T02:14:25.000Z","","2","","Joe I. & D-Hub27 🍻 🇺🇸","Bill R. & Jimmy Z.","10 - 12","12 - 10","-","-","Unknown","Live","","","lZm3X4Ds7KeRlcimWWq2"
+"1","","2023-11-21T02:10:11.000Z","","1","","Adrian L. & Chris B.","Lou D. & 🇺🇸Billy Scaduto🇺🇸","5 - 11","11 - 5","-","-","Unknown","Live","","","9CZM4RQp0VaRcRYfcqAV"
+##### TOURNAMENT Swc07L0exEBJS5lraimv
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"4","","2023-12-03T16:16:44.000Z","0","1","","Eddie ☠️ & Mark H.","🇺🇸Billy🔥 Scaduto🇺🇸 & James E.","11 - 4","4 - 11","-","-","Unknown","Live","","","BF48FRDKQGXJujgtmoz9"
+"3","","2023-12-03T16:10:43.000Z","0","1","","🇺🇸Billy🔥 Scaduto🇺🇸 & James E.","D-Hub27 🍻 🇺🇸 & John L.","11 - 8","8 - 11","-","-","Unknown","Live","","","nhVXHaB7VKYwlRAd3TKF"
+"2","","2023-12-03T16:04:26.000Z","0","1","","D-Hub27 🍻 🇺🇸 & John L.","Eddie ☠️ & Mark H.","7 - 11","11 - 7","-","-","Unknown","Live","","","e9LwcXeSvW6rMsQaxTIM"
+"1","","2023-12-03T15:57:11.000Z","0","1","","🇺🇸Billy🔥 Scaduto🇺🇸 & James E.","Eddie ☠️ & Mark H.","9 - 11","11 - 9","-","-","Unknown","Live","","","uVr0v3tq72fDeZWQln0l"
+##### TOURNAMENT HlzETX3QjPHNPop3TT8m
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"5","","2023-12-03T16:55:18.000Z","","1","","Mark H. & David H.","James E. & 🇺🇸Billy🔥 Scaduto🇺🇸","7 - 11","11 - 7","-","-","Unknown","Live","","","4GgccpFLPa0Btg1zaqWN"
+"4","","2023-12-03T16:48:54.000Z","","1","","David H. & Eddie ☠️","John L. & 🇺🇸Billy🔥 Scaduto🇺🇸","9 - 11","11 - 9","-","-","Unknown","Live","","","MAGnh8SZeVTrlGrJKqAN"
+"3","","2023-12-03T16:41:12.000Z","","1","","James E. & Eddie ☠️","Mark H. & 🇺🇸Billy🔥 Scaduto🇺🇸","5 - 11","11 - 5","-","-","Unknown","Live","","","OYorXo96w3Ym8eSNcxQq"
+"2","","2023-12-03T16:35:21.000Z","","1","","James E. & Mark H.","John L. & David H.","9 - 11","11 - 9","-","-","Unknown","Live","","","fB9JgoSx6fi1TJHWvqHN"
+"1","","2023-12-03T16:29:04.000Z","","1","","🇺🇸Billy🔥 Scaduto🇺🇸 & David H.","John L. & Eddie ☠️","11 - 6","6 - 11","-","-","Unknown","Live","","","CvrJipAu2yi8Gk5Efvh8"
+##### TOURNAMENT R6r1mKT3el6ANQ4HwQQa
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"54","","2023-12-05T04:00:32.000Z","","1","","Jennifer B. & Colleen F.","Jim D. & David A.","3 - 11","11 - 3","-","-","Unknown","Live","","","8cmdDMb95L6MAHK343BW"
+"53","","2023-12-05T03:59:48.000Z","","3","","Chris B. & J.Z.","Linduh V. & Jarred B.","12 - 14","14 - 12","-","-","Unknown","Live","","","92r4PUI0hmL6sGgFgHnq"
+"52","","2023-12-05T03:58:55.000Z","","2","","Juju🇩🇴 & Joe I.","Eddie ☠️ & Adrian L.","11 - 3","3 - 11","-","-","Unknown","Live","","","Pm0qWBRmZngdCPeF4mei"
+"51","","2023-12-05T03:54:52.000Z","","1","","Mary-Ellen A. & D-Hub27 🍻 🇺🇸","Anthony D. & Bill R.","3 - 11","11 - 3","-","-","Unknown","Live","","","vgvOiT0iJLKYdLxhza3M"
+"50","","2023-12-05T03:54:20.000Z","","2","","Colleen F. & 🇺🇸Billy🔥 Scaduto🇺🇸","Collin H. & Jim D.","10 - 12","12 - 10","-","-","Unknown","Live","","","HdWJZcOTpOy8zGhXrgBH"
+"49","","2023-12-05T03:49:53.000Z","","3","","Laurie M & Eddie ☠️","Jennifer B. & David A.","11 - 4","4 - 11","-","-","Unknown","Live","","","8RacKWol3GFqKS6opfcl"
+"48","","2023-12-05T03:49:23.000Z","","1","","Bill R. & Joe I.","Juju🇩🇴 & Adrian L.","11 - 8","8 - 11","-","-","Unknown","Live","","","0EqxWIcJcXasZJLjJA6G"
+"47","","2023-12-05T03:47:10.000Z","","2","","Linduh V. & D-Hub27 🍻 🇺🇸","J.Z. & Mary-Ellen A.","11 - 6","6 - 11","-","-","Unknown","Live","","","Zcpr44XbDjcxo56rU0dK"
+"46","","2023-12-05T03:45:06.000Z","","3","","Chris B. & Jarred B.","Jim D. & Anthony D.","2 - 11","11 - 2","-","-","Unknown","Live","","","SjCHtwybzB3wLRh2G0MH"
+"45","","2023-12-05T03:42:41.000Z","","1","","David A. & Colleen F.","Jennifer B. & Eddie ☠️","11 - 3","3 - 11","-","-","Unknown","Live","","","OC9yImkEEx2vVfsPfnwG"
+"44","","2023-12-05T03:40:04.000Z","","2","","Bill R. & Laurie M","Collin H. & 🇺🇸Billy🔥 Scaduto🇺🇸","11 - 8","8 - 11","-","-","Unknown","Live","","","ff3aRrBCxk85o1oCJ2U8"
+"43","","2023-12-05T03:39:35.000Z","","3","","D-Hub27 🍻 🇺🇸 & Anthony D.","Adrian L. & Joe I.","12 - 10","10 - 12","-","-","Unknown","Live","","","nC0l7Z0GryDQMPfq5Gz2"
+"42","","2023-12-05T03:37:20.000Z","","1","","Mary-Ellen A. & Eddie ☠️","J.Z. & Juju🇩🇴","6 - 11","11 - 6","-","-","Unknown","Live","","","XdPDJcj9Qu2WsKOG2fnf"
+"41","","2023-12-05T03:33:59.000Z","","2","","Jennifer B. & Jim D.","Chris B. & Linduh V.","6 - 11","11 - 6","-","-","Unknown","Live","","","kqUS5SYOzKpewXyjlvwX"
+"40","","2023-12-05T03:32:51.000Z","","3","","Jarred B. & 🇺🇸Billy🔥 Scaduto🇺🇸","David A. & Joe I.","9 - 11","11 - 9","-","-","Unknown","Live","","","VAZenbzNpz9t9BFwsrxr"
+"39","","2023-12-05T03:31:32.000Z","","1","","Mary-Ellen A. & Laurie M","Adrian L. & Colleen F.","8 - 11","11 - 8","-","-","Unknown","Live","","","6iqWZGZVL3EfjlEdorDs"
+"38","","2023-12-05T03:26:56.000Z","","2","","Linduh V. & Bill R.","Juju🇩🇴 & Anthony D.","8 - 11","11 - 8","-","-","Unknown","Live","","","HNihvRFEA1lHr2bRoGPz"
+"37","","2023-12-05T03:26:04.000Z","","3","","Jim D. & J.Z.","Eddie ☠️ & D-Hub27 🍻 🇺🇸","9 - 11","11 - 9","-","-","Unknown","Live","","","83NHdwReiKIj1IGJauts"
+"36","","2023-12-05T03:24:39.000Z","","1","","Chris B. & Colleen F.","Jarred B. & Collin H.","4 - 11","11 - 4","-","-","Unknown","Live","","","RaNaJukNop2fWlgHkJIQ"
+"35","","2023-12-05T03:19:33.000Z","","1","","Chris B. & Collin H.","Jennifer B. & 🇺🇸Billy🔥 Scaduto🇺🇸","9 - 11","11 - 9","-","-","Unknown","Live","","","7CrZ5jcKQpMXmjdfCyHL"
+"34","","2023-12-05T03:18:47.000Z","","2","","Adrian L. & David A.","Laurie M & Joe I.","11 - 7","7 - 11","-","-","Unknown","Live","","","wYFxmjdorttP9gPZVVr1"
+"33","","2023-12-05T03:18:35.000Z","","3","","Anthony D. & Jarred B.","Mary-Ellen A. & Colleen F.","11 - 6","6 - 11","-","-","Unknown","Live","","","gMGsB3P8IaBIOR4b52qO"
+"32","","2023-12-05T03:13:07.000Z","","2","","Laurie M & Adrian L.","David A. & J.Z.","9 - 11","11 - 9","-","-","Unknown","Live","","","hW394TIlID2VNWGpnHi5"
+"31","","2023-12-05T03:12:09.000Z","","1","","Linduh V. & Joe I.","Bill R. & Collin H.","13 - 11","11 - 13","-","-","Unknown","Live","","","0ynVLUaeWlr19JXgWXl6"
+"30","","2023-12-05T03:11:44.000Z","","3","","D-Hub27 🍻 🇺🇸 & Juju🇩🇴","Jim D. & Eddie ☠️","11 - 8","8 - 11","-","-","Unknown","Live","","","MRUy73kOnKAF5UWzC6Lc"
+"29","","2023-12-05T03:06:26.000Z","","2","","Colleen F. & Anthony D.","Mary-Ellen A. & 🇺🇸Billy🔥 Scaduto🇺🇸","8 - 11","11 - 8","-","-","Unknown","Live","","","jpOnUaUlbw3wMxCb6CnL"
+"28","","2023-12-05T03:05:10.000Z","","3","","Eddie ☠️ & Chris B.","Jarred B. & Jennifer B.","11 - 4","4 - 11","-","-","Unknown","Live","","","XANbty8HUagg96kPEq24"
+"27","","2023-12-05T03:03:36.000Z","","1","","Adrian L. & D-Hub27 🍻 🇺🇸","Laurie M & Collin H.","11 - 13","13 - 11","-","-","Unknown","Live","","","XXDxiZI0tqfqBs36jIjp"
+"26","","2023-12-05T03:00:25.000Z","","2","","Joe I. & J.Z.","Jim D. & Linduh V.","11 - 6","6 - 11","-","-","Unknown","Live","","","jM8NSP80mOR4Qs8I0Ek2"
+"25","","2023-12-05T03:00:05.000Z","","3","","Anthony D. & David A.","Bill R. & Juju🇩🇴","6 - 11","11 - 6","-","-","Unknown","Live","","","7xNLfqN9naIwXU8RRIU5"
+"24","","2023-12-05T02:56:14.000Z","","1","","Jarred B. & Colleen F.","Mary-Ellen A. & Jennifer B.","11 - 4","4 - 11","-","-","Unknown","Live","","","2wtWUT64AAhe9qLtuGHG"
+"23","","2023-12-05T02:54:38.000Z","","2","","D-Hub27 🍻 🇺🇸 & Jim D.","Linduh V. & 🇺🇸Billy🔥 Scaduto🇺🇸","6 - 11","11 - 6","-","-","Unknown","Live","","","cQsVlRgG0R0P8Tq93gpZ"
+"22","","2023-12-05T02:53:11.000Z","","3","","Collin H. & Joe I.","Bill R. & Eddie ☠️","6 - 11","11 - 6","-","-","Unknown","Live","","","I9OwwzAEsZqlZn3uxZXl"
+"21","","2023-12-05T02:50:43.000Z","","1","","Laurie M & Juju🇩🇴","Chris B. & Adrian L.","11 - 5","5 - 11","-","-","Unknown","Live","","","e9OwFOBzd4CEIrS6Et4o"
+"20","","2023-12-05T02:48:13.000Z","","2","","Anthony D. & Mary-Ellen A.","Linduh V. & Jennifer B.","11 - 4","4 - 11","-","-","Unknown","Live","","","aORaC8uZF4Y0fdp0sgxA"
+"19","","2023-12-05T02:47:12.000Z","","3","","Colleen F. & J.Z.","🇺🇸Billy🔥 Scaduto🇺🇸 & David A.","3 - 11","11 - 3","-","-","Unknown","Live","","","NeqsigkN1uZHWcg6xOhA"
+"18","","2023-12-05T02:45:31.000Z","","1","","Chris B. & Jim D.","Joe I. & Eddie ☠️","9 - 11","11 - 9","-","-","Unknown","Live","","","QG0KtA8DM5uMZE7nb4Dz"
+"17","","2023-12-05T02:42:32.000Z","","3","","Adrian L. & 🇺🇸Billy🔥 Scaduto🇺🇸","Bill R. & Jarred B.","7 - 11","11 - 7","-","-","Unknown","Live","","","R3l0Hir1gM4SgSPCWa1g"
+"16","","2023-12-05T02:42:17.000Z","","2","","David A. & Collin H.","Laurie M & D-Hub27 🍻 🇺🇸","6 - 11","11 - 6","-","-","Unknown","Live","","","HmkNSubl9fnu0xEkcLng"
+"15","","2023-12-05T02:38:23.000Z","","1","","Colleen F. & Linduh V.","Eddie ☠️ & Juju🇩🇴","5 - 11","11 - 5","-","-","Unknown","Live","","","zYcjsG2xij6LyHqHuUAb"
+"14","","2023-12-05T02:37:07.000Z","","3","","Bill R. & Adrian L.","J.Z. & Jennifer B.","11 - 5","5 - 11","-","-","Unknown","Live","","","g1ragXTWFmSg9C5q1eaN"
+"13","","2023-12-05T02:36:37.000Z","","2","","Jarred B. & Mary-Ellen A.","D-Hub27 🍻 🇺🇸 & Collin H.","6 - 11","11 - 6","-","-","Unknown","Live","","","COjqoNolQNl5ACqNKkeH"
+"12","","2023-12-05T02:32:24.000Z","","1","","Eddie ☠️ & Linduh V.","David A. & Laurie M","9 - 11","11 - 9","-","-","Unknown","Live","","","J19DZ6W9GDtq4nxqwAvS"
+"11","","2023-12-05T02:32:01.000Z","","3","","Jim D. & Juju🇩🇴","Chris B. & Jennifer B.","11 - 1","1 - 11","-","-","Unknown","Live","","","HbGGMAaKUJTaLO8Xn0bp"
+"10","","2023-12-05T02:31:21.000Z","","2","","Anthony D. & Joe I.","J.Z. & 🇺🇸Billy🔥 Scaduto🇺🇸","7 - 11","11 - 7","-","-","Unknown","Live","","","ZhInFnNBhbawtNgaA6aV"
+"9","","2023-12-05T02:27:41.000Z","","3","","Collin H. & Adrian L.","Jim D. & Colleen F.","15 - 13","13 - 15","-","-","Unknown","Live","","","6a2vYOlBQuEsLhpw8V5u"
+"8","","2023-12-05T02:24:51.000Z","","2","","Joe I. & Jarred B.","David A. & Juju🇩🇴","11 - 4","4 - 11","-","-","Unknown","Live","","","BCijZgcgSlIdnk8EqBFf"
+"7","","2023-12-05T02:24:50.000Z","","1","","D-Hub27 🍻 🇺🇸 & J.Z.","Jennifer B. & Laurie M","11 - 4","4 - 11","-","-","Unknown","Live","","","UUCCKIhRJMkpiLusNZxn"
+"6","","2023-12-05T02:19:26.000Z","","2","","Mary-Ellen A. & Chris B.","Bill R. & 🇺🇸Billy🔥 Scaduto🇺🇸","8 - 11","11 - 8","-","-","Unknown","Live","","","XNxcfqMNRpU86862kwis"
+"5","","2023-12-05T02:18:59.000Z","","1","","D-Hub27 🍻 🇺🇸 & Jarred B.","J.Z. & Anthony D.","11 - 6","6 - 11","-","-","Unknown","Live","","","1FYDF3tzn44xeE1CYFdW"
+"4","","2023-12-05T02:18:43.000Z","","3","","Joe I. & Jennifer B.","Collin H. & Linduh V.","11 - 8","8 - 11","-","-","Unknown","Live","","","Nvo6GKAKsBwYAkyyyOZr"
+"3","","2023-12-05T02:13:12.000Z","","2","","Chris B. & Juju🇩🇴","Adrian L. & Mary-Ellen A.","11 - 5","5 - 11","-","-","Unknown","Live","","","Yuw3GSqTctwqeMSEqZae"
+"2","","2023-12-05T02:12:12.000Z","","1","","Laurie M & Jim D.","Colleen F. & Bill R.","11 - 7","7 - 11","-","-","Unknown","Live","","","Qoe56bZ5Ak7JeBJXhvsm"
+"1","","2023-12-05T02:12:06.000Z","","3","","Anthony D. & 🇺🇸Billy🔥 Scaduto🇺🇸","David A. & Eddie ☠️","11 - 4","4 - 11","-","-","Unknown","Live","","","BZvOf74vR6i201cFbffJ"
+##### TOURNAMENT 5RUYYK2GiDsqsCH3OK6m
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"51","","2023-12-12T03:56:58.000Z","","3","","Eddie ☠️ & Juju🇩🇴","🔥Billy S.🔥 & Linduh V.","11 - 13","13 - 11","-","-","Unknown","Live","","","BkzEoADdYjf3JP0OUJfc"
+"50","","2023-12-12T03:56:34.000Z","","1","","Joe I. & Bri R.","Laurie M & Jarred B.","7 - 11","11 - 7","-","-","Unknown","Live","","","8kn3PQS3bMdedelStjd7"
+"49","","2023-12-12T03:50:31.000Z","","1","","Joe I. & Collin H.","Jarred B. & Laurie M","15 - 13","13 - 15","-","-","Unknown","Live","","","WycBLnycev9iOtAa7WaR"
+"48","","2023-12-12T03:50:06.000Z","","2","","Adrian L. & D-Hub27 🍻 🇺🇸","Bill R. & J.Z.","1 - 11","11 - 1","-","-","Unknown","Live","","","bjTaWayATiVUzWGq1fKt"
+"47","","2023-12-12T03:49:31.000Z","","3","","Tony D. & Christie S.","Colleen F. & Wiktoria W.","11 - 1","1 - 11","-","-","Unknown","Live","","","H1HB4k7PrjUHqZyLQ1q2"
+"46","","2023-12-12T03:45:32.000Z","","3","","Christie S. & Bri R.","Juju🇩🇴 & Linduh V.","11 - 5","5 - 11","-","-","Unknown","Live","","","UiRfMgLCUJC3o4kzFnyo"
+"45","","2023-12-12T03:45:17.000Z","","2","","Colleen F. & 🔥Billy S.🔥","Bill R. & D-Hub27 🍻 🇺🇸","4 - 11","11 - 4","-","-","Unknown","Live","","","UgEFiAbgumkDYWkCVxaP"
+"44","","2023-12-12T03:40:02.000Z","","3","","Linduh V. & Adrian L.","Bri R. & Eddie ☠️","6 - 11","11 - 6","-","-","Unknown","Live","","","UHFBBhgIRONL4wYPyVYZ"
+"43","","2023-12-12T03:39:28.000Z","","1","","Collin H. & Tony D.","J.Z. & Wiktoria W.","5 - 11","11 - 5","-","-","Unknown","Live","","","NAXnfO1XqmiFAmgj84kO"
+"42","","2023-12-12T03:39:20.000Z","","2","","Juju🇩🇴 & Christie S.","D-Hub27 🍻 🇺🇸 & Laurie M","11 - 4","4 - 11","-","-","Unknown","Live","","","PJQhfcuaTLm1oWwHAb6C"
+"41","","2023-12-12T03:34:16.000Z","","1","","Joe I. & J.Z.","Wiktoria W. & Collin H.","11 - 9","9 - 11","-","-","Unknown","Live","","","Loz6N8Ac3BtwszB8h42a"
+"40","","2023-12-12T03:33:49.000Z","","3","","Bill R. & 🔥Billy S.🔥","Adrian L. & Eddie ☠️","11 - 6","6 - 11","-","-","Unknown","Live","","","Gunu2aFcyEnxAhzicvGg"
+"39","","2023-12-12T03:33:25.000Z","","2","","Juju🇩🇴 & Jarred B.","Tony D. & Colleen F.","11 - 6","6 - 11","-","-","Unknown","Live","","","TvzBNS76kmAYAcu71DTh"
+"38","","2023-12-12T03:27:50.000Z","","3","","Eddie ☠️ & Linduh V.","D-Hub27 🍻 🇺🇸 & Christie S.","4 - 11","11 - 4","-","-","Unknown","Live","","","bTafxDEpnPVck03aQoHv"
+"37","","2023-12-12T03:26:47.000Z","","1","","Collin H. & Laurie M","Bri R. & 🔥Billy S.🔥","5 - 11","11 - 5","-","-","Unknown","Live","","","x9XRCeXmJf5GDYS01gw7"
+"36","","2023-12-12T03:26:34.000Z","","2","","Joe I. & Wiktoria W.","Bill R. & Jarred B.","6 - 11","11 - 6","-","-","Unknown","Live","","","VEFxgSAVtSP5XdB1oRc0"
+"35","","2023-12-12T03:22:05.000Z","","3","","Eddie ☠️ & D-Hub27 🍻 🇺🇸","Colleen F. & J.Z.","11 - 9","9 - 11","-","-","Unknown","Live","","","crqAUoL22IXdNZDIx0vT"
+"34","","2023-12-12T03:20:30.000Z","","2","","Linduh V. & Jarred B.","Juju🇩🇴 & Tony D.","11 - 9","9 - 11","-","-","Unknown","Live","","","60ZxLm2knUNRtCGaO0a3"
+"33","","2023-12-12T03:20:17.000Z","","1","","Christie S. & Bill R.","Wiktoria W. & Adrian L.","11 - 5","5 - 11","-","-","Unknown","Live","","","flNza4ZuOZQsC862sWlq"
+"32","","2023-12-12T03:15:21.000Z","","3","","Laurie M & J.Z.","Colleen F. & Collin H.","11 - 4","4 - 11","-","-","Unknown","Live","","","Jvi8fQagLH3crvW1kJ6o"
+"31","","2023-12-12T03:14:34.000Z","","1","","Christie S. & Joe I.","Eddie ☠️ & Wiktoria W.","15 - 14","14 - 15","-","-","Unknown","Live","","","j544buXf7bOzhJd28fYm"
+"30","","2023-12-12T03:12:41.000Z","","2","","Adrian L. & Bri R.","🔥Billy S.🔥 & Tony D.","8 - 11","11 - 8","-","-","Unknown","Live","","","nt845lkI7u1jZViVz7IG"
+"29","","2023-12-12T03:09:31.000Z","","3","","Juju🇩🇴 & Bill R.","Linduh V. & D-Hub27 🍻 🇺🇸","11 - 9","9 - 11","-","-","Unknown","Live","","","HjnbfxTtPBNy9FWrLVyS"
+"28","","2023-12-12T03:06:34.000Z","","2","","Jarred B. & Colleen F.","J.Z. & Collin H.","3 - 11","11 - 3","-","-","Unknown","Live","","","gNplJsJNveQfexDujX5U"
+"27","","2023-12-12T03:04:26.000Z","","1","","Tony D. & Adrian L.","Joe I. & 🔥Billy S.🔥","8 - 11","11 - 8","-","-","Unknown","Live","","","kCpO0gJSY7cMXiBkZzC6"
+"26","","2023-12-12T03:00:39.000Z","","2","","Collin H. & Jarred B.","J.Z. & Eddie ☠️","9 - 11","11 - 9","-","-","Unknown","Live","","","rArzNPT37YZeJyew1R5b"
+"25","","2023-12-12T02:59:46.000Z","","3","","Colleen F. & Linduh V.","Bri R. & Laurie M","5 - 11","11 - 5","-","-","Unknown","Live","","","8xjnNhjNvbSPPZsveA3e"
+"24","","2023-12-12T02:57:06.000Z","","1","","Christie S. & Wiktoria W.","D-Hub27 🍻 🇺🇸 & 🔥Billy S.🔥","11 - 8","8 - 11","-","-","Unknown","Live","","","he3NNxX04rvF3B88zAs1"
+"23","","2023-12-12T02:53:27.000Z","","3","","Bill R. & Laurie M","Adrian L. & Juju🇩🇴","11 - 5","5 - 11","-","-","Unknown","Live","","","j3up9tICIj0gIm4bTPE4"
+"22","","2023-12-12T02:50:51.000Z","","1","","D-Hub27 🍻 🇺🇸 & Wiktoria W.","Bri R. & Tony D.","11 - 4","4 - 11","-","-","Unknown","Live","","","D2a313u4peQNODGaD9NA"
+"21","","2023-12-12T02:48:22.000Z","","2","","🔥Billy S.🔥 & Collin H.","Jarred B. & Joe I.","11 - 5","5 - 11","-","-","Unknown","Live","","","TUOC9RXq4DqQ5wJ974Qo"
+"20","","2023-12-12T02:48:17.000Z","","3","","Laurie M & Linduh V.","Eddie ☠️ & Christie S.","4 - 11","11 - 4","-","-","Unknown","Live","","","Su3dqXftezYfmW1Hw16R"
+"19","","2023-12-12T02:45:29.000Z","","1","","J.Z. & Adrian L.","Colleen F. & Juju🇩🇴","9 - 11","11 - 9","-","-","Unknown","Live","","","uUa4xKCIM3tV0SBPSNbX"
+"18","","2023-12-12T02:42:50.000Z","","2","","D-Hub27 🍻 🇺🇸 & Joe I.","Tony D. & Bill R.","6 - 11","11 - 6","-","-","Unknown","Live","","","mkwBWd32Yhn9jhJedyfP"
+"17","","2023-12-12T02:42:31.000Z","","3","","Jarred B. & Christie S.","Linduh V. & Bri R.","11 - 8","8 - 11","-","-","Unknown","Live","","","E6mdDaOnjVvdW1HzzHfH"
+"16","","2023-12-12T02:38:54.000Z","","1","","Eddie ☠️ & Laurie M","Wiktoria W. & 🔥Billy S.🔥","8 - 11","11 - 8","-","-","Unknown","Live","","","6354Ao3P1nW8I1evdYoR"
+"15","","2023-12-12T02:37:00.000Z","","2","","D-Hub27 🍻 🇺🇸 & Colleen F.","Collin H. & Juju🇩🇴","10 - 12","12 - 10","-","-","Unknown","Live","","","ZyvFVyy2ZnUAVoYpFWtE"
+"14","","2023-12-12T02:35:43.000Z","","3","","Tony D. & Joe I.","Bri R. & J.Z.","11 - 7","7 - 11","-","-","Unknown","Live","","","zUmuSW3nN76Coj2fpWt6"
+"13","","2023-12-12T02:32:59.000Z","","1","","Eddie ☠️ & Jarred B.","Adrian L. & Bill R.","11 - 3","3 - 11","-","-","Unknown","Live","","","hAesPIYgwpQMnA66IQEA"
+"12","","2023-12-12T02:29:33.000Z","","3","","J.Z. & Christie S.","Laurie M & 🔥Billy S.🔥","11 - 8","8 - 11","-","-","Unknown","Live","","","H7LGPATUJDbaBapIyoFb"
+"11","","2023-12-12T02:29:21.000Z","","2","","Tony D. & Linduh V.","Joe I. & Juju🇩🇴","5 - 11","11 - 5","-","-","Unknown","Live","","","Jj59p4jJttlnbonNFZIP"
+"10","","2023-12-12T02:25:55.000Z","","1","","Bill R. & Wiktoria W.","Bri R. & Collin H.","11 - 5","5 - 11","-","-","Unknown","Live","","","4aeRQg0LEal4Dy226EGS"
+"9","","2023-12-12T02:23:25.000Z","","3","","J.Z. & 🔥Billy S.🔥","Colleen F. & Adrian L.","11 - 2","2 - 11","-","-","Unknown","Live","","","uwpjw92fllyPRJL690l6"
+"8","","2023-12-12T02:23:21.000Z","","2","","Tony D. & Eddie ☠️","Christie S. & Linduh V.","11 - 6","6 - 11","-","-","Unknown","Live","","","nzNrDLLfo0s1ijbJgApc"
+"7","","2023-12-12T02:20:47.000Z","","1","","Jarred B. & D-Hub27 🍻 🇺🇸","Joe I. & Laurie M","9 - 11","11 - 9","-","-","Unknown","Live","","","vCfebo6RQQXeMcxSpA21"
+"6","","2023-12-12T02:19:21.000Z","","3","","Collin H. & Adrian L.","Juju🇩🇴 & Bri R.","4 - 11","11 - 4","-","-","Unknown","Live","","","Qo4YxDqa0k2Wwm5PunWU"
+"5","","2023-12-12T02:15:55.000Z","","2","","Tony D. & Wiktoria W.","Bill R. & Colleen F.","11 - 4","4 - 11","-","-","Unknown","Live","","","Tl049KXtkDdMmbAytWeR"
+"4","","2023-12-12T02:14:53.000Z","","3","","Adrian L. & Christie S.","Linduh V. & Collin H.","4 - 11","11 - 4","-","-","Unknown","Live","","","pDr9lTnE5j2AYwy4ytmZ"
+"3","","2023-12-12T02:13:30.000Z","","1","","Juju🇩🇴 & D-Hub27 🍻 🇺🇸","Eddie ☠️ & 🔥Billy S.🔥","8 - 11","11 - 8","-","-","Unknown","Live","","","e1mpevkGaKWH3ltmsu81"
+"2","","2023-12-12T02:11:25.000Z","","2","","Bri R. & Wiktoria W.","J.Z. & Jarred B.","11 - 3","3 - 11","-","-","Unknown","Live","","","urAfzhDgesC9xWOjNvqY"
+"1","","2023-12-12T02:10:14.000Z","","3","","Joe I. & Bill R.","Colleen F. & Laurie M","11 - 2","2 - 11","-","-","Unknown","Live","","","7SM83Qf6Xptg6fdrP1eR"
+##### TOURNAMENT an870s7wMzZ2yVCnV5NP
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"11","","2023-12-17T16:15:22.000Z","0","1","","Joe I. & John L.","D-Hub27 🍻 🇺🇸 & Eddie ☠️","8 - 11","11 - 8","-","-","Unknown","Live","","","80AfS8geP1ZdLF3PMBbB"
+"10","","2023-12-17T16:09:35.000Z","0","1","","D-Hub27 🍻 🇺🇸 & Eddie ☠️","Joe I. & John L.","10 - 12","12 - 10","-","-","Unknown","Live","","","p6zRXjPp2brQ7uIwdEIg"
+"9","","2023-12-17T16:03:11.000Z","0","1","","🔥Billy S.🔥 & James E.","Joe I. & John L.","9 - 11","11 - 9","-","-","Unknown","Live","","","N4KDCihda8me0lSON3us"
+"8","","2023-12-17T15:55:44.000Z","0","1","","D-Hub27 🍻 🇺🇸 & Eddie ☠️","Joe I. & John L.","11 - 9","9 - 11","-","-","Unknown","Live","","","LGHOBFtIOUA7bKDttzhn"
+"7","","2023-12-17T15:49:49.000Z","0","1","","🔥Billy S.🔥 & James E.","Joe I. & John L.","5 - 11","11 - 5","-","-","Unknown","Live","","","vkcuXaTYyNBZ3SNYVQ4O"
+"6","","2023-12-17T15:41:56.000Z","","1","","Joe I. & D-Hub27 🍻 🇺🇸","James E. & Eddie ☠️","11 - 3","3 - 11","-","-","Unknown","Live","","","EJR1JjZUVLVF3sdGreg0"
+"5","","2023-12-17T15:37:06.000Z","","1","","D-Hub27 🍻 🇺🇸 & James E.","🔥Billy S.🔥 & John L.","11 - 8","8 - 11","-","-","Unknown","Live","","","35jkTIOvW34OKsQvehN0"
+"4","","2023-12-17T15:30:20.000Z","","1","","Joe I. & John L.","🔥Billy S.🔥 & Eddie ☠️","6 - 11","11 - 6","-","-","Unknown","Live","","","z16agVjO3SqguF982nWs"
+"3","","2023-12-17T15:25:05.000Z","","1","","John L. & James E.","D-Hub27 🍻 🇺🇸 & Eddie ☠️","3 - 11","11 - 3","-","-","Unknown","Live","","","RG6EQlIy1ACogW1SCB75"
+"2","","2023-12-17T15:21:02.000Z","","1","","D-Hub27 🍻 🇺🇸 & John L.","🔥Billy S.🔥 & Joe I.","9 - 11","11 - 9","-","-","Unknown","Live","","","s8EJvLjsHv8A2baZo0Im"
+"1","","2023-12-17T15:13:50.000Z","","1","","James E. & 🔥Billy S.🔥","Eddie ☠️ & Joe I.","11 - 5","5 - 11","-","-","Unknown","Live","","","hy7nFVd2WWTktOHVg5pY"
+##### TOURNAMENT P3kQbuJr16QJU7sJwvhh
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"5","","2023-12-17T17:51:13.000Z","","1","","John L. & Eddie ☠️","🔥Billy S.🔥 & Joe I.","7 - 11","11 - 7","-","-","Unknown","Live","","","laodpwfwa7iV8CFW5N1G"
+"4","","2023-12-17T16:50:43.000Z","","1","","James E. & D-Hub27 🍻 🇺🇸","Joe I. & Eddie ☠️","12 - 10","10 - 12","-","-","Unknown","Live","","","1ONeLpk0uVs7ojEFHVya"
+"3","","2023-12-17T16:43:05.000Z","","1","","John L. & D-Hub27 🍻 🇺🇸","Eddie ☠️ & 🔥Billy S.🔥","6 - 11","11 - 6","-","-","Unknown","Live","","","BllwDpVIsy5IEQ0rxK9Z"
+"2","","2023-12-17T16:35:57.000Z","","1","","🔥Billy S.🔥 & John L.","Joe I. & James E.","8 - 11","11 - 8","-","-","Unknown","Live","","","1jinpeq1hH3XM3spWZWp"
+"1","","2023-12-17T16:29:53.000Z","","1","","Joe I. & D-Hub27 🍻 🇺🇸","Eddie ☠️ & James E.","8 - 11","11 - 8","-","-","Unknown","Live","","","bhHEFgLBhaPWCtDjhD2c"
+##### TOURNAMENT vAIh8VqweiFNNfVAmt0A
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"51","","2023-12-19T03:57:38.000Z","","2","","Tori & Juju🇩🇴","Linduh & Bri R.","13 - 11","11 - 13","-","-","Unknown","Live","","","tojD34FkK3hAZgVfCC7l"
+"50","","2023-12-19T03:56:28.000Z","","1","","Joe I. & Milly S.","Jim D. & Tony D.","7 - 11","11 - 7","-","-","Unknown","Live","","","yXhp5cPYwHc1l3Zr3sL1"
+"49","","2023-12-19T03:51:17.000Z","","3","","Adrian L. & Eddie ☠️","Bill R. & Christie S.","12 - 10","10 - 12","-","-","Unknown","Live","","","EdcUzFibdm8KcCCRxhAg"
+"48","","2023-12-19T03:49:50.000Z","","2","","Linduh & Tori","Juju🇩🇴 & Jarred B.","11 - 7","7 - 11","-","-","Unknown","Live","","","SO8TT6ZWVt7i7tkfh7RC"
+"47","","2023-12-19T03:49:38.000Z","","1","","Mary-Ellen A. & 🔥Billy S.🔥","D-Hub27 🍻 🇺🇸 & J.Z.","10 - 12","12 - 10","-","-","Unknown","Live","","","e3HKFFSqYimpAHhHLX5C"
+"46","","2023-12-19T03:44:13.000Z","","3","","Milly S. & Jim D.","Tony D. & Bri R.","4 - 11","11 - 4","-","-","Unknown","Live","","","GjCx14J9LQ6MlDNRjsq2"
+"45","","2023-12-19T03:41:55.000Z","","1","","Bill R. & J.Z.","D-Hub27 🍻 🇺🇸 & Eddie ☠️","11 - 8","8 - 11","-","-","Unknown","Live","","","9wVMksnIe48qBp0b47I8"
+"44","","2023-12-19T03:40:58.000Z","","2","","Mary-Ellen A. & Joe I.","Adrian L. & Jarred B.","14 - 12","12 - 14","-","-","Unknown","Live","","","bp0dFhjv9SMWlmm6T9nE"
+"43","","2023-12-19T03:38:49.000Z","","3","","Linduh & Juju🇩🇴","Christie S. & 🔥Billy S.🔥","6 - 11","11 - 6","-","-","Unknown","Live","","","SPRYQLXwz8b0SarkJoFq"
+"42","","2023-12-19T03:34:48.000Z","","1","","Tori & Eddie ☠️","Jim D. & Bri R.","11 - 4","4 - 11","-","-","Unknown","Live","","","hjGXok6h7FPowK5JYNrb"
+"41","","2023-12-19T03:32:19.000Z","","2","","D-Hub27 🍻 🇺🇸 & Tony D.","Jarred B. & Joe I.","11 - 2","2 - 11","-","-","Unknown","Live","","","ACqJOE4IZEJVvwdFmQAc"
+"40","","2023-12-19T03:32:04.000Z","","3","","Christie S. & Mary-Ellen A.","J.Z. & 🔥Billy S.🔥","1 - 11","11 - 1","-","-","Unknown","Live","","","RtA6T4KCtjwOnOmhnEe8"
+"39","","2023-12-19T03:29:41.000Z","","1","","Bri R. & Tori","Milly S. & Adrian L.","11 - 5","5 - 11","-","-","Unknown","Live","","","VaPK1JfaTg0lOKdoMAaT"
+"38","","2023-12-19T03:27:29.000Z","","3","","Jim D. & Linduh","🔥Billy S.🔥 & Bill R.","5 - 11","11 - 5","-","-","Unknown","Live","","","y89tZnIFTfAgd0OGNwBd"
+"37","","2023-12-19T03:27:12.000Z","","2","","Juju🇩🇴 & Eddie ☠️","Joe I. & J.Z.","5 - 11","11 - 5","-","-","Unknown","Live","","","v7p9Pc2bJ2KFX9lfktU3"
+"36","","2023-12-19T03:24:22.000Z","","1","","Adrian L. & Mary-Ellen A.","D-Hub27 🍻 🇺🇸 & Christie S.","7 - 11","11 - 7","-","-","Unknown","Live","","","us3CfOVqZTRjTF59fv1n"
+"35","","2023-12-19T03:22:02.000Z","","3","","Jarred B. & Tony D.","Milly S. & Bill R.","11 - 9","9 - 11","-","-","Unknown","Live","","","5qu2O5cANfXSt31G7vX0"
+"34","","2023-12-19T03:21:27.000Z","","2","","Eddie ☠️ & J.Z.","Bri R. & Linduh","9 - 11","11 - 9","-","-","Unknown","Live","","","VUY9591GWzvfcbyLIZyl"
+"33","","2023-12-19T03:17:51.000Z","","1","","Jim D. & 🔥Billy S.🔥","Tori & Joe I.","4 - 11","11 - 4","-","-","Unknown","Live","","","YI7AB2Z0LMwa20urDai7"
+"32","","2023-12-19T03:14:37.000Z","","3","","Milly S. & Jarred B.","Juju🇩🇴 & Adrian L.","12 - 10","10 - 12","-","-","Unknown","Live","","","zcZi0YbczYgrOHYj2008"
+"31","","2023-12-19T03:14:26.000Z","","2","","D-Hub27 🍻 🇺🇸 & Bill R.","Christie S. & Tony D.","7 - 11","11 - 7","-","-","Unknown","Live","","","KBuN1FlssSH1iBI3Zt6o"
+"30","","2023-12-19T03:12:03.000Z","","1","","J.Z. & Jim D.","Bri R. & Mary-Ellen A.","11 - 7","7 - 11","-","-","Unknown","Live","","","ZZBWlilaNWRpRj5Xwb9y"
+"29","","2023-12-19T03:08:18.000Z","","2","","Tori & Tony D.","Christie S. & Eddie ☠️","11 - 8","8 - 11","-","-","Unknown","Live","","","wooBeWvkBlN9Ybtk2Pkf"
+"28","","2023-12-19T03:06:37.000Z","","3","","Joe I. & Linduh","🔥Billy S.🔥 & Adrian L.","13 - 15","15 - 13","-","-","Unknown","Live","","","ZSg0gke9w7b04SsFBLCW"
+"27","","2023-12-19T03:05:18.000Z","","1","","D-Hub27 🍻 🇺🇸 & Milly S.","Jarred B. & Mary-Ellen A.","8 - 11","11 - 8","-","-","Unknown","Live","","","PXLMcxmcR0O9Zurak3p1"
+"26","","2023-12-19T03:01:34.000Z","","2","","J.Z. & Bri R.","Juju🇩🇴 & Bill R.","6 - 11","11 - 6","-","-","Unknown","Live","","","MyFz1n9y7qhPkr2ueWwe"
+"25","","2023-12-19T02:58:12.000Z","","1","","Milly S. & Christie S.","Tony D. & Eddie ☠️","4 - 11","11 - 4","-","-","Unknown","Live","","","mSiZpQy5jOLP5nZm1Xdz"
+"24","","2023-12-19T02:57:14.000Z","","3","","Tori & Jarred B.","Mary-Ellen A. & Jim D.","11 - 3","3 - 11","-","-","Unknown","Live","","","Pl5O3JKVcakyEwNJoQeH"
+"23","","2023-12-19T02:55:23.000Z","","2","","D-Hub27 🍻 🇺🇸 & Juju🇩🇴","Joe I. & Adrian L.","11 - 5","5 - 11","-","-","Unknown","Live","","","5bmsuGJjN07mlV1QpWbp"
+"22","","2023-12-19T02:52:43.000Z","","1","","Milly S. & Tony D.","Linduh & Bill R.","5 - 11","11 - 5","-","-","Unknown","Live","","","b9txMXJikko26Pdz0QLu"
+"21","","2023-12-19T02:52:04.000Z","","3","","Christie S. & Jim D.","Jarred B. & 🔥Billy S.🔥","11 - 9","9 - 11","-","-","Unknown","Live","","","pLFcKr84yPJOG8CL1q2Q"
+"20","","2023-12-19T02:50:10.000Z","","2","","J.Z. & Mary-Ellen A.","Bri R. & Eddie ☠️","4 - 11","11 - 4","-","-","Unknown","Live","","","L7dE4yVMaQH1tU8WvyMv"
+"19","","2023-12-19T02:45:42.000Z","","3","","Christie S. & Jarred B.","Jim D. & Tori","12 - 10","10 - 12","-","-","Unknown","Live","","","IoT4VscbsSbaXzGF8CjY"
+"18","","2023-12-19T02:45:36.000Z","","1","","D-Hub27 🍻 🇺🇸 & Adrian L.","Juju🇩🇴 & Joe I.","6 - 11","11 - 6","-","-","Unknown","Live","","","2OxUExhyAW3NIiMly3sk"
+"17","","2023-12-19T02:45:09.000Z","","2","","Mary-Ellen A. & Bill R.","🔥Billy S.🔥 & Linduh","11 - 7","7 - 11","-","-","Unknown","Live","","","Lfh2XX5Bu4WnQnA53ykc"
+"16","","2023-12-19T02:40:08.000Z","","1","","Bri R. & Joe I.","Tony D. & Juju🇩🇴","9 - 11","11 - 9","-","-","Unknown","Live","","","FX4dxQ5CLTrHRztD2HYx"
+"15","","2023-12-19T02:39:11.000Z","","2","","Eddie ☠️ & Milly S.","Linduh & J.Z.","7 - 11","11 - 7","-","-","Unknown","Live","","","EmM8EN2LJAb2hvlg8hqC"
+"14","","2023-12-19T02:37:50.000Z","","3","","Adrian L. & Bill R.","Tori & D-Hub27 🍻 🇺🇸","3 - 11","11 - 3","-","-","Unknown","Live","","","VJ8opkhPiUylfxshF37t"
+"13","","2023-12-19T02:33:24.000Z","","1","","Christie S. & Joe I.","Bri R. & 🔥Billy S.🔥","11 - 6","6 - 11","-","-","Unknown","Live","","","OnYCDxF19RreIkXGspLc"
+"12","","2023-12-19T02:33:10.000Z","","3","","Tori & Mary-Ellen A.","Tony D. & Adrian L.","10 - 12","12 - 10","-","-","Unknown","Live","","","oNqUvDAO1Cjo1sw0CSjo"
+"11","","2023-12-19T02:32:41.000Z","","2","","Jarred B. & J.Z.","D-Hub27 🍻 🇺🇸 & Linduh","6 - 11","11 - 6","-","-","Unknown","Live","","","XyERusd7hrC4Z4HbyJ1F"
+"10","","2023-12-19T02:27:12.000Z","","1","","Juju🇩🇴 & Milly S.","Bill R. & Jim D.","6 - 11","11 - 6","-","-","Unknown","Live","","","r2M2UPqTzUqxJ51Y3Sc7"
+"9","","2023-12-19T02:27:03.000Z","","2","","Jarred B. & D-Hub27 🍻 🇺🇸","🔥Billy S.🔥 & Eddie ☠️","11 - 9","9 - 11","-","-","Unknown","Live","","","zaWuU7FvwavQkK4fJRuR"
+"8","","2023-12-19T02:26:06.000Z","","3","","Linduh & Tony D.","Adrian L. & J.Z.","11 - 7","7 - 11","-","-","Unknown","Live","","","0MvjPa9hlhtH0VBsekIW"
+"7","","2023-12-19T02:20:44.000Z","","1","","Joe I. & Jim D.","Bill R. & Tori","7 - 11","11 - 7","-","-","Unknown","Live","","","MLqM2jMZ0kEtm7xo8Sw4"
+"6","","2023-12-19T02:20:33.000Z","","2","","Christie S. & Bri R.","Mary-Ellen A. & Milly S.","11 - 7","7 - 11","-","-","Unknown","Live","","","zDJKrnpYKImSFxy6ihHX"
+"5","","2023-12-19T02:20:12.000Z","","3","","Linduh & Eddie ☠️","🔥Billy S.🔥 & Juju🇩🇴","14 - 15","15 - 14","-","-","Unknown","Live","","","XyarYZeZHWw4pXLKsjC4"
+"4","","2023-12-19T02:14:30.000Z","","1","","Joe I. & Tony D.","Jim D. & Jarred B.","12 - 14","14 - 12","-","-","Unknown","Live","","","Tp83aALuFzghMhA1RIjT"
+"3","","2023-12-19T02:14:09.000Z","","2","","Milly S. & J.Z.","Mary-Ellen A. & D-Hub27 🍻 🇺🇸","11 - 2","2 - 11","-","-","Unknown","Live","","","0DO7rgpgMdgtbWBgFx8K"
+"2","","2023-12-19T02:10:53.000Z","","3","","Juju🇩🇴 & Bri R.","🔥Billy S.🔥 & Tori","11 - 7","7 - 11","-","-","Unknown","Live","","","YwTX5qOMhf6ceAZU2FY5"
+"1","","2023-12-19T02:08:44.000Z","","2","","Bill R. & Eddie ☠️","Adrian L. & Christie S.","11 - 3","3 - 11","-","-","Unknown","Live","","","B6wiaGLrnmxhPKTOqwgN"
+##### TOURNAMENT RFzlKxrzAmoylRgIYFvB
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"3","","2023-12-20T14:35:44.000Z","","1","","Eddie ☠️ & BReady","D-Hub27 🍻 🇺🇸 & Mark H.","11 - 7","7 - 11","-","-","Unknown","Live","","","7oeCFpMYpqu5cYtzEzLS"
+"2","","2023-12-20T14:25:08.000Z","","1","","Mark H. & BReady","D-Hub27 🍻 🇺🇸 & Eddie ☠️","7 - 11","11 - 7","-","-","Unknown","Live","","","tZXQzeoKGtHtiJlqeZcM"
+"1","","2023-12-20T14:13:53.000Z","","1","","D-Hub27 🍻 🇺🇸 & BReady","Eddie ☠️ & Mark H.","11 - 5","5 - 11","-","-","Unknown","Live","","","r135JDIkjKmpXaPb7Cwd"
+##### TOURNAMENT 2hnSqmGTZVUJk3B562xN
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"21","","2023-12-22T02:57:40.000Z","0","1","","J.Z. & Jason C.","Eddie ☠️ & D-Hub27 🍻 🇺🇸","11 - 8","8 - 11","-","-","Unknown","Live","","","IlGY49ispnSaXi8sq3Hm"
+"20","","2023-12-22T02:50:49.000Z","0","1","","Eddie ☠️ & D-Hub27 🍻 🇺🇸","J.Z. & Jason C.","7 - 11","11 - 7","-","-","Unknown","Live","","","EnwjM4HfBEFHMnc8P0Tn"
+"19","","2023-12-22T02:44:35.000Z","0","1","","Joe I. & Colleen F.","J.Z. & Jason C.","2 - 11","11 - 2","-","-","Unknown","Live","","","IaExtcOzIqQzAZsRdZfl"
+"18","","2023-12-22T02:39:53.000Z","0","2","","Juju🇩🇴 & Chris B.","Joe I. & Colleen F.","10 - 12","12 - 10","-","-","Unknown","Live","","","uwkVvHJrfekwaThSV3Fz"
+"17","","2023-12-22T02:39:01.000Z","0","1","","J.Z. & Jason C.","Eddie ☠️ & D-Hub27 🍻 🇺🇸","8 - 11","11 - 8","-","-","Unknown","Live","","","ETLHOXF6it4TPNApO5Jk"
+"16","","2023-12-22T02:31:20.000Z","0","2","","🔥Billy S.🔥 & Jennifer B.","Juju🇩🇴 & Chris B.","5 - 11","11 - 5","-","-","Unknown","Live","","","CEYZuPKm4Ca48KNTQMnk"
+"15","","2023-12-22T02:31:14.000Z","0","1","","Joe I. & Colleen F.","Eddie ☠️ & D-Hub27 🍻 🇺🇸","6 - 11","11 - 6","-","-","Unknown","Live","","","5jY9vsrMBU1PP0RHX2RY"
+"14","","2023-12-22T02:25:04.000Z","0","1","","🔥Billy S.🔥 & Jennifer B.","Joe I. & Colleen F.","10 - 12","12 - 10","-","-","Unknown","Live","","","pBD2P2GGOBCU6CtekKRC"
+"13","","2023-12-22T02:23:52.000Z","0","2","","Juju🇩🇴 & Chris B.","J.Z. & Jason C.","6 - 11","11 - 6","-","-","Unknown","Live","","","5cHiwQLLefFee0jx6DHJ"
+"12","","2023-12-22T02:15:28.000Z","","2","","J.Z. & Jason C.","Colleen F. & 🔥Billy S.🔥","11 - 9","9 - 11","-","-","Unknown","Live","","","lbenttfR6cYgqUzrXBOr"
+"11","","2023-12-22T02:12:40.000Z","","1","","Jennifer B. & Juju🇩🇴","Chris B. & Eddie ☠️","5 - 11","11 - 5","-","-","Unknown","Live","","","wh1rydrJPbibdxbfIdr8"
+"10","","2023-12-22T02:07:44.000Z","","2","","🔥Billy S.🔥 & D-Hub27 🍻 🇺🇸","Joe I. & Colleen F.","11 - 9","9 - 11","-","-","Unknown","Live","","","DscPHj6wGxUoS9Znh6Va"
+"9","","2023-12-22T02:07:05.000Z","","1","","Jennifer B. & Jason C.","Eddie ☠️ & J.Z.","3 - 11","11 - 3","-","-","Unknown","Live","","","OIVGKoux2OgmtXxDO62e"
+"8","","2023-12-22T02:02:19.000Z","","1","","Jason C. & Eddie ☠️","Jennifer B. & J.Z.","11 - 9","9 - 11","-","-","Unknown","Live","","","QllaioP7YhQM00xrW0gN"
+"7","","2023-12-22T02:00:25.000Z","","2","","Colleen F. & D-Hub27 🍻 🇺🇸","Juju🇩🇴 & Chris B.","5 - 11","11 - 5","-","-","Unknown","Live","","","0WXmlT5RZKO2aP4cRuwN"
+"6","","2023-12-22T01:54:39.000Z","","2","","🔥Billy S.🔥 & Juju🇩🇴","Joe I. & Chris B.","11 - 6","6 - 11","-","-","Unknown","Live","","","0hzHE7fB9lt6y8GedIYl"
+"5","","2023-12-22T01:54:38.000Z","","1","","D-Hub27 🍻 🇺🇸 & Eddie ☠️","Jason C. & Colleen F.","11 - 9","9 - 11","-","-","Unknown","Live","","","zkSYaalv2OBwkSB7m15x"
+"4","","2023-12-22T01:48:12.000Z","","2","","Chris B. & Jennifer B.","Juju🇩🇴 & J.Z.","2 - 11","11 - 2","-","-","Unknown","Live","","","EbZu8pxQq4HC8sg0MGGm"
+"3","","2023-12-22T01:47:48.000Z","","1","","Jason C. & D-Hub27 🍻 🇺🇸","🔥Billy S.🔥 & Joe I.","6 - 11","11 - 6","-","-","Unknown","Live","","","kRMuOe8poHX6OnXyjK5j"
+"2","","2023-12-22T01:42:42.000Z","","2","","Chris B. & Colleen F.","Jennifer B. & Eddie ☠️","7 - 11","11 - 7","-","-","Unknown","Live","","","FvKsvqS8LETaa1bNopd2"
+"1","","2023-12-22T01:40:27.000Z","","1","","Juju🇩🇴 & Joe I.","J.Z. & 🔥Billy S.🔥","11 - 7","7 - 11","-","-","Unknown","Live","","","O8AXJgayCxw3PVZU5Fso"
+##### TOURNAMENT fw6UGTJ2O0zHblZC1Udf
+##### ROSTER
+##### MATCHLOG
+"#","","Date/Time","Game Num","Crt","Sport","Team 1","Team 2","Score","Score 2","Wait Duration","Play Duration","Submit Source","Type","Match Type","Schedule Id","Match ID"
+"27","","2023-12-26T17:37:56.000Z","","1","","Colleen F. & Tori","BReady & Eddie ☠️","7 - 11","11 - 7","-","-","Unknown","Live","","","oM5DwS9oj4E5NLVQ50zh"
+"26","","2023-12-26T17:37:25.000Z","","2","","🔥Billy S.🔥 & Bill R.","Angelina D. & Doug B.","11 - 4","4 - 11","-","-","Unknown","Live","","","FhhkX4LKJniYiBE6ycS7"
+"25","","2023-12-26T17:32:46.000Z","","2","","John L. & D-Hub27 🍻 🇺🇸","Bill R. & Doug B.","11 - 9","9 - 11","-","-","Unknown","Live","","","YfwCXp4eotHdvMp8NU7N"
+"24","","2023-12-26T17:30:16.000Z","","1","","BReady & Colleen F.","Angelina D. & Ksmash K.","11 - 7","7 - 11","-","-","Unknown","Live","","","okXlgTkZFIBtXzKK0VY5"
+"23","","2023-12-26T17:26:22.000Z","","2","","Doug B. & 🔥Billy S.🔥","Tori & Eddie ☠️","6 - 11","11 - 6","-","-","Unknown","Live","","","OHDWahtUUQFD3vwJrIPb"
+"22","","2023-12-26T17:23:40.000Z","","1","","Ksmash K. & Bill R.","Colleen F. & D-Hub27 🍻 🇺🇸","11 - 7","7 - 11","-","-","Unknown","Live","","","izhtu4pEEUzdfJQEHOKQ"
+"21","","2023-12-26T17:20:41.000Z","","2","","Tori & Angelina D.","🔥Billy S.🔥 & Eddie ☠️","9 - 11","11 - 9","-","-","Unknown","Live","","","q87guKYUrHObjm6BI8O2"
+"20","","2023-12-26T17:17:00.000Z","","1","","Bill R. & John L.","D-Hub27 🍻 🇺🇸 & BReady","7 - 11","11 - 7","-","-","Unknown","Live","","","LVCSL2j1SXsWEILZrWsX"
+"19","","2023-12-26T17:13:01.000Z","","2","","Eddie ☠️ & Doug B.","Colleen F. & Ksmash K.","11 - 7","7 - 11","-","-","Unknown","Live","","","mlGYitZhkpC0bG36c59e"
+"18","","2023-12-26T17:10:44.000Z","","1","","Tori & 🔥Billy S.🔥","BReady & Angelina D.","11 - 4","4 - 11","-","-","Unknown","Live","","","la7xNWuQQpJzIkhGl0mA"
+"17","","2023-12-26T17:05:33.000Z","","1","","Tori & D-Hub27 🍻 🇺🇸","BReady & John L.","11 - 6","6 - 11","-","-","Unknown","Live","","","pHxhFelaKVZxAEYNhtxk"
+"16","","2023-12-26T17:05:30.000Z","","2","","Angelina D. & Bill R.","🔥Billy S.🔥 & Ksmash K.","14 - 12","12 - 14","-","-","Unknown","Live","","","M6y5Q97651htdvRs6ois"
+"15","","2023-12-26T16:59:24.000Z","","1","","BReady & Doug B.","Colleen F. & John L.","11 - 5","5 - 11","-","-","Unknown","Live","","","vAsbU55jAsLgs9qNE8Qt"
+"14","","2023-12-26T16:56:36.000Z","","2","","Tori & Bill R.","Ksmash K. & Eddie ☠️","12 - 10","10 - 12","-","-","Unknown","Live","","","fq8vpfhCYi32F4CjIPlh"
+"13","","2023-12-26T16:53:38.000Z","","1","","Angelina D. & D-Hub27 🍻 🇺🇸","🔥Billy S.🔥 & John L.","11 - 9","9 - 11","-","-","Unknown","Live","","","MhiwUtaaqeS2KJ8JSfbS"
+"12","","2023-12-26T16:47:41.000Z","","2","","Ksmash K. & Tori","BReady & Bill R.","10 - 12","12 - 10","-","-","Unknown","Live","","","yfi3nn9aO0r9Pvxsk2ZB"
+"11","","2023-12-26T16:46:52.000Z","","1","","Eddie ☠️ & D-Hub27 🍻 🇺🇸","Colleen F. & Doug B.","11 - 1","1 - 11","-","-","Unknown","Live","","","fdpDYJ0gLbqTsWO9Fi9A"
+"10","","2023-12-26T16:42:34.000Z","","1","","D-Hub27 🍻 🇺🇸 & 🔥Billy S.🔥","Doug B. & John L.","11 - 4","4 - 11","-","-","Unknown","Live","","","RKWZCAaavm3uzq809CPY"
+"9","","2023-12-26T16:39:49.000Z","","2","","Bill R. & Colleen F.","Eddie ☠️ & Angelina D.","11 - 8","8 - 11","-","-","Unknown","Live","","","reXzOnNIdHprIHkgfGrX"
+"8","","2023-12-26T16:36:11.000Z","","1","","Ksmash K. & BReady","Doug B. & D-Hub27 🍻 🇺🇸","11 - 5","5 - 11","-","-","Unknown","Live","","","8j6PIPc993Np00pdadQQ"
+"7","","2023-12-26T16:33:20.000Z","","2","","🔥Billy S.🔥 & Angelina D.","Tori & John L.","11 - 7","7 - 11","-","-","Unknown","Live","","","F3ff6gFBWWh9pey0c6XQ"
+"6","","2023-12-26T16:30:13.000Z","","1","","Doug B. & Ksmash K.","Colleen F. & Eddie ☠️","12 - 10","10 - 12","-","-","Unknown","Live","","","EMubykb7Y3XtMJJIX1z7"
+"5","","2023-12-26T16:27:09.000Z","","2","","Tori & BReady","D-Hub27 🍻 🇺🇸 & Bill R.","9 - 11","11 - 9","-","-","Unknown","Live","","","igWSxoxma4IFPh5bTcgF"
+"4","","2023-12-26T16:21:26.000Z","","1","","Colleen F. & Angelina D.","Eddie ☠️ & John L.","6 - 11","11 - 6","-","-","Unknown","Live","","","RzhBYIbLYgZkYkrEsoc0"
+"3","","2023-12-26T16:19:41.000Z","","2","","Doug B. & Tori","BReady & 🔥Billy S.🔥","7 - 11","11 - 7","-","-","Unknown","Live","","","AgcGm1IkkWcGH4dMfAdb"
+"2","","2023-12-26T16:15:09.000Z","","1","","D-Hub27 🍻 🇺🇸 & Ksmash K.","Angelina D. & John L.","11 - 9","9 - 11","-","-","Unknown","Live","","","Qp6SpYY0gPg8rffAFcb0"
+"1","","2023-12-26T16:13:36.000Z","","2","","Bill R. & Eddie ☠️","🔥Billy S.🔥 & Colleen F.","11 - 7","7 - 11","-","-","Unknown","Live","","","w88cLRATIudS3G6bmyDd"

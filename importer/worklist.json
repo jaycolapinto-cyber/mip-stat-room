@@ -1,0 +1,519 @@
+{
+  "generated": "2026-09-12T12:16:16.199Z",
+  "total": 30,
+  "items": [
+    {
+      "handle": "D-Hub27🍺",
+      "id": "d-hub27",
+      "games": 10,
+      "meetings": 124,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "david-huber",
+          "name": "David Huber",
+          "score": 4,
+          "surname": true,
+          "contradicts": false,
+          "why": "\"hub\" ~ huber, first initial",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "JonMac75☘️",
+      "id": "jonmac75",
+      "games": 0,
+      "meetings": 128,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "Chasette Gold",
+      "id": "chasette-gold",
+      "games": 22,
+      "meetings": 88,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "L. Glods ❤️",
+      "id": "l-glods",
+      "games": 21,
+      "meetings": 84,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "lauren-glodny",
+          "name": "Lauren Glodny",
+          "score": 8,
+          "surname": true,
+          "contradicts": false,
+          "why": "\"glods\" ~ glodny, \"glods\" ~ glodny, first initial",
+          "confident": true
+        }
+      ]
+    },
+    {
+      "handle": "Ronnie D",
+      "id": "ronnie-d",
+      "games": 11,
+      "meetings": 88,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "🇺🇸 Scadutes 🇺🇸",
+      "id": "scadutes",
+      "games": 11,
+      "meetings": 88,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "billy-scaduto",
+          "name": "Billy Scaduto",
+          "score": 8,
+          "surname": true,
+          "contradicts": false,
+          "why": "\"scadutes\" ~ scaduto, contains last name",
+          "confident": true
+        }
+      ]
+    },
+    {
+      "handle": "Tim L",
+      "id": "tim-l",
+      "games": 11,
+      "meetings": 88,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "timothy-lynch",
+          "name": "Timothy Lynch",
+          "score": 7,
+          "surname": true,
+          "contradicts": false,
+          "why": "\"tim\" = timothy, last initial",
+          "confident": true
+        },
+        {
+          "id": "tim-ferdinand",
+          "name": "Tim Ferdinand",
+          "score": 4,
+          "surname": false,
+          "contradicts": false,
+          "why": "first name",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "Andy",
+      "id": "andy",
+      "games": 11,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "andrew-heyman",
+          "name": "Andrew Heyman",
+          "score": 4,
+          "surname": false,
+          "contradicts": false,
+          "why": "\"andy\" = andrew",
+          "confident": false
+        },
+        {
+          "id": "andrew-johnson",
+          "name": "Andrew Johnson",
+          "score": 4,
+          "surname": false,
+          "contradicts": false,
+          "why": "\"andy\" = andrew",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "Bobby P",
+      "id": "bobby-p",
+      "games": 11,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "robert-player",
+          "name": "Robert Player",
+          "score": 7,
+          "surname": true,
+          "contradicts": false,
+          "why": "\"bobby\" = robert, last initial",
+          "confident": true
+        },
+        {
+          "id": "robert-mentz",
+          "name": "Robert Mentz",
+          "score": 4,
+          "surname": false,
+          "contradicts": false,
+          "why": "\"bobby\" = robert",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "Chase Gold",
+      "id": "chase-gold",
+      "games": 11,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "Chris P.",
+      "id": "chris-p",
+      "games": 10,
+      "meetings": 40,
+      "ambiguous": [
+        "Chris Price",
+        "Chris Paolina"
+      ],
+      "suggestions": [
+        {
+          "id": "chris-paolina",
+          "name": "Chris Paolina",
+          "score": 11,
+          "surname": true,
+          "contradicts": false,
+          "why": "first name, last initial, name prefix",
+          "confident": false
+        },
+        {
+          "id": "chris-price",
+          "name": "Chris Price",
+          "score": 11,
+          "surname": true,
+          "contradicts": false,
+          "why": "first name, last initial, name prefix",
+          "confident": false
+        },
+        {
+          "id": "christopher-buchman",
+          "name": "Christopher Buchman",
+          "score": 8,
+          "surname": false,
+          "contradicts": false,
+          "why": "\"chris\" = christopher, name prefix",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "Don Desroches",
+      "id": "don-desroches",
+      "games": 10,
+      "meetings": 40,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "Edwin Adams",
+      "id": "edwin-adams",
+      "games": 10,
+      "meetings": 40,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "adam-beznicki",
+          "name": "Adam Beznicki",
+          "score": 2,
+          "surname": false,
+          "contradicts": true,
+          "why": "first-name prefix",
+          "confident": false
+        },
+        {
+          "id": "adam-kalyvas",
+          "name": "Adam Kalyvas",
+          "score": 2,
+          "surname": false,
+          "contradicts": true,
+          "why": "first-name prefix",
+          "confident": false
+        },
+        {
+          "id": "adam-stork",
+          "name": "Adam Stork",
+          "score": 2,
+          "surname": false,
+          "contradicts": true,
+          "why": "first-name prefix",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "Frederick Halikias",
+      "id": "frederick-halikias",
+      "games": 10,
+      "meetings": 40,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "Halime Berkay",
+      "id": "halime-berkay",
+      "games": 10,
+      "meetings": 40,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "Jackie Mahoney",
+      "id": "jackie-mahoney",
+      "games": 10,
+      "meetings": 40,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "Karen Mangione",
+      "id": "karen-mangione",
+      "games": 10,
+      "meetings": 40,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "karen-polito",
+          "name": "Karen Polito",
+          "score": 8,
+          "surname": false,
+          "contradicts": true,
+          "why": "first name, name prefix",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "Winnie Gao",
+      "id": "winnie-gao",
+      "games": 10,
+      "meetings": 40,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "Michael Bellini",
+      "id": "michael-bellini",
+      "games": 9,
+      "meetings": 36,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "michael-cohn",
+          "name": "Michael Cohn",
+          "score": 8,
+          "surname": false,
+          "contradicts": true,
+          "why": "first name, name prefix",
+          "confident": false
+        },
+        {
+          "id": "michael-crews",
+          "name": "Michael Crews",
+          "score": 8,
+          "surname": false,
+          "contradicts": true,
+          "why": "first name, name prefix",
+          "confident": false
+        },
+        {
+          "id": "michael-granito",
+          "name": "Michael Granito",
+          "score": 8,
+          "surname": false,
+          "contradicts": true,
+          "why": "first name, name prefix",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "BReady",
+      "id": "bready",
+      "games": 0,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "David J.",
+      "id": "david-j",
+      "games": 0,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "david-huber",
+          "name": "David Huber",
+          "score": 8,
+          "surname": false,
+          "contradicts": false,
+          "why": "first name, name prefix",
+          "confident": false
+        },
+        {
+          "id": "dave-nguyen",
+          "name": "Dave Nguyen",
+          "score": 4,
+          "surname": false,
+          "contradicts": false,
+          "why": "\"david\" = dave",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "🇺🇸 EJ 🇺🇸",
+      "id": "ej",
+      "games": 0,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "Jamie Y.",
+      "id": "jamie-y",
+      "games": 0,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "jamie-torney",
+          "name": "Jamie Torney",
+          "score": 8,
+          "surname": false,
+          "contradicts": false,
+          "why": "first name, name prefix",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "Juju🇩🇴🧿",
+      "id": "juju",
+      "games": 0,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "J.Z.",
+      "id": "j-z",
+      "games": 0,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "Ken L.",
+      "id": "ken-l",
+      "games": 0,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "kenny-jee",
+          "name": "Kenny Jee",
+          "score": 4,
+          "surname": false,
+          "contradicts": false,
+          "why": "\"ken\" = kenny",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "Konstantin G.",
+      "id": "konstantin-g",
+      "games": 0,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": [
+        {
+          "id": "jeff-antinoro",
+          "name": "Jeff Antinoro",
+          "score": 4,
+          "surname": true,
+          "contradicts": true,
+          "why": "contains last name",
+          "confident": false
+        },
+        {
+          "id": "kristin-antinoro",
+          "name": "Kristin Antinoro",
+          "score": 4,
+          "surname": true,
+          "contradicts": true,
+          "why": "contains last name",
+          "confident": false
+        }
+      ]
+    },
+    {
+      "handle": "Tori",
+      "id": "tori",
+      "games": 0,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "🦅",
+      "id": "p176",
+      "games": 0,
+      "meetings": 44,
+      "ambiguous": null,
+      "suggestions": []
+    },
+    {
+      "handle": "Michael C.",
+      "id": "michael-c",
+      "games": 0,
+      "meetings": 40,
+      "ambiguous": [
+        "Michael Cohn",
+        "Michael Crews"
+      ],
+      "suggestions": [
+        {
+          "id": "michael-cohn",
+          "name": "Michael Cohn",
+          "score": 11,
+          "surname": true,
+          "contradicts": false,
+          "why": "first name, last initial, name prefix",
+          "confident": false
+        },
+        {
+          "id": "michael-crews",
+          "name": "Michael Crews",
+          "score": 11,
+          "surname": true,
+          "contradicts": false,
+          "why": "first name, last initial, name prefix",
+          "confident": false
+        },
+        {
+          "id": "michael-granito",
+          "name": "Michael Granito",
+          "score": 8,
+          "surname": false,
+          "contradicts": false,
+          "why": "first name, name prefix",
+          "confident": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "_source": "Scoreholio organizer -> tournament -> Roster, extracted via AG Grid API",
+  "_captured": "2026-09-13",
+  "_note": "Proof of method. playerEmail deliberately omitted.",
+  "players": [
+    { "display": "Craig Erk",   "fullName": "Craig Erkus",     "duprDoubles": 3.322,   "matches": 22 },
+    { "display": "Dylan N.",    "fullName": "Dylan N",         "duprDoubles": null,    "matches": 5 },
+    { "display": "Gregg D.",    "fullName": "Gregg Dukofsky",  "duprDoubles": 3.24537, "matches": 0 },
+    { "display": "Lou A.",      "fullName": "Lou Assentato",   "duprDoubles": 3.87019, "matches": 0 },
+    { "display": "Louise O.",   "fullName": "Louise Olive",    "duprDoubles": 3.87,    "matches": 0 },
+    { "display": "Rob S.",      "fullName": "Rob Sarraga",     "duprDoubles": null,    "matches": 22 },
+    { "display": "Robert S.",   "fullName": "Robert Seidner",  "duprDoubles": null,    "matches": 0 },
+    { "display": "Stephen R.",  "fullName": "Stephen Rizzi",   "duprDoubles": 3.873,   "matches": 885 },
+    { "display": "Steven S.",   "fullName": "Steven Sugarman", "duprDoubles": 3.83599, "matches": 0 },
+    { "display": "Timothy M.",  "fullName": "Timothy Messner", "duprDoubles": 4.007,   "matches": 23 }
+  ]
+}

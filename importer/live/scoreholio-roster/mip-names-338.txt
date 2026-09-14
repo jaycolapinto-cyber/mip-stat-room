@@ -1,0 +1,889 @@
+##### GLOBAL
+10 1	10 10
+11 1	11 11
+12 1	12 12
+13 1	13 13
+14 1	14 14
+15 1	15 15
+16 1	16 16
+17 1	17 17
+18 1	18 18
+19 1	19 19
+20 2	20 20
+21 2	21 21
+22 2	22 22
+23 2	23 23
+24 2	24 24
+aaa b	Aaa Bbb
+abigail f	Abigail Fromm
+adam k	Adam Kalyvas
+adam s. 🇺🇸🍻	Adam Stork
+adam w	Adam Windwer
+adam. k	Adam Kalyvas
+adrian l	Adrian Lim
+adrian m	Adrian Murillo
+aj f	AJ Flores
+albert r	Albert Rocaberte
+alex m. 🇺🇸	ALEX MIGNONE
+alexia y	Alexia Yaziciyan
+alexis l	Alexis Labaria
+alfonso n	Alfonso Nappi
+allison l	Allison Lynch
+alvin d	Alvin Dimagmaliw
+amanda z	Amanda Zielbauer
+ambre a	Ambre Amat
+andrew h	Andrew Heyman
+andy	Andrew Heyman
+andy f	Andy Fried
+angel a	Angel Abalos
+angela c	Angela Chiu-Pastine
+angelina d	Angelina DiTucci
+ann m	Ann Medina
+anthony n	Anthony Neglia
+antonette	Antonette Cabello
+araksya h	Araksya Hovsepyan
+arlen c	Arlen Caci
+ashley d	Ashley Davis
+ashton l	Ashton Lim
+axat k	Axat Karambe
+b s	B Scaduto
+bambi f	Bambi Falvo
+bethuel b	Bethuel Bayawa
+bianca p	Bianca Popko
+bill r	Bill Rotunda
+billy c	Virgilio Cruz
+blake. h	Blake Heller
+bob f	Bob  Fried
+bready	Jarred Barretti
+brent c	Brent Corona
+brett r	brett ritholtz
+bri r	Bri Rivera
+brian g	Brian Gentile
+brian s	Brian Scarola
+brian w	Brian Werbeck
+brian z	Brian Ziskind
+briar c	Briar Cabello
+briar rose l	Briar Rose Luspo
+c s	C Simmons
+carms s	Carms Sarmiento
+cathleen s	Cathleen Schmidt
+caycee m	Caycee Mendelson
+ccc d	Ccc Ddd
+cecelia i	Cecelia Izzo
+cecile m	Cecile Marnilo
+chad g	Chad Gropack
+charles m	Charles Maione
+charles. m	Charles Maione
+chase gold	Sal Farruggia
+chasette gold	Danielle Farruggia
+chris g	Chris Go
+chris. b	Chris Berenson
+christie s	Christie Simmons
+christopher c	Christopher Colesanti
+christopher e	Christopher Emmart
+christopher r	Christopher Reid
+cindy p	Cindy Princiotta
+cliff l	Cliff LoSasso
+cole s	Cole Stark
+colleen f	Colleen Fitzpatrick
+colleen h	Colleen Hagerty
+colleen. h	Colleen Hagerty
+collin h	Collin Huber
+concon l	Concon Lim
+connie a	Connie Alejandro
+craig erk	Craig Erkus
+craig. n	Craig Nolan
+d-hub27 🍻 🇺🇸	David Huber
+d-hub27🇺🇸	David Huber
+d-hub27🍺	David Huber
+dan m	Dan Menz
+daniel larusso (aka j.z.)	Jimmy Zervas
+danielle r	Danielle Rosmarin
+darling m	Darling Munsayac
+dave d	Dave Dodds
+david h	David Hsiu
+david k	David Klibanoff
+david w	david winnitzki
+david. h	David Huber
+david. j	David Jacobs
+david. w	david winnitzki
+dawn m	Dawn McCloskey
+debbie m	Debbie Mckeefery
+deli w	Deli Walsh
+denis l	Denis Leff
+denise m	Denise Migliaro
+dirty stay out	David Huber
+dolores s	Dolores Schub
+don r	Don Rizzi
+doo d	Doo Doo
+dorothy c	Dorothy Connolly
+doug b	Doug Brier
+dr. lauren g	Dr. Lauren Goodwyn
+dylan s	Dylan Santos
+earl b	Earl Belleza
+eddie	Eddie Rizzi
+eddie ☠️	Eddie Rizzi
+eddie. r	Eddie Rizzi
+eddy joseph	Edward Wahl
+edward r	Edward Rizzi
+edward w	Edward Wahl
+edward. w	Edward Wahl
+eee f	Eee Fff
+elena l	Elena Licandro
+elisa v	Elisa Villani
+ellen c	Ellen Chang
+elona w	Elona Weiner
+em c	Em Carison
+emily a	Emily Ansale
+eran d	Eran Dekel
+eran. d	Eran Dekel
+eric n	Eric Natindim
+eric. s	Eric Sun
+fermin s	FERMIN SANTOS
+frank footer	John Franzitta
+frank i	Frank Intintoli
+frank p	Frank Pryz
+frank r	Frank Rossetti
+franklin b	Franklin Bermeo
+french m	french mike
+french mike	Mikel Strauch
+gary b	Gary Bachrach
+george g	George Guirgio
+george n	George Naumovski
+geraldine c	Geraldine Ceniza
+ggg h	Ggg Hhh
+ghulam m	Ghulam Mustafa
+greg k	Greg Koretz
+hailey s	hailey stork
+halime b	Halime Berkay
+hazel l	Hazel Lana
+heather a	Heather Adler
+heidi c	Heidi Callahan
+heily p	Heily Piche
+iii j	Iii Jjj
+irma a	Irma Altman
+isabela m	Isabela Musheyev
+ivan r	Ivan Rivera
+j.z	Jimmy Zervas
+jack c	Jack Chang
+jackie m	Jackie Mahoney
+jackie s	Jackie Santos
+jaime m	Jaime Munch
+james c	James Castellano
+james e	James Elliott
+james v	James Voul
+james. c	James Castellano
+jamie t	Jamie Torney
+jan lei s	Jan Lei Saret
+janeice s	Janeice Schmidt
+jason a	Jason Aron
+jason p	Jason Pomerantz
+jason r	Jason Rogowsky
+jason v	Jason Vargas
+jason z	Jason Zaragoza
+jason. a	Jason Aron
+jason. v	Jason Vargas
+jay c	Jay Colapinto
+jay. c	Jay Colapinto
+jaypee n	Jaypee Noche
+jean emmanuel h	Jean Emmanuel Huang
+jeffrey f	Jeffrey Fein
+jennifer b	Jennifer Borg
+jennifer p	Jennifer Pavlik
+jhantelle b	Jhantelle Belleza
+jim r	Jim Rochanakit
+joe i	Joe Iadevaia
+joe p	joe pelle
+joeanna g	joeanna greenberg
+john f	John Franzitta
+john m	John McCormack
+john p	John Pogi
+john. m	John McCormack
+jonathan g	Jonathan Graziosi
+joseph l	Joseph Lupo
+joseph p	Joseph Petican
+joseph s	Joseph Schmidt
+joseph t	JOSEPH TABAK
+joseph. f	joseph fein
+joseph. t	JOSEPH TABAK
+josh c	Josh Callahan
+josh d	Josh Dela Rosa
+josh j	Josh Judge
+josh. j	Josh Judge
+joshua o	Joshua Octaviano
+joshua. l	Joshua Levy
+joy d	Joy Diaz
+juan g	Juan Guzman
+juan m	Juan Martinez III
+juju🇩🇴	Julio Olivo
+julianne b	Julianne Bendita
+julie s	Julie Schenck
+kaitlyn h	Kaitlyn Hintze
+kaitlyn s	Kaitlyn Schwarz
+kannarie a	Kannarie Abalos
+karen p	Karen Polito
+kathy a	Kathy Alcebar
+kathy d	kathy dunne
+kelli m	Kelli Mullahey
+ken f	Ken Figgs
+kenny j	Kenny Jee
+kenny. j	Kenny Jee
+kerri s	Kerri Stork
+kevin o	Kevin Obate
+kevin r	Kevin Rogers
+kirby e	Kirby Einhorn
+kkk l	Kkk Lll
+klodiana z	Klodiana Zylo
+kristen f	Kristen Frendak
+kylie l	Kylie Lacerte
+l g	L Glodney
+lani licandro	Elena Licandro
+larissa k	Larissa Klug
+laura, p	Laura Pollicino
+lauren g	Lauren Glodny
+laurie m	Laurie Mayer
+laurie🌸	Laurie Mayer
+leeza t	Leeza Timofeeva
+leonila j	Leonila Jewell
+lesh	Jose Lesh
+linduh	Linda Vino
+lisa r	Lisa Rogers
+liz m	Liz Mantione
+lizyle g	Lizyle GenilChin
+lloydleo o	LloydLeo Omoso
+lolita s	Lolita Sanchez
+lori d	Lori DeAngelo
+lori m	Lori McBride
+louise g	Louise Ganitis
+lowie k	Lowie Kampitan
+lulu	Lulu Lim
+lynn w	Lynn Wright
+macarthur a	Macarthur Abalos
+mae v	mae valenzuela
+maggie l	Maggie Lin
+manuel s	Manuel Santiago
+marc. f	Marc Fontaine
+margarita t	Margarita Temprosa
+maria f	Maria Fanfa
+maria z	Maria Z-Rizzuto
+maricel	Cecilia Pineda
+maricel p	Maricel Pineda
+marie devica c	Marie Devica Caliboso
+mario n	Mario Nunez
+marissa s	Marissa Stork
+maritoni a	Maritoni Agatep
+mary beth n	Mary Beth Nardone
+mary-ellen a	Mary-Ellen Amatulli
+matt b	Matt Belanger
+matt g	Matt Gabriel
+matthew s	Matthew Schlosser
+matthew. s	Matthew Schlosser
+maurice r	Maurice Reilly
+max. s	max silverberg
+megan b	Megan Bekel
+melanie b	Melanie Berenson
+michael b	Michael Bergman
+michael g	Michael Glover
+michele s	Michele Scarazzini
+michelle f	Michelle Ferolin
+michelle r	Michelle Reyes
+micky g	Micky Garcia
+miguel a	Miguel Arrozal
+mike b	Mike Breitinger
+mike. m	Mike Mormando
+mikel s	Mikel Strauch
+milly s	Milly Serrano
+milton f	Milton Farez
+mmm n	Mmm Nnn
+monique p	Monique Panajon
+nancy h	Nancy Hong
+nancy w	Nancy Wisniewski
+narae c	Narae Chang
+nerissa l	Nerissa Lem
+nick d	Nick Durante
+nico o	Nico Ortiz
+nicole b	Nicole Beiner
+nicole m	Nicole McCoy
+nilay v	Nilay Vora
+noah h	Noah Hackmack
+noel b	Noel Bacareza
+noel l	Noel Leon
+nova l	Nova Langahid
+olga s	Olga Sedycias
+ooo p	Ooo Ppp
+owen m	Owen Messner
+paolo p	Paolo Penso
+patricia p	Patricia Pallay
+patrick r	Patrick Ramirez
+paul h	Paul Heiser
+paul k	Paul Korman
+pauline c	Pauline Craig
+pete j	Pete Judge
+peter a	Peter Aglio
+peter p	Peter Prochilo
+petro x	Petro Xenakis
+phil o	Phil Ortiz
+pickleballchris.com. h	PickleballChris.com Holden
+piolo pakyaw	Philip Panajon
+player 1 p	Player 1 Player
+player 10 p	Player 10 Player
+player 11 p	Player 11 Player
+player 12 p	Player 12 Player
+player 13 p	Player 13 Player
+player 14 p	Player 14 Player
+player 15 p	Player 15 Player
+player 16 p	Player 16 Player
+player 2 p	Player 2 Player
+player 3 p	Player 3 Player
+player 4 p	Player 4  Player
+player 5 p	Player 5 Player
+player 6 p	Player 6 Player
+player 7 p	Player 7 Player
+player 8 p	Player 8 Player
+player 9 p	Player 9 Player
+qasim d	Qasim Dustgir
+qasim. d	Qasim Dustgir
+r.mentz 🏴‍☠️	Robert Mentz
+rachel g	Rachel Goodman
+rachel m	Rachel Moran
+rafael m	Rafael Munsayac
+ralph q	Ralph Quisumbing
+rebecca t	Rebecca Torres
+renata p	Renata Pisani
+renato i	Renato Ilagan
+reynaldo d	Reynaldo De lara
+rio e	Rio Espi
+riva b	Riva Bacareza
+rob g	Rob Goldstein
+rob w	Rob Weinstein
+robert m	Robert Mentz
+robert p	Robert Player
+romie a	Romie Alcebar
+rommel p	Rommel Pineda
+ron d	Eran Dekel
+ronnie d	Eran Dekel
+rrr s	Rrr Sss
+rudolf k	Rudolf Kormanik
+rudy c	Rudy Cabello
+sam g	Sam Goldberg
+sam l	Sam Leone
+samantha g	samantha guint
+samuel m	Samuel Milanez
+scott m	Scott Martin
+shane. m	Shane Morrison
+shari f	Shari Feldberg
+sherman l	Sherman Lau
+simon f	Simon Frroku
+sonny. d	Sonny Dickman
+sotiris g	Sotiris Georgiou
+sourav c	Sourav Chaudhuri
+stephen d	Stephen Donnelly
+stephen r	Stephen Rizzi
+steve b	Steve Belanger
+steve. g	Steve Gj
+steven c	Steven Cheng
+steven m	Steven Montoya
+steven p	Steven Pulla
+stork 🇺🇸🍻	Adam Stork
+sylvi s	Sylvi Sy
+tammy c	Tammy Chiu Nieto
+thomas b	Thomas Brush
+thomas p	thomas page
+tim l	Timothy Lynch
+timothy l	Timothy Lynch
+timothy m	Timothy Messner
+tom b	Tom Burke
+tom j	Tom Jones
+tori	Wiktoria W
+ttt v	Ttt Vvv
+tyler b	Tyler Brodsky
+val k	Val Kats
+valeree q	Valeree Quisumbing
+vanessa leslie i	Vanessa Leslie Ilagan
+veronica c	Veronica Cardona
+vicky t	Vicky Turk
+victor c	Victor Carlos
+victoria b	Victoria Bruce
+victoria m	Victoria Mauri
+vincent c	Vincent Cusumano
+vincent r	Vincent Ribortone
+vinny f	Vinny Frisina
+vinz v	Vinz Viz
+www x	Www Xxx
+🇺🇸 scadutes 🇺🇸	Billy Scaduto
+🇺🇸 wjs 🇺🇸	Billy Scaduto
+🔥scadutes 🔥	Billy Scaduto
+##### PERTOURNAMENT
+09nBF6fklxYS5K1YJoye	Jason C.	Jason Careri
+09nBF6fklxYS5K1YJoye	Jim D.	Jim Duffy
+09nBF6fklxYS5K1YJoye	Lisa C.	Lisa Corso
+0B3wOBckgkLSjMtWb20U	David A.	David Amatulli
+0B3wOBckgkLSjMtWb20U	Jason C.	Jason Careri
+0B3wOBckgkLSjMtWb20U	Jim D.	Jim Duffy
+0FZQO9Sk0762ep4LA9TM	Brett 🦅	Brett 🦅 🦅
+0HuH6KiOxVqvexoFQqmQ	Chris P.	Chris Paolina
+0HuH6KiOxVqvexoFQqmQ	Shane M.	Shane Morrison
+0yX5ypjc48Mi1klbWitl	Brett 🦅	Brett 🦅 🦅
+1PHw3PMd658Ot36MJAGg	David A.	David Amatulli
+1PHw3PMd658Ot36MJAGg	Jason C.	Jason Careri
+1PHw3PMd658Ot36MJAGg	Lisa C.	Lisa Corso
+1PHw3PMd658Ot36MJAGg	Michael S.	Michael Scancarello
+1UfquJS3dG8xB6s6pBEc	Lisa C.	Lisa Corso
+1txNxXbvpIIVK01H6eU6	Brett 🦅	Brett 🦅 🦅
+1txNxXbvpIIVK01H6eU6	Lisa C.	Lisa Corso
+2OW03qGkvBAGyP0athLG	Lisa C.	Lisa Corso
+2OW03qGkvBAGyP0athLG	Michael S.	Michael Scancarello
+2hICO9K8EPSNFD8cXh4p	Brett 🦅	Brett 🦅 🦅
+2hICO9K8EPSNFD8cXh4p	Jim D.	Jim Duffy
+2hICO9K8EPSNFD8cXh4p	Lisa C.	Lisa Corso
+3RkdL2iPN9bYCrq6FSrZ	Jim D.	Jim Duffy
+3RkdL2iPN9bYCrq6FSrZ	Lisa C.	Lisa Corso
+3TqMcIVoPWpbi0pq9oE2	Brett 🦅	Brett 🦅 🦅
+3TqMcIVoPWpbi0pq9oE2	Lisa C.	Lisa Corso
+3Zl4hZT9mn7Le0sxdzqb	David A.	David Amatulli
+3Zl4hZT9mn7Le0sxdzqb	Jason C.	Jason Careri
+3Zl4hZT9mn7Le0sxdzqb	Jim D.	Jim Duffy
+3ppNKUUGPgbvG3LEWKi5	Jason C.	Jason Careri
+3ppNKUUGPgbvG3LEWKi5	Jim D.	Jim Duffy
+3ppNKUUGPgbvG3LEWKi5	Lisa C.	Lisa Corso
+3vyCJGw8N5fJyZPrUJxa	Jason C.	Jason Careri
+3vyCJGw8N5fJyZPrUJxa	Jim D.	Jim Duffy
+3vyCJGw8N5fJyZPrUJxa	Lisa C.	Lisa Corso
+4GBsIz4zDUF5yaqhcdRj	Lisa C.	Lisa Corso
+4MUBHsqfkARbEnbyw0wD	Michael S.	Michael Scancarello
+4XGr9kK506wzlPOA4lqR	Jim D.	Jim Duffy
+4XGr9kK506wzlPOA4lqR	Lisa C.	Lisa Corso
+4XGr9kK506wzlPOA4lqR	Michael S.	Michael Scancarello
+4uNhVKQRhlzDrCqD9BuK	Jeff F.	Jeff Fein
+4uNhVKQRhlzDrCqD9BuK	Michael S.	Michael Spezio
+5xQbSH5ynAR7vyGR2k67	Jim D.	Jim Duffy
+5xQbSH5ynAR7vyGR2k67	Lisa C.	Lisa Corso
+5xQbSH5ynAR7vyGR2k67	Michael S.	Michael Scancarello
+5xQbSH5ynAR7vyGR2k67	Shane M.	Shane Morrison
+5ziEEHCSYHieztMtPcjk	Chris B.	Chris Berenson
+6O6SIKEKBvCE6LTj12z6	Jim D.	Jim Duffy
+6O6SIKEKBvCE6LTj12z6	Lisa C.	Lisa Corso
+6O6SIKEKBvCE6LTj12z6	Michael S.	Michael Scancarello
+75mKWenPlJA3MGVxYrTA	Lisa C.	Lisa Corso
+7tQdWVFDX34bZxAQM73X	Jim D.	Jim Duffy
+8BgrHYAdRiyaYchMXFWk	Chris P.	Chris Paolina
+8BgrHYAdRiyaYchMXFWk	Michael S.	Michael Scancarello
+8BgrHYAdRiyaYchMXFWk	Shane M.	Shane Morrison
+8HOX7pZ26qte5Rfn3zwv	Michael S.	Michael Scancarello
+8Jq4AwAiNsWiXYX2suDb	Chris P.	Chris Paolina
+8gfZ67gv2iYVHs1gQg5c	Brett 🦅	Brett 🦅 🦅
+8vsgV3YpWMZHC9krJrSv	Brett 🦅	Brett 🦅 🦅
+8vsgV3YpWMZHC9krJrSv	David A.	David Altman
+8vsgV3YpWMZHC9krJrSv	Shane M.	Shane Miller
+91La08WL2Fqiz2jk9Ss8	Chris P.	Chris Paolina
+91La08WL2Fqiz2jk9Ss8	Eric S.	Eric Sun
+91La08WL2Fqiz2jk9Ss8	Shane M.	Shane Morrison
+96B2Re23ysijGnL6Rpgq	Michael S.	Michael Scancarello
+AFTTdzGV0qOrkOP9eWd4	Jim D.	Jim Duffy
+AFTTdzGV0qOrkOP9eWd4	Lisa C.	Lisa Corso
+ARa1NSUUrZbzA3RWwa2M	Jeff F.	Jeff Fein
+ARa1NSUUrZbzA3RWwa2M	Michael S.	Michael Spezio
+AcQGWOikONHOQk61ywJm	Lisa C.	Lisa Corso
+AuaQ5yg1iaoSEyoW9xK5	Jeff F.	Jeff Fein
+AwIKBisA2xwI1Mhf8wvI	Jim D.	Jim Duffy
+AwIKBisA2xwI1Mhf8wvI	Lisa C.	Lisa Corso
+BDnnIPSlK4l3Mefz9NiN	Jason C.	Jason Careri
+BDnnIPSlK4l3Mefz9NiN	Jim D.	Jim Duffy
+BDnnIPSlK4l3Mefz9NiN	Lisa C.	Lisa Corso
+BLnV5uXkCL0RXthT9Pp0	Jim D.	Jim Duffy
+BLnV5uXkCL0RXthT9Pp0	Lisa C.	Lisa Corso
+BLnV5uXkCL0RXthT9Pp0	Michael S.	Michael Scancarello
+BvDyiNqahFVK71cEoOTw	Chris P.	Chris Paolina
+BvDyiNqahFVK71cEoOTw	Danny M.	Danny Miklin
+BvDyiNqahFVK71cEoOTw	Shane M.	Shane Morrison
+BvIZo5yCxchL8z8382qe	Michael S.	Michael Scancarello
+BvceeQgLZ2af5SSfxtug	Chris P.	Chris Paolina
+BvceeQgLZ2af5SSfxtug	Michael S.	Michael Scancarello
+Bywd8xTnIydAjTHcrxVq	Chris P.	Chris Paolina
+CBfAOITWaS8C61zWp5RA	Jim D.	Jim Duffy
+CBfAOITWaS8C61zWp5RA	Lisa C.	Lisa Corso
+CS9O9qhyMqtDch5f3wGM	Danny M.	Danny Marino
+CS9O9qhyMqtDch5f3wGM	Jeff F.	Jeff Fein
+DQ8hDoO0CTimajVw482y	Chris P.	Chris Paolina
+DQ8hDoO0CTimajVw482y	Michael S.	Michael Scancarello
+DmSmaEHYI3EtixvWsP8g	Jim D.	Jim Duffy
+Dqq4bhIQfz9UQg1kQ7TA	David A.	David Altman
+Dqq4bhIQfz9UQg1kQ7TA	Jason C.	Jason Careri
+Dqq4bhIQfz9UQg1kQ7TA	Lisa C.	Lisa Corso
+Fv8Mv3unRpbj0RvJXGSk	Danny M.	Danny Miklin
+Fv8Mv3unRpbj0RvJXGSk	Jeff F.	Jeff Fein
+FwPjBVNcXaTG3HKfpTmH	Jason C.	Jason Careri
+FwPjBVNcXaTG3HKfpTmH	Jim D.	Jim Duffy
+FwPjBVNcXaTG3HKfpTmH	Lisa C.	Lisa Corso
+FzbppK4Igt9b86t0EMIu	Jim D.	Jim Duffy
+FzbppK4Igt9b86t0EMIu	Lisa C.	Lisa Corso
+FzbppK4Igt9b86t0EMIu	Michael S.	Michael Scancarello
+G3b7dU4wnl313mw0WLNI	Michael S.	Michael Scancarello
+G3b7dU4wnl313mw0WLNI	Shane M.	Shane Morrison
+G9eNNUhuRBPVD132qPOX	Jim D.	Jim Duffy
+GNZfSTzRllJm2WP5AVqd	Jim D.	Jim Duffy
+GPUoQARdE9Mr5w5bwlV4	Brett 🦅	Brett 🦅 🦅
+GPUoQARdE9Mr5w5bwlV4	Michael S.	Michael Scancarello
+GPUoQARdE9Mr5w5bwlV4	Shane M.	Shane Morrison
+HF58WMblloKSW281tvi5	Lisa C.	Lisa Corso
+HF58WMblloKSW281tvi5	Shane M.	Shane Morrison
+HKmDYxccUWDWOg4RPy9T	Lisa C.	Lisa Corso
+HR2LDC0C09kvsArQZlqU	Chris P.	Chris Paolina
+HR2LDC0C09kvsArQZlqU	Michael S.	Michael Scancarello
+HR2LDC0C09kvsArQZlqU	Shane M.	Shane Morrison
+HR4YqrNXm1JprXAmohUU	Chris P.	Chris Paolina
+HR4YqrNXm1JprXAmohUU	Michael S.	Michael Scancarello
+HyRzqIRYZgBHVodmMnNT	Michael S.	Michael Scancarello
+I9UBSlMktXIwTa3QN786	Chris P.	Chris Paolina
+I9UBSlMktXIwTa3QN786	Michael S.	Michael Scancarello
+I9UBSlMktXIwTa3QN786	Shane M.	Shane Morrison
+IEN7CMrFzNkPh4dk6YFH	Brett 🦅	Brett 🦅 🦅
+IEN7CMrFzNkPh4dk6YFH	Michael S.	Michael Spezio
+ILltTz0xFllJm7SuGG5i	Jim D.	Jim Duffy
+ILltTz0xFllJm7SuGG5i	Lisa C.	Lisa Corso
+ILltTz0xFllJm7SuGG5i	Michael S.	Michael Scancarello
+Ie6aTIOdFCKBO8G9BVBD	Lisa C.	Lisa Corso
+IrTwDqepwUuPQVz4WRQv	Lisa C.	Lisa Corso
+IwqsbGTvYInUetZO1rdB	Michael S.	Michael Scancarello
+JBAGfTetaQkZPw4NgPxg	Brett 🦅	Brett 🦅 🦅
+JjgsLcTtLAccawjMJznr	Jim D.	Jim Duffy
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player1
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player10
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player11
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player12
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player13
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player14
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player15
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player16
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player17
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player18
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player19
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player2
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player20
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player21
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player22
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player23
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player24
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player3
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player4
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player5
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player6
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player6
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player8
+JjplEtsgCY8uwh6sMXHS	Player P.	Player Player9
+KNDvhp7wiNMI7xCujjuE	Jim D.	Jim Duffy
+KNDvhp7wiNMI7xCujjuE	Lisa C.	Lisa Corso
+KNDvhp7wiNMI7xCujjuE	Michael S.	Michael Scancarello
+KuSD5Qdkbo8aS3MxvzP1	Jeff F.	Jeff Fein
+LKCrl1z6Ag5sGuTCDUcz	Brett 🦅	Brett 🦅 🦅
+LKCrl1z6Ag5sGuTCDUcz	Lisa C.	Lisa Corso
+LlipJOz3OAgD3Nqedlc4	Lisa C.	Lisa Corso
+MhCUfH4NFoGwWtUMlchS	Chris  B.	Chris  Berenson
+MhCUfH4NFoGwWtUMlchS	Danny  M.	Danny  Miklin
+MiwykKDVwggPzwe7cOP4	Michael S.	Michael Scancarello
+Ms3LwD1XQUUqxwJksXBE	Chris P.	Chris Paolina
+Ms3LwD1XQUUqxwJksXBE	Michael S.	Michael Scancarello
+MssnsHOpbjGsIwiWFalN	Jason C.	Jason Careri
+MssnsHOpbjGsIwiWFalN	Jim D.	Jim Duffy
+MssnsHOpbjGsIwiWFalN	Lisa C.	Lisa Corso
+MuQ2uginCpxyvGf0V9yg	David J.	David Jacobs
+MzTXUrmlfpoycGMEVJOn	Lisa C.	Lisa Corso
+MzTXUrmlfpoycGMEVJOn	Michael D.	Michael DiTucci
+N0R28d004uP13TfH7A6R	Jim D.	Jim Duffy
+N0R28d004uP13TfH7A6R	Lisa C.	Lisa Corso
+N2SwlBuFWdrbrtsqfYIr	Danny M.	Danny Marino
+N2SwlBuFWdrbrtsqfYIr	Michael S.	Michael Spezio
+NlTvCZK6v1itKHiAr3fj	Lisa C.	Lisa Corso
+OPDl3yBQubdSsPXKLl2R	Jim D.	Jim Duffy
+OPDl3yBQubdSsPXKLl2R	Lisa C.	Lisa Corso
+P0fe1J41zBp5huS6HKnQ	Jim D.	Jim Duffy
+P0fe1J41zBp5huS6HKnQ	Lisa C.	Lisa Corso
+PDjVjYNMX8uh8OLD9tk5	David A.	David Amatulli
+PDjVjYNMX8uh8OLD9tk5	Jason C.	Jason Careri
+PDjVjYNMX8uh8OLD9tk5	Jim D.	Jim Duffy
+PHGopeYRIuUvfYol8O9H	Chris P.	Chris Paolina
+PHGopeYRIuUvfYol8O9H	Michael S.	Michael Scancarello
+PK6GteuyUku1oCLIoBd9	Lisa C.	Lisa Corso
+PP8vC35d5SwGHidliaow	Lisa C.	Lisa Corso
+PxH9JxcGgZLa7JRyZpyq	Lisa C.	Lisa Corso
+Q4skxoSuHShMI82sDoP4	Shane M.	Shane Morrison
+R4bcfeTpkBtUOmKjxQ64	Chris P.	Chris Paolina
+RFCG8BqpwDZ8uMGE3BU0	Chris P.	Chris Paolina
+RIzepBhkRpR2YDkq0u0B	Jason C.	Jason Careri
+RIzepBhkRpR2YDkq0u0B	Lisa C.	Lisa Corso
+RJJdIjIO6boZMeX1CW0v	Michael S.	Michael Spezio
+RVRZNSHDKZQNjzEyOyOY	Brett 🦅	Brett 🦅 🦅
+RWxXKIE2kUzHA4ZwwJH4	Chris P.	Chris Paolina
+RWxXKIE2kUzHA4ZwwJH4	Michael S.	Michael Scancarello
+RWxXKIE2kUzHA4ZwwJH4	Shane M.	Shane Morrison
+RcVGHMAatn28GpRRrDQP	Michael S.	Michael Scancarello
+SAHCnCPM235Bn7Bpqxuv	Chris B.	Chris Berenson
+SAHCnCPM235Bn7Bpqxuv	Jim D.	Jim Duffy
+SAHCnCPM235Bn7Bpqxuv	Lisa C.	Lisa Corso
+SAHCnCPM235Bn7Bpqxuv	Michael S.	Michael Scancarello
+SHaVvYkDjhQbvlj3DDDZ	Chris P.	Chris Paolina
+SHaVvYkDjhQbvlj3DDDZ	Michael S.	Michael Scancarello
+SZ4UNb9MHcmVuxdZr0DG	Jason C.	Jason Careri
+SZ4UNb9MHcmVuxdZr0DG	Jim D.	Jim Duffy
+SnK4aDk5dSvIGRJdhsEX	David A.	David Amatulli
+SnK4aDk5dSvIGRJdhsEX	Jason C.	Jason Careri
+SnK4aDk5dSvIGRJdhsEX	Jim D.	Jim Duffy
+Sqh49ZwmqE36x86V6KQg	David A.	David Amatulli
+Sqh49ZwmqE36x86V6KQg	Jason C.	Jason Careri
+Sqh49ZwmqE36x86V6KQg	Jim D.	Jim Duffy
+Ss6cbF1LNWDAq0pMRYfI	Jim D.	Jim Duffy
+Ss6cbF1LNWDAq0pMRYfI	Lisa C.	Lisa Corso
+Ss6cbF1LNWDAq0pMRYfI	Shane M.	Shane Morrison
+T2e1C9JDuoAnWOV7rdit	Chris P.	Chris Paolina
+T2e1C9JDuoAnWOV7rdit	Michael S.	Michael Scancarello
+T2e1C9JDuoAnWOV7rdit	Shane M.	Shane Morrison
+TJMFS7xYCgVfdzhCgJ5M	Chris P.	Chris Paolina
+TJMFS7xYCgVfdzhCgJ5M	Jeff F.	Jeff Fein
+TJMFS7xYCgVfdzhCgJ5M	Michael S.	Michael Spezio
+TcL0hTJARXvrlHsPqeLn	Lisa C.	Lisa Corso
+TcL0hTJARXvrlHsPqeLn	Michael S.	Michael Spezio
+TiPKUv28E9r55yLqvSvX	Chris P.	Chris Paolina
+TiPKUv28E9r55yLqvSvX	Michael S.	Michael Scancarello
+TwDfdBsXW7Q8fogAPg2Q	Lisa C.	Lisa Corso
+TwDfdBsXW7Q8fogAPg2Q	Michael D.	Michael DiTucci
+U8ns9MC7kxMEDy93DIu7	Chris P.	Chris Paolina
+U8ns9MC7kxMEDy93DIu7	Michael S.	Michael Scancarello
+U9IOGNWb7dv3ejXmJFfZ	Chris P.	Chris Paolina
+UPFJ3pcUrSWwSaiIp9Lv	Jim D.	Jim Duffy
+UPWoC9El2vEIn2CUAhZM	Brett 🦅	Brett 🦅 🦅
+UPWoC9El2vEIn2CUAhZM	Jim D.	Jim Duffy
+UPWoC9El2vEIn2CUAhZM	Lisa C.	Lisa Corso
+UbXiKSaEbtz95YShIb6r	Jim D.	Jim Duffy
+UnWvhswed71AjaimmAf9	Jim D.	Jim Duffy
+UnWvhswed71AjaimmAf9	Lisa C.	Lisa Corso
+UnWvhswed71AjaimmAf9	Michael S.	Michael Scancarello
+UtIHtpFACCioXm93hL7N	Brett 🦅	Brett 🦅 🦅
+UxT8uQNB96i7F5UgD1Bm	Lisa C.	Lisa Corso
+V6XzH0InQSvycJmw5FyK	Chris P.	Chris Paolina
+V6XzH0InQSvycJmw5FyK	Michael S.	Michael Scancarello
+VOHvwdVhpBU7bQTcLzcF	Lisa C.	Lisa Corso
+VWTHDH3zSlGgCSj8ZHPU	Chris P.	Chris Paolina
+VuNNTYU2ic0SzAlghb9k	Jeff F.	Jeff Fein
+Vxw4pP9qSLDFPb7cvgvu	Michael S.	Michael Scancarello
+WJpucH44eqq7SREanH78	David A.	David Altman
+WJpucH44eqq7SREanH78	Shane M.	Shane Miller
+WblKw3QlUPcL8vQTUTKl	David A.	David Amatulli
+WblKw3QlUPcL8vQTUTKl	Jim D.	Jim Duffy
+X88M7QDaHGgY64mYkskj	Chris P.	Chris Paolina
+XFa8vm7jq99OIUZAUd32	Chris P.	Chris Paolina
+XFa8vm7jq99OIUZAUd32	Shane M.	Shane Morrison
+XHq3dWzRwAKuOBhfQaV9	Lisa C.	Lisa Corso
+XcFFpd1ZasSkBfslAtl0	Lisa C.	Lisa Corso
+XkACr20xnJP4moDaCaOY	Chris P.	Chris Paolina
+XkACr20xnJP4moDaCaOY	Michael S.	Michael Scancarello
+XpRSFjD7Z7Sc3eWM98xm	Jim D.	Jim Duffy
+XpRSFjD7Z7Sc3eWM98xm	Lisa C.	Lisa Corso
+Y6ttUesZP4AmJpmUzyaW	David J.	David Jackobs
+YEHivlvaRMh05te3o3mK	Brett 🦅	Brett 🦅 🦅
+YEHivlvaRMh05te3o3mK	Lisa C.	Lisa Corso
+Yd3t3qYdBG0EGKFBqiY1	Michael S.	Michael Spezio
+Ypf2032IwOqyt1Ze7wOJ	Jeff F.	Jeff Fein
+Ypf2032IwOqyt1Ze7wOJ	Michael S.	Michael Spezio
+Yq92ELLQR2EOvD8xkhOy	Lisa C.	Lisa Corso
+ZAnhMXuYlL0ZRuwrCgrv	Brett 🦅	Brett 🦅 🦅
+ZEhwG087MbJMwsJ70Acp	Jason C.	Jason Careri
+ZEhwG087MbJMwsJ70Acp	Jim D.	Jim Duffy
+ZEhwG087MbJMwsJ70Acp	Lisa C.	Lisa Corso
+ZHL5lwa4CXhnqsvDqlBU	Brett 🦅	Brett 🦅 🦅
+ZLcfS12eY3CFzF7nGmIn	Brett 🦅	Brett 🦅 🦅
+ZOt1luAl4OGvirL2TyUB	Jim D.	Jim Duffy
+a4fExMeHch8i7esNQq3X	Lisa C.	Lisa Corso
+advotIdJ38W3GaV7LDYB	Chris P.	Chris Pellicano
+advotIdJ38W3GaV7LDYB	Jason C.	Jason Careri
+advotIdJ38W3GaV7LDYB	Lisa C.	Lisa Corso
+aqin79MWL6EiaCJ8uvLy	Jim D.	Jim Duffy
+aqin79MWL6EiaCJ8uvLy	Lisa C.	Lisa Corso
+b2ReCei1M2vfPqGfRpgg	Lisa C.	Lisa Corso
+b8j74aTzutnj4sa6YUM7	Jim D.	Jim Duffy
+b8j74aTzutnj4sa6YUM7	Lisa C.	Lisa Corso
+b8j74aTzutnj4sa6YUM7	Michael S.	Michael Scancarello
+bhnbpaH2oHkHY4LGeDOx	Danny M.	Danny Marino
+bqCJt3OzLJrLKhFiNvcc	Brett 🦅	Brett 🦅 🦅
+bqCJt3OzLJrLKhFiNvcc	Chris P.	Chris Paolina
+bqCJt3OzLJrLKhFiNvcc	Shane M.	Shane Morrison
+cSrbeDlHvIPPMujjxHhs	Jason C.	Jason Careri
+cSrbeDlHvIPPMujjxHhs	Jim D.	Jim Duffy
+cSrbeDlHvIPPMujjxHhs	Lisa C.	Lisa Corso
+cSrbeDlHvIPPMujjxHhs	Michael S.	Michael Scancarello
+cexmoFJpfQRt2aMByhWB	Michael S.	Michael Scancarello
+cmuWjsfQ52rGSsH6UDbr	Chris P.	Chris Paolina
+cmuWjsfQ52rGSsH6UDbr	Michael S.	Michael Scancarello
+cmuWjsfQ52rGSsH6UDbr	Shane M.	Shane Morrison
+d3FOXUSpa9HhXRcwttiu	Jim D.	Jim Duffy
+dXoLK3UZr8xS6qsU5otk	Lisa C.	Lisa Corso
+dXoLK3UZr8xS6qsU5otk	Michael S.	Michael Scancarello
+dwlRY2d6SP02lSTuVz8J	Lisa C.	Lisa Corso
+dwlRY2d6SP02lSTuVz8J	Shane M.	Shane Morrison
+eHhq82xTpzkpr4YqRdgv	Shane M.	Shane Morrison
+eJ3dR6T7vTt3iRfsLQqi	Michael S.	Michael Scancarello
+eSfYJg7xaOly5lzUqYxp	Chris P.	Chris Pellicano
+eSfYJg7xaOly5lzUqYxp	Jason C.	Jason Careri
+eSfYJg7xaOly5lzUqYxp	Lisa C.	Lisa Corso
+eb57kzWE12tcrBMehnfW	David A.	David Amatulli
+eb57kzWE12tcrBMehnfW	Jason C.	Jason Careri
+eb57kzWE12tcrBMehnfW	Jim D.	Jim Duffy
+ehnO9qVvxHzbCDdD4276	Lisa C.	Lisa Corso
+ehnO9qVvxHzbCDdD4276	Michael S.	Michael Scancarello
+epT257jb89JQipMcJAGu	Chris P.	Chris Paolina
+epT257jb89JQipMcJAGu	Michael S.	Michael Scancarello
+fEdBGSLkGDgHlVK3CLvC	Chris P.	Chris Paolina
+fEdBGSLkGDgHlVK3CLvC	Shane M.	Shane Morrison
+fFIuti7U06FLc4zwvByw	Chris P.	Chris Paolina
+fFIuti7U06FLc4zwvByw	Michael S.	Michael Scancarello
+fQtE8y5NtOKM3rMTmR3i	Lisa C.	Lisa Corso
+fQtE8y5NtOKM3rMTmR3i	Michael S.	Michael Scancarello
+fQtE8y5NtOKM3rMTmR3i	Shane M.	Shane Morrison
+feSJyJuBnDL8nUiyjX8d	Chris P.	Chris Paolina
+feSJyJuBnDL8nUiyjX8d	Michael S.	Michael Scancarello
+ffVKjQuD9Fqil8f9jDhM	Michael S.	Michael Spezio
+g8Y8AwenlSOnIgUHEIQ9	Lisa C.	Lisa Corso
+gpG2sobYxToW173FoZ7w	Michael S.	Michael Scancarello
+h0TfD8Z2Rtq8c4sqP0z3	Jim D.	Jim Duffy
+h0TfD8Z2Rtq8c4sqP0z3	Lisa C.	Lisa Corso
+h0TfD8Z2Rtq8c4sqP0z3	Michael S.	Michael Scancarello
+hQVGnMmmSD5jKENvUSt7	Shane M.	Shane Morrison
+hpH5hGiKznZlnx9BaG3H	Chris P.	Chris Paolina
+i1JifpCyMRgwSrqlg9kM	Chris P.	Chris Paolina
+i1JifpCyMRgwSrqlg9kM	Michael S.	Michael Scancarello
+i6IaJ3rAB98zoNLXFYRF	Brett 🦅	Brett 🦅 🦅
+iiIAr4NsKcC3JCiNZemO	Chris P.	Chris Paolina
+iiIAr4NsKcC3JCiNZemO	Michael S.	Michael Scancarello
+ip7FLo7oAp11sVaSSYA5	Lisa C.	Lisa Corso
+ip7FLo7oAp11sVaSSYA5	Michael S.	Michael Scancarello
+izlZQrc1sOiiWW76uiaj	Lisa C.	Lisa Corso
+jnC2gRACtd2cBnSCbsCO	Jason C.	Jason Careri
+jnC2gRACtd2cBnSCbsCO	Jim D.	Jim Duffy
+jnC2gRACtd2cBnSCbsCO	Lisa C.	Lisa Corso
+jwPK1das051aW6vFE1EO	Chris P.	Chris Paolina
+kRxXK5FpW9bLunRTHorG	Jason C.	Jason Careri
+kRxXK5FpW9bLunRTHorG	Jim D.	Jim Duffy
+kY5utTnGwrZhD5ApzF0W	Chris P.	Chris Paolina
+kY5utTnGwrZhD5ApzF0W	Michael S.	Michael Scancarello
+ksxCOGmk9Tv7lNrykrFy	Jim D.	Jim Duffy
+l1nquCLldwgQYjA6l08G	Michael D.	Michael Dougherty
+l1nquCLldwgQYjA6l08G	Michael S.	Michael Spezio
+lNtKVTwUNtMe8KW3gTNZ	Brett 🦅	Brett 🦅 🦅
+lNtKVTwUNtMe8KW3gTNZ	Jim D.	Jim Duffy
+lNtKVTwUNtMe8KW3gTNZ	Lisa C.	Lisa Corso
+lk9aPZho9ehOrZZGLeek	Jeff F.	Jeff Fein
+lk9aPZho9ehOrZZGLeek	Michael S.	Michael Spezio
+mUUepyJ0eeNzZYHA5Ejw	Chris P.	Chris Paolina
+mUUepyJ0eeNzZYHA5Ejw	Shane M.	Shane Morrison
+mfyyadTfLyBn63RtpiV9	Chris P.	Chris Paolina
+mfyyadTfLyBn63RtpiV9	Michael S.	Michael Scancarello
+mmTHj6RWtPUTRhdlPrvk	Brett 🦅	Brett 🦅 🦅
+mmTHj6RWtPUTRhdlPrvk	Danny M.	Danny Miklin
+mmTHj6RWtPUTRhdlPrvk	Lisa C.	Lisa Corso
+mny3xIMhbazPccr8nbKJ	Lisa C.	Lisa Corso
+mpnvKlHEDr9XLJd8eybd	Alex M.	Alex Musheyev
+n0vnFAALZPOg6sPukQhD	Jason C.	Jason Careri
+n0vnFAALZPOg6sPukQhD	Jim D.	Jim Duffy
+n4vrRXJIbzZli6Bi7Gsz	Chris P.	Chris Paolina
+n4vrRXJIbzZli6Bi7Gsz	Michael S.	Michael Scancarello
+n7O7qqLMrgJlOWkYNeH2	Chris P.	Chris Paolina
+n7O7qqLMrgJlOWkYNeH2	Michael S.	Michael Scancarello
+n7O7qqLMrgJlOWkYNeH2	Shane M.	Shane Morrison
+nB6wjjlhyTVoYAzL1fq6	Michael S.	Michael Scancarello
+nB6wjjlhyTVoYAzL1fq6	Shane M.	Shane Morrison
+nDmYJZmND0fujPIv0NwY	Jason C.	Jason Careri
+nDmYJZmND0fujPIv0NwY	Jim D.	Jim Duffy
+nDmYJZmND0fujPIv0NwY	Lisa C.	Lisa Corso
+nDmYJZmND0fujPIv0NwY	Michael S.	Michael Scancarello
+nE0IN1zEk3xYkyD0Hyu8	Chris P.	Chris Paolina
+nE0IN1zEk3xYkyD0Hyu8	Michael S.	Michael Scancarello
+nxqP9utJBtKaKhe2mRLl	Alex M.	Alex Meyers
+nxqP9utJBtKaKhe2mRLl	Eric S.	Eric Sol cruz
+o5O1rCEdxylRW6uxReXP	Jason C.	Jason Careri
+o5O1rCEdxylRW6uxReXP	Jim D.	Jim Duffy
+oBEQ56xrhzjwO7cTle3n	Jim D.	Jim Duffy
+pGJpagFvP3Jb2nmzx5Or	Jim D.	Jim Duffy
+pGJpagFvP3Jb2nmzx5Or	Lisa C.	Lisa Corso
+pbJStxgT8iOnk2CpCPLK	Chris P.	Chris Paolina
+pbJStxgT8iOnk2CpCPLK	Michael S.	Michael Scancarello
+pbJStxgT8iOnk2CpCPLK	Shane M.	Shane Morrison
+qF06Tlu0mAjjenHjcAE8	Jim D.	Jim Duffy
+qF06Tlu0mAjjenHjcAE8	Lisa C.	Lisa Corso
+qF06Tlu0mAjjenHjcAE8	Michael S.	Michael Scancarello
+qF06Tlu0mAjjenHjcAE8	Shane M.	Shane Morrison
+qY2qiSd6G9bqQLAE9gTe	David A.	David Amatulli
+qY2qiSd6G9bqQLAE9gTe	Jason C.	Jason Careri
+qY2qiSd6G9bqQLAE9gTe	Jim D.	Jim Duffy
+qZamLukm8gbfWp7d2fax	David A.	David Amatulli
+qZamLukm8gbfWp7d2fax	Jason C.	Jason Careri
+qZamLukm8gbfWp7d2fax	Jim D.	Jim Duffy
+qaI3AZBatSELbUPsJpj4	Jim D.	Jim Duffy
+qaI3AZBatSELbUPsJpj4	Lisa C.	Lisa Corso
+qaI3AZBatSELbUPsJpj4	Michael S.	Michael Scancarello
+qeaEU1ZIjQJLzpdzNUqL	Jim D.	Jim Duffy
+qeaEU1ZIjQJLzpdzNUqL	Michael S.	Michael Scancarello
+qniz52F0Q31htBHNqKyC	Chris P.	Chris Paolina
+qniz52F0Q31htBHNqKyC	Jim D.	Jim Duffy
+qniz52F0Q31htBHNqKyC	Lisa C.	Lisa Corso
+qniz52F0Q31htBHNqKyC	Michael S.	Michael Scancarello
+qpkqtPycKz9TOwous0nB	Chris P.	Chris Paolina
+qpkqtPycKz9TOwous0nB	Michael S.	Michael Scancarello
+qpkqtPycKz9TOwous0nB	Shane M.	Shane Morrison
+qv5toBaxSIe6nzpEUdYV	David A.	David Amatulli
+qv5toBaxSIe6nzpEUdYV	Jim D.	Jim Duffy
+rBtqi9sSu5VVWUiuzYjS	Michael S.	Michael Scancarello
+sEZKW6aajTSJLaQf8R7u	Chris P.	Chris Paolina
+sEZKW6aajTSJLaQf8R7u	Michael S.	Michael Scancarello
+t6NNIjzV2DApzyth7H3b	Jason C.	Jason Careri
+t6NNIjzV2DApzyth7H3b	Lisa C.	Lisa Corso
+t6NNIjzV2DApzyth7H3b	Michael S.	Michael Scancarello
+tEuKBW6ukyVeGAl8qAys	Jim D.	Jim Duffy
+tWQ2eWPf1uIXzoEHNJYS	Brett 🦅	brett ritholtz
+tYHECcGPULYXOoW6iyLA	Lisa C.	Lisa Corso
+tfDQ23P9mkQaSlbighgt	Jason C.	Jason Careri
+tfDQ23P9mkQaSlbighgt	Jim D.	Jim Duffy
+tfDQ23P9mkQaSlbighgt	Lisa C.	Lisa Corso
+tfDQ23P9mkQaSlbighgt	Michael S.	Michael Scancarello
+u5TDrw6avFyb3YL6wJrM	Shane M.	Shane Morrison
+u6AVRovZhuVjcKmgEj4J	Jeff F.	Jeffrey Fein
+uZnfdImlFVeD8Y3yXjzq	Lisa C.	Lisa Corso
+uat3giCwsonnRnSmtwkz	Chris P.	Chris Paolina
+uat3giCwsonnRnSmtwkz	Michael S.	Michael Scancarello
+ub1qC2v3CTRbZ9U3887K	Chris P.	Chris Paolina
+vioXu4YMLtC0gpTAfe0f	Jason C.	Jason Careri
+vioXu4YMLtC0gpTAfe0f	Jim D.	Jim Duffy
+vioXu4YMLtC0gpTAfe0f	Lisa C.	Lisa Corso
+w373lyQkKsWzbcoe2Rya	Jason C.	Jason Careri
+w373lyQkKsWzbcoe2Rya	Michael S.	Michael Scancarello
+wT7JA0pWBHuGbfvuqVgo	Jeff F.	Jeff Fein
+wT7JA0pWBHuGbfvuqVgo	Michael S.	Michael Spezio
+wULCogZNe9xc4TyHYbD7	Brett 🦅	Brett 🦅 🦅
+wt5kpbxzOblPpyA789l1	Chris P.	Chris Paolina
+wt5kpbxzOblPpyA789l1	Michael S.	Michael Scancarello
+x0jFS2Rr87umSQNnV3u8	Chris P.	Chris Paolina
+x0jFS2Rr87umSQNnV3u8	Eric S.	Eric Sun
+x0jFS2Rr87umSQNnV3u8	Lisa C.	Lisa Corso
+x0jFS2Rr87umSQNnV3u8	Michael S.	Michael Scancarello
+x1OVspFCPt0lORZxi9Xm	Lisa C.	Lisa Corso
+x6rUZ1imdgZE2jOk7fKr	David A.	David Amatulli
+x6rUZ1imdgZE2jOk7fKr	Jim D.	Jim Duffy
+x8ZNOp5qJ8axMn6qtVVD	Jason  C.	Jason  Careri
+x8ZNOp5qJ8axMn6qtVVD	Jim  D.	Jim  Duffy
+x8ZNOp5qJ8axMn6qtVVD	Lisa  C.	Lisa  Cors0
+xAbUzWDk3ZcqyUEoTP6c	Chris P.	Chris Paolina
+xAbUzWDk3ZcqyUEoTP6c	Michael S.	Michael Scancarello
+xlIDjcyx1A3CkzcB7iiu	Michael S.	Michael Spezio
+xoAwhAO3jddeH99AoePT	Jim D.	Jim Duffy
+xoAwhAO3jddeH99AoePT	Lisa C.	Lisa Corso
+xwRCGS9GiT9j060CamfS	Jason C.	Jason Careri
+xwRCGS9GiT9j060CamfS	Lisa C.	Lisa Corso
+xwRCGS9GiT9j060CamfS	Michael S.	Michael Scancarello
+yXm4sofQ1eGFKvfU18J6	Chris P.	Chris Paolina
+yXm4sofQ1eGFKvfU18J6	Michael S.	Michael Scancarello
+yolz4DzoS3zJHlLd2muN	Chris P.	Chris Paolina
+yolz4DzoS3zJHlLd2muN	Danny M.	Danny Miklin
+yolz4DzoS3zJHlLd2muN	Michael S.	Michael Scancarello
+yolz4DzoS3zJHlLd2muN	Michael S.	Michael Spezio
+yolz4DzoS3zJHlLd2muN	Shane M.	Shane Morrison
+zNHGZL6ToeAYFhUIJBN5	Michael S.	Michael Scancarello
+ze461a6ZhYnBqMO5eBNY	Michael S.	Michael Scancarello
+zoSeu9Wgq6s0yqFEplRT	Brett 🦅	Brett 🦅 🦅

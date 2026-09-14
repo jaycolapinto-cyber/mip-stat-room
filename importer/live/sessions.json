@@ -1,0 +1,16 @@
+{
+  "note": "Dated session sources. The published workbooks carry games with no date, only a batch label ('New Event 4'). A session source carries real timestamps, courts and Scoreholio Match IDs for the same games, so matching the two by signature - the two teams and the two scores - restores the date without inventing anything.",
+  "rule": "A session only stamps a workbook match when all four players and both scores are identical. Nothing is dated on a guess, and a session game with no workbook counterpart is reported, never silently added.",
+  "sessions": [
+    {
+      "export": "Matchlog-lMFLQ14a6PQdtFLojKWt.xlsx",
+      "tournamentId": "lMFLQ14a6PQdtFLojKWt",
+      "league": "fri-am",
+      "label": "Friday AM",
+      "tz": "America/New_York",
+      "source": "Scoreholio organizer export, Match Log sheet",
+      "supersedes": "friday-2026-09-11.tsv (dashboard scrape - same 48 games, same scores, same timestamps, wrong courts)"
+    }
+  ],
+  "preferExports": "A Scoreholio 'Match Log' export (importer/live/exports/Matchlog-<id>.xlsx) beats a scraped dashboard TSV and wins when both are present for one tournament. The export carries the real court number - the dashboard's leftmost column is a display index, and reading it as a court put courts 1, 2 and 3 on the site when the games were actually played on 6, 11 and 12."
+}

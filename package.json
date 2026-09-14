@@ -1,0 +1,18 @@
+{
+  "name": "mip-stat-room",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node importer/emit.mjs",
+    "test": "node importer/resolve.test.mjs && node importer/sources.test.mjs && node importer/scoreholio.test.mjs && node importer/duprmatches.test.mjs && node importer/weeklysheet.test.mjs && node importer/dupr.test.mjs && node importer/duprpaste.test.mjs && node importer/scoreholioroster.test.mjs && node importer/sweep2026.test.mjs && node importer/csv.test.mjs && node build/check.mjs && node build/recordcheck.mjs && node build/dupecheck.mjs && node importer/verify.mjs",
+    "serve": "node build/serve.cjs",
+    "dupes": "node build/dupesweep.mjs && python3 build/dupebook.py",
+    "test:page": "node build/pagecheck.mjs && node build/sortcheck.mjs"
+  },
+  "dependencies": {
+    "xlsx": "0.18.5"
+  },
+  "devDependencies": {
+    "playwright": "*"
+  }
+}

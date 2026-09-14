@@ -1,0 +1,35 @@
+# Cache rules for the MIP Stat Room.
+#
+# Cloudflare's default for static assets is already "max-age=0,
+# must-revalidate", but twice now the site has been reloaded and served an old
+# copy, so this states the intent rather than relying on a default.
+#
+# Why no long-lived caching anywhere: app.js imports data.js, records.js and
+# stats.js as ES modules, and those import paths live INSIDE app.js. Stamping a
+# version onto the script tag in index.html would bust app.js and leave its
+# three imports cached - a half-fix that looks like a fix. Revalidating
+# everything is honest and costs five conditional requests a load, which return
+# 304 Not Modified and no body unless the file really changed.
+/*
+  Cache-Control: no-cache, must-revalidate
+
+# The page itself must never be held, or a reader can sit on an old shell that
+# points at files we have since replaced.
+/index.html
+  Cache-Control: no-store
+
+# Content-Type CANNOT be set from this file.
+#
+# Worth writing down, because it looks like it should work and it does not.
+# Cloudflare Pages honours a Content-Type line in _headers; Workers static
+# assets - which is what this site is - ignores it. The asset's type is whatever
+# was declared when the file was uploaded, and nothing here can override it.
+#
+# Why it came up: on 2026-09-14 a programmatic upload declared app.js and
+# data.js as application/octet-stream. A browser refuses to execute an ES module
+# served with that type, so the page rendered its nav bar and nothing else.
+# records.js and stats.js were unchanged that day, kept their existing assets,
+# and stayed text/javascript - which is how the cause was narrowed down.
+#
+# The fix is at upload time, not here: deploy by dragging the folder into the
+# dashboard uploader, or use wrangler, either of which sets .js correctly.
