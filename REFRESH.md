@@ -80,3 +80,56 @@ They used to be read out of a Downloads folder. That works while a person is
 sitting at that particular computer and cannot work for a job running on a fresh
 machine. All eight together are under 200KB, so they live with the code and a
 clone builds with no setup at all.
+
+## Rules for the Scoreholio pull
+
+This runs against Dave's organizer account — the live control panel for a
+league that is actually being played. The standing rules, in force for every
+run, automated or not:
+
+**Never click UPCOMING.** Those events have not happened yet. Opening one puts
+a tournament that is about to run, or is running, one click away from Advance
+Game, Pause and Edit. There is nothing in an upcoming event worth having: the
+games do not exist yet.
+
+**PAST and ADMIN only.** The nights we want are finished, and the Admin screen
+of a finished night is where the match log export lives.
+
+**Read and export, never modify.** Never Edit, Clone, Make Template, Announce,
+Advance Game, Pause, Settings, or anything under Options. If a screen offers no
+obvious way back out without touching one of those, back out through the
+browser, not through the page.
+
+`playerEmail` appears in Scoreholio's roster data and is deliberately never
+collected.
+
+### The route to a night's match log
+
+Proved live on 2026-09-14 against "Friday Bracket B - S3W6" (Sep 11):
+
+    PAST  ->  the tournament row  ->  Admin  ->  Stats & Logs  ->  Match Log  ->  Export
+
+`Play Duration` and `Wait Duration` are both on that page, which is the whole
+reason for the Scoreholio pull: DUPR carries the games and the real names but
+neither clock, and no court.
+
+The tournament id sits in the admin URL as `game=<id>`, and it is the same id
+the export filenames already use (`Matchlog-<id>.csv`), so a pulled night drops
+straight into `importer/live/exports/` with no renaming.
+
+Two things about that screen:
+
+**Widen the window first.** At phone width the admin page collapses its nav
+into a hamburger and puts **Advance Game** in the middle of the screen. Every
+control worth avoiding ends up under the cursor. At desktop width the nav is a
+row along the top and Stats & Logs is nowhere near anything destructive.
+
+**"Import CSV" sits beside "Export".** Never click it. Export reads; Import
+writes, into a live league's scoring data.
+
+### One thing to know about finished nights
+
+Scoreholio reported `GamePlay Status: Live` for a night played three days
+earlier. It means the tournament was never formally closed out, not that a game
+is in progress - so "Live" is not a reliable signal for whether it is safe to
+open, and the DATE is. Past date, past tab, read and export only.

@@ -24,6 +24,7 @@ const h2h = (() => {
 })();
 import { perspective, summarize, partners, pairGames, partnershipEdges, recent } from './stats.js';
 import { clubRecords } from './records.js';
+import { mountFeedback } from './feedback.js';
 
 const MIN_TOGETHER = 5;
 const RECENT_ROWS = 6;
@@ -782,7 +783,14 @@ function renderPlayer() {
       <div class="log">${logRows(mine.slice(0, RECENT_ROWS))}</div>
       ${mine.length > RECENT_ROWS ? `<button class="morebtn" id="btnMore" type="button" aria-expanded="false" aria-controls="fullLog">Show all ${mine.length} games</button>
         <div class="fulllog log" id="fullLog" hidden>${logRows(mine)}</div>` : ''}
-    </div>` : ''}`;
+    </div>` : ''}
+
+    <p class="feedback" id="playerFeedback"></p>`;
+
+  // Carries the player's name, because a report that says "this page is wrong"
+  // without saying whose page is a report nobody can act on. Renders nothing
+  // until a form exists - see feedback.js.
+  mountFeedback($('#playerFeedback'), { subject: nameOf(id) });
 }
 
 function rivalCard(tag, r, kind = '') {
@@ -1371,6 +1379,10 @@ function init() {
     setView(state.view);
   });
   setView(state.view);
+
+  // Site-wide, with no subject: reachable from every page, for the reports that
+  // are not about one player. Renders nothing until a form is configured.
+  mountFeedback($('#siteFeedback'), { label: 'Spotted a mistake, or want something added? Tell us.' });
 }
 
 init();

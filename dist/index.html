@@ -654,6 +654,21 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
   .ctl-note{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* "Something look wrong?" - quiet on purpose. It is an invitation to correct
+   the data, not a call to action, and it should never compete with the stats
+   it sits under. The whole block collapses to nothing when no form is
+   configured, so an unconfigured site shows no empty footer. */
+.sitefoot{max-width:1180px;margin:0 auto;padding:0 20px}
+.feedback{margin:26px 0 34px;text-align:center}
+.feedback:empty{display:none}
+.sitefoot:has(.feedback:empty){display:none}
+.feedback-link{display:inline-block;padding:9px 16px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.16);color:var(--dim,#9aa6a0);
+  font-size:13px;line-height:1.35;text-decoration:none;
+  transition:border-color .16s,color .16s,background-color .16s}
+.feedback-link:hover,.feedback-link:focus-visible{
+  color:var(--ink,#eef4f0);border-color:rgba(198,255,0,.5);background:rgba(198,255,0,.06)}
 </style>
 
 <header class="topbar">
@@ -718,6 +733,10 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
     <div id="compareBody"></div>
   </section>
 </div>
+
+<footer class="sitefoot">
+  <p class="feedback" id="siteFeedback"></p>
+</footer>
 
 <p aria-live="polite" class="sr-only" id="live"></p>
 <script type="module" src="app.js"></script>
