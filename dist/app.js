@@ -181,7 +181,19 @@ const longDate = (iso) => {
  * finishes on the exact figure rather than an eased approximation.
  */
 function countUp(el, to, ms = 1400) {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = nf(to); return; }
+  // The real number goes in FIRST, every time, and the animation only ever
+  // replaces a correct number with the same correct number.
+  //
+  // It has to be this way round because requestAnimationFrame does not run in a
+  // background tab. Open the site in a background tab - a middle-click, a
+  // restored session, a link preview - and an animation that starts at zero
+  // never gets a frame to leave zero with, so the biggest number on the page
+  // reads "0 games played" until the tab is focused. The marquee counters were
+  // already built this way after the same bug hit them below the fold; the hero
+  // counter was still starting from a hardcoded 0 in the markup.
+  el.textContent = nf(to);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (document.hidden) return;          // no frames will come; keep the truth
   const t0 = performance.now();
   const ease = (t) => 1 - Math.pow(1 - t, 4);
   const step = (now) => {
@@ -493,7 +505,7 @@ function renderHome() {
           <h1 class="hero-title">The Stat Room</h1>
           <p class="hero-what">Every game the league has ever played, and everyone who played it.
             Look up a player, settle an argument, see who holds what.</p>
-          <p class="counter"><span id="bigCount">0</span><span class="unit">games played</span></p>
+          <p class="counter"><span id="bigCount">${nf(T.games)}</span><span class="unit">games played</span></p>
           <p class="hero-sub"><b>${longDate(T.firstDate)}</b> to <b>${longDate(T.lastDate)}</b></p>
         </div>
         <figure class="yearchart">

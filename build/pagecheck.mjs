@@ -518,6 +518,46 @@ await ph.waitForTimeout(500);
   await desk.close();
 }
 
+/* ------------------------------------------- the hero counter, in a tab that
+ * nobody is looking at.
+ *
+ * requestAnimationFrame does not run in a background tab. The hero counter
+ * animated up from a hardcoded 0 in the markup, so a page opened in one - a
+ * middle-click, a restored session, a link preview, a screenshot - sat on
+ * "0 games played", the largest number on the site, until someone focused it.
+ *
+ * Emulating a hidden page is the only way to catch this: focused, everything
+ * looks perfect. The assertion is not "the animation works", it is "the number
+ * is never wrong", which is the property that actually matters.
+ */
+{
+  const hidden = await b.newContext({ viewport: { width: 1400, height: 1200 } });
+  const hp = await hidden.newPage();
+  // Make the page report itself hidden BEFORE any of its script runs.
+  await hp.addInitScript(() => {
+    Object.defineProperty(document, 'hidden', { get: () => true });
+    Object.defineProperty(document, 'visibilityState', { get: () => 'hidden' });
+  });
+  await hp.goto('http://127.0.0.1:8321/', { waitUntil: 'networkidle' });
+  await hp.waitForTimeout(900);
+  const shown = await hp.evaluate(() => document.querySelector('#bigCount')?.textContent?.trim());
+  const real = await hp.evaluate(async () => {
+    const { matches } = await import('./data.js');
+    return matches.length.toLocaleString('en-US');
+  });
+  t('the hero counter shows the real total in a background tab, not 0',
+    shown === real, `showed ${JSON.stringify(shown)}, expected ${JSON.stringify(real)}`);
+  t('and it is not left at zero', shown !== '0', JSON.stringify(shown));
+
+  // Same property for the marquee counters, which were fixed for the
+  // below-the-fold version of this and must not regress into the hidden one.
+  const zeros = await hp.evaluate(() =>
+    [...document.querySelectorAll('.mq-val b[data-to]')]
+      .filter((e) => e.textContent.trim() === '0' && e.dataset.to !== '0').length);
+  t('no marquee counter is stranded at zero either', zeros === 0, `${zeros} stuck`);
+  await hidden.close();
+}
+
 t('no page errors anywhere', errs.length === 0, errs.slice(0, 3).join(' | '));
 console.log(`\n${pass} passed, ${fail} failed   (checked ${ids.length} players + tab switching at 390px)`);
 await b.close();
