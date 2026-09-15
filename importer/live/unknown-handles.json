@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-14T23:58:36.256Z",
+ "generated": "2026-09-15T00:44:02.953Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -5705,47 +5705,6 @@
     },
     {
      "handle": "Melissa M.",
-     "games": 1
-    }
-   ],
-   "candidates": null
-  },
-  {
-   "handle": "eddie r.",
-   "games": 6,
-   "nights": 1,
-   "firstSeen": "2023-10-03",
-   "lastSeen": "2023-10-03",
-   "tournaments": [
-    "2CV2wREwbZuY0lQ7F6bl"
-   ],
-   "playedWith": [
-    {
-     "handle": "chris b.",
-     "games": 5
-    },
-    {
-     "handle": "collin h.",
-     "games": 3
-    },
-    {
-     "handle": "joe i.",
-     "games": 3
-    },
-    {
-     "handle": "julio o.",
-     "games": 2
-    },
-    {
-     "handle": "lulu l.",
-     "games": 2
-    },
-    {
-     "handle": "jennifer b.",
-     "games": 2
-    },
-    {
-     "handle": "Adrian l.",
      "games": 1
     }
    ],

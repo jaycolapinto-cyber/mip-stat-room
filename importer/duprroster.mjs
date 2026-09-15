@@ -135,6 +135,7 @@ export function widenRoster(roster) {
    */
   const sheet = Object.entries(aliases.sheetHandles ?? {}).filter(([k]) => !k.startsWith('_'));
   const sheetMerges = [];
+  const sheetUnresolved = [];
   if (sheet.length) {
     const byName = new Map();
     for (const p of players) if (!byName.has(p.name)) byName.set(p.name, p.id);
@@ -142,15 +143,46 @@ export function widenRoster(roster) {
       const fromId = byName.get(handle);
       if (!fromId) continue;                       // that handle is not in this build
       if (fromId === targetId) continue;           // already one row
-      const into = byId.get(targetId);
-      if (!into) throw new Error(`sheetHandles maps "${handle}" to unknown id "${targetId}"`);
+      // A sheetHandles target can be an id that has since been merged away.
+      // "Tim L" points at "tim-lynch", and tim-lynch was later merged into
+      // timothy-lynch, so the target is correct history and a dead id at once.
+      // Before the full DUPR reading landed Tim was not in the build at all and
+      // this line was skipped; the moment he appeared, the build threw.
+      //
+      // The direct target is tried FIRST and the merge only followed when it is
+      // missing. Following it unconditionally broke the eagle handle, whose
+      // target "brett-ritholt" does exist here even though mergedPlayers also
+      // redirects that id onward - the onward id is created later, downstream,
+      // and does not exist at this point in the build. Preferring what is in
+      // front of us keeps both cases right.
+      let realTarget = targetId;
+      if (!byId.has(realTarget)) {
+        let guard = 0;
+        while (merged.has(realTarget) && guard++ < 10 && !byId.has(realTarget)) {
+          realTarget = merged.get(realTarget);
+        }
+      }
+      const into = byId.get(realTarget);
+      if (!into) {
+        // NOT fatal, and this used to be. A sheetHandles target can legitimately
+        // be created LATER in the build than this loop runs: "Eddie Rizzi" points
+        // at edward-rizzi, and Edward Rizzi enters the roster further down, named
+        // by Scoreholio. Throwing here blocked a build over data that was fine.
+        //
+        // Skipping is not the same as half-applying it - the handle row simply
+        // stays separate, which is exactly where it was before the mapping
+        // existed. A genuine typo in aliases.json still shows up, as a line in
+        // every build's output instead of a wall, so it cannot rot unnoticed.
+        sheetUnresolved.push({ handle, targetId, followedTo: realTarget !== targetId ? realTarget : null });
+        continue;
+      }
       const from = byId.get(fromId);
       if (!from) continue;
       into.leagues = [...new Set([...(into.leagues ?? []), ...(from.leagues ?? [])])];
       into.aliases = [...new Set([...(into.aliases ?? []), ...(from.aliases ?? []), from.name])]
         .filter((x) => x !== into.name);
-      merged.set(fromId, targetId);                // so resolve() redirects it everywhere
-      sheetMerges.push({ handle, fromId, targetId, name: into.name });
+      merged.set(fromId, realTarget);               // so resolve() redirects it everywhere
+      sheetMerges.push({ handle, fromId, targetId: realTarget, name: into.name });
     }
     for (const m of sheetMerges) { byId.delete(m.fromId); }
     // A suggestion whose two sides are now the SAME person has been answered,
@@ -178,8 +210,24 @@ export function widenRoster(roster) {
     for (const [n, id] of nameToId) if (gone.has(id)) nameToId.set(n, resolve(id));
   }
 
+  /* Record an id equivalence discovered AFTER this module has run.
+   *
+   * Some ids only come into existence downstream - Scoreholio names players
+   * this roster never saw - so a merge involving one of them cannot be decided
+   * here. What must not happen is the downstream stage quietly keeping its own
+   * private notion of "these two ids are one man", because resolve() is the
+   * single place the rest of the build asks that question. Anything that
+   * answers it elsewhere is a fact the rest of the build cannot see.
+   */
+  const mergeLate = (fromId, toId) => {
+    if (!fromId || !toId || fromId === toId) return false;
+    if (merged.has(fromId)) return merged.get(fromId) === toId;
+    merged.set(fromId, toId);
+    return true;
+  };
+
   return { players, nameToId, added, suggestions, notAPlayer, gamesDropped,
-           merged: [...merged], sheetMerges, resolve };
+           merged: [...merged], sheetMerges, sheetUnresolved, mergeLate, resolve };
 }
 
 if (process.argv[1]?.endsWith('duprroster.mjs')) {

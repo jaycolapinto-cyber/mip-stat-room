@@ -120,6 +120,27 @@ for (const p of wide.players) {
   else rosterByName.set(k, p.id);
 }
 const addedFromScoreholio = [];
+
+/* A sheetHandles mapping whose target did not exist when widenRoster ran.
+ *
+ * It does not exist up there because it gets created down HERE, by Scoreholio's
+ * own name records: Dave's sheet calls him "Eddie Rizzi" and Scoreholio calls
+ * him "Edward Rizzi", and a human already confirmed in aliases.json that those
+ * are one man. Left alone the build produces both rows - 2,883 games under the
+ * sheet's name and 11 under Scoreholio's - which is the split profile the
+ * mapping exists to prevent.
+ *
+ * So the target is never created. The name resolves straight to the row that is
+ * already carrying his games, and his Scoreholio spelling becomes an alias on
+ * it so a search for either name finds him.
+ */
+const pendingHandle = new Map();                   // would-be new id -> the row it really is
+const handleAbsorbed = new Map();                  // and the ones that actually came up
+for (const u of wide.sheetUnresolved ?? []) {
+  const row = wide.players.find((p) => p.name === u.handle);
+  if (row) pendingHandle.set(u.targetId, fix(row.id));
+}
+
 const idForRealName = (real) => {
   const k = canonName(real);
   if (!k) return null;
@@ -128,6 +149,19 @@ const idForRealName = (real) => {
   // A real person, named by the system of record, who is simply not in our
   // roster yet. Add them rather than drop their games.
   let id = k.replace(/ /g, '-');
+  if (pendingHandle.has(id)) {
+    const realId = pendingHandle.get(id);
+    handleAbsorbed.set(id, { as: real, into: realId });
+    // Everything else in the build resolves ids through fix(), including the
+    // alias file's own entries - scoreholioHandles points "Eddie" at this same
+    // id. Telling resolve() about the equivalence is what keeps those working;
+    // without it a confirmed alias would point at an id that no longer exists.
+    wide.mergeLate(id, realId);
+    const p = wide.players.find((x) => x.id === realId);
+    if (p && p.name !== real && !(p.aliases ?? []).includes(real)) (p.aliases ??= []).push(real);
+    rosterByName.set(k, realId);
+    return realId;
+  }
   const taken = new Set(wide.players.map((p) => p.id));
   if (taken.has(id)) { let n = 2; while (taken.has(`${id}-${n}`)) n++; id = `${id}-${n}`; }
   const p = { id, name: real, club: null, leagues: [], aliases: [], source: 'scoreholio' };
@@ -365,7 +399,13 @@ for (const [id0, v] of dp.ratings) {
     if (counts.get(k) > 1) { ambiguous++; continue; }
     const hit = shRatings.get(k);
     if (!hit) continue;
-    dupr[id] = { rating: hit.rating, duprName: hit.name, asOf: hit.seen, history: [], source: 'scoreholio' };
+    // One dated sighting, not an empty history. Empty would break the invariant
+    // that the current rating is the last reading, and it would also say "we
+    // have no idea when this was true", which is wrong - we know the date
+    // Scoreholio showed it. The panel still draws no chart, because the source
+    // is scoreholio and a single point is not a trend either way.
+    dupr[id] = { rating: hit.rating, duprName: hit.name, asOf: hit.seen,
+                 history: [{ date: hit.seen, rating: hit.rating }], source: 'scoreholio' };
     filled++;
   }
   duprFill = { filled, ambiguous, pool: shRatings.size };
@@ -532,6 +572,30 @@ console.log('dupr ratings   ', Object.keys(dupr).length, '|', dp.snapshots.lengt
   if (dupes.length) {
     console.log(`\n  ${dupes.length} source(s) had more than one matching file; the newest was used.`);
     for (const r of dupes) console.log(`    ${r.what}: ${r.alternatives} older cop${r.alternatives === 1 ? 'y' : 'ies'} ignored`);
+  }
+}
+// A sheetHandles mapping whose target was not in the roster at the point the
+// merge ran. Usually harmless - the target is created later in the build by
+// Scoreholio naming, and the handle row simply stays separate, exactly as it
+// was before the mapping existed. But a real typo in aliases.json lands here
+// too, and the only thing keeping it from rotting unnoticed is this line.
+if (wide.sheetUnresolved?.length) {
+  const absorbed = wide.sheetUnresolved.filter((u) => handleAbsorbed.has(u.targetId));
+  const open = wide.sheetUnresolved.filter((u) => !handleAbsorbed.has(u.targetId));
+  if (absorbed.length) {
+    console.log(`\nsheetHandles settled downstream (${absorbed.length}) - one row, not two:`);
+    for (const u of absorbed) {
+      const a = handleAbsorbed.get(u.targetId);
+      console.log(`  ${JSON.stringify(u.handle)} keeps the row; Scoreholio's "${a.as}" became an alias on it`);
+    }
+  }
+  if (open.length) {
+    console.log(`\nsheetHandles that did NOT merge (${open.length}) - handle left as its own row:`);
+    console.log('  Check aliases.json: the target id below never appeared in this build at all.');
+    for (const u of open) {
+      const via = u.followedTo ? ` (followed merge to "${u.followedTo}")` : '';
+      console.log(`  ${JSON.stringify(u.handle)} -> "${u.targetId}"${via}`);
+    }
   }
 }
 if (wide.suggestions.filter((s) => s.confident).length) {
