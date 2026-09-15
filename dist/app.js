@@ -25,6 +25,7 @@ const h2h = (() => {
 import { perspective, summarize, partners, pairGames, partnershipEdges, recent } from './stats.js';
 import { clubRecords } from './records.js';
 import { mountFeedback } from './feedback.js';
+import { duprPanel } from './duprchart.js';
 
 const MIN_TOGETHER = 5;
 const RECENT_ROWS = 6;
@@ -719,6 +720,8 @@ function renderPlayer() {
       </div>
     </section>
 
+    ${duprPanel(dr)}
+
     <div class="grid">
       <div class="card">
         <div class="card-h"><h2>League records</h2><span class="badge ok">Published</span></div>
@@ -785,12 +788,7 @@ function renderPlayer() {
         <div class="fulllog log" id="fullLog" hidden>${logRows(mine)}</div>` : ''}
     </div>` : ''}
 
-    <p class="feedback" id="playerFeedback"></p>`;
-
-  // Carries the player's name, because a report that says "this page is wrong"
-  // without saying whose page is a report nobody can act on. Renders nothing
-  // until a form exists - see feedback.js.
-  mountFeedback($('#playerFeedback'), { subject: nameOf(id) });
+    `;
 }
 
 function rivalCard(tag, r, kind = '') {
@@ -1194,6 +1192,27 @@ function setView(view, focus) {
   }
   if (focus) $('#tab-' + view).focus();
   render();
+  refreshFeedback();
+}
+
+/**
+ * Point the feedback card at whatever the reader is currently looking at.
+ *
+ * One card, re-worded per view, rather than one per panel. The first version
+ * put a link in the footer AND another on the player page, so a player page
+ * carried two of them - and both sat at the bottom, below a match log that can
+ * run to hundreds of rows. Nobody scrolls that far to report a typo.
+ *
+ * On a player's page it names the player, because "this page is wrong" without
+ * saying whose page is a report nobody can act on.
+ */
+function refreshFeedback() {
+  const el = $('#siteFeedback');
+  if (state.view === 'player' && state.player) {
+    mountFeedback(el, { subject: nameOf(state.player) });
+  } else {
+    mountFeedback(el, { label: 'Spotted a mistake, or want something added? Tell us.' });
+  }
 }
 
 function openCompare(a, b) {
@@ -1378,11 +1397,7 @@ function init() {
     comboPlayer.set(state.player); comboA.set(state.a); comboB.set(state.b);
     setView(state.view);
   });
-  setView(state.view);
-
-  // Site-wide, with no subject: reachable from every page, for the reports that
-  // are not about one player. Renders nothing until a form is configured.
-  mountFeedback($('#siteFeedback'), { label: 'Spotted a mistake, or want something added? Tell us.' });
+  setView(state.view);   // which mounts the feedback card for the opening view
 }
 
 init();

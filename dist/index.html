@@ -653,22 +653,74 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
   .logdate.dated{display:inline}
   .ctl-note{display:none}
 }
+/* ---------- DUPR rating panel ----------
+   One series, so no legend: the heading names it. The line carries the shape
+   and the exact numbers live in a table underneath, which is also what a
+   screen reader gets - identity is never carried by colour alone here.
+   Values and labels wear text colours, never the line's colour. */
+.duprcard{margin-top:16px}
+.dnum{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 10px}
+.dnum b{font-family:var(--display);font-size:46px;line-height:1;letter-spacing:.01em}
+.dmv{display:inline-flex;align-items:baseline;gap:7px;font-size:13px;font-weight:600}
+.dmv.up{color:#1c7a4a}
+.dmv.down{color:#a2564b}
+.dpct{font-weight:700}
+/* The span is the honest caveat next to the number, so it stays readable
+   rather than shrinking into decoration. */
+.dspan{color:var(--muted,#6b7a72);font-weight:400}
+.dspark{display:block;max-width:100%;height:auto;margin:2px 0 4px;overflow:visible}
+.dline{stroke:#1c7a4a}
+.dspark.down .dline{stroke:#a2564b}
+.dpt{fill:#1c7a4a;opacity:.45}
+.dspark.down .dpt{fill:#a2564b}
+.dend{fill:#1c7a4a;stroke:#fff;stroke-width:2}
+.dspark.down .dend{fill:#a2564b}
+.dtable{margin-top:6px;font-size:13px}
+.dtable summary{cursor:pointer;color:var(--muted,#6b7a72);padding:4px 0}
+.dtable table{width:auto;margin-top:4px}
+.dtable th,.dtable td{padding:3px 18px 3px 0;text-align:left}
+.dnone,.dfoot{color:var(--muted,#6b7a72);font-size:13px;line-height:1.5;margin:8px 0 0}
+.dfoot{margin-top:12px;font-size:12px}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
-/* "Something look wrong?" - quiet on purpose. It is an invitation to correct
-   the data, not a call to action, and it should never compete with the stats
-   it sits under. The whole block collapses to nothing when no form is
-   configured, so an unconfigured site shows no empty footer. */
-.sitefoot{max-width:1180px;margin:0 auto;padding:0 20px}
-.feedback{margin:26px 0 34px;text-align:center}
+/* "Something look wrong?" - a small green card that rides just under the top
+   bar on every page.
+
+   It sat in the footer first, which was wrong twice over: nobody scrolls to the
+   bottom of a stats page, and on a player page it appeared TWICE, once for the
+   player and once site-wide. One card, at the top, that changes its wording
+   depending on the page, is both more honest and more likely to be used.
+
+   Sticky, and offset by the height of the top bar so the two never overlap.
+   z-index sits below the bar's 40 so the bar always wins. The whole strip
+   collapses to nothing when there is no link to show, so a page that has not
+   mounted one yet does not reserve empty space. */
+.feedbar{position:sticky;top:60px;z-index:30;max-width:1180px;margin:0 auto;
+  padding:10px 20px 0;pointer-events:none}
+.feedbar:has(.feedback:empty){display:none}
+.feedback{margin:0}
 .feedback:empty{display:none}
-.sitefoot:has(.feedback:empty){display:none}
-.feedback-link{display:inline-block;padding:9px 16px;border-radius:999px;
-  border:1px solid rgba(255,255,255,.16);color:var(--dim,#9aa6a0);
-  font-size:13px;line-height:1.35;text-decoration:none;
+/* Shrink-to-fit, not a full-width band. A band spans the page and the table
+   rows underneath slide out from both ends of it, which reads as a rendering
+   fault rather than a deliberate overlay. A small card with a real shadow
+   reads as floating above the page, which is what it is. pointer-events are
+   off on the strip and back on for the card itself, so the invisible gutter
+   either side of it does not swallow clicks meant for the page. */
+.feedback-link{display:inline-block;pointer-events:auto;
+  padding:8px 14px;border-radius:12px;
+  background:var(--court-deep);border:1px solid rgba(198,255,0,.28);
+  color:rgba(255,255,255,.82);font-size:13px;line-height:1.35;text-decoration:none;
+  box-shadow:0 10px 26px -14px rgba(0,0,0,.85);
   transition:border-color .16s,color .16s,background-color .16s}
+.feedback-link::before{content:"✎";margin-right:8px;color:var(--lime);font-size:12px}
 .feedback-link:hover,.feedback-link:focus-visible{
-  color:var(--ink,#eef4f0);border-color:rgba(198,255,0,.5);background:rgba(198,255,0,.06)}
+  color:#fff;border-color:rgba(198,255,0,.6);background:#0b3a28}
+@media (max-width:640px){
+  /* The bar is taller once the tabs wrap, so the card has to start lower. */
+  .feedbar{top:104px;padding:8px 14px 0}
+  .feedback-link{font-size:12px;padding:8px 12px}
+}
 </style>
 
 <header class="topbar">
@@ -687,6 +739,8 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
     <p class="demopill">Live data</p>
   </div>
 </header>
+
+<div class="feedbar"><p class="feedback" id="siteFeedback"></p></div>
 
 <div class="shell">
   <section id="panel-home" role="tabpanel" aria-labelledby="tab-home" tabindex="-1"></section>
@@ -733,10 +787,6 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
     <div id="compareBody"></div>
   </section>
 </div>
-
-<footer class="sitefoot">
-  <p class="feedback" id="siteFeedback"></p>
-</footer>
 
 <p aria-live="polite" class="sr-only" id="live"></p>
 <script type="module" src="app.js"></script>

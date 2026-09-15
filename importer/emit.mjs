@@ -318,7 +318,16 @@ const usedIds = new Set([
   ...leagues.flatMap((l) => l.players.map((p) => { const id = leagueRowId(p.name, p.club); return id && fix(id); }).filter(Boolean)),
 ]);
 
-const dp = matchDupr(roster);
+// Matched against the FULL widened roster, not the 173 players who appear in
+// the standings workbooks.
+//
+// It used to be `matchDupr(roster)`, and that quietly cost about half the
+// ratings. `roster` is the workbook roster; most of the club reaches this site
+// through DUPR and Scoreholio games instead and never appears in a workbook at
+// all. So 69 people whose DUPR name matched a player on this site EXACTLY -
+// "Joshua Octaviano" against "Joshua Octaviano" - were reported as "not in our
+// data" purely because they were never shown to the matcher.
+const dp = matchDupr(wide.players);
 const dupr = {};
 for (const [id0, v] of dp.ratings) { const id = fix(id0); dupr[id] = { rating: v.rating, duprName: v.duprName, asOf: v.asOf, history: v.history }; }
 

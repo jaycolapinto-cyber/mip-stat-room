@@ -27,7 +27,7 @@ await page.waitForTimeout(800);
 const home = await page.$$eval('.feedback-link', (a) => a.map((e) => ({
   href: e.href, text: e.textContent.trim(), target: e.target, rel: e.rel,
 })));
-t('the site-wide link is rendered', home.length === 1, JSON.stringify(home));
+t('exactly one card is rendered, not one per panel', home.length === 1, JSON.stringify(home));
 t('and points at the real form', home[0]?.href.startsWith(FORM), home[0]?.href);
 t('and opens in a new tab', home[0]?.target === '_blank');
 t('with rel=noopener, so the form cannot reach back into the page',
@@ -45,7 +45,7 @@ await page.goto(`http://127.0.0.1:8321/#/player/${id}`, { waitUntil: 'networkidl
 await page.waitForTimeout(900);
 
 const onPlayer = await page.$$eval('.feedback-link', (a) => a.map((e) => ({ href: e.href, text: e.textContent.trim() })));
-t('a player page has its own link', onPlayer.length >= 1, JSON.stringify(onPlayer));
+t('a player page still shows exactly one card, never two', onPlayer.length === 1, JSON.stringify(onPlayer));
 t('and names the player in it, so a report says whose page it is about',
   onPlayer.some((l) => l.text.includes(name)), `${name} | ${JSON.stringify(onPlayer.map(l=>l.text))}`);
 
@@ -72,6 +72,45 @@ t('and names the player in it, so a report says whose page it is about',
 t('every link on the page resolves to the form host, and nowhere else',
   (await page.$$eval('.feedback-link', (a) => a.every((e) =>
     new URL(e.href).host === 'docs.google.com'))));
+
+
+/* ------------------------------------------- where the card sits, and sticks */
+{
+  const box = await page.evaluate(() => {
+    const bar = document.querySelector('.feedbar');
+    const top = document.querySelector('.topbar');
+    if (!bar || !top) return null;
+    const b = bar.getBoundingClientRect(), t = top.getBoundingClientRect();
+    return { position: getComputedStyle(bar).position, barTop: Math.round(b.top),
+             topBarBottom: Math.round(t.bottom), zBar: getComputedStyle(bar).zIndex,
+             zTop: getComputedStyle(top).zIndex };
+  });
+  t('the card is sticky', box?.position === 'sticky', JSON.stringify(box));
+  t('and sits BELOW the top bar, never overlapping it',
+    box && box.barTop >= box.topBarBottom - 1, JSON.stringify(box));
+  t('and the top bar wins on z-index if they ever meet',
+    box && Number(box.zTop) > Number(box.zBar), JSON.stringify(box));
+
+  // The point of sticky: still there after scrolling down a long match log.
+  await page.evaluate(() => window.scrollTo(0, 2400));
+  await page.waitForTimeout(400);
+  const stillVisible = await page.evaluate(() => {
+    const b = document.querySelector('.feedbar')?.getBoundingClientRect();
+    return !!b && b.top >= 0 && b.bottom <= innerHeight;
+  });
+  t('and is still on screen after scrolling down a long page', stillVisible);
+  await page.evaluate(() => window.scrollTo(0, 0));
+}
+
+/* -------------------------------------- it follows the reader between views */
+{
+  await page.click('#tab-records');
+  await page.waitForTimeout(600);
+  const onRecords = await page.$$eval('.feedback-link', (a) => a.map((e) => e.textContent.trim()));
+  t('switching to another view keeps exactly one card', onRecords.length === 1, JSON.stringify(onRecords));
+  t('and it drops the player name when the page is not about a player',
+    !onRecords[0]?.includes(name), onRecords[0]);
+}
 
 t('no page errors', errs.length === 0, errs.slice(0, 3).join(' | '));
 console.log(`\n${pass} passed, ${fail} failed   (feedback link)`);
