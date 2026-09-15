@@ -184,6 +184,20 @@ export function rowsToGames(rows, label) {
       matchId: id,
       num: Number(r['#']) || null,
       iso: when.toISOString(),
+      // The night this game belongs to, in the league's own timezone.
+      //
+      // NOT iso.slice(0,10). Scoreholio stamps every row in UTC, and the
+      // Monday evening league runs 8pm to 11:15pm Eastern - which is 00:00 to
+      // 03:15 UTC the NEXT DAY. Taking the UTC date filed all 69 of Monday
+      // Sep 14's games under Sep 15, a day nobody played, and split the night
+      // away from the DUPR record of the same games, which is dated Eastern.
+      // That second part is the dangerous one: the dedup key is date + the
+      // four players + the score, so a game under two dates is a game counted
+      // twice, on two different days, with no error raised.
+      //
+      // Daytime sessions hid this for months. 2:57pm Eastern is 18:57 UTC and
+      // lands on the right date by luck; every session after 8pm does not.
+      date: when.toLocaleDateString('en-CA', { timeZone: 'America/New_York' }),
       ts: Math.floor(when.getTime() / 1000),
       court: readCourt(r['Crt']),
       dur: readDuration(r['Play Duration'], {

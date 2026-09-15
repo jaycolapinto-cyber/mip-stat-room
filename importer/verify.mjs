@@ -48,7 +48,7 @@ for (const p of players) { const k = canonName(p.name); if (!idByName.has(k)) id
 
 if (new Set(matches.map((m) => m.id)).size !== matches.length) err('duplicate match ids in the shipped data');
 
-let checked = 0, shChecked = 0;
+let checked = 0, shChecked = 0, movedNoClock = 0;
 for (const m of matches) {
   const g = srcById.get(m.id);
   let srcDate = g?.date, srcSa = g?.sa, srcSb = g?.sb;
@@ -71,7 +71,27 @@ for (const m of matches) {
   } else {
     checked++;
   }
-  if (srcDate !== m.date) err(`match ${m.id}: date ${m.date} but the source says ${srcDate}`);
+  /* The date check, re-derived rather than trusted.
+   *
+   * Both sources stamp a game in UTC, so an 8pm Eastern game is filed by its
+   * source under the NEXT day. emit.mjs corrects that at the end of the build;
+   * this is the independent proof that it corrected it right, so it computes
+   * the answer from the timestamp itself rather than repeating emit's logic.
+   *
+   * Where there is a clock, the answer is exact and nothing else is accepted.
+   * Where there is not, the only thing that can be asserted is the bound: a
+   * corrected date is the source's date or the day before it, never any other
+   * day and never later. A game silently landing two days off, or moving
+   * forward, fails here.
+   */
+  if (m.ts != null) {
+    const real = new Date(m.ts * 1000).toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+    if (m.date !== real) err(`match ${m.id}: dated ${m.date} but its clock says it was played ${real} Eastern`);
+  } else if (srcDate !== m.date) {
+    const dayBefore = new Date(Date.parse(srcDate + 'T00:00:00Z') - 86400000).toISOString().slice(0, 10);
+    if (m.date !== dayBefore) err(`match ${m.id}: date ${m.date} but the source says ${srcDate}`);
+    else movedNoClock++;
+  }
   if (srcSa !== m.sa || srcSb !== m.sb) err(`match ${m.id}: score ${m.sa}-${m.sb} but the source says ${srcSa}-${srcSb}`);
   if (m.a.length !== 2 || m.b.length !== 2) err(`match ${m.id}: not two players a side`);
   if (new Set([...m.a, ...m.b]).size !== 4) err(`match ${m.id}: the same player appears twice`);
@@ -88,6 +108,9 @@ for (const m of matches) {
 const shipped = new Set(matches.map((m) => m.id));
 const missing = src.filter((g) => !shipped.has(g.matchId));
 note(`Scoreholio-only matches independently re-checked: ${shChecked}`);
+note(`game dates re-derived from their own clock: ${matches.filter((m) => m.ts != null).length}` +
+     ` | moved a day back without a clock, within bounds: ${movedNoClock}` +
+     ` | no clock and left on the source's date: ${matches.filter((m) => m.ts == null).length - movedNoClock}`);
 if (missing.length !== coverage.gamesHeldBack) {
   warn(`${missing.length} source games did not ship but coverage says ${coverage.gamesHeldBack} were held back`);
 }

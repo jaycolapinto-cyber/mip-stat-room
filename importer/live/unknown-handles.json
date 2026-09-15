@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T00:44:02.953Z",
+ "generated": "2026-09-15T19:16:54.325Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -847,6 +847,72 @@
     }
    ],
    "candidates": null
+  },
+  {
+   "handle": "Michael S.",
+   "games": 33,
+   "nights": 3,
+   "firstSeen": "2026-03-12",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "po6irFKwzkCohu7A6TYm",
+    "emZh7JwA3xKZZY2L03g5",
+    "BK2kXl8ttzuUZnAHuQZ3"
+   ],
+   "playedWith": [
+    {
+     "handle": "Adrian L.",
+     "games": 8
+    },
+    {
+     "handle": "Shane M.",
+     "games": 6
+    },
+    {
+     "handle": "Noah H.",
+     "games": 6
+    },
+    {
+     "handle": "Josh J.",
+     "games": 5
+    },
+    {
+     "handle": "Adam K.",
+     "games": 5
+    },
+    {
+     "handle": "Vincent C.",
+     "games": 5
+    },
+    {
+     "handle": "Ronnie D",
+     "games": 4
+    },
+    {
+     "handle": "Robert P.",
+     "games": 4
+    },
+    {
+     "handle": "Maurice R.",
+     "games": 4
+    },
+    {
+     "handle": "Stork 🇺🇸🍻",
+     "games": 3
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 3
+    },
+    {
+     "handle": "Jason V.",
+     "games": 3
+    }
+   ],
+   "candidates": [
+    "Michael Scancarello",
+    "Michael Spezio"
+   ]
   },
   {
    "handle": "4 4.",
@@ -1731,71 +1797,6 @@
     }
    ],
    "candidates": null
-  },
-  {
-   "handle": "Michael S.",
-   "games": 22,
-   "nights": 2,
-   "firstSeen": "2026-03-12",
-   "lastSeen": "2026-03-26",
-   "tournaments": [
-    "emZh7JwA3xKZZY2L03g5",
-    "BK2kXl8ttzuUZnAHuQZ3"
-   ],
-   "playedWith": [
-    {
-     "handle": "Shane M.",
-     "games": 6
-    },
-    {
-     "handle": "Adrian L.",
-     "games": 6
-    },
-    {
-     "handle": "Noah H.",
-     "games": 6
-    },
-    {
-     "handle": "Vincent C.",
-     "games": 5
-    },
-    {
-     "handle": "Ronnie D",
-     "games": 4
-    },
-    {
-     "handle": "Robert P.",
-     "games": 4
-    },
-    {
-     "handle": "Maurice R.",
-     "games": 4
-    },
-    {
-     "handle": "Stork 🇺🇸🍻",
-     "games": 3
-    },
-    {
-     "handle": "Stephen R.",
-     "games": 3
-    },
-    {
-     "handle": "Jason V.",
-     "games": 3
-    },
-    {
-     "handle": "Adam K.",
-     "games": 3
-    },
-    {
-     "handle": "Eddie",
-     "games": 3
-    }
-   ],
-   "candidates": [
-    "Michael Scancarello",
-    "Michael Spezio"
-   ]
   },
   {
    "handle": "18 1.",
@@ -3156,6 +3157,128 @@
     },
     {
      "handle": "Linduh V.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Olivia O.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "po6irFKwzkCohu7A6TYm"
+   ],
+   "playedWith": [
+    {
+     "handle": "Adam K.",
+     "games": 2
+    },
+    {
+     "handle": "Alexia Y.",
+     "games": 2
+    },
+    {
+     "handle": "BReady",
+     "games": 2
+    },
+    {
+     "handle": "Frank P.",
+     "games": 2
+    },
+    {
+     "handle": "Jeremie A.",
+     "games": 2
+    },
+    {
+     "handle": "Ashley D.",
+     "games": 2
+    },
+    {
+     "handle": "Birdman",
+     "games": 2
+    },
+    {
+     "handle": "Michael S.",
+     "games": 2
+    },
+    {
+     "handle": "Josh J.",
+     "games": 2
+    },
+    {
+     "handle": "Juju🇩🇴🧿",
+     "games": 1
+    },
+    {
+     "handle": "Juan G.",
+     "games": 1
+    },
+    {
+     "handle": "Christopher G.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Paul I.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "po6irFKwzkCohu7A6TYm"
+   ],
+   "playedWith": [
+    {
+     "handle": "D-Hub27🍺",
+     "games": 2
+    },
+    {
+     "handle": "Tim L",
+     "games": 2
+    },
+    {
+     "handle": "JonMac75☘️",
+     "games": 2
+    },
+    {
+     "handle": "Joe I.",
+     "games": 2
+    },
+    {
+     "handle": "Martha G.",
+     "games": 2
+    },
+    {
+     "handle": "Juan G.",
+     "games": 2
+    },
+    {
+     "handle": "L. Glods ❤️",
+     "games": 1
+    },
+    {
+     "handle": "Jim D.",
+     "games": 1
+    },
+    {
+     "handle": "Paul H.",
+     "games": 1
+    },
+    {
+     "handle": "Jaime F.",
+     "games": 1
+    },
+    {
+     "handle": "Mike B.",
+     "games": 1
+    },
+    {
+     "handle": "Birdman",
      "games": 1
     }
    ],
@@ -4798,6 +4921,324 @@
    "candidates": null
   },
   {
+   "handle": "Louise O.",
+   "games": 10,
+   "nights": 1,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "ovMPIe3fMZ6MK70dMB1y"
+   ],
+   "playedWith": [
+    {
+     "handle": "Scott B.",
+     "games": 6
+    },
+    {
+     "handle": "Timothy M.",
+     "games": 5
+    },
+    {
+     "handle": "Lou A.",
+     "games": 4
+    },
+    {
+     "handle": "Rob S.",
+     "games": 3
+    },
+    {
+     "handle": "Tommy S.",
+     "games": 3
+    },
+    {
+     "handle": "Craig Erk",
+     "games": 3
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 2
+    },
+    {
+     "handle": "Robert S.",
+     "games": 2
+    },
+    {
+     "handle": "Miichael D.",
+     "games": 1
+    },
+    {
+     "handle": "Dylan N.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Lou A.",
+   "games": 10,
+   "nights": 1,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "ovMPIe3fMZ6MK70dMB1y"
+   ],
+   "playedWith": [
+    {
+     "handle": "Louise O.",
+     "games": 4
+    },
+    {
+     "handle": "Timothy M.",
+     "games": 4
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 4
+    },
+    {
+     "handle": "Miichael D.",
+     "games": 3
+    },
+    {
+     "handle": "Rob S.",
+     "games": 3
+    },
+    {
+     "handle": "Robert S.",
+     "games": 3
+    },
+    {
+     "handle": "Tommy S.",
+     "games": 3
+    },
+    {
+     "handle": "Craig Erk",
+     "games": 2
+    },
+    {
+     "handle": "Scott B.",
+     "games": 2
+    },
+    {
+     "handle": "Dylan N.",
+     "games": 2
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Rob S.",
+   "games": 10,
+   "nights": 1,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "ovMPIe3fMZ6MK70dMB1y"
+   ],
+   "playedWith": [
+    {
+     "handle": "Craig Erk",
+     "games": 5
+    },
+    {
+     "handle": "Tommy S.",
+     "games": 4
+    },
+    {
+     "handle": "Robert S.",
+     "games": 4
+    },
+    {
+     "handle": "Miichael D.",
+     "games": 3
+    },
+    {
+     "handle": "Louise O.",
+     "games": 3
+    },
+    {
+     "handle": "Lou A.",
+     "games": 3
+    },
+    {
+     "handle": "Dylan N.",
+     "games": 3
+    },
+    {
+     "handle": "Timothy M.",
+     "games": 2
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 2
+    },
+    {
+     "handle": "Scott B.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Tommy S.",
+   "games": 10,
+   "nights": 1,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "ovMPIe3fMZ6MK70dMB1y"
+   ],
+   "playedWith": [
+    {
+     "handle": "Dylan N.",
+     "games": 5
+    },
+    {
+     "handle": "Robert S.",
+     "games": 4
+    },
+    {
+     "handle": "Rob S.",
+     "games": 4
+    },
+    {
+     "handle": "Miichael D.",
+     "games": 3
+    },
+    {
+     "handle": "Lou A.",
+     "games": 3
+    },
+    {
+     "handle": "Louise O.",
+     "games": 3
+    },
+    {
+     "handle": "Craig Erk",
+     "games": 2
+    },
+    {
+     "handle": "Scott B.",
+     "games": 2
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 2
+    },
+    {
+     "handle": "Timothy M.",
+     "games": 2
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Dylan N.",
+   "games": 10,
+   "nights": 1,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "ovMPIe3fMZ6MK70dMB1y"
+   ],
+   "playedWith": [
+    {
+     "handle": "Tommy S.",
+     "games": 5
+    },
+    {
+     "handle": "Robert S.",
+     "games": 5
+    },
+    {
+     "handle": "Timothy M.",
+     "games": 4
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 3
+    },
+    {
+     "handle": "Rob S.",
+     "games": 3
+    },
+    {
+     "handle": "Scott B.",
+     "games": 3
+    },
+    {
+     "handle": "Craig Erk",
+     "games": 2
+    },
+    {
+     "handle": "Miichael D.",
+     "games": 2
+    },
+    {
+     "handle": "Lou A.",
+     "games": 2
+    },
+    {
+     "handle": "Louise O.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Robert S.",
+   "games": 10,
+   "nights": 1,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "ovMPIe3fMZ6MK70dMB1y"
+   ],
+   "playedWith": [
+    {
+     "handle": "Dylan N.",
+     "games": 5
+    },
+    {
+     "handle": "Tommy S.",
+     "games": 4
+    },
+    {
+     "handle": "Rob S.",
+     "games": 4
+    },
+    {
+     "handle": "Miichael D.",
+     "games": 4
+    },
+    {
+     "handle": "Craig Erk",
+     "games": 3
+    },
+    {
+     "handle": "Lou A.",
+     "games": 3
+    },
+    {
+     "handle": "Timothy M.",
+     "games": 2
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 2
+    },
+    {
+     "handle": "Louise O.",
+     "games": 2
+    },
+    {
+     "handle": "Scott B.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
    "handle": "Lisa L.",
    "games": 10,
    "nights": 1,
@@ -5295,6 +5736,112 @@
     },
     {
      "handle": "Megan Bekel",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Miichael D.",
+   "games": 9,
+   "nights": 1,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "ovMPIe3fMZ6MK70dMB1y"
+   ],
+   "playedWith": [
+    {
+     "handle": "Stephen R.",
+     "games": 5
+    },
+    {
+     "handle": "Robert S.",
+     "games": 4
+    },
+    {
+     "handle": "Lou A.",
+     "games": 3
+    },
+    {
+     "handle": "Rob S.",
+     "games": 3
+    },
+    {
+     "handle": "Tommy S.",
+     "games": 3
+    },
+    {
+     "handle": "Craig Erk",
+     "games": 3
+    },
+    {
+     "handle": "Dylan N.",
+     "games": 2
+    },
+    {
+     "handle": "Timothy M.",
+     "games": 2
+    },
+    {
+     "handle": "Louise O.",
+     "games": 1
+    },
+    {
+     "handle": "Scott B.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Scott B.",
+   "games": 9,
+   "nights": 1,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "ovMPIe3fMZ6MK70dMB1y"
+   ],
+   "playedWith": [
+    {
+     "handle": "Louise O.",
+     "games": 6
+    },
+    {
+     "handle": "Timothy M.",
+     "games": 4
+    },
+    {
+     "handle": "Craig Erk",
+     "games": 4
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 3
+    },
+    {
+     "handle": "Dylan N.",
+     "games": 3
+    },
+    {
+     "handle": "Tommy S.",
+     "games": 2
+    },
+    {
+     "handle": "Lou A.",
+     "games": 2
+    },
+    {
+     "handle": "Miichael D.",
+     "games": 1
+    },
+    {
+     "handle": "Rob S.",
+     "games": 1
+    },
+    {
+     "handle": "Robert S.",
      "games": 1
     }
    ],

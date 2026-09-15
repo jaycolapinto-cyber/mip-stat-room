@@ -309,6 +309,67 @@ for (const e of readAllExports()) {
   }
 }
 
+/* ------------------------------------------- the night a game was played on
+ *
+ * Everything above this line dates a game the way its SOURCE dates it, and both
+ * sources date it in UTC. For a league that plays in the evening that is the
+ * wrong day: the Monday night session runs 8pm to 11:15pm Eastern, which is
+ * 00:00 to 03:15 UTC on Tuesday, so Monday's games were filed under Tuesday.
+ * The split is exactly at midnight UTC and nowhere else - of 18,393 Scoreholio
+ * rows played at 8pm Eastern or later, all 18,393 slip a day, while all 4,788
+ * morning rows and all 2,405 afternoon rows stay put.
+ *
+ * WHY THE CORRECTION HAPPENS HERE, AT THE END, AND NOT AT THE SOURCE.
+ *
+ * The cross-source dedup key is date + the four players + the score. DUPR and
+ * Scoreholio agree on the UTC date, which is the only reason a game held by
+ * both is recognised as one game. Converting Scoreholio to Eastern at parse
+ * time breaks that agreement, and every Scoreholio copy of a DUPR game stops
+ * matching its twin and is admitted as a second game: tried, and the match
+ * count went from 24,970 to 31,004. So the join runs on the dates the sources
+ * agree on, and only the surviving, de-duplicated games are re-dated.
+ *
+ * WHAT IS AND IS NOT CORRECTED. A game carrying a Scoreholio timestamp has an
+ * exact answer and gets it - 98.6% of them. The rest are DUPR-only games with
+ * no clock, and they are moved only when every timed game sharing their stored
+ * date agrees on one Eastern date. Where a stored date covers two real sessions
+ * - a Monday night that slipped forward plus Tuesday morning - an untimed game
+ * could belong to either, and it is LEFT WHERE IT IS and counted in the build
+ * output. Matching on who played resolved 7 of those 132 and was dropped: a
+ * guessed date is worse than a stale one, because it moves a real game to a
+ * night nobody played it.
+ */
+const etDate = (ts) => new Date(ts * 1000).toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+const redate = { exact: 0, inferred: 0, undecidable: 0, unchanged: 0 };
+{
+  // What each stored date turns out to be, according to the games that know.
+  const trueDates = new Map();
+  for (const m of matches) {
+    if (m.ts == null) continue;
+    const s = trueDates.get(m.date) ?? new Set();
+    s.add(etDate(m.ts));
+    trueDates.set(m.date, s);
+  }
+  const undecided = [];
+  for (const m of matches) {
+    const stored = m.date;
+    if (m.ts != null) {
+      const real = etDate(m.ts);
+      if (real !== stored) { m.date = real; redate.exact++; } else redate.unchanged++;
+      continue;
+    }
+    const known = trueDates.get(stored);
+    if (known && known.size === 1) {
+      const real = [...known][0];
+      if (real !== stored) { m.date = real; redate.inferred++; } else redate.unchanged++;
+    } else {
+      redate.undecidable++;
+      undecided.push({ id: m.id, date: stored, candidates: known ? [...known].sort() : [] });
+    }
+  }
+  redate.undecided = undecided;
+}
+
 matches.sort((x, y) => (x.date < y.date ? -1 : x.date > y.date ? 1 : (x.ts ?? 0) - (y.ts ?? 0)));
 
 // ------------------------------------------------------------ head to head
@@ -539,6 +600,17 @@ if (refusedGames.length) {
   const why = {};
   for (const r of refusedGames) why[r.why] = (why[r.why] ?? 0) + 1;
   console.log('  refused        ', refusedGames.length, JSON.stringify(why));
+}
+console.log('game dates     ', `${redate.exact} moved to the night actually played (from a Scoreholio clock)`);
+if (redate.inferred) console.log('               ', `${redate.inferred} moved with their session (no clock, but the session is unambiguous)`);
+if (redate.undecidable) {
+  console.log('               ', `${redate.undecidable} LEFT AS THE SOURCE DATED THEM - no clock, and their stored date covers two sessions`);
+  const byDay = new Map();
+  for (const u of redate.undecided) byDay.set(u.date, (byDay.get(u.date) ?? 0) + 1);
+  for (const [d, n] of [...byDay].sort()) {
+    const c = redate.undecided.find((u) => u.date === d)?.candidates ?? [];
+    console.log('                  ', d, `${String(n).padStart(3)} game(s)`, c.length ? `could be ${c.join(' or ')}` : '(no timed game that day)');
+  }
 }
 console.log('h2h pairs      ', h2h.length);
 console.log('leagues        ', leagueOut.length, '->', leagueOut.map((l) => `${l.id}:${l.standings.length}`).join(' '));
