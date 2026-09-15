@@ -70,6 +70,67 @@ export function batchExport(tournaments) {
   return out.join('\n') + '\n';
 }
 
+
+/**
+ * Every player's DUPR rating as SCOREHOLIO holds it, newest sighting first.
+ *
+ * -> Map(normalised full name -> { name, rating, seen: 'YYYY-MM-DD' })
+ *
+ * WHY THIS IS A SECOND-CLASS SOURCE, and must be labelled as one.
+ *
+ * DUPR's own club listing is the real reading: we fetch it on a date, so a
+ * series of them is genuine history. This is not that. Scoreholio stores a
+ * copy of the player's rating on its own roster and does not re-read it often:
+ * across 4,546 roster rows spanning January to September, 238 of 241 players
+ * show the SAME number every time. It is accurate - it agreed with DUPR's
+ * current figure in 90 of 94 overlapping players, the rest within 0.044 - it
+ * simply does not move, so a chart drawn from it would tell almost everyone
+ * their rating had not changed all year.
+ *
+ * So it is used for ONE thing: a current rating for the ~180 players who play
+ * here but have not joined the MIP club on DUPR, and therefore appear in no
+ * club reading at all. Those players get a number and no chart, and the page
+ * says where the number came from.
+ *
+ * AMBIGUITY IS DROPPED, NOT GUESSED. If one name carries two different ratings
+ * anywhere in the sweeps, that is two people sharing a name - this project has
+ * already put one man's rating on another once - so the name is thrown out
+ * rather than resolved by picking the newer row.
+ */
+export function duprFromSweeps(files) {
+  const seen = new Map();          // normalised name -> { name, rating, ts, ratings:Set }
+  for (const file of files) {
+    if (!existsSync(file)) continue;
+    for (const t of splitSweep(readFileSync(file, 'utf8'))) {
+      if (!t.ts) continue;
+      for (const p of t.roster) {
+        const rating = Number(p.dupr);
+        // -1 and -999 are Scoreholio's "no rating" sentinels, not ratings.
+        if (!(rating > 1 && rating < 8)) continue;
+        const name = String(p.full ?? '').trim();
+        if (!name) continue;
+        const key = name.toLowerCase().replace(/[^a-z]/g, '');
+        if (!key) continue;
+        if (!seen.has(key)) seen.set(key, { name, rating, ts: t.ts, ratings: new Set() });
+        const e = seen.get(key);
+        e.ratings.add(rating.toFixed(3));
+        if (t.ts > e.ts) { e.ts = t.ts; e.rating = rating; e.name = name; }
+      }
+    }
+  }
+  const out = new Map();
+  for (const [key, e] of seen) {
+    // One name, two ratings = two people. Refuse it.
+    if (e.ratings.size > 1) continue;
+    out.set(key, {
+      name: e.name,
+      rating: e.rating,
+      seen: new Date(e.ts * 1000).toLocaleDateString('en-CA', { timeZone: 'America/New_York' }),
+    });
+  }
+  return out;
+}
+
 const SWEEPS = [
   { src: 'mip-2026-sweep.txt', tsv: 'mip-2026-playersteams.tsv', batch: 'mip-2026-matchlogs.txt' },
   { src: 'mip-2023-sweep.txt', tsv: 'mip-2023-playersteams.tsv', batch: 'mip-2023-matchlogs.txt' },

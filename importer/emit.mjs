@@ -21,6 +21,7 @@ import { writeFileSync, readFileSync } from 'node:fs';
 import { run } from './build.mjs';
 import { readGames, standingsStaleness } from './extract.mjs';
 import { matchDupr } from './dupr.mjs';
+import { duprFromSweeps } from './sweep2026.mjs';
 import { readDuprMatches } from './duprmatches.mjs';
 import { widenRoster } from './duprroster.mjs';
 import { readAllExports } from './scoreholio.mjs';
@@ -327,9 +328,48 @@ const usedIds = new Set([
 // all. So 69 people whose DUPR name matched a player on this site EXACTLY -
 // "Joshua Octaviano" against "Joshua Octaviano" - were reported as "not in our
 // data" purely because they were never shown to the matcher.
+let duprFill = { filled: 0, ambiguous: 0, pool: 0 };
 const dp = matchDupr(wide.players);
 const dupr = {};
-for (const [id0, v] of dp.ratings) { const id = fix(id0); dupr[id] = { rating: v.rating, duprName: v.duprName, asOf: v.asOf, history: v.history }; }
+for (const [id0, v] of dp.ratings) {
+  const id = fix(id0);
+  dupr[id] = { rating: v.rating, duprName: v.duprName, asOf: v.asOf, history: v.history, source: 'dupr' };
+}
+
+/* --------------------------------- a rating for the players DUPR's club misses
+ * The club listing holds 150 people. This site holds 519, and plenty of the
+ * regulars never joined the club on DUPR - Eddie Rizzi has played more games
+ * here than anyone and appears in no reading at all.
+ *
+ * Scoreholio keeps its own copy of each player's DUPR, and for those people it
+ * is the only rating that exists anywhere we can reach. It is used ONLY to fill
+ * a gap, never to override a real club reading, and it carries source:
+ * 'scoreholio' so the page can say plainly where the number came from and draw
+ * no chart from it - see duprFromSweeps for why a chart would be a lie.
+ */
+{
+  const shRatings = duprFromSweeps([
+    new URL('./live/scoreholio-roster/mip-2026-sweep.txt', import.meta.url),
+    new URL('./live/scoreholio-roster/mip-2023-sweep.txt', import.meta.url),
+  ]);
+  const key = (s) => String(s).toLowerCase().replace(/[^a-z]/g, '');
+  // A name shared by two players here is as dangerous as one shared inside
+  // Scoreholio, so those are skipped too.
+  const counts = new Map();
+  for (const p of wide.players) counts.set(key(p.name), (counts.get(key(p.name)) ?? 0) + 1);
+  let filled = 0, ambiguous = 0;
+  for (const p of wide.players) {
+    const id = fix(p.id);
+    if (dupr[id]) continue;                       // a real club reading always wins
+    const k = key(p.name);
+    if (counts.get(k) > 1) { ambiguous++; continue; }
+    const hit = shRatings.get(k);
+    if (!hit) continue;
+    dupr[id] = { rating: hit.rating, duprName: hit.name, asOf: hit.seen, history: [], source: 'scoreholio' };
+    filled++;
+  }
+  duprFill = { filled, ambiguous, pool: shRatings.size };
+}
 
 const players = wide.players
   .filter((p) => usedIds.has(p.id))

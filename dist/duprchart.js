@@ -129,9 +129,20 @@ export function duprPanel(dr) {
        </span>`
     : '';
 
-  // Under two readings there is nothing to draw. Say so plainly rather than
-  // showing an empty frame that looks like it failed to load.
-  const body = h.length >= 2
+  // Jay's call: no explanatory prose on the page. The heading says DUPR RATING,
+  // the corner says doubles, and the chart is labelled - a reader who plays in
+  // this league already knows what a DUPR is and does not need telling why a
+  // chart is absent. The reasons still matter, they just live in this file
+  // rather than in front of the reader.
+  //
+  // A Scoreholio-sourced rating is one cached number, not a run of dated
+  // readings, so it never draws a chart however many times Scoreholio has shown
+  // it: across 4,546 roster rows from January to September, 238 of 241 players
+  // show the same value every time. A line drawn from that would tell almost
+  // everyone their rating had not moved all year.
+  const chartable = dr.source !== 'scoreholio' && h.length >= 2;
+
+  const body = chartable
     ? `${sparkline(h)}
        <details class="dtable">
          <summary>All ${h.length} readings</summary>
@@ -139,15 +150,11 @@ export function duprPanel(dr) {
            ${h.slice().reverse().map((r) => `<tr><td>${esc(r.date)}</td><td class="num">${nf3(r.rating)}</td></tr>`).join('')}
          </tbody></table>
        </details>`
-    : `<p class="dnone">One reading so far, taken ${esc(dr.asOf ?? 'recently')}. The chart
-       starts once there are two — DUPR doesn't publish past ratings, so this can
-       only ever show movement from the day we started looking.</p>`;
+    : '';
 
   return `<section class="card duprcard">
     <div class="card-h"><h2>DUPR rating</h2><span class="meta">doubles</span></div>
     <p class="dnum"><b>${nf3(dr.rating)}</b>${arrow}</p>
     ${body}
-    <p class="dfoot">DUPR's own doubles rating for ${esc(dr.duprName ?? 'this player')}, read from the
-      Merrick In A Pickle club listing. Not calculated from the results on this site.</p>
   </section>`;
 }

@@ -66,7 +66,11 @@ t('and null history does not throw', movement(undefined) === null);
   t('a single reading renders the number', one.includes('4.449'));
   t('and draws NO chart', !one.includes('<svg'));
   t('and no arrow that would imply a direction', !/▲|▼/.test(one));
-  t('and says plainly why there is no chart yet', /One reading so far/.test(one));
+  // No explanatory prose on the page any more - Jay's call. The panel is the
+  // number and, when there is history, the chart. So the test is that it stays
+  // SILENT rather than that it explains itself.
+  t('and adds no explanatory prose', !/One reading so far|chart starts/.test(one));
+  t('and renders nothing but the number', one.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim() === 'DUPR rating doubles 4.449');
 
   const many = duprPanel({ rating: 4.653, duprName: 'Sal Farruggia', asOf: '2026-09-12',
     history: H(['2026-07-01', 4.402], ['2026-08-09', 4.551], ['2026-09-12', 4.653]) });
@@ -91,8 +95,37 @@ t('and null history does not throw', movement(undefined) === null);
 {
   const nasty = duprPanel({ rating: 4.2, duprName: '<script>alert(1)</script>', asOf: '2026-09-12',
     history: H(['2026-08-01', 4.1], ['2026-09-12', 4.2]) });
-  t('a DUPR display name is escaped, never injected',
-    !nasty.includes('<script>') && nasty.includes('&lt;script&gt;'));
+  // The name is no longer printed at all now the footnote is gone, so the
+  // property is simply that nothing from the source reaches the page as markup.
+  t('nothing from a DUPR display name reaches the page as markup',
+    !nasty.includes('<script>') && !/alert\(1\)/.test(nasty));
+}
+
+
+/* ------------------------------------------ a rating Scoreholio merely stored */
+//
+// Most of the club never joined the MIP club on DUPR, so the only rating that
+// exists for them anywhere we can reach is the copy Scoreholio keeps. It is
+// accurate but it does not move, so it must never become a chart - and the page
+// has to say where it came from, which is the whole difference between "your
+// rating" and "the rating Scoreholio has on file for you".
+{
+  const sh = duprPanel({ rating: 3.642, duprName: 'Eddie Rizzi', asOf: '2026-09-07',
+    source: 'scoreholio', history: H(['2026-09-07', 3.642]) });
+  t('a Scoreholio rating still shows the number', sh.includes('3.642'));
+  t('and draws no chart', !sh.includes('<svg'));
+  t('and says nothing about where it came from', !/Scoreholio|club listing/.test(sh));
+
+  // Even with several sightings it is one cached number, not a series.
+  const shMany = duprPanel({ rating: 3.642, duprName: 'Eddie Rizzi', asOf: '2026-09-07',
+    source: 'scoreholio', history: H(['2026-01-02', 3.642], ['2026-05-01', 3.642], ['2026-09-07', 3.642]) });
+  t('and refuses a chart even with many identical sightings', !shMany.includes('<svg'));
+
+  // A real club reading must look different, and keep its chart.
+  const real = duprPanel({ rating: 4.653, duprName: 'Sal Farruggia', asOf: '2026-09-12',
+    source: 'dupr', history: H(['2026-08-01', 4.5], ['2026-09-12', 4.653]) });
+  t('a real club reading still charts', real.includes('<svg'));
+  t('and is equally silent', !/club listing|Not calculated/.test(real));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

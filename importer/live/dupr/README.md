@@ -38,3 +38,23 @@ files are present.
 
 Ratings are DUPR's own doubles ratings. They are not derived from the wins and
 losses on this site, and nothing on this site writes back to DUPR.
+
+## A reading can be TRUNCATED, and it will not say so
+
+The 2026-09-12 reading holds 150 rows, lowest rating 3.664. Edward Rizzi is in
+the club at 3.642 - just under that floor - and is absent from the file. The
+Rankings list is sorted by rating descending, so the capture did not stop at the
+end of the club; it stopped 150 rows in, and everyone below that rating was
+silently lost.
+
+Nothing about the file looks wrong. It parses, every row is real, and the
+players in it get correct ratings. The only clue is the floor.
+
+**So check the floor.** A genuine reading of this club should run down into the
+low 2s and 3s, because that is where most of a recreational club sits. If the
+lowest rating in a new file is well above 3, the capture was cut short - scroll
+or page to the true end of the list and take it again.
+
+The cost of not checking is not a missing number; it is that the players
+excluded are the lower-rated half of the club, so the site would show ratings
+for the strongest players and nothing for everyone else.

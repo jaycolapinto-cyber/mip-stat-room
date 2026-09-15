@@ -68,12 +68,28 @@ export function mountFeedback(el, { subject = null, label = 'Something look wron
   if (!el) return false;
   const href = formLink(subject);
   if (!href) { el.innerHTML = ''; return false; }
+
+  // Built as two lines rather than one sentence: the card lives in the page's
+  // side gutter, which is narrow, and a single long sentence there wraps into
+  // an awkward ragged block. A short heading with the subject under it fills a
+  // small square properly and stays readable when it collapses to a pill on a
+  // narrower screen.
   const a = document.createElement('a');
   a.className = 'feedback-link';
   a.href = href;
   a.target = '_blank';
   a.rel = 'noopener noreferrer';
-  a.textContent = subject ? `${label} Tell us about ${subject}.` : label;
+
+  const head = document.createElement('b');
+  head.className = 'fb-head';
+  head.textContent = subject ? 'Something look wrong?' : 'Spotted a mistake?';
+  a.appendChild(head);
+
+  const sub = document.createElement('span');
+  sub.className = 'fb-sub';
+  sub.textContent = subject ? `Tell us about ${subject}.` : 'Or want something added? Tell us.';
+  a.appendChild(sub);
+
   el.innerHTML = '';
   el.appendChild(a);
   return true;

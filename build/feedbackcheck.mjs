@@ -74,32 +74,97 @@ t('every link on the page resolves to the form host, and nowhere else',
     new URL(e.href).host === 'docs.google.com'))));
 
 
-/* ------------------------------------------- where the card sits, and sticks */
+/* ------------------------------------ where the card sits, and what it covers */
+//
+// It used to be a sticky strip across the top of the content column, and it
+// covered the player search box. Anything spanning that column will eventually
+// sit on top of something, so the test is not "is it sticky" - it is "does it
+// overlap the page".
 {
-  const box = await page.evaluate(() => {
-    const bar = document.querySelector('.feedbar');
-    const top = document.querySelector('.topbar');
-    if (!bar || !top) return null;
-    const b = bar.getBoundingClientRect(), t = top.getBoundingClientRect();
-    return { position: getComputedStyle(bar).position, barTop: Math.round(b.top),
-             topBarBottom: Math.round(t.bottom), zBar: getComputedStyle(bar).zIndex,
-             zTop: getComputedStyle(top).zIndex };
+  const overlap = await page.evaluate(() => {
+    const card = document.querySelector('.feedback-link');
+    if (!card) return { err: 'no card' };
+    const c = card.getBoundingClientRect();
+    const hits = [];
+    // Everything a reader actually needs to click or read.
+    for (const sel of ['.comboinput', '.tab', '.topbar', '.scoreboard']) {
+      for (const el of document.querySelectorAll(sel)) {
+        const r = el.getBoundingClientRect();
+        if (r.width === 0 || r.height === 0) continue;
+        if (c.left < r.right && c.right > r.left && c.top < r.bottom && c.bottom > r.top) {
+          hits.push(sel);
+          break;
+        }
+      }
+    }
+    return { position: getComputedStyle(document.querySelector('.feedbar')).position,
+             overlaps: [...new Set(hits)], cardRight: Math.round(c.right),
+             viewport: innerWidth };
   });
-  t('the card is sticky', box?.position === 'sticky', JSON.stringify(box));
-  t('and sits BELOW the top bar, never overlapping it',
-    box && box.barTop >= box.topBarBottom - 1, JSON.stringify(box));
-  t('and the top bar wins on z-index if they ever meet',
-    box && Number(box.zTop) > Number(box.zBar), JSON.stringify(box));
+  t('the card is pinned, not flowing with the content',
+    overlap.position === 'fixed', JSON.stringify(overlap));
+  t('and it never covers the search box, the tabs or the top bar - the actual bug',
+    overlap.overlaps?.length === 0, JSON.stringify(overlap));
+  t('and it stays inside the viewport',
+    overlap.cardRight <= overlap.viewport, JSON.stringify(overlap));
 
-  // The point of sticky: still there after scrolling down a long match log.
+  // Still reachable after scrolling - that was the point of moving it up.
   await page.evaluate(() => window.scrollTo(0, 2400));
   await page.waitForTimeout(400);
   const stillVisible = await page.evaluate(() => {
-    const b = document.querySelector('.feedbar')?.getBoundingClientRect();
+    const b = document.querySelector('.feedback-link')?.getBoundingClientRect();
     return !!b && b.top >= 0 && b.bottom <= innerHeight;
   });
   t('and is still on screen after scrolling down a long page', stillVisible);
   await page.evaluate(() => window.scrollTo(0, 0));
+}
+
+/* ------------------------------------------- narrow screens have no gutter */
+{
+  const narrow = await b.newContext({ viewport: { width: 900, height: 800 } });
+  const np = await narrow.newPage();
+  await np.goto(`http://127.0.0.1:8321/#/player/${id}`, { waitUntil: 'networkidle' });
+  await np.waitForTimeout(900);
+  const n = await np.evaluate(() => {
+    const card = document.querySelector('.feedback-link');
+    if (!card) return { err: 'no card' };
+    const c = card.getBoundingClientRect();
+    const hits = [];
+    for (const sel of ['.comboinput', '.tab', '.topbar', '.scoreboard']) {
+      for (const el of document.querySelectorAll(sel)) {
+        const r = el.getBoundingClientRect();
+        if (r.width === 0) continue;
+        if (c.left < r.right && c.right > r.left && c.top < r.bottom && c.bottom > r.top) { hits.push(sel); break; }
+      }
+    }
+    return { overlaps: [...new Set(hits)], inView: c.right <= innerWidth && c.bottom <= innerHeight };
+  });
+  t('at 900px wide, where there is no gutter, it still covers no controls',
+    n.overlaps?.length === 0, JSON.stringify(n));
+  t('and is still fully on screen at that width', n.inView === true, JSON.stringify(n));
+  await narrow.close();
+}
+
+/* ---------------------------- a wide screen: it belongs in the empty gutter */
+{
+  const wide = await b.newContext({ viewport: { width: 1700, height: 900 } });
+  const wp = await wide.newPage();
+  await wp.goto(`http://127.0.0.1:8321/#/player/${id}`, { waitUntil: 'networkidle' });
+  await wp.waitForTimeout(900);
+  const w = await wp.evaluate(() => {
+    const card = document.querySelector('.feedback-link');
+    const shell = document.querySelector('.shell') || document.querySelector('.scoreboard');
+    if (!card || !shell) return { err: 'missing' };
+    const c = card.getBoundingClientRect(), s = shell.getBoundingClientRect();
+    return { cardLeft: Math.round(c.left), contentRight: Math.round(s.right),
+             clearOfContent: c.left >= s.right, onScreen: c.right <= innerWidth,
+             showsSubject: /Tell us about/.test(card.innerText) };
+  });
+  t('on a wide screen the card sits clear of the content column, in the gutter',
+    w.clearOfContent === true, JSON.stringify(w));
+  t('and stays on screen', w.onScreen === true, JSON.stringify(w));
+  t('and has room to name the player', w.showsSubject === true, JSON.stringify(w));
+  await wide.close();
 }
 
 /* -------------------------------------- it follows the reader between views */
