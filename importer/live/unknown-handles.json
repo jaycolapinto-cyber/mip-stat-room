@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T19:16:54.325Z",
+ "generated": "2026-09-16T23:01:59.689Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -1799,6 +1799,68 @@
    "candidates": null
   },
   {
+   "handle": "Paul I.",
+   "games": 22,
+   "nights": 2,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-16",
+   "tournaments": [
+    "NB0VBh5G26jmqMZeN1h8",
+    "po6irFKwzkCohu7A6TYm"
+   ],
+   "playedWith": [
+    {
+     "handle": "JonMac75☘️",
+     "games": 6
+    },
+    {
+     "handle": "Eric L.",
+     "games": 6
+    },
+    {
+     "handle": "Jaime F.",
+     "games": 5
+    },
+    {
+     "handle": "Scott Martin",
+     "games": 4
+    },
+    {
+     "handle": "Rex B.",
+     "games": 3
+    },
+    {
+     "handle": "Adrian M.",
+     "games": 3
+    },
+    {
+     "handle": "Barry B.",
+     "games": 3
+    },
+    {
+     "handle": "Ken L.",
+     "games": 3
+    },
+    {
+     "handle": "Ben F.",
+     "games": 2
+    },
+    {
+     "handle": "D-Hub27🍺",
+     "games": 2
+    },
+    {
+     "handle": "Tim L",
+     "games": 2
+    },
+    {
+     "handle": "Joe I.",
+     "games": 2
+    }
+   ],
+   "candidates": null
+  },
+  {
    "handle": "18 1.",
    "games": 22,
    "nights": 3,
@@ -3163,6 +3225,177 @@
    "candidates": null
   },
   {
+   "handle": "Brian B.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-16",
+   "lastSeen": "2026-09-16",
+   "tournaments": [
+    "NB0VBh5G26jmqMZeN1h8"
+   ],
+   "playedWith": [
+    {
+     "handle": "Ken L.",
+     "games": 4
+    },
+    {
+     "handle": "Jaime F.",
+     "games": 4
+    },
+    {
+     "handle": "Scott Martin",
+     "games": 4
+    },
+    {
+     "handle": "Rex B.",
+     "games": 4
+    },
+    {
+     "handle": "Eric L.",
+     "games": 3
+    },
+    {
+     "handle": "Barry B.",
+     "games": 3
+    },
+    {
+     "handle": "Glenn S.",
+     "games": 3
+    },
+    {
+     "handle": "Ben F.",
+     "games": 3
+    },
+    {
+     "handle": "JonMac75☘️",
+     "games": 2
+    },
+    {
+     "handle": "Adrian M.",
+     "games": 2
+    },
+    {
+     "handle": "Paul I.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Ben F.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-16",
+   "lastSeen": "2026-09-16",
+   "tournaments": [
+    "NB0VBh5G26jmqMZeN1h8"
+   ],
+   "playedWith": [
+    {
+     "handle": "Scott Martin",
+     "games": 6
+    },
+    {
+     "handle": "Glenn S.",
+     "games": 5
+    },
+    {
+     "handle": "Jaime F.",
+     "games": 3
+    },
+    {
+     "handle": "Adrian M.",
+     "games": 3
+    },
+    {
+     "handle": "Barry B.",
+     "games": 3
+    },
+    {
+     "handle": "Brian B.",
+     "games": 3
+    },
+    {
+     "handle": "Rex B.",
+     "games": 3
+    },
+    {
+     "handle": "Eric L.",
+     "games": 2
+    },
+    {
+     "handle": "JonMac75☘️",
+     "games": 2
+    },
+    {
+     "handle": "Paul I.",
+     "games": 2
+    },
+    {
+     "handle": "Ken L.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Eric L.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-16",
+   "lastSeen": "2026-09-16",
+   "tournaments": [
+    "NB0VBh5G26jmqMZeN1h8"
+   ],
+   "playedWith": [
+    {
+     "handle": "Paul I.",
+     "games": 6
+    },
+    {
+     "handle": "Scott Martin",
+     "games": 5
+    },
+    {
+     "handle": "JonMac75☘️",
+     "games": 4
+    },
+    {
+     "handle": "Ken L.",
+     "games": 4
+    },
+    {
+     "handle": "Brian B.",
+     "games": 3
+    },
+    {
+     "handle": "Ben F.",
+     "games": 2
+    },
+    {
+     "handle": "Glenn S.",
+     "games": 2
+    },
+    {
+     "handle": "Barry B.",
+     "games": 2
+    },
+    {
+     "handle": "Adrian M.",
+     "games": 2
+    },
+    {
+     "handle": "Jaime F.",
+     "games": 2
+    },
+    {
+     "handle": "Rex B.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
    "handle": "Olivia O.",
    "games": 11,
    "nights": 1,
@@ -3218,67 +3451,6 @@
     },
     {
      "handle": "Christopher G.",
-     "games": 1
-    }
-   ],
-   "candidates": null
-  },
-  {
-   "handle": "Paul I.",
-   "games": 11,
-   "nights": 1,
-   "firstSeen": "2026-09-15",
-   "lastSeen": "2026-09-15",
-   "tournaments": [
-    "po6irFKwzkCohu7A6TYm"
-   ],
-   "playedWith": [
-    {
-     "handle": "D-Hub27🍺",
-     "games": 2
-    },
-    {
-     "handle": "Tim L",
-     "games": 2
-    },
-    {
-     "handle": "JonMac75☘️",
-     "games": 2
-    },
-    {
-     "handle": "Joe I.",
-     "games": 2
-    },
-    {
-     "handle": "Martha G.",
-     "games": 2
-    },
-    {
-     "handle": "Juan G.",
-     "games": 2
-    },
-    {
-     "handle": "L. Glods ❤️",
-     "games": 1
-    },
-    {
-     "handle": "Jim D.",
-     "games": 1
-    },
-    {
-     "handle": "Paul H.",
-     "games": 1
-    },
-    {
-     "handle": "Jaime F.",
-     "games": 1
-    },
-    {
-     "handle": "Mike B.",
-     "games": 1
-    },
-    {
-     "handle": "Birdman",
      "games": 1
     }
    ],
@@ -5842,6 +6014,63 @@
     },
     {
      "handle": "Robert S.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Keri F.",
+   "games": 9,
+   "nights": 1,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-15",
+   "tournaments": [
+    "xeS6IPRrjUCLD1bvPdJq"
+   ],
+   "playedWith": [
+    {
+     "handle": "Frank R.",
+     "games": 4
+    },
+    {
+     "handle": "Hersh",
+     "games": 4
+    },
+    {
+     "handle": "JonMac75☘️",
+     "games": 3
+    },
+    {
+     "handle": "Michael C.",
+     "games": 3
+    },
+    {
+     "handle": "Kevin M.",
+     "games": 3
+    },
+    {
+     "handle": "Renata P.",
+     "games": 2
+    },
+    {
+     "handle": "Tony R.",
+     "games": 2
+    },
+    {
+     "handle": "Jay C",
+     "games": 2
+    },
+    {
+     "handle": "Charles M.",
+     "games": 2
+    },
+    {
+     "handle": "Ronnie D",
+     "games": 1
+    },
+    {
+     "handle": "D-Hub27🍺",
      "games": 1
     }
    ],
