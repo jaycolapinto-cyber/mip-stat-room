@@ -208,8 +208,12 @@ export function nameInSession(sessions, tournamentId, handle) {
  * must never become roster rows - one game each is enough to put a fake name on
  * the site's player list. A token of one letter repeated ("aaa", "kkk") is the
  * giveaway; a real surname never looks like that. */
-const repeated = (w) => w.length >= 2 && /^([a-z])\1+$/i.test(w);
-const PLACEHOLDER = (name) => {
+// Declared as functions, not const arrows, because buildFrom() above calls
+// PLACEHOLDER and a const would still be in its temporal dead zone at that
+// point. That threw on the very first real rosters.json - the file this module
+// was written for never existed until now, so the path had never once run.
+function repeated(w) { return w.length >= 2 && /^([a-z])\1+$/i.test(w); }
+function PLACEHOLDER(name) {
   const n = String(name ?? '').trim();
   if (!n) return true;
   if (/^player\s*\d*/i.test(n)) return true;
@@ -221,7 +225,7 @@ const PLACEHOLDER = (name) => {
   if (/^no\s*first\s*no\s*last$/i.test(n)) return true;
   const words = n.split(/\s+/).filter(Boolean);
   return words.length > 0 && words.every(repeated);      // "Aaa Bbb", "Kkk Lll"
-};
+}
 
 export function readHarvestNames(file = new URL('./live/scoreholio-roster/mip-names-338.txt', import.meta.url)) {
   const global = new Map();                 // displayLower -> real name

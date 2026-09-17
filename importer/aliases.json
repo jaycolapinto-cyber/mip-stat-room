@@ -108,6 +108,52 @@
     "NWFNk3Cjc3FP5ND64bia": {
       "_day": "2024-05-14",
       "David A.": "David Amatulli"
+    },
+    "NB0VBh5G26jmqMZeN1h8": {
+      "_day": "2026-09-15",
+      "_source": "Scoreholio Players/Teams roster, read 2026-09-17",
+      "Ken L.": "Ken Li",
+      "Brian B.": "Brian Becker",
+      "Glenn S.": "Glenn Saenz",
+      "Paul I.": "Paul Ilan",
+      "Rex B.": "Rex Bunt",
+      "Adrian M.": "Adrian Murillo",
+      "Jaime F.": "Jaime Frand",
+      "Eric L.": "Eric Lau",
+      "Ben F.": "Ben Fishkind",
+      "JonMac75☘️": "Jonathan Mcmilleon",
+      "Scott Martin": "Scott Martin"
+    },
+    "xeS6IPRrjUCLD1bvPdJq": {
+      "_day": "2026-09-15",
+      "_source": "Scoreholio Players/Teams roster, read 2026-09-17",
+      "Charles M.": "Charles Maione",
+      "D-Hub27🍺": "David Huber",
+      "Frank R.": "Frank Rossetti",
+      "Hersh": "Jeff Hersh",
+      "Jay C": "Jay Colapinto",
+      "JonMac75☘️": "Jonathan Mcmilleon",
+      "Keri F.": "Keri Feng",
+      "Kevin M.": "Kevin Monahan",
+      "Michael C.": "Michael Crews",
+      "Renata P.": "Renata Pisani",
+      "Ronnie D": "Eran Dekel",
+      "Tony R.": "Tony Romano"
+    },
+    "ovMPIe3fMZ6MK70dMB1y": {
+      "_day": "2026-09-14",
+      "_source": "Scoreholio Players/Teams roster, read 2026-09-17",
+      "Alice T.": "Alice Townsend",
+      "Craig Erk": "Craig Erkus",
+      "Lou A.": "Lou Assentato",
+      "Louise O.": "Louise Olive",
+      "Miichael D.": "Miichael Donohue",
+      "Robert S.": "Robert Seidner",
+      "Rob S.": "Rob Sarraga",
+      "Scott B.": "Scott Baker",
+      "Stephen R.": "Stephen Rizzi",
+      "Timothy M.": "Timothy Messner",
+      "Tommy S.": "Tommy Schuman Sr."
     }
   },
   "_namedByHandNote": "Handles Jay named by hand from the unknown-nicknames workbook, checked before they were accepted. The check: if two handles are given the SAME person, do those two handles ever appear in one game? One person cannot be on court twice, so a handle pair that shares a game is a wrong answer, not a synonym. Two answers were refused on that test and are NOT in this map - see _refusedAnswers.",
@@ -145,5 +191,6 @@
     "_why": "id -> the name to show. Each one needs a source better than the one it overrides.",
     "mike": "Mike Breitinger",
     "_mike": "His DUPR account is typed as the bare word 'Mike', which is where the site was getting it, and with 2,204 games that put a one-word name on the Wall of Fame and near the top of several records. Dave's own weekly sheet calls him Mike Breitinger, and that sheet entry was matched to this player by the five-number week fingerprint and confirmed by Jay on 2026-09-13 - see sheetHandles. The Scoreholio handle 'Mike B.' resolves to him the same way. NOTE 'Mike B.' is genuinely ambiguous in this club - it is also how Michael Bellini appears - so that handle is resolved per tournament from Scoreholio's roster, never globally."
-  }
+  },
+  "_rosterSourceNote": "APPLIED 2026-09-17. The three entries in tournamentHandles marked _source 'Scoreholio Players/Teams roster' were not inferred - they are Scoreholio's own roster for that night, which carries the display name and the real name side by side because Scoreholio must know who a player is to submit to DUPR. That is stronger evidence than any reading of a nickname, and it is why 'Ronnie D' = Eran Dekel and 'Rob S.'/'Robert S.' = Sarraga/Seidner come out right without arithmetic. playerEmail is on that screen and is not collected. Scope is deliberately per-tournament: it names these handles on these nights only, and settles nothing globally."
 }
