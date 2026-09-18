@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-17T21:30:21.535Z",
+ "generated": "2026-09-18T18:14:31.738Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -1799,6 +1799,68 @@
    "candidates": null
   },
   {
+   "handle": "Olivia O.",
+   "games": 22,
+   "nights": 2,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-17",
+   "tournaments": [
+    "VedCxl5s2UvByLoYttcy",
+    "po6irFKwzkCohu7A6TYm"
+   ],
+   "playedWith": [
+    {
+     "handle": "Christie S.🍷",
+     "games": 5
+    },
+    {
+     "handle": "L. Glods ❤️",
+     "games": 5
+    },
+    {
+     "handle": "Jason V.",
+     "games": 4
+    },
+    {
+     "handle": "Shane M.",
+     "games": 3
+    },
+    {
+     "handle": "John M.",
+     "games": 3
+    },
+    {
+     "handle": "R.Mentz 🏴‍☠️",
+     "games": 3
+    },
+    {
+     "handle": "Nicole B.",
+     "games": 3
+    },
+    {
+     "handle": "Matthew L.",
+     "games": 3
+    },
+    {
+     "handle": "Chris P.",
+     "games": 3
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 2
+    },
+    {
+     "handle": "Adam K.",
+     "games": 2
+    },
+    {
+     "handle": "Alexia Y.",
+     "games": 2
+    }
+   ],
+   "candidates": null
+  },
+  {
    "handle": "18 1.",
    "games": 22,
    "nights": 3,
@@ -3163,65 +3225,64 @@
    "candidates": null
   },
   {
-   "handle": "Olivia O.",
+   "handle": "Mark L.",
    "games": 11,
    "nights": 1,
-   "firstSeen": "2026-09-15",
-   "lastSeen": "2026-09-15",
+   "firstSeen": "2026-09-17",
+   "lastSeen": "2026-09-17",
    "tournaments": [
-    "po6irFKwzkCohu7A6TYm"
+    "VedCxl5s2UvByLoYttcy"
    ],
    "playedWith": [
     {
-     "handle": "Adam K.",
+     "handle": "Stephen R.",
+     "games": 6
+    },
+    {
+     "handle": "Shane M.",
+     "games": 4
+    },
+    {
+     "handle": "John M.",
+     "games": 4
+    },
+    {
+     "handle": "Nicole B.",
+     "games": 4
+    },
+    {
+     "handle": "Matthew L.",
+     "games": 3
+    },
+    {
+     "handle": "Chris P.",
+     "games": 3
+    },
+    {
+     "handle": "R.Mentz 🏴‍☠️",
      "games": 2
     },
     {
-     "handle": "Alexia Y.",
+     "handle": "Jason V.",
      "games": 2
     },
     {
-     "handle": "BReady",
+     "handle": "L. Glods ❤️",
      "games": 2
     },
     {
-     "handle": "Frank P.",
+     "handle": "Christie S.🍷",
      "games": 2
     },
     {
-     "handle": "Jeremie A.",
-     "games": 2
-    },
-    {
-     "handle": "Ashley D.",
-     "games": 2
-    },
-    {
-     "handle": "Birdman",
-     "games": 2
-    },
-    {
-     "handle": "Michael S.",
-     "games": 2
-    },
-    {
-     "handle": "Josh J.",
-     "games": 2
-    },
-    {
-     "handle": "Juju🇩🇴🧿",
-     "games": 1
-    },
-    {
-     "handle": "Juan G.",
-     "games": 1
-    },
-    {
-     "handle": "Christopher G.",
+     "handle": "Olivia O.",
      "games": 1
     }
    ],
-   "candidates": null
+   "candidates": [
+    "Mark Lazo",
+    "Mark Anthony Lazo"
+   ]
   },
   {
    "handle": "Paul I.",
@@ -3279,6 +3340,120 @@
     },
     {
      "handle": "Birdman",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Angelo B.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-18",
+   "lastSeen": "2026-09-18",
+   "tournaments": [
+    "scWmTGmU7mXp16yeIJj2"
+   ],
+   "playedWith": [
+    {
+     "handle": "Peter A.",
+     "games": 5
+    },
+    {
+     "handle": "Lynn W.",
+     "games": 4
+    },
+    {
+     "handle": "John F",
+     "games": 4
+    },
+    {
+     "handle": "thomas P.",
+     "games": 4
+    },
+    {
+     "handle": "Andy",
+     "games": 3
+    },
+    {
+     "handle": "Laura, P",
+     "games": 3
+    },
+    {
+     "handle": "Craig Erk",
+     "games": 2
+    },
+    {
+     "handle": "Ben F.",
+     "games": 2
+    },
+    {
+     "handle": "Sal F.",
+     "games": 2
+    },
+    {
+     "handle": "Jaime M.",
+     "games": 2
+    },
+    {
+     "handle": "Paul H.",
+     "games": 2
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Ben F.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-18",
+   "lastSeen": "2026-09-18",
+   "tournaments": [
+    "scWmTGmU7mXp16yeIJj2"
+   ],
+   "playedWith": [
+    {
+     "handle": "Craig Erk",
+     "games": 7
+    },
+    {
+     "handle": "Jaime M.",
+     "games": 5
+    },
+    {
+     "handle": "Peter A.",
+     "games": 3
+    },
+    {
+     "handle": "Paul H.",
+     "games": 3
+    },
+    {
+     "handle": "John F",
+     "games": 3
+    },
+    {
+     "handle": "Sal F.",
+     "games": 3
+    },
+    {
+     "handle": "Angelo B.",
+     "games": 2
+    },
+    {
+     "handle": "thomas P.",
+     "games": 2
+    },
+    {
+     "handle": "Laura, P",
+     "games": 2
+    },
+    {
+     "handle": "Lynn W.",
+     "games": 2
+    },
+    {
+     "handle": "Andy",
      "games": 1
     }
    ],
