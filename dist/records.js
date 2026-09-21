@@ -37,13 +37,30 @@ const MIN_MEETINGS         = 15;    // fiercest rivalry
 const MIN_NEMESIS          = 20;    // the nemesis - a lopsided head-to-head
 const MIN_CHEMISTRY        = 30;    // dream team / chemistry check
 const MIN_ONE_POINTERS     = 25;    // ice in the veins
-const MIN_IMPROVE_GAMES    = 400;   // most improved
-const IMPROVE_WINDOW       = 150;   // ... comparing this many games each end
 const PERFECT_NIGHT        = 10;    // a full night unbeaten, not a short visit
-const GIANT_POOL           = 500;   // games needed before we call someone a giant
 const GIANT_COUNT          = 10;    // how many giants
-const MIN_VS_GIANTS        = 100;   // games against them before the rate counts
 const CENTURY              = 1000;  // career games for the Century Club
+
+// One calendar year is a much smaller sample than a whole career, so the four
+// thresholds that are sized in career games are re-sized for a single-year
+// wall. Everything else - the rate floors, the Perfect Night - is about a
+// pairing or a night, not a career, and means the same thing in any window.
+// The Century Club is a career honour and is not awarded for a single year.
+const YEAR_SCALE = {
+  MIN_IMPROVE_GAMES: 200,           // most improved, within the year
+  IMPROVE_WINDOW: 75,               // ... first 75 of the year against the latest 75
+  GIANT_POOL: 200,                  // a giant, judged on this year's games
+  MIN_VS_GIANTS: 50,
+};
+
+// The thresholds that are sized in career games. clubRecords picks these for
+// the all-time wall and YEAR_SCALE for a one-year wall.
+const CAREER = {
+  MIN_IMPROVE_GAMES: 400,           // most improved
+  IMPROVE_WINDOW: 150,              // ... comparing this many games each end
+  GIANT_POOL: 500,                  // games needed before we call someone a giant
+  MIN_VS_GIANTS: 100,               // games against them before the rate counts
+};
 
 const PLACES = 3;                   // gold, silver, bronze
 const MAX_DETAIL_GAMES = 10;        // games listed inside one expanded card
@@ -52,7 +69,13 @@ const pct = (w, g) => (g ? w / g : 0);
 const pairKey = (a, b) => [a, b].sort().join('|');
 const shownPct = (r) => Math.round(100 * r.winPct);
 
-export function clubRecords(matches, players) {
+export function clubRecords(matches, players, { year = null } = {}) {
+  // Shadow the career-sized thresholds when this wall covers one year only.
+  const Y = year ? YEAR_SCALE : null;
+  const MIN_IMPROVE_GAMES = Y ? Y.MIN_IMPROVE_GAMES : CAREER.MIN_IMPROVE_GAMES;
+  const IMPROVE_WINDOW    = Y ? Y.IMPROVE_WINDOW    : CAREER.IMPROVE_WINDOW;
+  const GIANT_POOL        = Y ? Y.GIANT_POOL        : CAREER.GIANT_POOL;
+  const MIN_VS_GIANTS     = Y ? Y.MIN_VS_GIANTS     : CAREER.MIN_VS_GIANTS;
   const nameOf = (id) => players.find((p) => p.id === id)?.name ?? id;
 
   // Most Improved walks a player's career in order, so it needs the games in
@@ -472,8 +495,11 @@ export function clubRecords(matches, players) {
 
   /** Shape one podium into what the page renders. */
   const build = (pod, opts) => {
-    if (!pod.length) return null;
     const { label, unit, value = (v) => v, holder, detail, minimum, note, tone } = opts;
+    // All time, every record has a holder. One year is smaller, and a floor
+    // like 25 one-point games can go unmet - 2024 has nobody there. The card
+    // then says so instead of silently leaving a gap in the wall.
+    if (!pod.length) return year ? { label, unit, minimum, note, tone, places: [], vacant: true } : null;
     return {
       label, unit, minimum, note, tone,
       places: pod.map((pl) => ({
@@ -558,10 +584,12 @@ export function clubRecords(matches, players) {
       nemesis: MIN_NEMESIS, chemistry: MIN_CHEMISTRY, onePointers: MIN_ONE_POINTERS,
       improveGames: MIN_IMPROVE_GAMES, improveWindow: IMPROVE_WINDOW,
       perfectNight: PERFECT_NIGHT, vsGiants: MIN_VS_GIANTS, century: CENTURY,
+      giantPool: GIANT_POOL,
     },
     giants: giants.map((id) => ({ id, name: nameOf(id) })),
     clock,
-    rolls: {
+    year,
+    rolls: year ? {} : {
       century: {
         label: 'The Century Club',
         note: `Every player past ${CENTURY.toLocaleString()} career games`,
@@ -678,7 +706,9 @@ export function clubRecords(matches, players) {
       /* --- the climb --- */
       improved: build(improved, {
         label: 'Most improved', unit: 'pts', minimum: `${MIN_IMPROVE_GAMES}+ games`,
-        note: `First ${IMPROVE_WINDOW} games against the most recent ${IMPROVE_WINDOW}`,
+        note: year
+          ? `First ${IMPROVE_WINDOW} games of ${year} against the most recent ${IMPROVE_WINDOW}`
+          : `First ${IMPROVE_WINDOW} games against the most recent ${IMPROVE_WINDOW}`,
         holder: (h) => ({ ...person(h), value: h.gain,
           context: `${Math.round(100 * h.early)}% then, ${Math.round(100 * h.late)}% now` }),
         detail: improveDetail,

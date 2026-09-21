@@ -221,6 +221,11 @@ const sig = (a, b, sa, sb) => {
   return A < B ? `${A}|${B}|${sa}|${sb}` : `${B}|${A}|${sb}|${sa}`;
 };
 const shPool = new Map();
+// Every Scoreholio tournament with at least one game on this site, for the
+// landing page's tournament count. Kept as a count rather than stamped on each
+// DUPR game: a DUPR game carrying a tournament id would also fall under the
+// court double-booking check, which is written for Scoreholio's own rows.
+const onSite = new Set();
 // readAllExports covers single-tournament files AND harvest batches (many
 // tournaments in one .txt). Listing only .xlsx/.csv here meant a night's
 // harvest was parsed by the tests and then silently ignored by the build.
@@ -231,15 +236,16 @@ for (const e of readAllExports()) {
     if ([...a, ...b].some((x) => !x)) continue;
     const k = g.iso.slice(0, 10) + '|' + sig(a, b, g.sa, g.sb);
     if (!shPool.has(k)) shPool.set(k, []);
-    shPool.get(k).push(g);
+    shPool.get(k).push({ g, tournament: e.tournamentId });
   }
 }
 let enriched = 0;
 for (const m of matches) {
   const q = shPool.get(m.date + '|' + sig(m.a, m.b, m.sa, m.sb));
   if (!q?.length) continue;
-  const g = q.shift();
+  const { g, tournament } = q.shift();
   m.court = g.court; m.ts = g.ts;
+  onSite.add(tournament);
   // How long the game took. Only Scoreholio knows this - DUPR carries no clock
   // - so a DUPR game only gets a duration when a Scoreholio row covers it.
   if (g.dur != null) m.dur = g.dur;
@@ -305,6 +311,7 @@ for (const e of readAllExports()) {
       tournament: e.tournamentId,
       source: 'scoreholio',
     });
+    onSite.add(e.tournamentId);
     addedGames.push(date);
   }
 }
@@ -519,6 +526,8 @@ const out = {
     // Games that exist only in Scoreholio's match logs and never reached DUPR.
     // The page says where its games come from, so it needs the real split.
     gamesFromScoreholioOnly: addedGames.length,
+    // A night with an A and a B bracket is two tournaments, as it is in Scoreholio.
+    tournaments: onSite.size,
     gamesHeldBack: heldBack.length,
     duprSourceFiles: duprFiles,
     playersAddedFromDupr: wide.added.length,

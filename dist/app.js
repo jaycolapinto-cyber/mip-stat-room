@@ -162,6 +162,37 @@ function logRows(views) {
 /* ------------------------------------------------------------- home view */
 const REC = clubRecords(matches, players);
 
+/**
+ * The Wall of Fame, for all time or for one calendar year.
+ *
+ * A year's wall is computed from that year's games only, the same way the
+ * all-time wall is computed from all of them, and cached so switching back and
+ * forth is instant. Only years with a real season behind them get a button:
+ * 2023 is August to December, about 400 games and 40 players, and a "record"
+ * set there would be a record of a small sample. Its games still count all time.
+ */
+const WOF_MIN_YEAR_GAMES = 1000;
+const WOF_YEARS = (() => {
+  const n = new Map();
+  for (const m of matches) { const y = m.date.slice(0, 4); n.set(y, (n.get(y) ?? 0) + 1); }
+  return [...n].filter(([, c]) => c >= WOF_MIN_YEAR_GAMES).map(([y]) => y).sort().reverse();
+})();
+const recCache = new Map([[null, REC]]);
+function recordsFor(year) {
+  if (!recCache.has(year)) {
+    recCache.set(year, clubRecords(matches.filter((m) => m.date.startsWith(year)), players, { year }));
+  }
+  return recCache.get(year);
+}
+let wofYear = null;     // null = all time
+
+/**
+ * Tournaments on record: every Scoreholio tournament with at least one game on
+ * this site. A night that runs an A and a B bracket is two tournaments, because
+ * it is two in Scoreholio - two draws, two sets of courts, two sets of results.
+ */
+const TOURNAMENTS = coverage.tournaments ?? 0;
+
 // A short, human-checkable stamp for the build this page is running. Derived
 // from the data timestamp, so it moves whenever the data does and needs no
 // separate version file to keep in step.
@@ -298,6 +329,12 @@ function storyPanel(rec) {
  * on a phone and this works by tap, click and keyboard alike.
  */
 function recordCard(rec) {
+  if (rec?.vacant) {
+    return `<div class="wof wof-vacant"><span class="wof-label">${esc(rec.label)}${
+        rec.minimum ? `<span class="wof-min">${esc(rec.minimum)}</span>` : ''}</span>
+      ${rec.note ? `<span class="wof-note">${esc(rec.note)}</span>` : ''}
+      <span class="wof-vacant-msg">Nobody reached the minimum in ${esc(wofYear ?? '')}.</span></div>`;
+  }
   if (!rec || !rec.places?.length) return '';
   const gold = rec.places[0];
   const h = gold.holders[0];
@@ -507,7 +544,8 @@ function renderHome() {
           <h1 class="hero-title">The Stat Room</h1>
           <p class="hero-what">Every game the league has ever played, and everyone who played it.
             Look up a player, settle an argument, see who holds what.</p>
-          <p class="counter"><span id="bigCount">${nf(T.games)}</span><span class="unit">games played</span></p>
+          <p class="counter"><span id="bigCount">${nf(T.games)}</span><span class="unit"><span>games played</span>${
+            TOURNAMENTS ? `<span class="unit-2" title="Every Scoreholio tournament with games on this site. A night with an A and a B bracket counts as two."><b id="tourCount">${nf(TOURNAMENTS)}</b> tournaments</span>` : ''}</span></p>
           <p class="hero-sub"><b>${longDate(T.firstDate)}</b> to <b>${longDate(T.lastDate)}</b></p>
         </div>
         <figure class="yearchart">
@@ -564,6 +602,7 @@ function renderHome() {
 
   renderNotice();
   countUp($('#bigCount'), T.games);
+  if (TOURNAMENTS) countUp($('#tourCount'), TOURNAMENTS);
 }
 
 /* ------------------------------------------------------- wall of fame view */
@@ -577,22 +616,34 @@ function renderHome() {
  * they read as jokes rather than as judgements.
  */
 function renderRecords() {
+  if (wofYear && !WOF_YEARS.includes(wofYear)) wofYear = null;
+  const REC = recordsFor(wofYear);
   const T = REC.totals, R = REC.records, M = REC.minimums;
   const giants = REC.giants.map((g) => g.name).join(', ');
+  const yr = wofYear;
+  const filter = `<div class="wof-years" role="group" aria-label="Show records for">
+      ${[null, ...WOF_YEARS].map((y) => `<button type="button" class="wof-yr" data-year="${y ?? ''}"
+        aria-pressed="${y === yr}">${y ?? 'All time'}</button>`).join('')}
+    </div>`;
+  const scope = yr
+    ? `Every record on this page is computed from the <b>${nf(T.games)}</b> games played in
+          <b>${yr}</b>, from <b>${longDate(T.firstDate)}</b> to <b>${longDate(T.lastDate)}</b>.`
+    : `Every record on this page is computed from all
+          <b>${nf(T.games)}</b> games the club has played, from
+          <b>${longDate(T.firstDate)}</b> to <b>${longDate(T.lastDate)}</b>.`;
 
   $('#panel-records').innerHTML = `
     <div class="wof-hero">
       <div class="wof-hero-in">
         <p class="hero-kicker">Merrick In A Pickle</p>
-        <h2 class="wof-hero-title">Wall of Fame</h2>
-        <p class="wof-hero-sub">Every record on this page is computed from all
-          <b>${nf(T.games)}</b> games the club has played, from
-          <b>${longDate(T.firstDate)}</b> to <b>${longDate(T.lastDate)}</b>.</p>
+        <h2 class="wof-hero-title">Wall of Fame${yr ? ` <span class="wof-hero-yr">${yr}</span>` : ''}</h2>
+        ${filter}
+        <p class="wof-hero-sub">${scope}</p>
         <div class="mqrow">${[R.ironMan, R.streak, R.partnership, R.nemesis].map(marqueeCard).join('')}</div>
       </div>
     </div>
 
-    ${wallSection('The big ones', 'Careers measured end to end.',
+    ${wallSection('The big ones', yr ? `The whole of ${yr}, end to end.` : 'Careers measured end to end.',
         [R.ironMan, R.mostWins, R.winRate, R.streak])}
 
     ${wallSection('Nerve', 'What happens when the game is actually on the line.',
@@ -604,7 +655,8 @@ function renderRecords() {
     ${wallSection('Rivalry and reach', 'The other side of the net — and how much of the club you have met.',
         [R.rivalry, R.nemesis, R.social])}
 
-    ${wallSection('The long game', 'Three years of getting better, and the arithmetic to prove it.',
+    ${wallSection('The long game', yr ? `Getting better over ${yr}, and the arithmetic to prove it.`
+        : 'Three years of getting better, and the arithmetic to prove it.',
         [R.improved, R.giantKiller, R.scorer, R.pointDiff])}
 
     ${centuryRoll(REC.rolls?.century)}
@@ -618,11 +670,17 @@ function renderRecords() {
         ${M.improveGames}+ games for Most Improved.</p>
       <p><b>The Perfect Night</b> needs ${M.perfectNight} games that night, because a full
         MIP night is ten to twelve games and winning three of three is not the same feat.</p>
+      ${yr ? `<p><b>One year is a smaller sample than a career</b>, so four thresholds
+        are sized for it: Most Improved needs ${M.improveGames}+ games in ${yr} and compares
+        the first ${M.improveWindow} of them with the latest ${M.improveWindow}; a giant needs
+        ${M.giantPool}+ games in ${yr}; Giant killer needs ${M.vsGiants}+ games against them.
+        The Century Club is a career honour, so it appears on the all-time wall only.</p>` : ''}
       <p><b>Giant killer</b> measures you against the ten players with the best win rate
-        among everyone past 500 games: ${esc(giants)}. Those ten are ranked on this
-        club's own games rather than an outside rating, because only 68 of
-        ${nf(T.players)} players carry a DUPR figure and a club record should not
-        quietly ignore the rest.</p>
+        among everyone past ${nf(M.giantPool)} games${yr ? ` in ${yr}` : ''}: ${esc(giants)}. Those ten are ranked on this
+        club's own games rather than an outside rating, because ${yr
+          ? 'most of the club carries no DUPR figure'
+          : `only 68 of ${nf(T.players)} players carry a DUPR figure`} and a club record
+        should not quietly ignore the rest.</p>
       <p><b>Ties are shared, not broken.</b> Two people on the same mark both take the
         place, and the next place is the next distinct mark below them.</p>
     </div>`;
@@ -1239,7 +1297,7 @@ function render() {
   // be re-armed here rather than once at startup.
   makeSortable($('#panel-' + state.view));
   const h = state.view === 'home' ? '#/'
-    : state.view === 'records' ? '#/records'
+    : state.view === 'records' ? (wofYear ? `#/records/${wofYear}` : '#/records')
     : state.view === 'player' ? `#/player/${state.player}`
     : state.view === 'compare' ? `#/compare/${state.a}/${state.b}`
     : `#/standings/${state.league}`;
@@ -1249,7 +1307,11 @@ function render() {
 function readHash() {
   const [v, ...rest] = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
   if (v === 'home' || v === '') { state.view = 'home'; return true; }
-  if (v === 'records') { state.view = 'records'; return true; }
+  if (v === 'records') {
+    state.view = 'records';
+    wofYear = WOF_YEARS.includes(rest[0]) ? rest[0] : null;
+    return true;
+  }
   if (v === 'player' && byId.has(rest[0])) { state.view = 'player'; state.player = rest[0]; return true; }
   if (v === 'compare' && byId.has(rest[0]) && byId.has(rest[1])) {
     state.view = 'compare'; state.a = rest[0]; state.b = rest[1]; return true;
@@ -1366,6 +1428,14 @@ function init() {
     openPlayer(card.dataset.goto);
   });
   $('#panel-records').addEventListener('click', (e) => {
+    const yb = e.target.closest('[data-year]');
+    if (yb) {
+      wofYear = yb.dataset.year || null;
+      render();
+      say(wofYear ? `Showing records for ${wofYear}.` : 'Showing all-time records.');
+      $('#panel-records .wof-yr[aria-pressed="true"]')?.focus();
+      return;
+    }
     const card = e.target.closest('[data-goto]');
     if (!card) return;
     e.preventDefault();

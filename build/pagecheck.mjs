@@ -558,6 +558,51 @@ await ph.waitForTimeout(500);
   await hidden.close();
 }
 
+/* ---------------------------- tournaments, and the wall by year */
+// The landing page's tournament count comes from the build, and the Wall of
+// Fame can be re-scoped to one year. A year's wall must be computed from that
+// year's games only, say so, survive a reload via its URL, and go back to all
+// time cleanly - including the Century Club, which is all-time only.
+{
+  await page.goto('http://127.0.0.1:8321/', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(3000);   // the counter counts up; let it land
+  const home = await page.evaluate(async () => {
+    const { coverage } = await import('./data.js');
+    return { want: coverage.tournaments, shown: document.querySelector('#tourCount')?.textContent };
+  });
+  t('home: the tournament count is on the page and matches the build',
+    home.want > 0 && home.shown === Number(home.want).toLocaleString(), JSON.stringify(home));
+
+  await page.goto('http://127.0.0.1:8321/#/records', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(500);
+  const years = await page.evaluate(() => [...document.querySelectorAll('.wof-yr')].map((b) => b.textContent.trim()));
+  t('wall: the year filter offers All time first', years[0] === 'All time', years.join(','));
+  t('wall: 2023 (a partial first season) gets no button of its own', !years.includes('2023'), years.join(','));
+  const pick = years.find((y) => /^\d{4}$/.test(y));
+  await page.click(`.wof-yr[data-year="${pick}"]`);
+  await page.waitForTimeout(400);
+  const one = await page.evaluate(async (y) => {
+    const { matches } = await import('./data.js');
+    const games = matches.filter((m) => m.date.startsWith(y)).length;
+    return { games, hash: location.hash, sub: document.querySelector('.wof-hero-sub')?.innerText ?? '',
+             pressed: document.querySelector('.wof-yr[aria-pressed="true"]')?.textContent.trim(),
+             cards: document.querySelectorAll('.wof').length, century: !!document.querySelector('.ccwrap') };
+  }, pick);
+  t('wall: a year is computed from that year\'s games', one.sub.includes(Number(one.games).toLocaleString()) && one.sub.includes(pick), one.sub);
+  t('wall: the chosen year is marked pressed', one.pressed === pick, one.pressed);
+  t('wall: the year is in the URL', one.hash === `#/records/${pick}`, one.hash);
+  t('wall: a year still shows all nineteen records', one.cards === 19, String(one.cards));
+  t('wall: the Century Club is all-time only', !one.century);
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForTimeout(500);
+  const again = await page.evaluate(() => document.querySelector('.wof-yr[aria-pressed="true"]')?.textContent.trim());
+  t('wall: a year survives a reload', again === pick, again);
+  await page.click('.wof-yr[data-year=""]');
+  await page.waitForTimeout(400);
+  const back = await page.evaluate(() => ({ hash: location.hash, century: !!document.querySelector('.ccwrap') }));
+  t('wall: All time goes back to the full wall', back.hash === '#/records' && back.century, JSON.stringify(back));
+}
+
 t('no page errors anywhere', errs.length === 0, errs.slice(0, 3).join(' | '));
 console.log(`\n${pass} passed, ${fail} failed   (checked ${ids.length} players + tab switching at 390px)`);
 await b.close();

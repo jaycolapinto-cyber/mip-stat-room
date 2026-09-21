@@ -139,6 +139,11 @@ button{font:inherit;color:inherit}
   font-size:clamp(54px,9.5vw,126px);margin:18px 0 2px;font-variant-numeric:tabular-nums}
 .counter .unit{display:block;font-size:clamp(15px,2.6vw,26px);letter-spacing:.22em;
   text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:14px;line-height:1}
+/* Tournaments sits in the label under the headline number, not as a second
+   headline: two numbers the same size would leave a visitor unsure which one
+   the page is about. */
+.counter .unit-2{display:block;margin-top:10px}
+.counter .unit-2 b{color:var(--lime);font-weight:700;letter-spacing:.04em;font-variant-numeric:tabular-nums}
 .hero-sub{margin:18px 0 0;color:rgba(255,255,255,.78);font-size:14.5px;max-width:62ch}
 .hero-sub b{color:var(--lime);font-weight:700}
 
@@ -166,6 +171,18 @@ button{font:inherit;color:inherit}
   letter-spacing:-.01em;margin:4px 0 6px;text-transform:uppercase}
 .wof-hero-sub{margin:0;font-size:13.5px;color:rgba(255,255,255,.76);max-width:62ch;line-height:1.55}
 .wof-hero-sub b{color:var(--lime);font-weight:700}
+.wof-hero-yr{color:var(--lime)}
+/* All time / one year. Buttons with aria-pressed, not tabs: they re-scope the
+   same wall rather than switching to a different panel. */
+.wof-years{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 14px}
+.wof-yr{font:inherit;font-size:12.5px;font-weight:700;letter-spacing:.06em;
+  padding:7px 14px;min-height:36px;border-radius:999px;cursor:pointer;
+  color:#fff;background:rgba(6,41,30,.55);border:1px solid rgba(217,248,75,.3)}
+.wof-yr:hover{border-color:var(--lime)}
+.wof-yr[aria-pressed="true"]{background:var(--lime);color:#0D1A15;border-color:var(--lime)}
+.wof-yr:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.wof-vacant{opacity:.8}
+.wof-vacant-msg{display:block;margin-top:14px;font-size:13px;color:var(--muted);font-style:italic}
 
 .mqrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:10px;margin-top:20px}
 .mq{background:rgba(6,41,30,.55);border:1px solid rgba(217,248,75,.22);border-radius:var(--r);backdrop-filter:blur(2px);
