@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-18T18:14:31.738Z",
+ "generated": "2026-09-21T14:14:04.949Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -3455,6 +3455,67 @@
     {
      "handle": "Andy",
      "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Sal S.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-18",
+   "lastSeen": "2026-09-18",
+   "tournaments": [
+    "tydfRb4GvVq3uemdpBvm"
+   ],
+   "playedWith": [
+    {
+     "handle": "Eddie",
+     "games": 4
+    },
+    {
+     "handle": "Hersh",
+     "games": 4
+    },
+    {
+     "handle": "Frank R.",
+     "games": 3
+    },
+    {
+     "handle": "Daniel Calhoun",
+     "games": 3
+    },
+    {
+     "handle": "Brendan S.",
+     "games": 2
+    },
+    {
+     "handle": "L. Glods ❤️",
+     "games": 2
+    },
+    {
+     "handle": "Karen P.",
+     "games": 2
+    },
+    {
+     "handle": "Jaime F.",
+     "games": 2
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 2
+    },
+    {
+     "handle": "Jonathan Gottesmann",
+     "games": 2
+    },
+    {
+     "handle": "John M.",
+     "games": 2
+    },
+    {
+     "handle": "D-Hub27🍺",
+     "games": 2
     }
    ],
    "candidates": null
