@@ -356,8 +356,9 @@ await ph.waitForTimeout(500);
         overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       };
     });
-    t('phone: the wall opens with four marquee records', w.marquee === 4, String(w.marquee));
-    t('phone: no marquee number is left blank', w.marqueeBlank === 0, String(w.marqueeBlank));
+    // The four big marquee cards at the top were removed on request (2026-09-21):
+    // the same records are on the wall below, so they were saying things twice.
+    t('phone: the wall no longer opens with marquee cards', w.marquee === 0, String(w.marquee));
     t('phone: the wall is split into named sections', w.sections.length >= 5, JSON.stringify(w.sections));
     t('phone: every section says what it holds', w.sectionsHaveBlurb);
     t('phone: all nineteen records render', w.cards === 19, String(w.cards));
@@ -549,12 +550,14 @@ await ph.waitForTimeout(500);
     shown === real, `showed ${JSON.stringify(shown)}, expected ${JSON.stringify(real)}`);
   t('and it is not left at zero', shown !== '0', JSON.stringify(shown));
 
-  // Same property for the marquee counters, which were fixed for the
-  // below-the-fold version of this and must not regress into the hidden one.
-  const zeros = await hp.evaluate(() =>
-    [...document.querySelectorAll('.mq-val b[data-to]')]
-      .filter((e) => e.textContent.trim() === '0' && e.dataset.to !== '0').length);
-  t('no marquee counter is stranded at zero either', zeros === 0, `${zeros} stuck`);
+  // The tournament count beside it counts up the same way and must land too.
+  const tours = await hp.evaluate(async () => {
+    const { coverage } = await import('./data.js');
+    return { shown: document.querySelector('#tourCount')?.textContent?.trim(),
+             real: Number(coverage.tournaments).toLocaleString('en-US') };
+  });
+  t('the tournament counter shows the real total in a background tab, not 0',
+    tours.shown === tours.real, JSON.stringify(tours));
   await hidden.close();
 }
 

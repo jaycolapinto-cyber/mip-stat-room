@@ -544,8 +544,10 @@ function renderHome() {
           <h1 class="hero-title">The Stat Room</h1>
           <p class="hero-what">Every game the league has ever played, and everyone who played it.
             Look up a player, settle an argument, see who holds what.</p>
-          <p class="counter"><span id="bigCount">${nf(T.games)}</span><span class="unit"><span>games played</span>${
-            TOURNAMENTS ? `<span class="unit-2" title="Every Scoreholio tournament with games on this site. A night with an A and a B bracket counts as two."><b id="tourCount">${nf(TOURNAMENTS)}</b> tournaments</span>` : ''}</span></p>
+          <div class="counters">
+            <p class="counter"><span id="bigCount">${nf(T.games)}</span><span class="unit">games played</span></p>
+            ${TOURNAMENTS ? `<p class="counter" title="Every Scoreholio tournament with games on this site. A night with an A and a B bracket counts as two."><span id="tourCount">${nf(TOURNAMENTS)}</span><span class="unit">tournaments</span></p>` : ''}
+          </div>
           <p class="hero-sub"><b>${longDate(T.firstDate)}</b> to <b>${longDate(T.lastDate)}</b></p>
         </div>
         <figure class="yearchart">
@@ -639,7 +641,6 @@ function renderRecords() {
         <h2 class="wof-hero-title">Wall of Fame${yr ? ` <span class="wof-hero-yr">${yr}</span>` : ''}</h2>
         ${filter}
         <p class="wof-hero-sub">${scope}</p>
-        <div class="mqrow">${[R.ironMan, R.streak, R.partnership, R.nemesis].map(marqueeCard).join('')}</div>
       </div>
     </div>
 
