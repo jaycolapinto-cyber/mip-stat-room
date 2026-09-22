@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T14:14:04.949Z",
+ "generated": "2026-09-22T14:12:04.014Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -79,6 +79,73 @@
     }
    ],
    "candidates": null
+  },
+  {
+   "handle": "Michael S.",
+   "games": 44,
+   "nights": 4,
+   "firstSeen": "2026-03-12",
+   "lastSeen": "2026-09-22",
+   "tournaments": [
+    "KoETtwIoeUMIulPsVxF4",
+    "po6irFKwzkCohu7A6TYm",
+    "emZh7JwA3xKZZY2L03g5",
+    "BK2kXl8ttzuUZnAHuQZ3"
+   ],
+   "playedWith": [
+    {
+     "handle": "Adam K.",
+     "games": 10
+    },
+    {
+     "handle": "Josh J.",
+     "games": 9
+    },
+    {
+     "handle": "Adrian L.",
+     "games": 8
+    },
+    {
+     "handle": "Stork 🇺🇸🍻",
+     "games": 6
+    },
+    {
+     "handle": "Shane M.",
+     "games": 6
+    },
+    {
+     "handle": "Noah H.",
+     "games": 6
+    },
+    {
+     "handle": "Vincent C.",
+     "games": 5
+    },
+    {
+     "handle": "Michael G.",
+     "games": 4
+    },
+    {
+     "handle": "Ronnie D",
+     "games": 4
+    },
+    {
+     "handle": "Robert P.",
+     "games": 4
+    },
+    {
+     "handle": "Maurice R.",
+     "games": 4
+    },
+    {
+     "handle": "Walker F.",
+     "games": 3
+    }
+   ],
+   "candidates": [
+    "Michael Scancarello",
+    "Michael Spezio"
+   ]
   },
   {
    "handle": "12 1.",
@@ -847,72 +914,6 @@
     }
    ],
    "candidates": null
-  },
-  {
-   "handle": "Michael S.",
-   "games": 33,
-   "nights": 3,
-   "firstSeen": "2026-03-12",
-   "lastSeen": "2026-09-15",
-   "tournaments": [
-    "po6irFKwzkCohu7A6TYm",
-    "emZh7JwA3xKZZY2L03g5",
-    "BK2kXl8ttzuUZnAHuQZ3"
-   ],
-   "playedWith": [
-    {
-     "handle": "Adrian L.",
-     "games": 8
-    },
-    {
-     "handle": "Shane M.",
-     "games": 6
-    },
-    {
-     "handle": "Noah H.",
-     "games": 6
-    },
-    {
-     "handle": "Josh J.",
-     "games": 5
-    },
-    {
-     "handle": "Adam K.",
-     "games": 5
-    },
-    {
-     "handle": "Vincent C.",
-     "games": 5
-    },
-    {
-     "handle": "Ronnie D",
-     "games": 4
-    },
-    {
-     "handle": "Robert P.",
-     "games": 4
-    },
-    {
-     "handle": "Maurice R.",
-     "games": 4
-    },
-    {
-     "handle": "Stork 🇺🇸🍻",
-     "games": 3
-    },
-    {
-     "handle": "Stephen R.",
-     "games": 3
-    },
-    {
-     "handle": "Jason V.",
-     "games": 3
-    }
-   ],
-   "candidates": [
-    "Michael Scancarello",
-    "Michael Spezio"
-   ]
   },
   {
    "handle": "4 4.",
@@ -1794,6 +1795,68 @@
     {
      "handle": "LloydLeo O.",
      "games": 3
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Paul I.",
+   "games": 22,
+   "nights": 2,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-22",
+   "tournaments": [
+    "KoETtwIoeUMIulPsVxF4",
+    "po6irFKwzkCohu7A6TYm"
+   ],
+   "playedWith": [
+    {
+     "handle": "Hersh",
+     "games": 7
+    },
+    {
+     "handle": "Mike B.",
+     "games": 5
+    },
+    {
+     "handle": "Stork 🇺🇸🍻",
+     "games": 4
+    },
+    {
+     "handle": "JonMac75☘️",
+     "games": 4
+    },
+    {
+     "handle": "Walker F.",
+     "games": 4
+    },
+    {
+     "handle": "Michael G.",
+     "games": 4
+    },
+    {
+     "handle": "Michael S.",
+     "games": 3
+    },
+    {
+     "handle": "Adam K.",
+     "games": 3
+    },
+    {
+     "handle": "Josh J.",
+     "games": 2
+    },
+    {
+     "handle": "Juju🇩🇴🧿",
+     "games": 2
+    },
+    {
+     "handle": "D-Hub27🍺",
+     "games": 2
+    },
+    {
+     "handle": "Tim L",
+     "games": 2
     }
    ],
    "candidates": null
@@ -3225,6 +3288,63 @@
    "candidates": null
   },
   {
+   "handle": "Walker F.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-22",
+   "lastSeen": "2026-09-22",
+   "tournaments": [
+    "KoETtwIoeUMIulPsVxF4"
+   ],
+   "playedWith": [
+    {
+     "handle": "Paul I.",
+     "games": 4
+    },
+    {
+     "handle": "Josh J.",
+     "games": 4
+    },
+    {
+     "handle": "Juju🇩🇴🧿",
+     "games": 3
+    },
+    {
+     "handle": "Michael S.",
+     "games": 3
+    },
+    {
+     "handle": "Stork 🇺🇸🍻",
+     "games": 3
+    },
+    {
+     "handle": "Hersh",
+     "games": 3
+    },
+    {
+     "handle": "Michael G.",
+     "games": 3
+    },
+    {
+     "handle": "Mike B.",
+     "games": 3
+    },
+    {
+     "handle": "Christopher G.",
+     "games": 3
+    },
+    {
+     "handle": "JonMac75☘️",
+     "games": 2
+    },
+    {
+     "handle": "Adam K.",
+     "games": 2
+    }
+   ],
+   "candidates": null
+  },
+  {
    "handle": "Mark L.",
    "games": 11,
    "nights": 1,
@@ -3283,67 +3403,6 @@
     "Mark Lazo",
     "Mark Anthony Lazo"
    ]
-  },
-  {
-   "handle": "Paul I.",
-   "games": 11,
-   "nights": 1,
-   "firstSeen": "2026-09-15",
-   "lastSeen": "2026-09-15",
-   "tournaments": [
-    "po6irFKwzkCohu7A6TYm"
-   ],
-   "playedWith": [
-    {
-     "handle": "D-Hub27🍺",
-     "games": 2
-    },
-    {
-     "handle": "Tim L",
-     "games": 2
-    },
-    {
-     "handle": "JonMac75☘️",
-     "games": 2
-    },
-    {
-     "handle": "Joe I.",
-     "games": 2
-    },
-    {
-     "handle": "Martha G.",
-     "games": 2
-    },
-    {
-     "handle": "Juan G.",
-     "games": 2
-    },
-    {
-     "handle": "L. Glods ❤️",
-     "games": 1
-    },
-    {
-     "handle": "Jim D.",
-     "games": 1
-    },
-    {
-     "handle": "Paul H.",
-     "games": 1
-    },
-    {
-     "handle": "Jaime F.",
-     "games": 1
-    },
-    {
-     "handle": "Mike B.",
-     "games": 1
-    },
-    {
-     "handle": "Birdman",
-     "games": 1
-    }
-   ],
-   "candidates": null
   },
   {
    "handle": "Angelo B.",
