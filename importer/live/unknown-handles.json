@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-22T14:12:04.014Z",
+ "generated": "2026-09-25T14:27:54.023Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -911,6 +911,69 @@
     {
      "handle": "12 1.",
      "games": 4
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Olivia O.",
+   "games": 33,
+   "nights": 3,
+   "firstSeen": "2026-09-15",
+   "lastSeen": "2026-09-24",
+   "tournaments": [
+    "VedCxl5s2UvByLoYttcy",
+    "Y1K1naSCxHJnDfUG07JP",
+    "po6irFKwzkCohu7A6TYm"
+   ],
+   "playedWith": [
+    {
+     "handle": "Alexia Y.",
+     "games": 8
+    },
+    {
+     "handle": "L. Glods ❤️",
+     "games": 7
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 6
+    },
+    {
+     "handle": "Christie S.🍷",
+     "games": 5
+    },
+    {
+     "handle": "Hersh",
+     "games": 5
+    },
+    {
+     "handle": "Peter P.",
+     "games": 5
+    },
+    {
+     "handle": "Jason V.",
+     "games": 4
+    },
+    {
+     "handle": "Nicole B.",
+     "games": 4
+    },
+    {
+     "handle": "Mark L.",
+     "games": 4
+    },
+    {
+     "handle": "Chris P.",
+     "games": 4
+    },
+    {
+     "handle": "Shane M.",
+     "games": 3
+    },
+    {
+     "handle": "John M.",
+     "games": 3
     }
    ],
    "candidates": null
@@ -1862,18 +1925,26 @@
    "candidates": null
   },
   {
-   "handle": "Olivia O.",
+   "handle": "Mark L.",
    "games": 22,
    "nights": 2,
-   "firstSeen": "2026-09-15",
-   "lastSeen": "2026-09-17",
+   "firstSeen": "2026-09-17",
+   "lastSeen": "2026-09-24",
    "tournaments": [
     "VedCxl5s2UvByLoYttcy",
-    "po6irFKwzkCohu7A6TYm"
+    "Y1K1naSCxHJnDfUG07JP"
    ],
    "playedWith": [
     {
-     "handle": "Christie S.🍷",
+     "handle": "Nicole B.",
+     "games": 9
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 7
+    },
+    {
+     "handle": "Chris P.",
      "games": 5
     },
     {
@@ -1881,47 +1952,42 @@
      "games": 5
     },
     {
-     "handle": "Jason V.",
-     "games": 4
+     "handle": "Alexia Y.",
+     "games": 5
     },
     {
      "handle": "Shane M.",
-     "games": 3
+     "games": 4
     },
     {
      "handle": "John M.",
-     "games": 3
+     "games": 4
     },
     {
-     "handle": "R.Mentz 🏴‍☠️",
-     "games": 3
-    },
-    {
-     "handle": "Nicole B.",
-     "games": 3
+     "handle": "Olivia O.",
+     "games": 4
     },
     {
      "handle": "Matthew L.",
      "games": 3
     },
     {
-     "handle": "Chris P.",
+     "handle": "Kevin M.",
      "games": 3
     },
     {
-     "handle": "Stephen R.",
-     "games": 2
+     "handle": "Peter P.",
+     "games": 3
     },
     {
-     "handle": "Adam K.",
-     "games": 2
-    },
-    {
-     "handle": "Alexia Y.",
-     "games": 2
+     "handle": "Jeff F.",
+     "games": 3
     }
    ],
-   "candidates": null
+   "candidates": [
+    "Mark Lazo",
+    "Mark Anthony Lazo"
+   ]
   },
   {
    "handle": "18 1.",
@@ -3345,64 +3411,235 @@
    "candidates": null
   },
   {
-   "handle": "Mark L.",
+   "handle": "Frank L.",
    "games": 11,
    "nights": 1,
-   "firstSeen": "2026-09-17",
-   "lastSeen": "2026-09-17",
+   "firstSeen": "2026-09-25",
+   "lastSeen": "2026-09-25",
    "tournaments": [
-    "VedCxl5s2UvByLoYttcy"
+    "LGam8MblgQbKr2VypkGn"
    ],
    "playedWith": [
     {
-     "handle": "Stephen R.",
+     "handle": "Laura, P",
+     "games": 5
+    },
+    {
+     "handle": "Lisa R.",
+     "games": 5
+    },
+    {
+     "handle": "Christina M.",
+     "games": 4
+    },
+    {
+     "handle": "thomas P.",
+     "games": 3
+    },
+    {
+     "handle": "Shentah P.",
+     "games": 3
+    },
+    {
+     "handle": "John F",
+     "games": 3
+    },
+    {
+     "handle": "Dorothy C.",
+     "games": 3
+    },
+    {
+     "handle": "Adam B",
+     "games": 2
+    },
+    {
+     "handle": "Maurice R.",
+     "games": 2
+    },
+    {
+     "handle": "Peter A.",
+     "games": 2
+    },
+    {
+     "handle": "Paul H.",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Christina M.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-25",
+   "lastSeen": "2026-09-25",
+   "tournaments": [
+    "LGam8MblgQbKr2VypkGn"
+   ],
+   "playedWith": [
+    {
+     "handle": "Maurice R.",
      "games": 6
     },
     {
-     "handle": "Shane M.",
+     "handle": "thomas P.",
+     "games": 6
+    },
+    {
+     "handle": "Frank L.",
      "games": 4
     },
+    {
+     "handle": "Peter A.",
+     "games": 3
+    },
+    {
+     "handle": "Paul H.",
+     "games": 3
+    },
+    {
+     "handle": "Dorothy C.",
+     "games": 3
+    },
+    {
+     "handle": "Shentah P.",
+     "games": 2
+    },
+    {
+     "handle": "Lisa R.",
+     "games": 2
+    },
+    {
+     "handle": "Laura, P",
+     "games": 2
+    },
+    {
+     "handle": "Adam B",
+     "games": 1
+    },
+    {
+     "handle": "John F",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Richard V.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-24",
+   "lastSeen": "2026-09-24",
+   "tournaments": [
+    "OEpUZTFPzW8Q0PDgHSgK"
+   ],
+   "playedWith": [
     {
      "handle": "John M.",
+     "games": 5
+    },
+    {
+     "handle": "Angel V.",
      "games": 4
     },
     {
-     "handle": "Nicole B.",
+     "handle": "Bobby P",
      "games": 4
     },
     {
-     "handle": "Matthew L.",
+     "handle": "M Spezio",
      "games": 3
     },
     {
-     "handle": "Chris P.",
+     "handle": "Adam K.",
      "games": 3
     },
     {
-     "handle": "R.Mentz 🏴‍☠️",
-     "games": 2
+     "handle": "Josh J.",
+     "games": 3
+    },
+    {
+     "handle": "Vincent C.",
+     "games": 3
     },
     {
      "handle": "Jason V.",
-     "games": 2
+     "games": 3
     },
     {
-     "handle": "L. Glods ❤️",
-     "games": 2
+     "handle": "Rex B.",
+     "games": 3
     },
     {
-     "handle": "Christie S.🍷",
-     "games": 2
+     "handle": "Adrian M.",
+     "games": 1
     },
     {
-     "handle": "Olivia O.",
+     "handle": "Luis L.",
      "games": 1
     }
    ],
    "candidates": [
-    "Mark Lazo",
-    "Mark Anthony Lazo"
+    "Richard Vergara",
+    "Richard Vaselli"
    ]
+  },
+  {
+   "handle": "Luis L.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-09-24",
+   "lastSeen": "2026-09-24",
+   "tournaments": [
+    "OEpUZTFPzW8Q0PDgHSgK"
+   ],
+   "playedWith": [
+    {
+     "handle": "Jason V.",
+     "games": 5
+    },
+    {
+     "handle": "Adam K.",
+     "games": 4
+    },
+    {
+     "handle": "M Spezio",
+     "games": 4
+    },
+    {
+     "handle": "Josh J.",
+     "games": 3
+    },
+    {
+     "handle": "Angel V.",
+     "games": 3
+    },
+    {
+     "handle": "Rex B.",
+     "games": 3
+    },
+    {
+     "handle": "Adrian M.",
+     "games": 3
+    },
+    {
+     "handle": "John M.",
+     "games": 3
+    },
+    {
+     "handle": "Bobby P",
+     "games": 2
+    },
+    {
+     "handle": "Vincent C.",
+     "games": 2
+    },
+    {
+     "handle": "Richard V.",
+     "games": 1
+    }
+   ],
+   "candidates": null
   },
   {
    "handle": "Angelo B.",
