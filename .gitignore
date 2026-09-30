@@ -28,3 +28,14 @@ Thumbs.db
 
 # Superseded importer versions, kept on disk only while the rewrite settled.
 *.bak
+
+# The publish signal. Claude writes this file - containing the commit message -
+# only after a build has passed every check; mip-push.ps1 sees it, commits,
+# pushes, and deletes it. It is a message between the two of them and has no
+# business in the history.
+.push-ready
+
+# Debris from a git command that died before it could clean up after itself.
+# Swept aside rather than deleted, because deleting inside a connected folder
+# is not something the sandbox is allowed to do.
+.git/_stale-locks-*
