@@ -58,3 +58,25 @@ or page to the true end of the list and take it again.
 The cost of not checking is not a missing number; it is that the players
 excluded are the lower-rated half of the club, so the site would show ratings
 for the strongest players and nothing for everyone else.
+
+## The Rankings list CAN be captured automatically — but only one way
+
+For two weeks this project believed the club's Rankings list could not be
+loaded by a script, and asked a person to scroll and paste it. That was wrong,
+and the reason it was wrong is worth writing down.
+
+The list starts at 10 rows and loads 10 more per scroll. It ignores every
+scripted way of scrolling — `window.scrollTo`, `scrollIntoView`, dispatched
+wheel events, the End and Page Down keys all leave it at 10 rows. What it
+responds to is a real mouse-wheel event delivered through the browser
+extension: the `computer` tool's `scroll` action. Ten ticks of that loads ten
+rows, every time, down to a "No more results." line at the bottom. On
+2026-09-30 that was 360 rows, floor 2.697, in about forty scrolls.
+
+So the reading is taken by the Wednesday job now, with no paste. The floor
+check above still applies: a run that stops early still produces a file that
+looks fine.
+
+One more thing about extraction. In the page's plain text the reliability
+badge and the rating run together — an 80 badge beside 4.690 reads as
+"804.690". They are separate elements, so read them as separate elements.
