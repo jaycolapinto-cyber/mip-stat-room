@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-30T02:37:24.065Z",
+ "generated": "2026-10-06T00:54:33.778Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -82,12 +82,13 @@
   },
   {
    "handle": "Michael S.",
-   "games": 44,
-   "nights": 4,
+   "games": 55,
+   "nights": 5,
    "firstSeen": "2026-03-12",
-   "lastSeen": "2026-09-22",
+   "lastSeen": "2026-10-01",
    "tournaments": [
     "KoETtwIoeUMIulPsVxF4",
+    "nKTjRabWAAo0QXlnUuMA",
     "po6irFKwzkCohu7A6TYm",
     "emZh7JwA3xKZZY2L03g5",
     "BK2kXl8ttzuUZnAHuQZ3"
@@ -95,7 +96,7 @@
    "playedWith": [
     {
      "handle": "Adam K.",
-     "games": 10
+     "games": 13
     },
     {
      "handle": "Josh J.",
@@ -118,6 +119,14 @@
      "games": 6
     },
     {
+     "handle": "Chris P.",
+     "games": 5
+    },
+    {
+     "handle": "Charles M.",
+     "games": 5
+    },
+    {
      "handle": "Vincent C.",
      "games": 5
     },
@@ -126,20 +135,12 @@
      "games": 4
     },
     {
-     "handle": "Ronnie D",
+     "handle": "Matthew L.",
      "games": 4
     },
     {
-     "handle": "Robert P.",
+     "handle": "Bill L.",
      "games": 4
-    },
-    {
-     "handle": "Maurice R.",
-     "games": 4
-    },
-    {
-     "handle": "Walker F.",
-     "games": 3
     }
    ],
    "candidates": [
@@ -2181,6 +2182,68 @@
    "candidates": null
   },
   {
+   "handle": "Jeff T.",
+   "games": 21,
+   "nights": 2,
+   "firstSeen": "2026-09-25",
+   "lastSeen": "2026-09-29",
+   "tournaments": [
+    "CO5GzNkKFWRvdwJ1ESgA",
+    "vqxTbEVTZNSd73gAtXyh"
+   ],
+   "playedWith": [
+    {
+     "handle": "Hersh",
+     "games": 6
+    },
+    {
+     "handle": "Frank R.",
+     "games": 6
+    },
+    {
+     "handle": "D-Hub27🍺",
+     "games": 6
+    },
+    {
+     "handle": "Martha G.",
+     "games": 4
+    },
+    {
+     "handle": "L. Glods ❤️",
+     "games": 3
+    },
+    {
+     "handle": "JonMac75☘️",
+     "games": 3
+    },
+    {
+     "handle": "Ronnie D",
+     "games": 3
+    },
+    {
+     "handle": "Kevin M.",
+     "games": 3
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 3
+    },
+    {
+     "handle": "Vincent C.",
+     "games": 3
+    },
+    {
+     "handle": "Jaime F.",
+     "games": 3
+    },
+    {
+     "handle": "Michael C.",
+     "games": 2
+    }
+   ],
+   "candidates": null
+  },
+  {
    "handle": "Vinz",
    "games": 15,
    "nights": 2,
@@ -3356,6 +3419,67 @@
    "candidates": null
   },
   {
+   "handle": "Frank F.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-10-02",
+   "lastSeen": "2026-10-02",
+   "tournaments": [
+    "DGFUFdBulT9HhpIDdtb9"
+   ],
+   "playedWith": [
+    {
+     "handle": "Jeff F.",
+     "games": 5
+    },
+    {
+     "handle": "Jonathan Gottesmann",
+     "games": 4
+    },
+    {
+     "handle": "Brendan S.",
+     "games": 3
+    },
+    {
+     "handle": "Christie S.🍷",
+     "games": 3
+    },
+    {
+     "handle": "Jason V.",
+     "games": 3
+    },
+    {
+     "handle": "Bill L.",
+     "games": 3
+    },
+    {
+     "handle": "Brian W.",
+     "games": 2
+    },
+    {
+     "handle": "Chase Gold",
+     "games": 2
+    },
+    {
+     "handle": "Rex B.",
+     "games": 2
+    },
+    {
+     "handle": "Daniel Calhoun",
+     "games": 2
+    },
+    {
+     "handle": "Charles M.",
+     "games": 2
+    },
+    {
+     "handle": "Chasette Gold",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
    "handle": "Walker F.",
    "games": 11,
    "nights": 1,
@@ -3522,6 +3646,63 @@
     {
      "handle": "John F",
      "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Tim D.",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-10-02",
+   "lastSeen": "2026-10-02",
+   "tournaments": [
+    "N62ARpPqqahsZHdiYCg2"
+   ],
+   "playedWith": [
+    {
+     "handle": "Jaime M.",
+     "games": 5
+    },
+    {
+     "handle": "Adam B",
+     "games": 4
+    },
+    {
+     "handle": "John F",
+     "games": 4
+    },
+    {
+     "handle": "thomas P.",
+     "games": 3
+    },
+    {
+     "handle": "BReady",
+     "games": 3
+    },
+    {
+     "handle": "Laura, P",
+     "games": 3
+    },
+    {
+     "handle": "Karen P.",
+     "games": 3
+    },
+    {
+     "handle": "Lani Licandro",
+     "games": 2
+    },
+    {
+     "handle": "Paul H.",
+     "games": 2
+    },
+    {
+     "handle": "Chasette Gold",
+     "games": 2
+    },
+    {
+     "handle": "🇺🇸 Scadutes 🇺🇸",
+     "games": 2
     }
    ],
    "candidates": null
@@ -3813,67 +3994,6 @@
     },
     {
      "handle": "D-Hub27🍺",
-     "games": 2
-    }
-   ],
-   "candidates": null
-  },
-  {
-   "handle": "Jeff T.",
-   "games": 11,
-   "nights": 1,
-   "firstSeen": "2026-09-25",
-   "lastSeen": "2026-09-25",
-   "tournaments": [
-    "vqxTbEVTZNSd73gAtXyh"
-   ],
-   "playedWith": [
-    {
-     "handle": "Hersh",
-     "games": 3
-    },
-    {
-     "handle": "Stephen R.",
-     "games": 3
-    },
-    {
-     "handle": "D-Hub27🍺",
-     "games": 3
-    },
-    {
-     "handle": "Vincent C.",
-     "games": 3
-    },
-    {
-     "handle": "Jaime F.",
-     "games": 3
-    },
-    {
-     "handle": "Tony R.",
-     "games": 2
-    },
-    {
-     "handle": "Jeff F.",
-     "games": 2
-    },
-    {
-     "handle": "Karen P.",
-     "games": 2
-    },
-    {
-     "handle": "Jonathan Gottesmann",
-     "games": 2
-    },
-    {
-     "handle": "Frank R.",
-     "games": 2
-    },
-    {
-     "handle": "Drew Johnson",
-     "games": 2
-    },
-    {
-     "handle": "Chasette Gold",
      "games": 2
     }
    ],
