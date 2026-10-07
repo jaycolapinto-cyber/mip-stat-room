@@ -43,20 +43,55 @@ export const DIR = process.env.MIP_STANDINGS_DIR
 /**
  * Each league, keyed by the stable part of its export filename.
  *
- * `note` is what the site prints under the league's name. It is Dave's own
- * label from merrickinapickle.com and it goes stale exactly when the workbook
- * does - see the staleness check in extract.mjs, which compares the file's
- * date against the newest game and says so rather than leaving a reader to
- * work out that "Week 2" is three weeks old.
+ * `share` is the id inside Dave's OneDrive share link for that league's
+ * workbook. He keeps each one as an Excel file in his own OneDrive, types the
+ * week's results into it by hand, and links it from merrickinapickle.com. The
+ * link is stable - it names the file, not a version of it - so the same six
+ * ids fetch this week's numbers every week, and `downloadUrl()` below turns
+ * one into a plain file download with no Excel Online in the way.
+ *
+ * There is deliberately no hand-written "Week 6" label here any more. There
+ * used to be, and it was wrong within a week of being typed. What the site
+ * prints instead is read from the workbook itself (its banner row, when Dave
+ * gives it one) and from git (when the file last changed) - see readLeague in
+ * extract.mjs. Nothing here needs editing when a new week is entered.
+ *
+ * `match` changes when a SEASON ends: Scoreholio mints a fresh id for the
+ * next season and Dave starts a fresh workbook named after it. Until this
+ * list is updated the build keeps reading the old season's final table and
+ * says nothing, because that file is still a perfectly valid workbook. So
+ * when a league's standings stop moving for weeks while its games keep
+ * coming, this is the first place to look.
  */
 export const LEAGUES = [
-  { id: 'og-s9',         label: 'OG Season 9',             match: 'Player-Rankings-qPZaoc9bT9aNH9pGwC4t', note: 'Week 1' },
-  { id: 'tue-am',        label: 'Tuesday AM',              match: 'Player-Rankings-ytHsDHiSEPVfgTGrkiKj', note: 'Final 6/21/26' },
-  { id: 'tue-pickle',    label: 'Tuesday Pickle Club',     match: 'Player-Rankings-1POLChlc4FtKzhtRqQRF', note: 'Season 1 final' },
-  { id: 'wed-newbridge', label: 'Wednesday Newbridge Inn', match: 'Player-Rankings-HnAtFNN1bzW2DuOVGi3K', note: 'Season 8, week 2' },
-  { id: 'thu-carpenters',label: 'Thursday Carpenters Pub', match: 'Player-Rankings-mvxmV6OyEpBCgFjLYqh0', note: '12 weeks' },
-  { id: 'fri-am',        label: 'Friday AM',               match: 'Player-Rankings-IpkPLQgrcTaT1jOUuymH', note: 'Week 2, 9/11/26' },
+  { id: 'og-s9',         label: 'OG Season 9',             match: 'Player-Rankings-qPZaoc9bT9aNH9pGwC4t', share: 'IQCD90K-5FrYRqoXano6K34aAaF5iBmXGlS7rZzgzuZIPqQ' },
+  { id: 'tue-am',        label: 'Tuesday AM',              match: 'Player-Rankings-TznNqHP1zjSPHUOSSnko', share: 'IQAofmLaJ1HuS41ioD1-enLRAefog8Qtx4Wztv41YraBNzU' },
+  // `final`: the season is over and this is its closing table. It will never
+  // change again, so the weekly job does not read "unchanged for a month" as a
+  // sign Dave moved to a new workbook. Take the flag off when the league restarts.
+  { id: 'tue-pickle',    label: 'Tuesday Pickle Club',     match: 'Player-Rankings-1POLChlc4FtKzhtRqQRF', share: 'IQDbLXIAd5bdSbPcwWLcOMiqAToZXiQa57xEVZts5lkQxkE', final: true },
+  { id: 'wed-newbridge', label: 'Wednesday Newbridge Inn', match: 'Player-Rankings-HnAtFNN1bzW2DuOVGi3K', share: 'IQA6GlpMVisoSqL3cWOWYOtZAVI5qnZzx0qes3ejkBpXITI' },
+  { id: 'thu-carpenters',label: 'Thursday Carpenters Pub', match: 'Player-Rankings-k946hMkXbiIfXMms8bKB', share: 'IQBbS7ywOp2wSpZhKQT0o3f4AXO0fnjXmAey1wnW_2lt7ws' },
+  { id: 'fri-am',        label: 'Friday AM',               match: 'Player-Rankings-IpkPLQgrcTaT1jOUuymH', share: 'IQBijrfM5_s5TpWDh84NWQcfAdOyAoVP0d2K0ASOBXAAXO8' },
 ];
+
+/**
+ * A URL that downloads the league's workbook as the original .xlsx.
+ *
+ * The share link Dave hands out opens Excel Online, whose only way out is a
+ * File > Export menu that has to be clicked through, and that is how a
+ * scheduled run came to report success five times while delivering nothing.
+ * The same link with `download=1` skips the viewer and serves the file. It is
+ * the ORIGINAL workbook, every sheet intact, which also means the filename
+ * carries the season id and `newestMatching` finds it unchanged.
+ *
+ * Opened in a browser this lands in Downloads under the workbook's own name,
+ * with Chrome's " (1)" suffix if a copy is already there. The weekly job
+ * copies it into the repo under the clean `${match}.xlsx` so the folder holds
+ * one file per league and the git date on it is the date the numbers changed.
+ */
+export const downloadUrl = (l) =>
+  `https://onedrive.live.com/:x:/g/personal/E914DC20F5C50B12/${l.share}?download=1`;
 
 // These two carry no stable id, and the master's name states a count that grows
 // - "8_Tournaments" becomes "9_Tournaments" - so they are matched on the part
@@ -91,9 +126,17 @@ export const HEAD2HEAD = 'MIP_Updated_Head_to_Head';
  * answer.
  */
 function lastChanged(dir, file, mtime) {
+  const git = (...args) => execFileSync('git', ['--no-optional-locks', ...args],
+    { cwd: dir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
   try {
-    const iso = execFileSync('git', ['log', '-1', '--format=%cI', '--', file],
-      { cwd: dir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+    // A file that differs from HEAD - edited, or brand new and untracked - was
+    // changed AFTER its last commit, so the commit date is the wrong answer
+    // and the mtime is the right one. This is the normal state during the
+    // weekly job: it fetches the workbooks, builds, and only THEN commits, so
+    // at build time every refreshed workbook is exactly this case. Asking git
+    // alone stamped each one with the previous week's date.
+    if (git('status', '--porcelain', '--', file)) return { ms: mtime, from: 'file' };
+    const iso = git('log', '-1', '--format=%cI', '--', file);
     if (iso) return { ms: new Date(iso).getTime(), from: 'git' };
   } catch { /* not a checkout, or no git on the machine */ }
   return { ms: mtime, from: 'file' };

@@ -26,8 +26,19 @@ export function buildRoster() {
     const k = `${l.id}||${low(p.name)}`;
     perLeague.set(k, (perLeague.get(k) ?? 0) + 1);
   }
+  // A doubled name is two people UNLESS a human has said otherwise. Sal
+  // Farruggia appeared under two clubs in one file and Jay confirmed that is
+  // one man with his club typed two ways; aliases.sameNameOnePerson holds such
+  // names and they never become conflicted. That matters for more than tidiness:
+  // a conflicted name gets a club-suffixed id, and the week the double row
+  // disappears so does the id, and everything that pointed at it breaks.
+  const onePerson = new Set(Object.keys(ALIASES.sameNameOnePerson ?? {})
+    .filter((k) => !k.startsWith('_')).map(low));
   const conflicted = new Set();
-  for (const [k, n] of perLeague) if (n > 1) conflicted.add(k.split('||')[1]);
+  for (const [k, n] of perLeague) {
+    const name = k.split('||')[1];
+    if (n > 1 && !onePerson.has(name)) conflicted.add(name);
+  }
 
   const keyFor = (name, club) => (conflicted.has(low(name))
     ? `${low(name)}|${low(club) || 'unknown-club'}`

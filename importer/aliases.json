@@ -2,7 +2,7 @@
   "_comment": "Scoreholio display handles mapped to roster player ids. Derived from the obvious reading of each nickname plus Dave's roster, then VERIFIED against the Friday AM workbook: week 2 comes from the live match log, and workbook total minus week 2 must leave a plausible week 1. All 18 reconciled with zero contradictions, one-to-one, with every two-week player accounted for. Still worth Dave confirming.",
   "verifiedBy": "importer/checkmap.mjs against FRIDAY AM Wk 2 9/11/26",
   "confirmed": {
-    "Chase Gold": "sal-farruggia-li-kick",
+    "Chase Gold": "sal-farruggia",
     "Chasette Gold": "danielle-farruggia",
     "Brendan S.": "brendan-stephenson",
     "Rex B.": "rex-bunt",
@@ -27,14 +27,19 @@
     "_why": "How DUPR spells a player, where that differs from the league files. DUPR is a separate account per person, typed by the player, so spellings drift. Each entry here was confirmed by evidence, not by looking similar.",
     "_evidence": "Scoreholio's Friday AM export (48 games, nicknames) and DUPR's own list for 2026-09-11 (real names) are the same session. Translating both to roster ids matched 28 of 48 until these two entries were added, and 48 of 48 after. A wrong entry cannot raise that number - it would invent a game DUPR does not have - so closing the gap exactly is the confirmation.",
     "jame frand": "jaime-frand",
-    "Sal Farruggia": "sal-farruggia-merrick-in-a-pickle"
+    "Sal Farruggia": "sal-farruggia"
   },
-  "_salNote": "RESOLVED by Jay 2026-09-12: the two Sal Farruggia rows are one man, the Merrick in a Pickle one. See mergedPlayers. The separate lowercase DUPR account 'Sal farruggia' is still held apart pending confirmation - it was in use over the same months as 'Sal Farruggia' and shares four playing days with it.",
+  "_salNote": "RESOLVED by Jay 2026-09-12: the two Sal Farruggia rows are one man. Originally handled as a merge of the LI-Kick row into the Merrick in a Pickle row, which gave him the id sal-farruggia-merrick-in-a-pickle. That broke the first week the double row went away (Oct 7: every workbook lists him once, under LI-Kick), because an id that carries a club only exists while the name is doubled. He is now listed under sameNameOnePerson instead, so his id is plain sal-farruggia whether a workbook lists him once or twice. The separate lowercase DUPR account 'Sal farruggia' is still held apart pending confirmation - it was in use over the same months as 'Sal Farruggia' and shares four playing days with it.",
+  "sameNameOnePerson": {
+    "_why": "Names that appear twice in one league file under different clubs but are ONE person - a club typed two ways, not two people. Normally a doubled name is treated as two people kept apart by club (see roster.mjs); a name listed here is never treated that way, both rows fold into one player, and the id stays the plain name whatever the club column says that week. Only a human adds a name here.",
+    "Sal Farruggia": "confirmed by Jay 2026-09-12"
+  },
   "mergedPlayers": {
     "_why": "Roster rows Jay has confirmed are the same person. The league files list Sal Farruggia twice, under Merrick in a Pickle and under LI-Kick. Jay says that is one man and he is the Merrick in a Pickle one, so the LI-Kick row folds into it. Every reference to the left id becomes the right id.",
     "_confirmedBy": "Jay, 2026-09-12",
     "_evidence": "Consistent with the Friday AM known-answer test: treating the two rows as one person reproduced all 48 games of that session, exactly as pointing DUPR's Sal at either single row did. The arithmetic could not tell the two explanations apart - Jay could.",
-    "sal-farruggia-li-kick": "sal-farruggia-merrick-in-a-pickle",
+    "sal-farruggia-li-kick": "sal-farruggia",
+    "sal-farruggia-merrick-in-a-pickle": "sal-farruggia",
     "brett-ritholt": "brett-ritholtz",
     "brett": "brett-ritholtz",
     "vinz-viz": "vincent-vizcarra",

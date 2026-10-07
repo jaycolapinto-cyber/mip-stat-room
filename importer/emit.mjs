@@ -404,6 +404,7 @@ const h2h = [...pair.values()].filter((x) => x.w + x.l > 0);
 // ------------------------------------------------------------------ output
 const masterOut = {
   title: master.title,
+  updated: master.updated,
   rows: master.players.map((p) => {
     const id = anyNameToId(p.name);
     return id && { id, rank: p.rank, games: p.games, events: p.events, wins: p.wins,
@@ -495,8 +496,11 @@ const players = wide.players
                  ...(p.source === 'dupr' ? { fromDupr: true } : {}),
                  ...(p.displayOnly ? { displayOnly: true } : {}) }));
 
+// `updated` is the day the workbook last changed and `banner` is whatever week
+// label Dave put above the table. Between them they replace the hand-typed
+// note that used to live in sources.mjs and was stale within a week.
 const leagueOut = leagues.map((l) => ({
-  id: l.id, label: l.label, note: l.note,
+  id: l.id, label: l.label, updated: l.updated, banner: l.banner,
   standings: l.players.map((p) => {
     const raw = leagueRowId(p.name, p.club);
     const id = raw && fix(raw);
@@ -536,6 +540,9 @@ const out = {
     duprMatched: Object.keys(dupr).length,
     duprSnapshots: dp.snapshots,
     h2hPairs: h2h.length,
+    // The most recent day any standings workbook changed. One date for the
+    // home page; each league carries its own beside its table.
+    standingsUpdated: [master.updated, ...leagues.map((l) => l.updated)].filter(Boolean).sort().at(-1) ?? null,
   },
   players, leagues: leagueOut, master: masterOut, matches, dupr,
 };
@@ -647,7 +654,9 @@ console.log('dupr ratings   ', Object.keys(dupr).length, '|', dp.snapshots.lengt
   if (stale.length) {
     console.log(`\n  ${stale.length} workbook(s) are more than ${STALE_DAYS} days older than the newest game.`);
     console.log('  The standings tab will be showing figures older than the games beside it.');
-    console.log('  Re-download them from the Stats & Standings page on merrickinapickle.com.');
+    console.log('  The Wednesday job fetches the six league workbooks from Dave\'s OneDrive links in');
+    console.log('  importer/sources.mjs. A league stuck here usually means Dave started a new season');
+    console.log('  in a new workbook - ask him for its link and update that league\'s match and share.');
   }
   const dupes = rows.filter((r) => r.alternatives > 0);
   if (dupes.length) {

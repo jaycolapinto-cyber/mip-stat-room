@@ -44,19 +44,32 @@ export function widenRoster(roster) {
   // route by which two identities ever merge - never a similarity score.
   const merged = new Map(Object.entries(aliases.mergedPlayers ?? {}).filter(([k]) => !k.startsWith('_')));
   const resolve = (id) => { let n = 0; while (merged.has(id) && n++ < 8) id = merged.get(id); return id; };
+  // Merges whose target is not in the roster YET. The standings workbooks are
+  // one season each, and a player who sat this season out is in no workbook,
+  // so a row that folds a handle into him ("vinz-viz" -> vincent-vizcarra)
+  // finds nobody to fold into at this point. He is not gone - every game he
+  // ever played is still in the match history - and the DUPR loop below
+  // creates him again under the same id, because ids are slugs of names. So
+  // the merge waits for that loop rather than stopping the build, and only a
+  // target that exists NOWHERE after it is the error it used to be.
+  //
+  // This first bit on Oct 7 2026, the first refresh after two leagues rolled
+  // over to new seasons, and the build threw on the first of what turned out
+  // to be several such rows.
+  const deferredMerges = [];
   if (merged.size) {
-    const keep = new Map();
     for (const p of roster) {
       const target = resolve(p.id);
-      if (target === p.id) { keep.set(p.id, p); continue; }
+      if (target === p.id) continue;
       const into = roster.find((x) => x.id === target);
-      if (!into) throw new Error(`mergedPlayers points "${p.id}" at unknown id "${target}"`);
+      if (!into) { deferredMerges.push(p); continue; }
       into.leagues = [...new Set([...(into.leagues ?? []), ...(p.leagues ?? [])])];
       into.aliases = [...new Set([...(into.aliases ?? []), ...(p.aliases ?? []), p.name])]
         .filter((a) => a !== into.name);
       into.nameConflict = false;             // the conflict is what the merge resolved
     }
-    roster = roster.filter((p) => resolve(p.id) === p.id);
+    const waiting = new Set(deferredMerges.map((p) => p.id));
+    roster = roster.filter((p) => resolve(p.id) === p.id || waiting.has(p.id));
   }
 
   // Names the league files list more than once (two Sal Farruggias). An exact
@@ -115,6 +128,25 @@ export function widenRoster(roster) {
 
   const gamesDropped = games.filter((g) =>
     [...g.a, ...g.b].some((n) => NOT_A_PLAYER.has(n.toLowerCase()))).length;
+
+  // Now the deferred merges, with the DUPR-created players in hand.
+  const stillMissing = [];
+  for (const from of deferredMerges) {
+    const target = resolve(from.id);
+    const into = byId.get(target);
+    if (!into) { stillMissing.push(`"${from.id}" -> "${target}"`); continue; }
+    into.leagues = [...new Set([...(into.leagues ?? []), ...(from.leagues ?? [])])];
+    into.aliases = [...new Set([...(into.aliases ?? []), ...(from.aliases ?? []), from.name])]
+      .filter((a) => a !== into.name);
+    for (const n of byId.get(from.id)?.duprNames ?? []) if (!(into.duprNames ?? []).includes(n)) (into.duprNames ??= []).push(n);
+    byId.delete(from.id);
+    const i = players.findIndex((p) => p.id === from.id);
+    if (i >= 0) players.splice(i, 1);
+    for (const [n, id] of nameToId) if (id === from.id) nameToId.set(n, target);
+  }
+  if (stillMissing.length) {
+    throw new Error(`mergedPlayers points at ids that exist nowhere in this build:\n  ${stillMissing.join('\n  ')}`);
+  }
 
   /* ------------------------------------------------ handles on Dave's sheets
    * Dave's weekly master sheet lists some players by a handle - "Ronnie D",

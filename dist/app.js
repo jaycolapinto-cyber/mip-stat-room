@@ -133,6 +133,14 @@ const COURT = `<svg class="sb-court" viewBox="0 0 400 220" preserveAspectRatio="
  */
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const prettyDate = (iso) => { const [y, m, d] = String(iso).split('-'); return `${MON[+m - 1]} ${+d}, ${y}`; };
+// "Oct 7" - a date without the year, for labels where the year is noise.
+const shortDate = (iso) => { const [, m, d] = String(iso).split('-'); return `${MON[+m - 1]} ${+d}`; };
+// What sits beside a league's name: the week Dave wrote on the sheet, if he
+// wrote one, and the day the standings were fetched. "As of", not "updated":
+// a finished season's table is re-fetched every week and never changes, and
+// "updated Oct 7" on it would claim new numbers that do not exist. Both come from the build;
+// nobody types them.
+const leagueTag = (l) => [l.banner, l.updated ? `as of ${shortDate(l.updated)}` : null].filter(Boolean).join(' \u00b7 ');
 
 function logStamp(g) {
   if (g.date) {
@@ -787,7 +795,7 @@ function renderPlayer() {
         ${lrows.length ? `<div class="scroller"><table>
           <thead><tr><th>League</th><th>Rank</th><th>W</th><th>L</th><th>Games</th><th>Win rate</th><th>Pts</th></tr></thead>
           <tbody>${lrows.map(({ league, row }) => `<tr>
-            <td><strong>${esc(league.label)}</strong><span class="thin"> ${esc(league.note)}</span></td>
+            <td><strong>${esc(league.label)}</strong><span class="thin"> ${esc(leagueTag(league))}</span></td>
             <td class="num">${row.rank ?? '—'}</td><td class="num">${row.wins ?? '—'}</td>
             <td class="num">${row.losses ?? '—'}</td><td class="num">${row.games ?? '—'}</td>
             <td class="num">${row.winPct != null ? pct(row.winPct) : '—'}</td>
@@ -938,7 +946,7 @@ function renderStandings() {
   const rows = [...l.standings].sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
   $('#standingsBody').innerHTML = `
     <div class="card">
-      <div class="card-h"><h2>${esc(l.label)}</h2><span class="meta">${esc(l.note)} · ${rows.length} players</span></div>
+      <div class="card-h"><h2>${esc(l.label)}</h2><span class="meta">${esc(leagueTag(l))} · ${rows.length} players</span></div>
       <p class="foot" style="margin:2px 0 0">Compare this against the same workbook on merrickinapickle.com — the numbers should be identical.</p>
       <div class="scroller"><table>
         <thead><tr><th>#</th><th>Player</th><th>W</th><th>L</th><th>Games</th><th>Win rate</th><th>Pts for</th><th>Pts agst</th><th>Diff</th><th>Points</th></tr></thead>
@@ -1069,7 +1077,7 @@ function renderMaster() {
   const rows = [...master.rows].sort((a, b) => (a.rank ?? 9999) - (b.rank ?? 9999));
   $('#standingsBody').innerHTML = `
     <div class="card">
-      <div class="card-h"><h2>This week, all leagues</h2><span class="meta">${rows.length} players</span></div>
+      <div class="card-h"><h2>This week, all leagues</h2><span class="meta">${master.updated ? `as of ${shortDate(master.updated)} · ` : ''}${rows.length} players</span></div>
       <p class="foot" style="margin:2px 0 0">${esc(master.title)}</p>
       <div class="scroller"><table>
         <thead><tr><th>#</th><th>Player</th><th>Events</th><th>W</th><th>L</th><th>Games</th><th>Win rate</th><th>Pts for</th><th>Pts agst</th><th>Diff</th></tr></thead>
@@ -1391,9 +1399,10 @@ function init() {
   });
   comboPlayer.set(state.player); comboA.set(state.a); comboB.set(state.b);
   $('#selLeague').innerHTML = opt('master', 'This week — all leagues', state.league)
-    + leagues.map((l) => opt(l.id, `${l.label} — ${l.note}`, state.league)).join('');
+    + leagues.map((l) => opt(l.id, l.updated ? `${l.label} — as of ${shortDate(l.updated)}` : l.label, state.league)).join('');
   $('#ctlNote').textContent =
-    `${players.length} players · ${coverage.games.toLocaleString()} games · ${coverage.days} playing days · ${prettyDate(coverage.firstDate)} to ${prettyDate(coverage.lastDate)}`;
+    `${players.length} players · ${coverage.games.toLocaleString()} games · ${coverage.days} playing days · ${prettyDate(coverage.firstDate)} to ${prettyDate(coverage.lastDate)}`
+    + (coverage.standingsUpdated ? ` · standings as of ${prettyDate(coverage.standingsUpdated)}` : '');
 
   // The coverage note is part of the landing page now, so renderHome paints it.
 

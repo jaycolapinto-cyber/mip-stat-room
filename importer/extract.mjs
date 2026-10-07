@@ -27,10 +27,44 @@ const findHeader = (rows, must) => rows.findIndex((r) =>
 
 const key = (s) => String(s ?? '').trim().toLowerCase();
 
+/**
+ * What Dave wrote above the table, if anything - "WEEK 6", "5 Weeks".
+ *
+ * Two of the six workbooks carry a banner row above the header; the other four
+ * start straight at "Rank". When there is one, the week cell is the only part
+ * worth printing - the league's name is already on the card and "MERRICK IN A
+ * PICKLE" is the site. So the first cell that mentions a week is taken, its
+ * shouting is lowered to title case, and the rest is left where it is.
+ */
+const weekBanner = (rows, h) => {
+  for (const r of rows.slice(0, h)) {
+    for (const c of r ?? []) {
+      const t = String(c ?? '').replace(/\s+/g, ' ').trim();
+      if (/\bweeks?\b/i.test(t)) return t.toLowerCase().replace(/\b\w/g, (ch) => ch.toUpperCase());
+    }
+  }
+  return null;
+};
+
+/**
+ * The calendar day (Eastern) a workbook's contents last changed.
+ *
+ * This is the "last updated" a reader sees beside each table. It comes from
+ * git, so it is the day the file was committed - which, with the weekly job,
+ * is the day it was fetched from Dave's OneDrive, not the day Dave typed the
+ * numbers in. Those can differ by a few days and there is nothing in the
+ * file to say by how much; the date printed is honest about what it is.
+ */
+const updatedOn = (what) => {
+  const r = resolved.find((x) => x.what === what);
+  return r ? new Date(r.dated).toLocaleDateString('en-CA', { timeZone: 'America/New_York' }) : null;
+};
+
 /** A league's published per-player standings (real totals from Dave's site). */
 export function readLeague(l) {
   const rows = sheet(l.match, null, l.label);
   const h = findHeader(rows, ['rank', 'name', 'wins', 'losses']);
+  if (h < 0) throw new Error(`${l.label}: no header row with rank/name/wins/losses in ${l.match}`);
   const cols = rows[h].map(key);
   const at = (r, ...names) => {
     for (const n of names) { const i = cols.indexOf(n); if (i >= 0 && r[i] != null) return r[i]; }
@@ -52,7 +86,7 @@ export function readLeague(l) {
       winPct, weeks: at(r, 'wks'),
     });
   }
-  return { ...l, players };
+  return { ...l, players, banner: weekBanner(rows, h), updated: updatedOn(l.label) };
 }
 
 /** The master cross-league standings (abbreviated names). */
@@ -64,6 +98,7 @@ export function readMaster() {
   const title = String(rows[0]?.[0] ?? '');
   return {
     title: title.replace(/\s{2,}/g, ' — ').trim(),
+    updated: updatedOn('master standings'),
     players: rows.slice(h + 1).filter((r) => typeof at(r, 'player') === 'string').map((r) => ({
       rank: at(r, 'rank'), name: String(at(r, 'player')).trim(),
       games: at(r, 'games'), events: at(r, 'events'),
