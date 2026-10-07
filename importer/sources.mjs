@@ -93,10 +93,23 @@ export const LEAGUES = [
 export const downloadUrl = (l) =>
   `https://onedrive.live.com/:x:/g/personal/E914DC20F5C50B12/${l.share}?download=1`;
 
-// These two carry no stable id, and the master's name states a count that grows
-// - "8_Tournaments" becomes "9_Tournaments" - so they are matched on the part
-// of the name that holds still.
-export const MASTER = 'MIP_Master_Standings';
+/**
+ * The cross-league "This week, all leagues" table.
+ *
+ * Dave publishes it as its own workbook - "THIS WEEK'S PLAYER'S STATS" on the
+ * Stats & Standings page. It used to be called MIP_Master_Standings_<n>_
+ * Tournaments; by October 2026 he had replaced it with MIP_Weekly_Standings_
+ * <n>_Tournaments, a fresh file with a new link. The count in the name grows
+ * each week, so only the stable start is matched, and the weekly job saves the
+ * download under the clean name `${MASTER}.xlsx`.
+ */
+export const MASTER = 'MIP_Weekly_Standings';
+export const WEEKLY = { id: 'weekly', label: 'This week, all leagues', match: MASTER, share: 'IQC5PwTD2n3HR4y2uW7AGWOBAeZ-iA6cFThoDJaALOA_vs4' };
+
+/** Every workbook the weekly job fetches: the six leagues, then the weekly table. */
+export const ALL_WORKBOOKS = () => [...LEAGUES, WEEKLY];
+
+// Carries no stable id either; matched on the part of its name that holds still.
 export const HEAD2HEAD = 'MIP_Updated_Head_to_Head';
 
 /**

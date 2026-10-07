@@ -275,6 +275,12 @@ for (const m of matches) {
  */
 const haveSig = new Set(matches.map((m) => m.date + '|' + sig(m.a, m.b, m.sa, m.sb)));
 const seenShId = new Set();
+// handle -> (player id -> the latest date that handle meant that player).
+// The weekly standings table names people by their Scoreholio handle, the same
+// handle the games below are recorded under, and those games already resolve
+// it per night from Scoreholio's own records. This keeps what they resolved
+// to, so the table can be read through the same answers instead of guessing.
+const handleSeen = new Map();
 const addedGames = [], refusedGames = [];
 for (const e of readAllExports()) {
   for (const g of e.games) {
@@ -283,6 +289,12 @@ for (const e of readAllExports()) {
     const a = g.handlesA.map((h) => shIdFor(e.tournamentId, h));
     const b = g.handlesB.map((h) => shIdFor(e.tournamentId, h));
     const who = [...g.handlesA, ...g.handlesB];
+    who.forEach((h, i) => {
+      const id = [...a, ...b][i]; if (!id) return;
+      const d = g.iso.slice(0, 10);
+      let m = handleSeen.get(h); if (!m) handleSeen.set(h, m = new Map());
+      if (!m.has(id) || m.get(id) < d) m.set(id, d);
+    });
     if ([...a, ...b].some((x) => !x)) {
       refusedGames.push({ id: g.matchId, why: 'a handle does not resolve', who });
       const ids = [...a, ...b];
@@ -402,11 +414,38 @@ for (const m of matches) {
 const h2h = [...pair.values()].filter((x) => x.w + x.l > 0);
 
 // ------------------------------------------------------------------ output
+/**
+ * A weekly-table handle read through recent games.
+ *
+ * Only the last 21 days count, because a handle can change hands ("Michael S."
+ * has been two different men), and only an UNAMBIGUOUS answer is used: if the
+ * handle meant two people in that window it resolves to nobody and the row is
+ * reported rather than given to either of them.
+ */
+const masterUnresolved = [];
+const recentHandleId = (handle, newest) => {
+  const m = handleSeen.get(String(handle).trim());
+  if (!m || !newest) return null;
+  const cutoff = new Date(Date.parse(newest + 'T00:00:00Z') - 21 * 86400000).toISOString().slice(0, 10);
+  const ids = [...new Set([...m].filter(([, d]) => d >= cutoff).map(([id]) => fix(id)))];
+  return ids.length === 1 ? ids[0] : null;
+};
+const newestShDate = [...handleSeen.values()].flatMap((m) => [...m.values()]).sort().at(-1) ?? null;
 const masterOut = {
   title: master.title,
   updated: master.updated,
   rows: master.players.map((p) => {
-    const id = anyNameToId(p.name);
+    // Failing the row's own name, try each handle Dave says he combined under it.
+    const viaDave = () => {
+      const ids = [...new Set((master.combined ?? []).filter((c) => c.under === p.name)
+        .map((c) => anyNameToId(c.entered) ?? recentHandleId(c.entered, newestShDate)).filter(Boolean))];
+      return ids.length === 1 ? ids[0] : null;
+    };
+    // Recent games FIRST. A handle's fixed mapping is history - "Michael G." was
+    // Michael Granito in September and Michael Glover by October - while the
+    // weekly table is about this week, and this week's games say who it was.
+    const id = recentHandleId(p.name, newestShDate) ?? anyNameToId(p.name) ?? viaDave();
+    if (!id) masterUnresolved.push(p.name);
     return id && { id, rank: p.rank, games: p.games, events: p.events, wins: p.wins,
                    losses: p.losses, pf: p.pf, pa: p.pa, diff: p.diff };
   }).filter(Boolean),
@@ -631,6 +670,7 @@ if (redate.undecidable) {
 console.log('h2h pairs      ', h2h.length);
 console.log('leagues        ', leagueOut.length, '->', leagueOut.map((l) => `${l.id}:${l.standings.length}`).join(' '));
 console.log('master rows    ', masterOut.rows.length, '/', master.players.length);
+if (masterUnresolved.length) console.log('  not matched to a player (left off the weekly table):', masterUnresolved.join(', '));
 console.log('dupr ratings   ', Object.keys(dupr).length, '|', dp.snapshots.length, 'snapshot(s)');
 
 /* ------------------------------------------------ are the standings current?

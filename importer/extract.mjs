@@ -96,14 +96,33 @@ export function readMaster() {
   const cols = rows[h].map(key);
   const at = (r, n) => { const i = cols.indexOf(n); return i >= 0 ? r[i] : null; };
   const title = String(rows[0]?.[0] ?? '');
+  // Dave's own record of which handles he folded into one table row ("Name
+  // Entered" -> "Combined Under"). A human decision, so it is used as given.
+  // Absent from older copies of the workbook, which is fine.
+  let combined = [];
+  try {
+    const nm = sheet(MASTER, 'Name Matches', 'master standings');
+    const nh = findHeader(nm, ['name entered', 'combined under']);
+    if (nh >= 0) {
+      const c = nm[nh].map(key);
+      const ie = c.indexOf('name entered'), iu = c.indexOf('combined under');
+      combined = nm.slice(nh + 1)
+        .filter((r) => r?.[ie] && r?.[iu])
+        .map((r) => ({ entered: String(r[ie]).trim(), under: String(r[iu]).trim() }));
+    }
+  } catch { /* no such sheet */ }
   return {
     title: title.replace(/\s{2,}/g, ' — ').trim(),
     updated: updatedOn('master standings'),
+    combined,
     players: rows.slice(h + 1).filter((r) => typeof at(r, 'player') === 'string').map((r) => ({
       rank: at(r, 'rank'), name: String(at(r, 'player')).trim(),
       games: at(r, 'games'), events: at(r, 'events'),
       wins: at(r, 'wins'), losses: at(r, 'losses'),
-      pf: at(r, 'points for'), pa: at(r, 'points against'), diff: at(r, 'point diff'),
+      // The old master spelled these out; the weekly file Dave replaced it
+      // with abbreviates them. Either is read.
+      pf: at(r, 'points for') ?? at(r, 'pf'), pa: at(r, 'points against') ?? at(r, 'pa'),
+      diff: at(r, 'point diff') ?? at(r, 'diff'),
     })),
   };
 }
