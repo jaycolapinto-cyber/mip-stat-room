@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-07T21:50:37.610Z",
+ "generated": "2026-10-09T16:45:35.539Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -3171,6 +3171,67 @@
    "candidates": null
   },
   {
+   "handle": "Elle M.",
+   "games": 12,
+   "nights": 1,
+   "firstSeen": "2026-10-09",
+   "lastSeen": "2026-10-09",
+   "tournaments": [
+    "aGmaoobr5Gx8msPZvKz8"
+   ],
+   "playedWith": [
+    {
+     "handle": "Peter A.",
+     "games": 4
+    },
+    {
+     "handle": "Chasette Gold",
+     "games": 4
+    },
+    {
+     "handle": "Paul H.",
+     "games": 3
+    },
+    {
+     "handle": "🇺🇸 Scadutes 🇺🇸",
+     "games": 3
+    },
+    {
+     "handle": "Tim L",
+     "games": 3
+    },
+    {
+     "handle": "Laura, P",
+     "games": 2
+    },
+    {
+     "handle": "Andy",
+     "games": 2
+    },
+    {
+     "handle": "Jaime F.",
+     "games": 2
+    },
+    {
+     "handle": "Daniel G.",
+     "games": 2
+    },
+    {
+     "handle": "Maurice R.",
+     "games": 2
+    },
+    {
+     "handle": "Adam B",
+     "games": 2
+    },
+    {
+     "handle": "Wangsta 🫡",
+     "games": 2
+    }
+   ],
+   "candidates": null
+  },
+  {
    "handle": "Lou D.",
    "games": 12,
    "nights": 1,
@@ -3351,6 +3412,67 @@
     "Richard Vaselli",
     "Richard Vergara"
    ]
+  },
+  {
+   "handle": "Wangsta 🫡",
+   "games": 11,
+   "nights": 1,
+   "firstSeen": "2026-10-09",
+   "lastSeen": "2026-10-09",
+   "tournaments": [
+    "aGmaoobr5Gx8msPZvKz8"
+   ],
+   "playedWith": [
+    {
+     "handle": "Paul H.",
+     "games": 4
+    },
+    {
+     "handle": "Peter A.",
+     "games": 4
+    },
+    {
+     "handle": "Katie P.",
+     "games": 3
+    },
+    {
+     "handle": "Daniel G.",
+     "games": 3
+    },
+    {
+     "handle": "Tim L",
+     "games": 3
+    },
+    {
+     "handle": "Chasette Gold",
+     "games": 3
+    },
+    {
+     "handle": "thomas P.",
+     "games": 2
+    },
+    {
+     "handle": "John F",
+     "games": 2
+    },
+    {
+     "handle": "Elle M.",
+     "games": 2
+    },
+    {
+     "handle": "Laura, P",
+     "games": 2
+    },
+    {
+     "handle": "Andy",
+     "games": 1
+    },
+    {
+     "handle": "Jaime F.",
+     "games": 1
+    }
+   ],
+   "candidates": null
   },
   {
    "handle": "Angelo B.",
