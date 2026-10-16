@@ -58,6 +58,14 @@ git fetch -q origin && git reset -q --hard origin/main && git clean -qfd importe
   line "$JOB: stopped, git fetch failed"; exit 1; }
 npm ci --silent >/dev/null 2>&1 || true
 
+# Practice-only: forget one night the site already has (a local commit that is
+# never pushed), so it is pulled again and the whole path runs, publish step
+# included up to the push. Refused unless DRY_RUN=1.
+if [ -n "${MIP_TEST_DROP_NIGHT:-}" ] && [ "$DRY_RUN" = "1" ] && [ "$JOB" = "nightly" ]; then
+  git rm -q "importer/live/exports/Matchlog-$MIP_TEST_DROP_NIGHT.csv" && git commit -q -m "practice: forget $MIP_TEST_DROP_NIGHT"
+  echo "PRACTICE: forgot Matchlog-$MIP_TEST_DROP_NIGHT.csv so it is pulled again"
+fi
+
 npm run build > "$LOGS/.before.log" 2>&1
 BEFORE=$(games "$LOGS/.before.log")
 echo "games before: $BEFORE"
@@ -130,12 +138,6 @@ If the leagues have been playing, open Claude Code and say: \"MIP Stats has had 
   fi
 fi
 echo "-- scoreholio"
-# Practice-only: forget one night the site already has, so it is pulled again
-# and the whole path runs. Refused unless DRY_RUN=1.
-if [ -n "${MIP_TEST_DROP_NIGHT:-}" ] && [ "$DRY_RUN" = "1" ]; then
-  rm -f "importer/live/exports/Matchlog-$MIP_TEST_DROP_NIGHT.csv"
-  echo "PRACTICE: removed Matchlog-$MIP_TEST_DROP_NIGHT.csv so it is pulled again"
-fi
 node vps/pull-scoreholio.mjs > "$LOGS/.scoreholio.log" 2>&1; H=$?
 cat "$LOGS/.scoreholio.log"
 HSUM=$(tail -1 "$LOGS/.scoreholio.log")

@@ -87,7 +87,8 @@ const ctx = await chromium.launchPersistentContext(`${PROFILES}/scoreholio`, {
 });
 const page = ctx.pages()[0] || await ctx.newPage();
 page.on('crash', () => console.log('  (browser page crashed)'));
-page.on('close', () => console.log('  (browser page closed)'));
+let closing = false;
+page.on('close', () => { if (!closing) console.log('  (browser page closed unexpectedly)'); });
 const summary = { nights: [], failed: [], games: 0 };
 let tabsExpected = 0;             // Admin opens exactly one tab; any other tab stops the run
 let offRoute = null;
@@ -101,6 +102,7 @@ page.on('framenavigated', (f) => {
 });
 
 const finish = async (code, extra = {}) => {
+  closing = true;
   await ctx.close().catch(() => {});
   console.log(JSON.stringify({ ...summary, ...extra }));
   process.exit(code);
