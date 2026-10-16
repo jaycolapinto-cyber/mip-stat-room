@@ -7,6 +7,33 @@
 // because in plain text the reliability badge and the rating run together
 // (an 80 badge beside 4.690 reads "804.690").
 
+/**
+ * Runs IN THE PAGE (page.evaluate): per player link, the row's smallest
+ * elements' texts in order. The row is the largest ancestor that still holds
+ * only that one player link. Self-contained on purpose - it is serialised
+ * into the browser.
+ */
+export function extractItems() {
+  const links = [...document.querySelectorAll('a[href*="/player/"]')];
+  return links.map((a) => {
+    let row = a;
+    while (row.parentElement && row.parentElement.querySelectorAll('a[href*="/player/"]').length === 1) row = row.parentElement;
+    const leaves = [...row.querySelectorAll('*')]
+      .filter((el) => !el.children.length)
+      .map((el) => el.textContent.trim())
+      .filter(Boolean);
+    return { href: a.getAttribute('href'), name: a.textContent.trim(), leaves };
+  });
+}
+
+/** Runs IN THE PAGE: the smallest element holding every player row (for fixtures). */
+export function listHtml() {
+  const links = [...document.querySelectorAll('a[href*="/player/"]')];
+  let box = links[0];
+  while (box && !links.every((a) => box.contains(a))) box = box.parentElement;
+  return box ? box.outerHTML : '';
+}
+
 const RATING = /^(NR|\d\.\d{1,3})$/;
 const INT = /^\d{1,4}$/;
 

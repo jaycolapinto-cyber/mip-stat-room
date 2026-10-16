@@ -16,7 +16,7 @@
 import { chromium } from 'playwright';
 import { readdirSync, writeFileSync, mkdirSync } from 'node:fs';
 import { toTsv } from '../importer/duprpaste.mjs';
-import { rowsFromLeaves, judge } from './duprrows.mjs';
+import { rowsFromLeaves, judge, extractItems } from './duprrows.mjs';
 import { ROOT, PROFILES, LOGS, todayET, daysBetween, LOGIN_EXPIRED } from './lib.mjs';
 
 const CLUB = 'https://dashboard.dupr.com/dashboard/browse/clubs/8246685522';
@@ -96,19 +96,7 @@ for (let step = 0; step < 120 && still < 4; step++) {
 }
 if (offPage) await done(1, { error: `left the club page (${offPage}) - stopped` });
 
-const items = await page.evaluate(() => {
-  const links = [...document.querySelectorAll('a[href*="/player/"]')];
-  return links.map((a) => {
-    // The row: the largest ancestor that still holds only this one player link.
-    let row = a;
-    while (row.parentElement && row.parentElement.querySelectorAll('a[href*="/player/"]').length === 1) row = row.parentElement;
-    const leaves = [...row.querySelectorAll('*')]
-      .filter((el) => !el.children.length)
-      .map((el) => el.textContent.trim())
-      .filter(Boolean);
-    return { href: a.getAttribute('href'), name: a.textContent.trim(), leaves };
-  });
-});
+const items = await page.evaluate(extractItems);
 await snapshot('list');
 
 const { rows, problems } = rowsFromLeaves(items);
