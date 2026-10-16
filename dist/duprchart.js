@@ -31,6 +31,23 @@ function clean(history) {
 }
 
 /**
+ * The history the site ships holds only the readings where the rating CHANGED
+ * (readings are daily; a flat repeat adds nothing). `asOf` is the newest
+ * reading, and it confirms the rating still stands, so it ends the series:
+ * without it, a player who last moved in August would have that August move
+ * described as "the last month".
+ */
+export function series(dr) {
+  const h = clean(dr?.history);
+  if (!h.length) return h;
+  const last = h[h.length - 1];
+  if (dr.asOf && parse(dr.asOf) > parse(last.date) && typeof dr.rating === 'number') {
+    h.push({ date: dr.asOf, rating: dr.rating, current: true });
+  }
+  return h;
+}
+
+/**
  * The reading closest to `days` ago, but only if one exists at least that far
  * back. Returning the oldest reading we happen to have and calling it "a month
  * ago" would put a made-up timeframe on a real number.
@@ -90,14 +107,21 @@ function sparkline(h, { w = 260, ht = 56, pad = 6 } = {}) {
   const x = (r) => pad + ((parse(r.date) - t0) / tspan) * (w - pad * 2);
   const y = (r) => ht - pad - ((r.rating - lo) / span) * (ht - pad * 2);
 
-  const pts = h.map((r) => `${x(r).toFixed(1)},${y(r).toFixed(1)}`).join(' ');
+  // A STEP line: the rating holds flat until the reading where it changed.
+  // Joining change points with a slope would draw a gradual drift that never
+  // happened - every reading in between saw the earlier number.
+  const pts = h.map((r, i) => {
+    const here = `${x(r).toFixed(1)},${y(r).toFixed(1)}`;
+    return i === 0 ? here : `${x(r).toFixed(1)},${y(h[i - 1]).toFixed(1)} ${here}`;
+  }).join(' ');
   const last = h[h.length - 1];
   const rising = last.rating >= h[0].rating;
 
   // Markers are only drawn when there is room for them; on a long series they
   // become noise and the line carries the shape on its own.
-  const dots = h.length <= 14
-    ? h.map((r) => `<circle class="dpt" cx="${x(r).toFixed(1)}" cy="${y(r).toFixed(1)}" r="2.5"
+  const changes = h.filter((r) => !r.current);
+  const dots = changes.length <= 14
+    ? changes.map((r) => `<circle class="dpt" cx="${x(r).toFixed(1)}" cy="${y(r).toFixed(1)}" r="2.5"
         data-d="${esc(r.date)}" data-r="${nf3(r.rating)}"><title>${esc(r.date)}: ${nf3(r.rating)}</title></circle>`).join('')
     : '';
 
@@ -118,7 +142,8 @@ function sparkline(h, { w = 260, ht = 56, pad = 6 } = {}) {
  */
 export function duprPanel(dr) {
   if (!dr || typeof dr.rating !== 'number') return '';
-  const h = clean(dr.history);
+  const h = series(dr);
+  const changes = h.filter((r) => !r.current);
   const mv = movement(h);
 
   const arrow = mv && mv.delta !== 0
@@ -140,14 +165,14 @@ export function duprPanel(dr) {
   // it: across 4,546 roster rows from January to September, 238 of 241 players
   // show the same value every time. A line drawn from that would tell almost
   // everyone their rating had not moved all year.
-  const chartable = dr.source !== 'scoreholio' && h.length >= 2;
+  const chartable = dr.source !== 'scoreholio' && h.length >= 2 && changes.length >= 1;
 
   const body = chartable
     ? `${sparkline(h)}
        <details class="dtable">
-         <summary>All ${h.length} readings</summary>
+         <summary>${changes.length === 1 ? 'Unchanged' : `${changes.length - 1} change${changes.length === 2 ? '' : 's'}`} across ${dr.readings ?? changes.length} readings</summary>
          <table><thead><tr><th>Date</th><th>Rating</th></tr></thead><tbody>
-           ${h.slice().reverse().map((r) => `<tr><td>${esc(r.date)}</td><td class="num">${nf3(r.rating)}</td></tr>`).join('')}
+           ${changes.slice().reverse().map((r) => `<tr><td>${esc(r.date)}</td><td class="num">${nf3(r.rating)}</td></tr>`).join('')}
          </tbody></table>
        </details>`
     : '';

@@ -42,6 +42,23 @@ export function loadSnapshots(dir = DIR) {
   }));
 }
 
+/**
+ * Readings oldest first -> only the ones where the rating changed, plus the
+ * first. A reading after a gap (the player missing from a reading) is always
+ * kept: across a gap we did not see the rating, so we cannot claim it held.
+ */
+export function changesOnly(history) {
+  const out = [];
+  let prev = null, gap = false;
+  for (const h of history ?? []) {
+    if (h.absent) { gap = prev !== null; continue; }
+    if (prev === null || gap || h.rating !== prev) out.push({ date: h.date, rating: h.rating });
+    prev = h.rating;
+    gap = false;
+  }
+  return out;
+}
+
 /** The most recent reading, for callers that only want today's number. */
 export function loadDupr() {
   const s = loadSnapshots();
@@ -126,7 +143,19 @@ export function matchDupr(players, dir = DIR) {
         ? chosen.get(id)
         : (v.duprId && byId.get(v.duprId)) || byName.get(norm(v.duprName)) || null;
       if (hit) v.history.push({ date: s.date, rating: hit.rating });
+      else if (v.history.length) v.history.push({ date: s.date, absent: true });
     }
+  }
+
+  // Readings are taken DAILY (Jay, 2026-10-16), so most of a player's readings
+  // repeat the one before. The chart keeps only the readings where the rating
+  // CHANGED (plus the first), and `readings` keeps the honest count of how
+  // many readings the player appeared in. `asOf` - the newest reading - says
+  // the rating is still current, so nothing is lost: the rating between two
+  // kept points is the earlier one, confirmed by every reading in between.
+  for (const v of out.values()) {
+    v.readings = v.history.filter((h) => !h.absent).length;
+    v.history = changesOnly(v.history);
   }
 
   return { ratings: out, exact, fuzzy, unmatched, collisions,

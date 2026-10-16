@@ -29,8 +29,14 @@ for that date, and the chart skips it rather than drawing a flat line.
 **Why snapshots at all.** DUPR shows a club's members and their *current*
 ratings. It does not show what those ratings were last month, and once a rating
 moves the old value is gone. So every reading we do not take is history we can
-never recover. Taking one a week costs a minute and, by the end of a season,
-produces a real rating chart for every player.
+never recover. The VPS updater takes one every morning (vps/pull-dupr.mjs);
+a day where nothing moved is not saved.
+
+**Daily files, change-only charts.** Every reading is kept here in full. The
+site itself ships only the readings where a player's rating CHANGED (plus the
+first, and any reading after a gap), with the newest reading's date as
+`asOf` and the count of readings as `readings` - see changesOnly() in
+importer/dupr.mjs. The chart draws a step: flat until the day it changed.
 
 **Adding one.** Read the club member list, save it here as today's date, and
 re-run `node importer/emit.mjs`. The history rebuilds itself from whatever

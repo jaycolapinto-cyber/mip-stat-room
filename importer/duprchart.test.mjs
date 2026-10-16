@@ -7,7 +7,7 @@
 // forward as if it were flat. Each of those is a small lie in a shape people
 // trust, so each one has a test.
 
-import { movement, readingAgo, duprPanel } from '../dist/duprchart.js';
+import { movement, readingAgo, duprPanel, series } from '../dist/duprchart.js';
 
 let pass = 0, fail = 0;
 const t = (name, cond, extra = '') => { cond ? pass++ : (fail++, console.log('  FAIL:', name, extra)); };
@@ -126,6 +126,29 @@ t('and null history does not throw', movement(undefined) === null);
     source: 'dupr', history: H(['2026-08-01', 4.5], ['2026-09-12', 4.653]) });
   t('a real club reading still charts', real.includes('<svg'));
   t('and is equally silent', !/club listing|Not calculated/.test(real));
+}
+
+
+/* ------------------------------------ change-only history (daily readings) */
+// The site ships only the readings where a rating CHANGED; asOf (the newest
+// reading) confirms it still stands and closes the series.
+{
+  const flat = { rating: 4.0, asOf: '2026-10-16', readings: 60, history: H(['2026-08-01', 4.0]), source: 'dupr' };
+  const s = series(flat);
+  t('an unchanged rating runs to the newest reading', s.length === 2 && s[1].date === '2026-10-16' && s[1].rating === 4.0);
+  t('and shows no arrow - nothing moved', movement(s).delta === 0 && !/dmv/.test(duprPanel(flat)));
+  t('the table says it is unchanged across all the readings', /Unchanged across 60 readings/.test(duprPanel(flat)), duprPanel(flat).match(/<summary>[^<]*/)?.[0]);
+}
+{
+  const moved = { rating: 4.2, asOf: '2026-10-16', readings: 77, history: H(['2026-08-01', 4.0], ['2026-10-10', 4.2]), source: 'dupr' };
+  const m = movement(series(moved));
+  t('a move last week is measured to today, not to the change date', m.last.date === '2026-10-16');
+  t('and its span is honest about the oldest reading it compares to', m.label === 'over 76 days', m.label);
+  const html = duprPanel(moved);
+  t('one dot per change, none for the closing reading', (html.match(/class="dpt"/g) || []).length === 2);
+  t('the line steps: flat at 4.0, then up at the change',
+    /points="[\d.]+,([\d.]+) ([\d.]+),\1 [\d.]+,[\d.]+/.test(html));
+  t('the table lists the changes, counted against the readings', /1 change across 77 readings/.test(html));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

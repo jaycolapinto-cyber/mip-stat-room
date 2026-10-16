@@ -8,8 +8,7 @@
 // avatar, profile, settings, Logout or Leave Club, never submits anything,
 // and never calls api.dupr.com itself.
 //
-//   node vps/pull-dupr.mjs            # skips if the newest reading is < 5 days old
-//   node vps/pull-dupr.mjs --force    # take a reading anyway (still checked)
+//   node vps/pull-dupr.mjs            # take today's reading (every morning at 6 AM once live)
 //
 // Exit 0 = saved or skipped, 1 = failed its checks, 3 = login expired.
 
@@ -17,7 +16,7 @@ import { chromium } from 'playwright';
 import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { toTsv } from '../importer/duprpaste.mjs';
 import { rowsFromLeaves, judge, extractItems } from './duprrows.mjs';
-import { ROOT, PROFILES, LOGS, todayET, daysBetween, LOGIN_EXPIRED } from './lib.mjs';
+import { ROOT, PROFILES, LOGS, todayET, LOGIN_EXPIRED } from './lib.mjs';
 
 const CLUB = 'https://dashboard.dupr.com/dashboard/browse/clubs/8246685522';
 const DIR = `${ROOT}importer/live/dupr`;
@@ -25,11 +24,8 @@ const DENY = /logout|log out|sign out|leave|edit|settings|preferences|profile|de
 
 const today = todayET();
 const newest = readdirSync(DIR).filter((f) => /^\d{4}-\d{2}-\d{2}\.tsv$/.test(f)).sort().pop()?.slice(0, 10);
-if (!process.argv.includes('--force') && newest && daysBetween(newest, today) < 5) {
-  console.log(`newest reading is ${newest}, under 5 days old - skipped`);
-  console.log(JSON.stringify({ skipped: true, newest }));
-  process.exit(0);
-}
+// Daily readings (Jay, 2026-10-16): no minimum gap. A reading identical to
+// the last one is not saved (below), so an unchanged day publishes nothing.
 
 const ctx = await chromium.launchPersistentContext(`${PROFILES}/dupr`, {
   channel: 'chromium', headless: true, viewport: { width: 1400, height: 1000 },

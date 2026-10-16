@@ -475,7 +475,7 @@ const dp = matchDupr(wide.players);
 const dupr = {};
 for (const [id0, v] of dp.ratings) {
   const id = fix(id0);
-  dupr[id] = { rating: v.rating, duprName: v.duprName, asOf: v.asOf, history: v.history, source: 'dupr' };
+  dupr[id] = { rating: v.rating, duprName: v.duprName, asOf: v.asOf, readings: v.readings, history: v.history, source: 'dupr' };
 }
 
 /* --------------------------------- a rating for the players DUPR's club misses
@@ -512,7 +512,7 @@ for (const [id0, v] of dp.ratings) {
     // have no idea when this was true", which is wrong - we know the date
     // Scoreholio showed it. The panel still draws no chart, because the source
     // is scoreholio and a single point is not a trend either way.
-    dupr[id] = { rating: hit.rating, duprName: hit.name, asOf: hit.seen,
+    dupr[id] = { rating: hit.rating, duprName: hit.name, asOf: hit.seen, readings: 1,
                  history: [{ date: hit.seen, rating: hit.rating }], source: 'scoreholio' };
     filled++;
   }

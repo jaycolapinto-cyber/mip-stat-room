@@ -1,6 +1,6 @@
 // Tests for the DUPR snapshot history, against a fixture directory so the real
 // club readings in importer/live/dupr/ are never touched by a test run.
-import { loadSnapshots, matchDupr } from './dupr.mjs';
+import { loadSnapshots, matchDupr, changesOnly } from './dupr.mjs';
 
 const DIR = new URL('./fixtures/dupr-history/', import.meta.url);
 let pass = 0, fail = 0;
@@ -86,6 +86,17 @@ t('a player who joined late has only the readings they appear in',
   t('the current rating is still the end of the history',
     sam.history.at(-1).rating === sam.rating, `${sam.rating} vs ${JSON.stringify(sam.history.at(-1))}`);
   t('and that rating is this player\'s own', sam.rating === 4.72, String(sam.rating));
+}
+
+
+// Daily readings: keep only the changes (and the first), never across a gap.
+{
+  const R = (...rows) => rows.map(([date, rating]) => (rating === null ? { date, absent: true } : { date, rating }));
+  const c = changesOnly(R(['d1', 4.0], ['d2', 4.0], ['d3', 4.1], ['d4', 4.1]));
+  t('flat repeats are dropped, changes kept', JSON.stringify(c.map((x) => x.date)) === '["d1","d3"]', JSON.stringify(c));
+  const g = changesOnly(R(['d1', 4.0], ['d2', null], ['d3', 4.0]));
+  t('a reading after a gap is kept even at the same rating', g.length === 2, JSON.stringify(g));
+  t('nothing in, nothing out', changesOnly([]).length === 0 && changesOnly(undefined).length === 0);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

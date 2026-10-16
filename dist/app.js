@@ -738,8 +738,8 @@ function renderPlayer() {
     const moved = h.length > 1 ? last.rating - first.rating : 0;
     const arrow = !moved ? ''
       : `<em class="dmove ${moved > 0 ? 'up' : 'down'}">${moved > 0 ? '\u25B2' : '\u25BC'}${Math.abs(moved).toFixed(3)}</em>`;
-    const title = h.length > 1
-      ? `Doubles rating from the Merrick In A Pickle DUPR club listing. ${first.rating.toFixed(3)} on ${first.date}, ${last.rating.toFixed(3)} on ${last.date} \u2014 change between our readings, not DUPR's own history.`
+    const title = (dr.readings ?? h.length) > 1
+      ? `Doubles rating from the Merrick In A Pickle DUPR club listing. ${first.rating.toFixed(3)} on ${first.date}, ${dr.rating.toFixed(3)} on ${dr.asOf ?? last.date} \u2014 change between our readings, not DUPR's own history.`
       : `Doubles rating from the Merrick In A Pickle DUPR club listing, read ${dr.asOf ?? 'recently'}. One reading so far, so there is no history to chart yet.`;
     return `<span class="rankchip dupr" title="${esc(title)}">DUPR ${dr.rating.toFixed(3)} \u00B7 doubles${arrow}</span>`;
   })();
@@ -801,7 +801,7 @@ function renderPlayer() {
             <td class="num">${row.winPct != null ? pct(row.winPct) : '—'}</td>
             <td class="num">${row.points ?? '—'}</td></tr>`).join('')}</tbody></table></div>`
           : `<div class="emptybox" style="margin-top:14px">${esc(p.name)} doesn't appear in any of the six published league files — their record here comes from tournament play.</div>`}
-        <p class="foot">Straight from the standings workbooks on merrickinapickle.com. These should match Dave's spreadsheets exactly.${dr ? ` DUPR ${dr.rating.toFixed(3)} is this player's doubles rating from the club's DUPR listing${dr.duprName !== p.name ? ` (listed there as ${esc(dr.duprName)})` : ''}, read ${dr.asOf ? prettyDate(dr.asOf) : 'recently'}${(dr.history?.length ?? 0) > 1 ? `. We hold ${dr.history.length} readings, back to ${prettyDate(dr.history[0].date)}` : ' — the only reading we hold so far'}.` : ''}</p>
+        <p class="foot">Straight from the standings workbooks on merrickinapickle.com. These should match Dave's spreadsheets exactly.${dr ? ` DUPR ${dr.rating.toFixed(3)} is this player's doubles rating from the club's DUPR listing${dr.duprName !== p.name ? ` (listed there as ${esc(dr.duprName)})` : ''}, read ${dr.asOf ? prettyDate(dr.asOf) : 'recently'}${(dr.readings ?? dr.history?.length ?? 0) > 1 ? `. We hold ${dr.readings ?? dr.history.length} readings, back to ${prettyDate(dr.history[0].date)}` : ' — the only reading we hold so far'}.` : ''}</p>
       </div>
 
       <div class="card">
