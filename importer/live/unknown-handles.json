@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T16:28:12.093Z",
+ "generated": "2026-10-16T16:02:30.619Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -981,6 +981,135 @@
    "candidates": null
   },
   {
+   "handle": "Mark L.",
+   "games": 33,
+   "nights": 3,
+   "firstSeen": "2026-09-17",
+   "lastSeen": "2026-10-15",
+   "tournaments": [
+    "VedCxl5s2UvByLoYttcy",
+    "Y1K1naSCxHJnDfUG07JP",
+    "fC4UC3w5iDuss6lBoEj9"
+   ],
+   "playedWith": [
+    {
+     "handle": "Nicole B.",
+     "games": 13
+    },
+    {
+     "handle": "Chris P.",
+     "games": 9
+    },
+    {
+     "handle": "Stephen R.",
+     "games": 9
+    },
+    {
+     "handle": "Matthew L.",
+     "games": 7
+    },
+    {
+     "handle": "L. Glods ❤️",
+     "games": 7
+    },
+    {
+     "handle": "Christie S.🍷",
+     "games": 5
+    },
+    {
+     "handle": "Alexia Y.",
+     "games": 5
+    },
+    {
+     "handle": "Adam K.",
+     "games": 5
+    },
+    {
+     "handle": "Shane M.",
+     "games": 4
+    },
+    {
+     "handle": "John M.",
+     "games": 4
+    },
+    {
+     "handle": "Olivia O.",
+     "games": 4
+    },
+    {
+     "handle": "Vincent C.",
+     "games": 4
+    }
+   ],
+   "candidates": [
+    "Mark Lazo",
+    "Mark Anthony Lazo"
+   ]
+  },
+  {
+   "handle": "Drew Johnson",
+   "games": 33,
+   "nights": 3,
+   "firstSeen": "2026-09-25",
+   "lastSeen": "2026-10-13",
+   "tournaments": [
+    "g13HDIoyi43UOcYdN2DK",
+    "s5hEPjObA19RC6xEFlQu",
+    "vqxTbEVTZNSd73gAtXyh"
+   ],
+   "playedWith": [
+    {
+     "handle": "D-Hub27🍺",
+     "games": 10
+    },
+    {
+     "handle": "Chasette Gold",
+     "games": 7
+    },
+    {
+     "handle": "Kenny J.",
+     "games": 5
+    },
+    {
+     "handle": "Lisa C.",
+     "games": 5
+    },
+    {
+     "handle": "J.Z.",
+     "games": 5
+    },
+    {
+     "handle": "Stork 🇺🇸🍻",
+     "games": 4
+    },
+    {
+     "handle": "French Mike",
+     "games": 4
+    },
+    {
+     "handle": "Jake P.",
+     "games": 4
+    },
+    {
+     "handle": "Frank R.",
+     "games": 4
+    },
+    {
+     "handle": "BReady",
+     "games": 3
+    },
+    {
+     "handle": "thomas P.",
+     "games": 3
+    },
+    {
+     "handle": "Martha G.",
+     "games": 3
+    }
+   ],
+   "candidates": null
+  },
+  {
    "handle": "4 4.",
    "games": 33,
    "nights": 4,
@@ -1797,133 +1926,6 @@
     {
      "handle": "LloydLeo O.",
      "games": 3
-    }
-   ],
-   "candidates": null
-  },
-  {
-   "handle": "Mark L.",
-   "games": 22,
-   "nights": 2,
-   "firstSeen": "2026-09-17",
-   "lastSeen": "2026-09-24",
-   "tournaments": [
-    "VedCxl5s2UvByLoYttcy",
-    "Y1K1naSCxHJnDfUG07JP"
-   ],
-   "playedWith": [
-    {
-     "handle": "Nicole B.",
-     "games": 9
-    },
-    {
-     "handle": "Stephen R.",
-     "games": 7
-    },
-    {
-     "handle": "Chris P.",
-     "games": 5
-    },
-    {
-     "handle": "L. Glods ❤️",
-     "games": 5
-    },
-    {
-     "handle": "Alexia Y.",
-     "games": 5
-    },
-    {
-     "handle": "Shane M.",
-     "games": 4
-    },
-    {
-     "handle": "John M.",
-     "games": 4
-    },
-    {
-     "handle": "Olivia O.",
-     "games": 4
-    },
-    {
-     "handle": "Matthew L.",
-     "games": 3
-    },
-    {
-     "handle": "Kevin M.",
-     "games": 3
-    },
-    {
-     "handle": "Peter P.",
-     "games": 3
-    },
-    {
-     "handle": "Jeff F.",
-     "games": 3
-    }
-   ],
-   "candidates": [
-    "Mark Lazo",
-    "Mark Anthony Lazo"
-   ]
-  },
-  {
-   "handle": "Drew Johnson",
-   "games": 22,
-   "nights": 2,
-   "firstSeen": "2026-09-25",
-   "lastSeen": "2026-10-06",
-   "tournaments": [
-    "s5hEPjObA19RC6xEFlQu",
-    "vqxTbEVTZNSd73gAtXyh"
-   ],
-   "playedWith": [
-    {
-     "handle": "D-Hub27🍺",
-     "games": 10
-    },
-    {
-     "handle": "J.Z.",
-     "games": 5
-    },
-    {
-     "handle": "Jake P.",
-     "games": 4
-    },
-    {
-     "handle": "Frank R.",
-     "games": 4
-    },
-    {
-     "handle": "Michael G.",
-     "games": 3
-    },
-    {
-     "handle": "Lisa C.",
-     "games": 3
-    },
-    {
-     "handle": "Tim L",
-     "games": 3
-    },
-    {
-     "handle": "Jason V.",
-     "games": 3
-    },
-    {
-     "handle": "Jaime F.",
-     "games": 3
-    },
-    {
-     "handle": "Michelle R.",
-     "games": 3
-    },
-    {
-     "handle": "Stephen R.",
-     "games": 3
-    },
-    {
-     "handle": "🦅",
-     "games": 2
     }
    ],
    "candidates": null
