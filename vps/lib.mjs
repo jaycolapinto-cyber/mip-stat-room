@@ -90,13 +90,18 @@ Stuck? Paste this whole email into Claude Code and say: help me with this.
 /** The email for an expired login. Written for Jay nine months from now. */
 export function loginExpiredEmail(site) {
   const name = { dupr: 'DUPR', scoreholio: 'Scoreholio' }[site] || site;
+  const whose = site === 'scoreholio' ? "Dave's Scoreholio" : `your ${name}`;
+  const afterSignIn = site === 'scoreholio'
+    ? `\n  If you don't see Dave's tournament list after signing in, click
+  TOURNAMENTS at the top of the page. Don't click anything else.`
+    : '';
   return {
     subject: `MIP Stats: please sign in to ${name} again (about 5 minutes)`,
     body: `
 ${name} has signed your server out, which websites do every few months.
 Until you sign in again, the Stat Room can't fetch ${site === 'dupr' ? 'the weekly DUPR ratings' : 'new league nights'}.
 
-You need: your Windows PC, Google Chrome, and your ${name} email and password.
+You need: your Windows PC, Google Chrome, and ${whose} email and password.
 You will type the password into ${name}'s own page. Nobody else sees it.
 
 STEP 1 - Connect to your server
@@ -119,8 +124,8 @@ STEP 3 - Open that browser from your PC
      (Nothing listed? Wait 10 seconds - it refreshes by itself.)
 
 STEP 4 - Sign in
-  In that window, click into ${name}'s Email box and sign in the normal way
-  (if a cookie notice shows, click Accept first).
+  In that window, ${site === 'scoreholio' ? 'click the red LOGIN button, then sign in' : `click into ${name}'s Email box and sign in`} the normal way
+  (if a cookie notice shows, click Accept first).${afterSignIn}
   When you're signed in, go back to the PowerShell window. Within a few
   seconds it says "Signed in and saved". You're done - close both windows.
 

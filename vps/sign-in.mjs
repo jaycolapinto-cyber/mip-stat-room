@@ -22,6 +22,16 @@ export const SITES = {
     signedIn: async (p) => /dashboard\.dupr\.com\/dashboard/.test(p.url())
       && !(await p.locator('input[type=password]').count()),
   },
+  scoreholio: {
+    name: 'Scoreholio',
+    start: 'https://app.scoreholio.com/v2/pickleball/organizer',
+    // Signed out, the organizer page is a lone LOGIN button. Signed in, it
+    // lists the account's tournaments under Upcoming / Past.
+    signedIn: async (p) => /app\.scoreholio\.com\/v2\/pickleball\/organizer/.test(p.url())
+      && !(await p.locator('input[type=password]').count())
+      && !(await p.getByText(/^\s*LOGIN\s*$/i).count())
+      && (await p.getByText(/^\s*PAST\s*$/i).count()) > 0,
+  },
 };
 
 const site = SITES[process.argv[2]];
@@ -42,6 +52,17 @@ const ctx = await chromium.launchPersistentContext(dir, {
   args: ['--remote-debugging-port=9222', '--remote-debugging-address=127.0.0.1'],
 });
 const page = ctx.pages()[0] || await ctx.newPage();
+
+// Closing the PowerShell window or pressing Ctrl+C must not leave the browser
+// (and its debugging port) running on the server.
+for (const sig of ['SIGINT', 'SIGTERM', 'SIGHUP']) {
+  process.on(sig, () => {
+    console.log('\nStopped. Nothing changed.');
+    const bye = setTimeout(() => process.exit(1), 5000);
+    ctx.close().finally(() => { clearTimeout(bye); process.exit(1); });
+  });
+}
+
 await page.goto(site.start, { waitUntil: 'domcontentloaded' });
 
 console.log(`\nWaiting for you to sign in to ${site.name}...`);
