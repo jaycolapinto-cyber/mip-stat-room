@@ -166,3 +166,5 @@ deployment → **folder** (not a file, not a zip) → select the folder → Depl
 
 Before sending a link to anyone, fetch it anonymously and confirm it loads
 without a sign-in wall.
+
+Updates can also be built and published from the VPS (mipstats); see the VPS build plan.
