@@ -39,6 +39,12 @@ const ORGANIZER = 'https://app.scoreholio.com/v2/pickleball/organizer';
 const EXPORTS = `${ROOT}importer/live/exports`;
 const ROSTER = `${ROOT}importer/live/scoreholio-roster/mip-vps-playersteams.tsv`;
 const MAX_AGE_DAYS = 14;          // older gaps are a person's job, not a nightly retry
+// The latest league games end by 11:00 PM, and the run is at 11:15 PM, so from
+// 11 PM on, tonight's nights count as finished. A night that ran late and was
+// taken short is re-checked on the next run (RECHECK_DAYS) and replaced only
+// if Scoreholio then has MORE games - never fewer.
+const TONIGHT_FROM_HOUR = 23;
+const RECHECK_DAYS = 1;
 const TEST_IDS = (process.env.MIP_SH_TEST || "").split(",").filter(Boolean);
 const TEST_ID = TEST_IDS.join(",");
 const OUT = TEST_ID ? `${LOGS}/sh-test` : EXPORTS;
@@ -147,10 +153,15 @@ try {
   if (!list?.length) stop('could not read the Past list');
 
   const today = todayET();
+  const hourET = Number(new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: 'numeric', hourCycle: 'h23' }).format(new Date()));
+  const finished = (date) => date < today || (date === today && hourET >= TONIGHT_FROM_HOUR);
   const have = haveIds();
+  const own = (id) => existsSync(`${EXPORTS}/Matchlog-${id}.csv`);
   let todo = list
     .map((r) => ({ ...r, date: dateET(r.t) }))
-    .filter((r) => r.id && r.date < today && daysBetween(r.date, today) <= MAX_AGE_DAYS && !have.has(r.id));
+    .filter((r) => r.id && finished(r.date) && daysBetween(r.date, today) <= MAX_AGE_DAYS
+      && (!have.has(r.id) || (own(r.id) && daysBetween(r.date, today) <= RECHECK_DAYS)))
+    .map((r) => ({ ...r, recheck: have.has(r.id) }));
   if (TEST_IDS.length) {
     todo = TEST_IDS.map((id) => {
       const r = list.find((x) => x.id === id);
@@ -247,11 +258,30 @@ try {
         }
         if (offRoute) stop(offRoute);
 
+        // A re-check of a night we already hold: keep ours unless Scoreholio
+        // now has MORE games (the night ran late); never replace with fewer.
+        let added = check.games;
+        if (night.recheck && !TEST_ID) {
+          const had = checkMatchLog(readFileSync(`${EXPORTS}/Matchlog-${night.id}.csv`, 'utf8'));
+          const held = had.ok ? had.games : 0;
+          if (check.games <= held) {
+            console.log(`  ${night.date} ${night.name}: re-checked, still ${held} games - unchanged`);
+            done = true;
+            continue;
+          }
+          added = check.games - held;
+        }
+
         // Keep: LF line endings, like every export already in the repo.
         writeFileSync(`${OUT}/Matchlog-${night.id}.csv`, raw.replace(/\r\n/g, '\n').replace(/\n$/, ''));
         const lines = [...roster.values()].filter(([d, f]) => d && f).map(([d, f]) => `${night.id}\t${d}\t${f}`);
         if (TEST_ID) writeFileSync(`${OUT}/roster-${night.id}.tsv`, lines.join('\n') + '\n');
-        else if (lines.length) appendFileSync(ROSTER, (existsSync(ROSTER) ? '' : '# tournamentId\tdisplay\tfull name - written by vps/pull-scoreholio.mjs from Stats & Logs > Player Roster\n') + lines.join('\n') + '\n');
+        else {
+          // Only rows not already recorded (a re-checked night is not doubled).
+          const known = new Set(existsSync(ROSTER) ? readFileSync(ROSTER, 'utf8').split('\n') : []);
+          const fresh = lines.filter((l) => !known.has(l));
+          if (fresh.length) appendFileSync(ROSTER, (existsSync(ROSTER) ? '' : '# tournamentId\tdisplay\tfull name - written by vps/pull-scoreholio.mjs from Stats & Logs > Player Roster\n') + fresh.join('\n') + '\n');
+        }
 
         // Every nickname in the games should be on the roster; say so if not.
         const handles = new Set();
@@ -263,8 +293,8 @@ try {
         const unnamed = [...handles].filter((h) => !named.has(h));
 
         console.log(`  ${night.date} ${night.name}: ${check.games} games, ${roster.size} on roster${unnamed.length ? `, not on roster: ${unnamed.join(', ')}` : ''}`);
-        summary.nights.push({ id: night.id, date: night.date, name: night.name, games: check.games, roster: roster.size, unnamed });
-        summary.games += check.games;
+        summary.nights.push({ id: night.id, date: night.date, name: night.name, games: check.games, added, recheck: !!night.recheck, roster: roster.size, unnamed });
+        summary.games += added;
         done = true;
       } catch (e) {
         // A safety stop (refused click, wrong page, stray tab) ends the whole run.

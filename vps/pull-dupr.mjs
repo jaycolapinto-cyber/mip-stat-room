@@ -14,7 +14,7 @@
 // Exit 0 = saved or skipped, 1 = failed its checks, 3 = login expired.
 
 import { chromium } from 'playwright';
-import { readdirSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { toTsv } from '../importer/duprpaste.mjs';
 import { rowsFromLeaves, judge, extractItems } from './duprrows.mjs';
 import { ROOT, PROFILES, LOGS, todayET, daysBetween, LOGIN_EXPIRED } from './lib.mjs';
@@ -111,6 +111,12 @@ if (!verdict.ok) {
 
 // The site's reader wants a number in column two, so a member DUPR hasn't
 // rated yet (NR) is left out of the file, as in every reading so far.
-writeFileSync(`${DIR}/${today}.tsv`, toTsv(rated));
+const body = toTsv(rated);
+// Nothing moved since the last reading: save nothing, so nothing is published.
+if (newest && newest !== today && readFileSync(`${DIR}/${newest}.tsv`, 'utf8') === body) {
+  console.log(`identical to the ${newest} reading - nothing saved`);
+  await done(0, { unchanged: true, newest });
+}
+writeFileSync(`${DIR}/${today}.tsv`, body);
 console.log(`saved importer/live/dupr/${today}.tsv`);
 await done(0, { saved: today, players: rated.length, floor: verdict.floor });

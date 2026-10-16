@@ -1,15 +1,16 @@
 #!/bin/bash
 # The VPS updater's runner. One build and at most one push per run.
 #
-#   vps/run.sh weekly          # standings + DUPR ratings (Wednesdays)
-#   vps/run.sh nightly         # finished league nights from Scoreholio
+#   vps/run.sh weekly          # standings + DUPR ratings (Wednesdays, until live)
+#   vps/run.sh daily           # the same, every morning (once live)
+#   vps/run.sh nightly         # finished league nights from Scoreholio (11:15 PM)
 #
 # Safe by default: DRY_RUN=1 (the default) does everything - pull, build, every
 # check - but never pushes. Publishing needs DRY_RUN=0, set in the crontab only
 # when Jay says so.
 #
 # From cron each job is listed at two UTC hours and does nothing unless it is
-# the right New York hour (--at-hour 10 / --at-hour 2), so daylight saving
+# the right New York hour (--at-hour 10 / 6 / 23), so daylight saving
 # needs no attention.
 
 set -uo pipefail
@@ -25,8 +26,9 @@ fi
 
 case "$JOB" in
   weekly) WHEN="weekly"; NEXT="next week" ;;
+  daily) WHEN="daily"; NEXT="tomorrow" ;;
   nightly) WHEN="nightly"; NEXT="tomorrow night" ;;
-  *) echo "usage: run.sh weekly|nightly [--at-hour H]"; exit 2 ;;
+  *) echo "usage: run.sh weekly|daily|nightly [--at-hour H]"; exit 2 ;;
 esac
 
 # Overlap-proof: a second run waits for the first instead of doubling up.
@@ -75,7 +77,7 @@ PROBLEMS=()
 LOGIN_NOTE=""
 NIGHTS_MSG=""
 
-if [ "$JOB" = "weekly" ]; then
+if [ "$JOB" = "weekly" ] || [ "$JOB" = "daily" ]; then
 echo "-- standings"
 node vps/pull-standings.mjs > "$LOGS/.standings.log" 2>&1; S=$?
 cat "$LOGS/.standings.log"
