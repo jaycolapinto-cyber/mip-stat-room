@@ -1,45 +1,61 @@
 # Keeping the site current
 
-The site rebuilds every **Sunday morning**. This is what runs on its own, what
-still needs a person, and why the split falls where it does.
+**Since Oct 16 2026 the VPS owns updates.** A small updater on Jay's server
+(user `mipstats`, code in `vps/`) pulls everything, runs every check and
+publishes. Nothing needs a person week to week. The old cloud tasks and the
+`mip-push` task on Jay's PC are retired; nothing else should push data to this
+repo.
 
-## The short version
+## What runs, and when
 
-| Step | Who | Why |
+| When (New York time) | Job | What it does |
 |---|---|---|
-| 1. Download the 8 standings workbooks | **You** | They are OneDrive share links — nothing automated can reach them |
-| 2. Pull the week's new games | **You** | Scoreholio and DUPR both need a logged-in browser |
-| 3. Drop both into the repo | **You** (one commit) | |
-| 4. Rebuild, run every check, publish | Runs on its own | |
-| 5. Tell you what happened | Runs on its own | |
+| Every day, 6 AM | `vps/run.sh daily` | Downloads the standings workbooks from Dave's OneDrive and takes a DUPR ratings reading |
+| Every day, 11:15 PM | `vps/run.sh nightly` | Exports the finished league nights from Scoreholio (tonight's, plus a re-check of the last day) |
 
-Steps 4 and 5 are the ones that used to take the time. Steps 1–3 are about ten
-minutes and can happen any evening during the week — the Sunday job just uses
-whatever is there when it wakes up.
+Each run starts from what is published, pulls, rebuilds, runs every check, and
+pushes **only** if every check passes and the game count did not go down. A
+run where nothing changed publishes nothing. The schedule is the `mipstats`
+crontab; `DRY_RUN=1` there means practice mode (everything except the push).
 
-## Why steps 1 and 2 can't be automated
+Jay gets an email only when something needs attention: a login has expired
+(the email is a full step-by-step sign-in guide), a pull or check failed, a
+league's standings have not changed in 21 days, or no new games have arrived in
+10 days. Every run is logged in `/home/mipstats/logs/` (`runs.log` is one line
+per run).
 
-Not a limitation worth engineering around. Both are login walls:
+## Logins
 
-**The standings** are eight `1drv.ms` links on Dave's OneDrive, posted on the
-Stats & Standings page. Automated fetching of those is blocked, and working
-around the block is not something to build a weekly job on.
+Scoreholio (Dave's organizer account, with his OK) and DUPR (Jay's) are read
+through a browser profile on the server that Jay signed in to by hand. No
+password is ever typed, stored or logged by the updater. When a login expires,
+the updater stops for that site and emails the sign-in steps; see
+`vps/HOW-TO-SIGN-IN.md`. DUPR is read only, and `api.dupr.com` is never called.
 
-**The games** come from Scoreholio (Dave's organizer account) and DUPR (yours).
-Either needs a signed-in browser. A job running at 6am Sunday has two options:
-lean on a saved login that will expire some week without warning and silently
-stop feeding the site, or keep the passwords on disk. Neither is worth it —
-especially the second, and especially for someone else's account.
+## If the server is ever down: the manual route
 
-So the rule is: **a person collects, the machine checks and publishes.** The
-checking is the part that catches mistakes, and that part never gets skipped.
+The site can still be refreshed by hand, exactly as before the VPS:
+
+1. Open the Stats & Standings page on merrickinapickle.com and download all
+   eight workbooks into `importer/live/standings/`, replacing what's there.
+   Keep Chrome's `(11)` suffixes; the build matches on the Scoreholio id in the
+   middle of the name and takes the newest.
+2. Export the missing nights' match logs from Scoreholio into
+   `importer/live/exports/` (follow the rules below).
+3. Check, then commit and push:
+
+       npm ci
+       npm run build      # prints the game count and the staleness table
+       npm test           # everything must be green
+
+Don't do this while the server is running, or the two will race to publish.
 
 ## The job will not publish a broken site
 
 Before anything goes live it runs the full suite — roughly 3,000 checks, the
 importer's own re-derivation of every game from its original source, and the
 duplicate-identity sweep. If any of it fails, **nothing publishes** and you get
-told what broke. Last week's site stays up, which is always better than a wrong
+told what broke. The last good site stays up, which is always better than a wrong
 one.
 
 It also reports how old each standings workbook is. Past 7 days behind the
@@ -51,22 +67,6 @@ That age comes from the file's last commit, not its timestamp on disk. Git does
 not preserve timestamps, so in a fresh clone every file looks seconds old — a
 staleness check trusting that would report "current" about a workbook nobody had
 touched in a month.
-
-## Your part, step by step
-
-1. Open the Stats & Standings page on merrickinapickle.com and download all
-   eight workbooks.
-2. Drop them into `importer/live/standings/`, replacing what's there. Keep
-   Chrome's `(11)` suffixes — the build matches on the Scoreholio id in the
-   middle of the name and takes the newest, so the numbers don't matter.
-3. Export the week's match logs from Scoreholio into `importer/live/exports/`.
-4. Commit and push. That's it.
-
-To check your work before pushing:
-
-    npm ci
-    npm run build      # prints the game count and the staleness table
-    npm test           # everything must be green
 
 ## Publishing
 

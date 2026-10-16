@@ -1,8 +1,8 @@
 #!/bin/bash
 # The VPS updater's runner. One build and at most one push per run.
 #
-#   vps/run.sh weekly          # standings + DUPR ratings (Wednesdays, until live)
-#   vps/run.sh daily           # the same, every morning (once live)
+#   vps/run.sh weekly          # standings + DUPR ratings (the old Wednesday job)
+#   vps/run.sh daily           # the same, every morning at 6 AM (live)
 #   vps/run.sh nightly         # finished league nights from Scoreholio (11:15 PM)
 #
 # Safe by default: DRY_RUN=1 (the default) does everything - pull, build, every
@@ -109,9 +109,9 @@ if [ $D -eq 3 ]; then
   login_alert dupr
   LOGIN_NOTE=" (DUPR needs signing in again - emailed)"
 elif [ $D -ne 0 ]; then
-  PROBLEMS+=("DUPR: this week's ratings reading failed its checks and was not saved (a short reading would drop players from the chart). Details are in $OUT on the server.")
+  PROBLEMS+=("DUPR: the ratings reading failed its checks and was not saved (a short reading would drop players from the chart). Details are in $OUT on the server.")
 fi
-# Practice-only: pretend this week's DUPR reading arrived (a copy of the last
+# Practice-only: pretend today's DUPR reading arrived (a copy of the last
 # one under today's date) so the build/check/commit path can be exercised
 # without DUPR. Refused unless DRY_RUN=1, so it can never be published.
 if [ "${MIP_TEST_FAKE_DUPR:-}" = "1" ] && [ "$DRY_RUN" = "1" ]; then
@@ -221,9 +221,9 @@ fi
 if git push -q origin HEAD:main; then
   finish "pulled ${PULLED[*]}, games $AFTER, PUSHED: $SUBJECT"
 else
-  # Someone else (the cloud task, until Phase 4) published first. The build
+  # Someone else published first (a hand push). The build
   # output can't be merged, so leave it: next week's run starts from theirs.
-  PROBLEMS+=("Publishing was refused because the site changed on GitHub while this run was working (probably the old cloud update). Nothing was lost; the next run starts from the newer version.")
+  PROBLEMS+=("Publishing was refused because the site changed on GitHub while this run was working (someone pushed by hand). Nothing was lost; the next run starts from the newer version.")
   git reset -q --hard origin/main
   finish "pulled ${PULLED[*]}, push REJECTED (remote moved)"
 fi
