@@ -39,3 +39,10 @@ Thumbs.db
 # Swept aside rather than deleted, because deleting inside a connected folder
 # is not something the sandbox is allowed to do.
 .git/_stale-locks-*
+
+# The VPS updater keeps saved site logins and logs in the mipstats user's
+# home, never here; these lines are a backstop in case one is ever pointed at
+# the repo by mistake.
+vps/profiles/
+vps/logs/
+*.log
