@@ -2,7 +2,8 @@
 // as text and 9 lands above 10, a dash floats to the top, or the third click
 // does not restore the order the page chose. Assert all of it in a browser.
 import { chromium } from 'playwright';
-const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+import { executablePath } from './chrome.mjs';
+const b = await chromium.launch({ executablePath });
 let pass = 0, fail = 0;
 const t = (n, c, x = '') => { c ? pass++ : (fail++, console.log('  FAIL:', n, x)); };
 

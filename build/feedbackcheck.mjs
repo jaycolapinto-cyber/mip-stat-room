@@ -8,8 +8,9 @@
 // must never send a reader somewhere unintended.
 
 import { chromium } from 'playwright';
+import { executablePath } from './chrome.mjs';
 
-const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const b = await chromium.launch({ executablePath });
 const ctx = await b.newContext({ viewport: { width: 1280, height: 1000 } });
 const page = await ctx.newPage();
 const errs = [];

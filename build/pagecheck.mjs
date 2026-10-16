@@ -9,8 +9,9 @@
 // The rule: every number on a player's page must be answerable from the same
 // match list, and they must add up.
 import { chromium } from 'playwright';
+import { executablePath } from './chrome.mjs';
 
-const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const b = await chromium.launch({ executablePath });
 const ctx = await b.newContext({ viewport: { width: 1400, height: 1200 } });
 const page = await ctx.newPage();
 const errs = [];
