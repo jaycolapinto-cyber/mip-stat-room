@@ -2,13 +2,15 @@
 # The VPS updater's runner. One build and at most one push per run.
 #
 #   vps/run.sh weekly          # standings + DUPR ratings (Wednesdays)
+#   vps/run.sh nightly         # finished league nights from Scoreholio
 #
 # Safe by default: DRY_RUN=1 (the default) does everything - pull, build, every
 # check - but never pushes. Publishing needs DRY_RUN=0, set in the crontab only
 # when Jay says so.
 #
-# From cron it runs at two UTC hours and only does anything at 10 AM New York
-# time, so daylight saving needs no attention: pass --at-hour 10.
+# From cron each job is listed at two UTC hours and does nothing unless it is
+# the right New York hour (--at-hour 10 / --at-hour 2), so daylight saving
+# needs no attention.
 
 set -uo pipefail
 REPO=/home/mipstats/mip-stat-room
@@ -22,8 +24,9 @@ if [ "${2:-}" = "--at-hour" ]; then
 fi
 
 case "$JOB" in
-  weekly) ;;
-  *) echo "usage: run.sh weekly [--at-hour H]"; exit 2 ;;
+  weekly) WHEN="weekly"; NEXT="next week" ;;
+  nightly) WHEN="nightly"; NEXT="tomorrow night" ;;
+  *) echo "usage: run.sh weekly|nightly [--at-hour H]"; exit 2 ;;
 esac
 
 # Overlap-proof: a second run waits for the first instead of doubling up.
@@ -43,7 +46,7 @@ games() { grep -oE '^matches +[0-9]+' "$1" | grep -oE '[0-9]+$'; }
 
 MEM=$(awk '/MemAvailable/ {print int($2/1024)}' /proc/meminfo)
 if [ "$MEM" -lt 1024 ]; then
-  alert "MIP Stats: skipped this week's update - server low on memory" "The weekly Stat Room update did not run because the server had only ${MEM} MB of free memory (it needs about 1 GB), and starting a browser then could slow down the estimator. It will try again next week. If this email repeats, ask Claude Code to look at memory use on the server."
+  alert "MIP Stats: skipped an update - server low on memory" "The $WHEN Stat Room update did not run because the server had only ${MEM} MB of free memory (it needs about 1 GB), and starting a browser then could slow down the estimator. It will try again $NEXT. If this email repeats, ask Claude Code to look at memory use on the server."
   line "$JOB: skipped, low memory (${MEM} MB)"
   exit 1
 fi
@@ -51,7 +54,7 @@ fi
 # Start from exactly what is published. This folder belongs to the updater
 # alone, so nothing of anyone's is lost by resetting it.
 git fetch -q origin && git reset -q --hard origin/main && git clean -qfd importer/live || {
-  alert "MIP Stats: couldn't reach GitHub" "The weekly Stat Room update couldn't download the latest copy of the site from GitHub, so it stopped before changing anything. This is usually a brief GitHub outage and fixes itself next week. If it repeats, ask Claude Code to check the server's GitHub deploy key."
+  alert "MIP Stats: couldn't reach GitHub" "The $WHEN Stat Room update couldn't download the latest copy of the site from GitHub, so it stopped before changing anything. This is usually a brief GitHub outage and fixes itself by $NEXT. If it repeats, ask Claude Code to check the server's GitHub deploy key."
   line "$JOB: stopped, git fetch failed"; exit 1; }
 npm ci --silent >/dev/null 2>&1 || true
 
@@ -62,7 +65,9 @@ echo "games before: $BEFORE"
 PULLED=()
 PROBLEMS=()
 LOGIN_NOTE=""
+NIGHTS_MSG=""
 
+if [ "$JOB" = "weekly" ]; then
 echo "-- standings"
 node vps/pull-standings.mjs > "$LOGS/.standings.log" 2>&1; S=$?
 cat "$LOGS/.standings.log"
@@ -105,11 +110,58 @@ if [ "${MIP_TEST_FAKE_DUPR:-}" = "1" ] && [ "$DRY_RUN" = "1" ]; then
   echo "PRACTICE: copied $LAST as today's reading"
 fi
 [ -n "$(git status --porcelain -- importer/live/dupr)" ] && PULLED+=("dupr")
+fi
+
+if [ "$JOB" = "nightly" ]; then
+# Every run can "succeed" while nothing new arrives - say so after 10 quiet
+# days (then once a week, not every night).
+NEWEST=$(grep -oE '^matches .* to [0-9]{4}-[0-9]{2}-[0-9]{2}' "$LOGS/.before.log" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+if [ -n "$NEWEST" ]; then
+  QUIET=$(( ( $(date -d "$(TZ=America/New_York date +%F)" +%s) - $(date -d "$NEWEST" +%s) ) / 86400 ))
+  if [ "$QUIET" -ge 10 ] && [ $(( (QUIET - 10) % 7 )) -eq 0 ]; then
+    alert "MIP Stats: no new league games for $QUIET days" "The Stat Room's newest game is from $NEWEST - $QUIET days ago - even though the nightly update has been running.
+
+That usually means one of three things:
+  - the leagues are on a break (then nothing is wrong; ignore this),
+  - Dave's nights are being run from a different Scoreholio account, or
+  - Scoreholio changed its pages and the update can't see new nights.
+
+If the leagues have been playing, open Claude Code and say: \"MIP Stats has had no new games for $QUIET days - check the nightly Scoreholio pull on the VPS.\""
+  fi
+fi
+echo "-- scoreholio"
+# Practice-only: forget one night the site already has, so it is pulled again
+# and the whole path runs. Refused unless DRY_RUN=1.
+if [ -n "${MIP_TEST_DROP_NIGHT:-}" ] && [ "$DRY_RUN" = "1" ]; then
+  rm -f "importer/live/exports/Matchlog-$MIP_TEST_DROP_NIGHT.csv"
+  echo "PRACTICE: removed Matchlog-$MIP_TEST_DROP_NIGHT.csv so it is pulled again"
+fi
+node vps/pull-scoreholio.mjs > "$LOGS/.scoreholio.log" 2>&1; H=$?
+cat "$LOGS/.scoreholio.log"
+HSUM=$(tail -1 "$LOGS/.scoreholio.log")
+if [ $H -eq 3 ]; then
+  login_alert scoreholio
+  LOGIN_NOTE=" (Scoreholio needs signing in again - emailed)"
+elif [ $H -ne 0 ]; then
+  WHY=$(node -e 'try{const j=JSON.parse(process.argv[1]);console.log([j.stopped&&("it stopped: "+j.stopped), j.failed?.length&&("these nights did not export after a retry: "+j.failed.join("; "))].filter(Boolean).join(". "))}catch{console.log("see the log")}' "$HSUM")
+  PROBLEMS+=("Scoreholio: $WHY. Anything that did export was still used. Details are in $OUT on the server.")
+fi
+[ -n "$(git status --porcelain -- importer/live/exports)" ] && PULLED+=("scoreholio")
+NIGHTS_MSG=$(node -e '
+  try {
+    const j = JSON.parse(process.argv[1]); const n = j.nights || [];
+    if (!n.length) process.exit(0);
+    const d = (s) => new Date(s + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    const days = [...new Set(n.map((x) => x.date))].sort();
+    const when = days.length === 1 ? d(days[0]) : `${d(days[0])}-${d(days[days.length - 1]).replace(/^[A-Za-z]+ /, "")}`;
+    console.log(`Add ${when} league night${days.length > 1 ? "s" : ""} from Scoreholio (+${j.games} games)`);
+  } catch {}' "$HSUM")
+fi
 
 finish() {
   line "$JOB: $1$LOGIN_NOTE"
   if [ ${#PROBLEMS[@]} -gt 0 ]; then
-    BODY="The weekly Stat Room update ran on $(TZ=America/New_York date '+%A %b %-d') and hit a problem:"
+    BODY="The $WHEN Stat Room update ran on $(TZ=America/New_York date '+%A %b %-d') and hit a problem:"
     for p in "${PROBLEMS[@]}"; do BODY+="
 
 - $p"; done
@@ -117,8 +169,8 @@ finish() {
 
 Result: $1
 
-Nothing needs doing right now unless this email repeats next week. If it does, open Claude Code and say: \"The MIP Stats weekly update keeps failing - look at the latest log in /home/mipstats/logs on the VPS.\""
-    alert "MIP Stats: the weekly update had a problem" "$BODY"
+Nothing needs doing right now unless this email repeats $NEXT. If it does, open Claude Code and say: \"The MIP Stats $WHEN update keeps failing - look at the latest log in /home/mipstats/logs on the VPS.\""
+    alert "MIP Stats: the $WHEN update had a problem" "$BODY"
   fi
   exit 0
 }
@@ -142,13 +194,14 @@ echo "games after: $AFTER"
 
 if [ $CHECKS_OK -ne 1 ]; then
   FIRST=$(grep -hE 'FAIL|ERROR|Error|failed' "$LOGS/.after.log" "$LOGS/.test.log" "$LOGS/.page.log" | grep -v ' 0 failed' | head -15)
-  PROBLEMS+=("A check failed after fetching (${PULLED[*]}), so NOTHING was published - the site keeps last week's version. Games before: $BEFORE, after: ${AFTER:-unknown}. What the checks said:
+  PROBLEMS+=("A check failed after fetching (${PULLED[*]}), so NOTHING was published - the site keeps its last good version. Games before: $BEFORE, after: ${AFTER:-unknown}. What the checks said:
 $FIRST")
   git reset -q --hard origin/main
   finish "pulled ${PULLED[*]}, CHECKS FAILED, nothing pushed"
 fi
 
 MSG=()
+[ -n "$NIGHTS_MSG" ] && MSG+=("$NIGHTS_MSG")
 [[ " ${PULLED[*]} " == *" dupr "* ]] && MSG+=("DUPR ratings reading for $(ls importer/live/dupr | grep -E '^[0-9-]+\.tsv$' | sort | tail -1 | cut -c1-10)")
 [[ " ${PULLED[*]} " == *" standings "* ]] && MSG+=("Standings refreshed from Dave's OneDrive")
 SUBJECT=$(IFS=';'; echo "${MSG[*]}" | sed 's/;/; /g')
@@ -166,7 +219,7 @@ if git push -q origin HEAD:main; then
 else
   # Someone else (the cloud task, until Phase 4) published first. The build
   # output can't be merged, so leave it: next week's run starts from theirs.
-  PROBLEMS+=("Publishing was refused because the site changed on GitHub while this run was working (probably the old cloud update). Nothing was lost; next week's run starts from the newer version.")
+  PROBLEMS+=("Publishing was refused because the site changed on GitHub while this run was working (probably the old cloud update). Nothing was lost; the next run starts from the newer version.")
   git reset -q --hard origin/main
   finish "pulled ${PULLED[*]}, push REJECTED (remote moved)"
 fi

@@ -148,6 +148,9 @@ const SESSION_FILES = [
   // drop the Players/Teams panel when the log panel is opened - so most 2023
   // handles resolve from the corpus the other years built, not from here.
   './live/scoreholio-roster/mip-2023-playersteams.tsv',
+  // Every night the VPS updater pulls, from Stats & Logs > Player Roster.
+  // Newest, so last. Written by vps/pull-scoreholio.mjs.
+  './live/scoreholio-roster/mip-vps-playersteams.tsv',
 ];
 
 export function readSessionRosters(files = SESSION_FILES.map((f) => new URL(f, import.meta.url))) {
