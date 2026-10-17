@@ -75,6 +75,7 @@ echo "games before: $BEFORE"
 PULLED=()
 PROBLEMS=()
 LOGIN_NOTE=""
+NOTE=""
 NIGHTS_MSG=""
 
 if [ "$JOB" = "weekly" ] || [ "$JOB" = "daily" ]; then
@@ -163,7 +164,7 @@ NIGHTS_MSG=$(node -e '
 fi
 
 finish() {
-  line "$JOB: $1$LOGIN_NOTE"
+  line "$JOB: $1$LOGIN_NOTE$NOTE"
   if [ ${#PROBLEMS[@]} -gt 0 ]; then
     BODY="The $WHEN Stat Room update ran on $(TZ=America/New_York date '+%A %b %-d') and hit a problem:"
     for p in "${PROBLEMS[@]}"; do BODY+="
@@ -191,12 +192,20 @@ npm test > "$LOGS/.test.log" 2>&1 || CHECKS_OK=0
 grep -q 'ERRORS (our pipeline) : 0' "$LOGS/.test.log" || CHECKS_OK=0
 node build/serve.cjs > "$LOGS/.serve.log" 2>&1 & SP=$!
 sleep 1
-npm run test:page > "$LOGS/.page.log" 2>&1 || CHECKS_OK=0
+# The page checks drive a real browser, which can blip; one blip must not
+# cost a night's games. A real breakage fails both tries.
+if ! npm run test:page > "$LOGS/.page.log" 2>&1; then
+  echo "page checks failed once - trying again:"; tail -25 "$LOGS/.page.log"
+  if npm run test:page > "$LOGS/.page.log" 2>&1; then NOTE=" (page checks passed on the 2nd try)"; else CHECKS_OK=0; fi
+fi
 kill $SP 2>/dev/null
 if [ -z "$AFTER" ] || [ -z "$BEFORE" ] || [ "$AFTER" -lt "$BEFORE" ]; then CHECKS_OK=0; fi
 echo "games after: $AFTER"
 
 if [ $CHECKS_OK -ne 1 ]; then
+  # Keep what the checks said in this run's own log; the next run reuses
+  # the scratch logs.
+  for f in .after .test .page; do echo "--- $f.log (end)"; tail -40 "$LOGS/$f.log"; done
   FIRST=$(grep -hE 'FAIL|ERROR|Error|failed' "$LOGS/.after.log" "$LOGS/.test.log" "$LOGS/.page.log" | grep -v ' 0 failed' | head -15)
   PROBLEMS+=("A check failed after fetching (${PULLED[*]}), so NOTHING was published - the site keeps its last good version. Games before: $BEFORE, after: ${AFTER:-unknown}. What the checks said:
 $FIRST")

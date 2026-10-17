@@ -3,6 +3,7 @@
 // does not restore the order the page chose. Assert all of it in a browser.
 import { chromium } from 'playwright';
 import { executablePath } from './chrome.mjs';
+import { go } from './goto.mjs';
 const b = await chromium.launch({ executablePath });
 let pass = 0, fail = 0;
 const t = (n, c, x = '') => { c ? pass++ : (fail++, console.log('  FAIL:', n, x)); };
@@ -17,7 +18,7 @@ for (const [w, h, tag] of [[1400, 1000, 'desktop'], [390, 844, 'phone']]) {
     const c = new Map();
     for (const m of matches) for (const x of [...m.a, ...m.b]) c.set(x, (c.get(x) ?? 0) + 1);
     return [...c].sort((a, b) => b[1] - a[1])[0][0];
-  }).catch(() => null) ?? (await (async () => { await p.goto('http://127.0.0.1:8321/', { waitUntil: 'networkidle' }); return p.evaluate(async () => {
+  }).catch(() => null) ?? (await (async () => { await go(p, 'http://127.0.0.1:8321/'); return p.evaluate(async () => {
     const { matches } = await import('./data.js');
     const c = new Map();
     for (const m of matches) for (const x of [...m.a, ...m.b]) c.set(x, (c.get(x) ?? 0) + 1);
@@ -25,7 +26,7 @@ for (const [w, h, tag] of [[1400, 1000, 'desktop'], [390, 844, 'phone']]) {
   }); })());
 
   for (const url of [`#/player/${id}`, '#/standings/master']) {
-    await p.goto('http://127.0.0.1:8321/' + url, { waitUntil: 'networkidle' });
+    await go(p, 'http://127.0.0.1:8321/' + url);
     await p.waitForTimeout(600);
 
     const tables = await p.evaluate(() => document.querySelectorAll('[id^="panel-"]:not([hidden]) table[data-sortable]').length);
@@ -104,7 +105,7 @@ for (const [w, h, tag] of [[1400, 1000, 'desktop'], [390, 844, 'phone']]) {
   // The busiest player has 242 partners. The table shows the top slice and
   // keeps the rest behind a button - and the cap has to survive sorting, or
   // "sort by games" would show the best twelve of an arbitrary twelve.
-  await p.goto(`http://127.0.0.1:8321/#/player/${id}`, { waitUntil: 'networkidle' });
+  await go(p, `http://127.0.0.1:8321/#/player/${id}`);
   await p.waitForTimeout(700);
   {
     const vis = () => p.evaluate(() => {

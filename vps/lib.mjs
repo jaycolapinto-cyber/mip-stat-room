@@ -83,7 +83,9 @@ Stuck? Paste this whole email into Claude Code and say: help me with this.
     logLine(`alert FAILED to send: ${subject}`);
     return false;
   }
-  logLine(`alert sent: ${subject}`);
+  // Resend's id finds this exact email in the Resend dashboard if it never arrives.
+  const { id } = await res.json().catch(() => ({}));
+  logLine(`alert sent: ${subject} (Resend id ${id || 'unknown'})`);
   return true;
 }
 

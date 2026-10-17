@@ -10,6 +10,7 @@
 // match list, and they must add up.
 import { chromium } from 'playwright';
 import { executablePath } from './chrome.mjs';
+import { go } from './goto.mjs';
 
 const b = await chromium.launch({ executablePath });
 const ctx = await b.newContext({ viewport: { width: 1400, height: 1200 } });
@@ -21,7 +22,7 @@ page.on('console', (m) => { if (m.type() === 'error' && !/fonts\.|favicon|ERR_TU
 let pass = 0, fail = 0;
 const t = (name, cond, extra = '') => { cond ? pass++ : (fail++, console.log('  FAIL:', name, extra)); };
 
-await page.goto('http://127.0.0.1:8321/', { waitUntil: 'networkidle' });
+await go(page, 'http://127.0.0.1:8321/');
 await page.waitForTimeout(800);
 
 // A spread of players: heavy, light, and one added from DUPR.
@@ -35,7 +36,7 @@ const ids = await page.evaluate(async () => {
 });
 
 for (const id of ids) {
-  await page.goto(`http://127.0.0.1:8321/#player/${id}`, { waitUntil: 'networkidle' });
+  await go(page, `http://127.0.0.1:8321/#player/${id}`);
   await page.waitForTimeout(500);
   const v = await page.evaluate(() => {
     const num = (sel) => { const e = document.querySelector(sel); return e ? Number(e.textContent.replace(/[^\d-]/g, '')) : null; };
@@ -86,7 +87,7 @@ const phone = await b.newContext({
 });
 const ph = await phone.newPage();
 ph.on('pageerror', (e) => errs.push('phone pageerror: ' + e.message));
-await ph.goto('http://127.0.0.1:8321/', { waitUntil: 'networkidle' });
+await go(ph, 'http://127.0.0.1:8321/');
 await ph.waitForTimeout(600);
 
 const VIEWS = ['home', 'records', 'player', 'compare', 'standings'];
@@ -386,7 +387,7 @@ await ph.waitForTimeout(500);
     });
     t('phone: a century club chip opens that player',
       jumped && jumped.hash.includes(jumped.want), JSON.stringify(jumped));
-    await ph.goto('http://127.0.0.1:8321/#/records', { waitUntil: 'networkidle' });
+    await go(ph, 'http://127.0.0.1:8321/#/records');
     await ph.waitForTimeout(400);
   }
 
@@ -405,13 +406,13 @@ await ph.waitForTimeout(500);
     });
     let leaked = null;
     for (const id of ids) {
-      await ph.goto(`http://127.0.0.1:8321/#/player/${id}`, { waitUntil: 'networkidle' });
+      await go(ph, `http://127.0.0.1:8321/#/player/${id}`);
       await ph.waitForTimeout(250);
       const txt = await ph.evaluate(() => document.querySelector('#playerBody')?.innerText ?? '');
       if (/possibly the same person/i.test(txt)) { leaked = id; break; }
     }
     t('no profile prints a duplicate suspicion to the reader', leaked === null, String(leaked));
-    await ph.goto('http://127.0.0.1:8321/', { waitUntil: 'networkidle' });
+    await go(ph, 'http://127.0.0.1:8321/');
     await ph.waitForTimeout(400);
   }
 
@@ -455,7 +456,7 @@ await ph.waitForTimeout(500);
     t('phone: tapping a name on a card opens that player', jump.hash.includes(jump.want),
       `${jump.hash} should contain ${jump.want}`);
   }
-  await ph.goto('http://127.0.0.1:8321/', { waitUntil: 'networkidle' });
+  await go(ph, 'http://127.0.0.1:8321/');
   await ph.waitForTimeout(400);
 }
 
@@ -468,7 +469,7 @@ await ph.waitForTimeout(500);
 {
   const desk = await ctx.newPage();
   desk.on('pageerror', (e) => errs.push('compare pageerror: ' + e.message));
-  await desk.goto('http://127.0.0.1:8321/#/compare/jay-colapinto/frank-rossetti', { waitUntil: 'networkidle' });
+  await go(desk, 'http://127.0.0.1:8321/#/compare/jay-colapinto/frank-rossetti');
   await desk.waitForTimeout(500);
 
   for (const wait of [0, 80, 139, 141, 400]) {
@@ -540,7 +541,7 @@ await ph.waitForTimeout(500);
     Object.defineProperty(document, 'hidden', { get: () => true });
     Object.defineProperty(document, 'visibilityState', { get: () => 'hidden' });
   });
-  await hp.goto('http://127.0.0.1:8321/', { waitUntil: 'networkidle' });
+  await go(hp, 'http://127.0.0.1:8321/');
   await hp.waitForTimeout(900);
   const shown = await hp.evaluate(() => document.querySelector('#bigCount')?.textContent?.trim());
   const real = await hp.evaluate(async () => {
@@ -568,7 +569,7 @@ await ph.waitForTimeout(500);
 // year's games only, say so, survive a reload via its URL, and go back to all
 // time cleanly - including the Century Club, which is all-time only.
 {
-  await page.goto('http://127.0.0.1:8321/', { waitUntil: 'networkidle' });
+  await go(page, 'http://127.0.0.1:8321/');
   await page.waitForTimeout(3000);   // the counter counts up; let it land
   const home = await page.evaluate(async () => {
     const { coverage } = await import('./data.js');
@@ -577,7 +578,7 @@ await ph.waitForTimeout(500);
   t('home: the tournament count is on the page and matches the build',
     home.want > 0 && home.shown === Number(home.want).toLocaleString(), JSON.stringify(home));
 
-  await page.goto('http://127.0.0.1:8321/#/records', { waitUntil: 'networkidle' });
+  await go(page, 'http://127.0.0.1:8321/#/records');
   await page.waitForTimeout(500);
   const years = await page.evaluate(() => [...document.querySelectorAll('.wof-yr')].map((b) => b.textContent.trim()));
   t('wall: the year filter offers All time first', years[0] === 'All time', years.join(','));

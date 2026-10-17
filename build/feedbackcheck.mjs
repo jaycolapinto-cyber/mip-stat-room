@@ -9,6 +9,7 @@
 
 import { chromium } from 'playwright';
 import { executablePath } from './chrome.mjs';
+import { go } from './goto.mjs';
 
 const b = await chromium.launch({ executablePath });
 const ctx = await b.newContext({ viewport: { width: 1280, height: 1000 } });
@@ -21,7 +22,7 @@ const t = (name, cond, extra = '') => { cond ? pass++ : (fail++, console.log('  
 
 const FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSd6zyLwa-T_2HyR8N9Fm1iBOi3ttbc9bCQJxmbj9UvY4NB6wQ/viewform';
 
-await page.goto('http://127.0.0.1:8321/', { waitUntil: 'networkidle' });
+await go(page, 'http://127.0.0.1:8321/');
 await page.waitForTimeout(800);
 
 /* ---------------------------------------------------------------- the link */
@@ -42,7 +43,7 @@ const { id, name } = await page.evaluate(async () => {
   const pid = matches[matches.length - 1].a[0];
   return { id: pid, name: players.find((p) => p.id === pid)?.name };
 });
-await page.goto(`http://127.0.0.1:8321/#/player/${id}`, { waitUntil: 'networkidle' });
+await go(page, `http://127.0.0.1:8321/#/player/${id}`);
 await page.waitForTimeout(900);
 
 const onPlayer = await page.$$eval('.feedback-link', (a) => a.map((e) => ({ href: e.href, text: e.textContent.trim() })));
@@ -124,7 +125,7 @@ t('every link on the page resolves to the form host, and nowhere else',
 {
   const narrow = await b.newContext({ viewport: { width: 900, height: 800 } });
   const np = await narrow.newPage();
-  await np.goto(`http://127.0.0.1:8321/#/player/${id}`, { waitUntil: 'networkidle' });
+  await go(np, `http://127.0.0.1:8321/#/player/${id}`);
   await np.waitForTimeout(900);
   const n = await np.evaluate(() => {
     const card = document.querySelector('.feedback-link');
@@ -150,7 +151,7 @@ t('every link on the page resolves to the form host, and nowhere else',
 {
   const wide = await b.newContext({ viewport: { width: 1700, height: 900 } });
   const wp = await wide.newPage();
-  await wp.goto(`http://127.0.0.1:8321/#/player/${id}`, { waitUntil: 'networkidle' });
+  await go(wp, `http://127.0.0.1:8321/#/player/${id}`);
   await wp.waitForTimeout(900);
   const w = await wp.evaluate(() => {
     const card = document.querySelector('.feedback-link');
