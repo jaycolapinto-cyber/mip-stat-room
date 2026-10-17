@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-17T10:01:41.296Z",
+ "generated": "2026-10-17T12:41:55.313Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -150,11 +150,12 @@
   },
   {
    "handle": "John Lufty",
-   "games": 41,
-   "nights": 4,
+   "games": 50,
+   "nights": 5,
    "firstSeen": "2026-07-31",
-   "lastSeen": "2026-09-25",
+   "lastSeen": "2026-10-16",
    "tournaments": [
+    "Muoh6cS5EJtTtAZaWrya",
     "xeV8rPhEifWMQ9hMd3HE",
     "apJ6iDQWBeJe6ADrcA8M",
     "FmpHCsbWgyhwM3YBJ0yN",
@@ -163,10 +164,14 @@
    "playedWith": [
     {
      "handle": "Gennaro Izzo",
-     "games": 13
+     "games": 18
     },
     {
      "handle": "Michael Bellini",
+     "games": 13
+    },
+    {
+     "handle": "David Landerer",
      "games": 12
     },
     {
@@ -174,40 +179,36 @@
      "games": 9
     },
     {
-     "handle": "David Landerer",
-     "games": 9
+     "handle": "Michael Crews",
+     "games": 8
     },
     {
-     "handle": "Deborah Weyl",
+     "handle": "Michelle Leonard",
+     "games": 7
+    },
+    {
+     "handle": "Jackie Mahoney",
+     "games": 7
+    },
+    {
+     "handle": "Jacob Singer",
      "games": 6
     },
     {
-     "handle": "Halime Berkay",
+     "handle": "Jaime Frand",
      "games": 6
     },
     {
      "handle": "Dominick Izzo",
-     "games": 5
+     "games": 6
     },
     {
-     "handle": "Michelle Leonard",
-     "games": 5
+     "handle": "Karen Mangione",
+     "games": 6
     },
     {
-     "handle": "Michael Crews",
-     "games": 5
-    },
-    {
-     "handle": "Melanie Berenson",
-     "games": 5
-    },
-    {
-     "handle": "Lisa Oliver",
-     "games": 5
-    },
-    {
-     "handle": "Jackie Mahoney",
-     "games": 5
+     "handle": "Deborah Weyl",
+     "games": 6
     }
    ],
    "candidates": null
