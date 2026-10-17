@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-17T12:41:55.313Z",
+ "generated": "2026-10-17T12:56:20.017Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -147,71 +147,6 @@
     "Michael Scancarello",
     "Michael Spezio"
    ]
-  },
-  {
-   "handle": "John Lufty",
-   "games": 50,
-   "nights": 5,
-   "firstSeen": "2026-07-31",
-   "lastSeen": "2026-10-16",
-   "tournaments": [
-    "Muoh6cS5EJtTtAZaWrya",
-    "xeV8rPhEifWMQ9hMd3HE",
-    "apJ6iDQWBeJe6ADrcA8M",
-    "FmpHCsbWgyhwM3YBJ0yN",
-    "EvziaiFUYRiNKH7fWC99"
-   ],
-   "playedWith": [
-    {
-     "handle": "Gennaro Izzo",
-     "games": 18
-    },
-    {
-     "handle": "Michael Bellini",
-     "games": 13
-    },
-    {
-     "handle": "David Landerer",
-     "games": 12
-    },
-    {
-     "handle": "Don Desroches",
-     "games": 9
-    },
-    {
-     "handle": "Michael Crews",
-     "games": 8
-    },
-    {
-     "handle": "Michelle Leonard",
-     "games": 7
-    },
-    {
-     "handle": "Jackie Mahoney",
-     "games": 7
-    },
-    {
-     "handle": "Jacob Singer",
-     "games": 6
-    },
-    {
-     "handle": "Jaime Frand",
-     "games": 6
-    },
-    {
-     "handle": "Dominick Izzo",
-     "games": 6
-    },
-    {
-     "handle": "Karen Mangione",
-     "games": 6
-    },
-    {
-     "handle": "Deborah Weyl",
-     "games": 6
-    }
-   ],
-   "candidates": null
   },
   {
    "handle": "12 1.",

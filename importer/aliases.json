@@ -181,6 +181,7 @@
       "Michael C.": "Michael Crews"
     }
   },
+  "_lutfyNote": "CONFIRMED by Jay 2026-10-17: Scoreholio's 'John Lufty' and DUPR's 'John Lutfy' (id john-lutfy) are one man, and Jay says the real spelling is Lufty - DUPR's account has the t and f swapped. So the handle maps to the DUPR row here (namedByHand matches on the roster's name, which comes from DUPR) and displayNames shows him as John Lufty. Scoreholio's own roster gave no help: it lists him as 'John Lufty / John Lufty', a full name that only repeats the nickname, which the importer rightly treats as blank, and the fuzzy matcher refuses to guess across the swap. Checked the way this map requires: 'John Lufty' and John Lutfy never appear in the same game. In namedByHand, not confirmed, because john-lutfy exists only in the DUPR-widened roster (see scoreholioHandles._why).",
   "_namedByHandNote": "Handles Jay named by hand from the unknown-nicknames workbook, checked before they were accepted. The check: if two handles are given the SAME person, do those two handles ever appear in one game? One person cannot be on court twice, so a handle pair that shares a game is a wrong answer, not a synonym. Two answers were refused on that test and are NOT in this map - see _refusedAnswers.",
   "namedByHand": {
     "Birdman": "Brett Ritholtz",
@@ -199,7 +200,8 @@
     "🇺🇸⚔️SillyBaduto🪝🇺🇸": "Billy Scaduto",
     "Casey G.": "Casey Grawehr",
     "Dave H.": "David Huber",
-    "Eddie Rizzi": "Edward Rizzi"
+    "Eddie Rizzi": "Edward Rizzi",
+    "John Lufty": "John Lutfy"
   },
   "_refusedAnswers": {
     "_why": "Answers that contradict the match log. Kept here so the question is not asked twice and the refusal is not silently forgotten.",
@@ -215,7 +217,9 @@
   "displayNames": {
     "_why": "id -> the name to show. Each one needs a source better than the one it overrides.",
     "mike": "Mike Breitinger",
-    "_mike": "His DUPR account is typed as the bare word 'Mike', which is where the site was getting it, and with 2,204 games that put a one-word name on the Wall of Fame and near the top of several records. Dave's own weekly sheet calls him Mike Breitinger, and that sheet entry was matched to this player by the five-number week fingerprint and confirmed by Jay on 2026-09-13 - see sheetHandles. The Scoreholio handle 'Mike B.' resolves to him the same way. NOTE 'Mike B.' is genuinely ambiguous in this club - it is also how Michael Bellini appears - so that handle is resolved per tournament from Scoreholio's roster, never globally."
+    "_mike": "His DUPR account is typed as the bare word 'Mike', which is where the site was getting it, and with 2,204 games that put a one-word name on the Wall of Fame and near the top of several records. Dave's own weekly sheet calls him Mike Breitinger, and that sheet entry was matched to this player by the five-number week fingerprint and confirmed by Jay on 2026-09-13 - see sheetHandles. The Scoreholio handle 'Mike B.' resolves to him the same way. NOTE 'Mike B.' is genuinely ambiguous in this club - it is also how Michael Bellini appears - so that handle is resolved per tournament from Scoreholio's roster, never globally.",
+    "john-lutfy": "John Lufty",
+    "_john-lutfy": "His DUPR account is typed 'John Lutfy'; Jay confirmed 2026-10-17 the name is John Lufty, the spelling Scoreholio has. See _lutfyNote."
   },
   "_rosterSourceNote": "APPLIED 2026-09-17. The three entries in tournamentHandles marked _source 'Scoreholio Players/Teams roster' were not inferred - they are Scoreholio's own roster for that night, which carries the display name and the real name side by side because Scoreholio must know who a player is to submit to DUPR. That is stronger evidence than any reading of a nickname, and it is why 'Ronnie D' = Eran Dekel and 'Rob S.'/'Robert S.' = Sarraga/Seidner come out right without arithmetic. playerEmail is on that screen and is not collected. Scope is deliberately per-tournament: it names these handles on these nights only, and settles nothing globally."
 }
