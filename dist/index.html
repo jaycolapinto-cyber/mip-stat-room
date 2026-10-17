@@ -620,6 +620,29 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
   padding:2px 7px;border-radius:5px;margin-right:7px}
 .tagpill.tog{background:#E7F1FB;color:#2A5C8A} .tagpill.opp{background:#F4ECFB;color:#6B3E96}
 
+/* ---------- power rankings ---------- */
+.pwtable td{vertical-align:middle}
+.pwtable th{white-space:nowrap}
+.pwtable tr.pw-top td{background:#F4FBE0}
+.pwtable tr.pw-top .pw-rank{color:var(--lime-ink);font-family:var(--display);font-size:22px}
+.pw-rank{font-family:var(--display);font-size:18px;font-weight:700;color:var(--court)}
+.pw-rating{font-family:var(--display);font-size:21px;font-weight:700;color:var(--court)}
+.pw-lg{display:block;font-size:11px;color:var(--faint);font-weight:600;margin-top:2px}
+.pw-mv{font-weight:700;font-size:13px}
+.pw-mv.up{color:var(--win)} .pw-mv.down{color:var(--loss)} .pw-mv.flat{color:var(--faint)}
+.pw-mv.new{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--court);
+  background:var(--line-soft);border-radius:5px;padding:2px 6px}
+.pw-mover{display:inline-block;margin-left:8px;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--lime-ink);background:var(--lime);border-radius:5px;padding:2px 7px;vertical-align:2px}
+.pw-moverline{margin:12px 0 0;font-size:13px;color:var(--muted)}
+.pw-moverline .pw-mover{margin:0 8px 0 0}
+.pwtable th:nth-child(2),.pwtable td:nth-child(2){text-align:left;white-space:normal}
+.pwtable th:nth-child(2) .sortbtn{justify-content:flex-start}
+.sb-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.sb-chips .rankchip{margin:0}
+a.rankchip.power{text-decoration:none}
+a.rankchip.power:hover{background:rgba(217,248,75,.22)}
+
 @media (max-width:880px){
   .grid,.grid2{grid-template-columns:1fr}
   .sb-grid{grid-template-columns:1fr}
@@ -762,6 +785,7 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
       <button class="tab" role="tab" id="tab-player" aria-controls="panel-player" aria-selected="false" tabindex="-1">Player profile</button>
       <button class="tab" role="tab" id="tab-compare" aria-controls="panel-compare" aria-selected="false" tabindex="-1">Head to head</button>
       <button class="tab" role="tab" id="tab-standings" aria-controls="panel-standings" aria-selected="false" tabindex="-1">Standings</button>
+      <button class="tab" role="tab" id="tab-power" aria-controls="panel-power" aria-selected="false" tabindex="-1">Power</button>
     </nav>
     <p class="demopill">Live data</p>
   </div>
@@ -794,6 +818,10 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
       <p class="ctl-note">Tap any player to open their profile</p>
     </div>
     <div id="standingsBody"></div>
+  </section>
+
+  <section id="panel-power" role="tabpanel" aria-labelledby="tab-power" tabindex="-1" hidden>
+    <div id="powerBody"></div>
   </section>
 
   <section id="panel-compare" role="tabpanel" aria-labelledby="tab-compare" tabindex="-1" hidden>

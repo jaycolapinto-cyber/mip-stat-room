@@ -1,4 +1,5 @@
 import { DATA, players, leagues, master, matches, dupr, coverage, source } from './data.js';
+const POWER = DATA.power ?? null;
 
 /**
  * Head-to-head, rebuilt from the matches at load.
@@ -743,6 +744,12 @@ function renderPlayer() {
       : `Doubles rating from the Merrick In A Pickle DUPR club listing, read ${dr.asOf ?? 'recently'}. One reading so far, so there is no history to chart yet.`;
     return `<span class="rankchip dupr" title="${esc(title)}">DUPR ${dr.rating.toFixed(3)} \u00B7 doubles${arrow}</span>`;
   })();
+  // Power rank links to the Power tab. A player who is not ranked still has a
+  // rating - the rank needs enough games this season and a recent one.
+  const pw = p.power;
+  const powerChip = !pw ? '' : `<a class="rankchip power" href="#/power" title="${esc(POWER?.explain ?? '')}">${pw.rank
+    ? `Power rank #${pw.rank} of ${POWER.rankedCount} \u00b7 ${pw.rating}`
+    : `Power rating ${pw.rating} \u00b7 not ranked`}</a>`;
   // An alias identical to the name above it is not an alias. Mike Breitinger's
   // row lists "Mike Breitinger" among his aliases, which was true and useful
   // while the site called him "Mike"; now that it calls him by that name, the
@@ -770,7 +777,7 @@ function renderPlayer() {
     <section class="scoreboard">${COURT}
       <div class="sb-grid">
         <div class="sb-id">
-          <span class="rankchip">${o.rank ? `#${o.rank} this week` : 'Season record'}${p.displayOnly ? ' · display name' : ''}</span>${duprChip}
+          <div class="sb-chips"><span class="rankchip">${o.rank ? `#${o.rank} this week` : 'Season record'}${p.displayOnly ? ' · display name' : ''}</span>${duprChip}${powerChip}</div>
           <h1 class="sb-name">${esc(p.name)}</h1>
           <p class="sb-club">${esc(p.club || 'Club not set')}${lrows.length ? ` · ${lrows.length} league${lrows.length > 1 ? 's' : ''}` : ''}</p>
           ${aliasLine}${conflictLine}
@@ -1095,6 +1102,60 @@ function renderMaster() {
     </div>`;
 }
 
+/* ------------------------------------------------------------ power view */
+/**
+ * MIP Power Rankings: one rating across all six leagues, from game results.
+ *
+ * Every figure here was computed by the importer (importer/power.mjs) and
+ * arrives on the player rows; this only lays it out. Last week's rank is not
+ * remembered anywhere - the importer replays the games a second time, stopping
+ * seven days earlier, so a corrected game moves both columns together.
+ */
+const POWER_CAP = 25;
+const leagueNames = (p) => (p.leagues ?? []).map((l) => leagueById.get(l)?.label).filter(Boolean);
+function rankMove(pw) {
+  if (!pw?.rank) return { html: '', sort: '' };
+  if (!pw.lastWeekRank) return { html: '<span class="pw-mv new">new</span>', sort: '' };
+  const d = pw.lastWeekRank - pw.rank;
+  if (!d) return { html: '<span class="pw-mv flat" aria-label="unchanged">—</span>', sort: '0' };
+  return d > 0
+    ? { html: `<span class="pw-mv up" aria-label="up ${d}">▲ ${d}</span>`, sort: String(d) }
+    : { html: `<span class="pw-mv down" aria-label="down ${-d}">▼ ${-d}</span>`, sort: String(d) };
+}
+function renderPower() {
+  const body = $('#powerBody');
+  if (!POWER) { body.innerHTML = '<div class="emptybox">No power rankings in this build.</div>'; return; }
+  const rows = players.filter((p) => p.power?.rank).sort((a, b) => a.power.rank - b.power.rank);
+  const mover = POWER.mover ? byId.get(POWER.mover) : null;
+  body.innerHTML = `
+    <div class="card">
+      <div class="card-h"><h2>MIP Power Rankings</h2><span class="meta">as of ${esc(shortDate(POWER.asOf))} · updated nightly · ${rows.length} ranked</span></div>
+      <p class="foot" style="margin:2px 0 0">${esc(POWER.explain)}
+        Ranked: ${POWER.rules.minSeasonGames}+ games since the season began (${esc(prettyDate(POWER.seasonStart))}) and a game in the last ${POWER.rules.activeDays} days.
+        Everyone else keeps a rating on their own page. It is separate from DUPR.</p>
+      ${mover ? `<p class="pw-moverline"><span class="pw-mover">Mover of the week</span>
+        <button class="namebtn" data-player="${esc(mover.id)}">${esc(mover.name)}</button>
+        up ${mover.power.lastWeekRank - mover.power.rank} to #${mover.power.rank}</p>` : ''}
+      <div class="scroller"><table class="pwtable" data-cap="${POWER_CAP}" data-cap-noun="ranked players">
+        <thead><tr><th>#</th><th>Player</th><th>Rating</th><th>vs last wk</th><th>This week</th><th>DUPR</th></tr></thead>
+        <tbody>${rows.map((p) => {
+          const pw = p.power, mv = rankMove(pw), wk = pw.weekRecord, d = dupr[p.id];
+          const lg = leagueNames(p);
+          return `<tr data-player="${esc(p.id)}"${pw.rank === 1 ? ' class="pw-top"' : ''}>
+            <td class="num pw-rank">${pw.rank}</td>
+            <td><button class="namebtn" data-player="${esc(p.id)}">${esc(p.name)}</button>${p.id === POWER.mover ? '<span class="pw-mover">Mover of the week</span>' : ''}
+              <span class="pw-lg">${esc(lg.length ? lg.join(' · ') : 'Tournament play')}</span></td>
+            <td class="num pw-rating">${pw.rating}</td>
+            <td class="num" data-sort="${mv.sort}">${mv.html}</td>
+            <td class="num" data-sort="${wk ? wk.w : ''}">${wk ? `${wk.w}–${wk.l}` : '<span class="thin">did not play</span>'}</td>
+            <td class="num">${d ? d.rating.toFixed(3) : '—'}</td></tr>`;
+        }).join('')}</tbody></table></div>
+      <p class="foot">Elo for doubles: everyone starts at ${POWER.rules.start}, a team is the average of its two players,
+        and every game on record since ${esc(prettyDate(coverage.firstDate))} is replayed in order (K ${POWER.rules.k}, a blowout counts up to half again as much).
+        “vs last wk” is the same replay stopped at ${esc(prettyDate(POWER.lastWeekAsOf))}; “This week” is ${esc(shortDate(POWER.weekFrom))}–${esc(shortDate(POWER.asOf))}.</p>
+    </div>`;
+}
+
 /* --------------------------------------------------------- sortable tables */
 /**
  * Make every data table sortable by tapping a column heading.
@@ -1161,6 +1222,9 @@ function addCapToggle(table) {
 function sortKey(tr, i) {
   const td = tr.cells[i];
   if (!td) return null;
+  // A cell can name its own sort value when its text is not one: "\u25BC 3" is a
+  // fall of three, which the text alone would sort as a rise.
+  if (td.dataset.sort !== undefined) return td.dataset.sort === '' ? null : td.dataset.sort;
   const text = td.textContent.replace(/\s+/g, ' ').trim();
   // An em dash means the figure is missing, which is not the same as zero.
   return !text || text === '—' ? null : text;
@@ -1250,7 +1314,7 @@ function setView(view, focus) {
   // the panel you asked for opened two screens below it and the page appeared
   // not to react at all. On a phone the home page is ~2,000px tall, which put
   // the new panel entirely out of sight.
-  for (const id of ['home', 'records', 'player', 'compare', 'standings']) {
+  for (const id of ['home', 'records', 'player', 'compare', 'standings', 'power']) {
     const on = id === view;
     const tab = $('#tab-' + id);
     tab.setAttribute('aria-selected', String(on));
@@ -1301,6 +1365,7 @@ function render() {
   else if (state.view === 'records') renderRecords();
   else if (state.view === 'player') renderPlayer();
   else if (state.view === 'compare') renderCompare();
+  else if (state.view === 'power') renderPower();
   else renderStandings();
   // Every panel is rebuilt from scratch on each render, so the headings have to
   // be re-armed here rather than once at startup.
@@ -1309,6 +1374,7 @@ function render() {
     : state.view === 'records' ? (wofYear ? `#/records/${wofYear}` : '#/records')
     : state.view === 'player' ? `#/player/${state.player}`
     : state.view === 'compare' ? `#/compare/${state.a}/${state.b}`
+    : state.view === 'power' ? '#/power'
     : `#/standings/${state.league}`;
   if (location.hash !== h) history.replaceState(null, '', h);
 }
@@ -1325,6 +1391,7 @@ function readHash() {
   if (v === 'compare' && byId.has(rest[0]) && byId.has(rest[1])) {
     state.view = 'compare'; state.a = rest[0]; state.b = rest[1]; return true;
   }
+  if (v === 'power') { state.view = 'power'; return true; }
   if (v === 'standings' && (rest[0] === 'master' || leagueById.has(rest[0]))) {
     state.view = 'standings'; state.league = rest[0]; return true;
   }
@@ -1457,7 +1524,12 @@ function init() {
     if (t) openPlayer(t.dataset.player);
   });
 
-  const tabs = ['home', 'records', 'player', 'compare', 'standings'];
+  $('#powerBody').addEventListener('click', (e) => {
+    const t = e.target.closest('[data-player]');
+    if (t) openPlayer(t.dataset.player);
+  });
+
+  const tabs = ['home', 'records', 'player', 'compare', 'standings', 'power'];
   tabs.forEach((name, i) => {
     const t = $('#tab-' + name);
     t.addEventListener('click', () => setView(name));

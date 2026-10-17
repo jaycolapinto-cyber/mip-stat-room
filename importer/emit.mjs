@@ -29,6 +29,7 @@ import { createResolver } from './resolve.mjs';
 import { readSessionRosters, nameInSession, readHarvestNames, harvestName,
          readTournamentHandles, confirmedName, readNamedHandles, namedByHand } from './scoreholioroster.mjs';
 import { readdirSync } from 'node:fs';
+import { computePower } from './power.mjs';
 
 const { roster, displayToId, leagueRowId, conflictedNames, leagues, master } = run({ quiet: true });
 const { startDate } = readGames();
@@ -549,6 +550,16 @@ const leagueOut = leagues.map((l) => ({
 }));
 
 
+/* ------------------------------------------------------- power rankings
+ * One rating across all six leagues, from the games alone. Computed here so
+ * app.js only draws it; see power.mjs for the rules.
+ */
+const pw = computePower({ matches, players, leagues: leagueOut, gridStart: startDate });
+for (const p of players) {
+  const x = pw.players.get(p.id);
+  if (x) p.power = x.power;
+}
+
 const days = [...new Set(matches.map((m) => m.date))].sort();
 const out = {
   generated: new Date().toISOString(),
@@ -583,6 +594,7 @@ const out = {
     // home page; each league carries its own beside its table.
     standingsUpdated: [master.updated, ...leagues.map((l) => l.updated)].filter(Boolean).sort().at(-1) ?? null,
   },
+  power: pw.power,
   players, leagues: leagueOut, master: masterOut, matches, dupr,
 };
 
@@ -605,7 +617,7 @@ writeFileSync(new URL('../dist/data.js', import.meta.url),
 // moves; a redeploy of an unchanged file does not.
 
 export const DATA = ${JSON.stringify(out)};
-export const { players, leagues, master, matches, dupr, coverage, source } = DATA;
+export const { players, leagues, master, matches, dupr, coverage, source, power } = DATA;
 `);
 
 /* --------------------------------------------- the handles nobody can name
@@ -671,6 +683,7 @@ console.log('h2h pairs      ', h2h.length);
 console.log('leagues        ', leagueOut.length, '->', leagueOut.map((l) => `${l.id}:${l.standings.length}`).join(' '));
 console.log('master rows    ', masterOut.rows.length, '/', master.players.length);
 if (masterUnresolved.length) console.log('  not matched to a player (left off the weekly table):', masterUnresolved.join(', '));
+console.log('power ranks    ', pw.power ? `${pw.power.rankedCount} ranked as of ${pw.power.asOf} (season from ${pw.power.seasonStart})` : 'none');
 console.log('dupr ratings   ', Object.keys(dupr).length, '|', dp.snapshots.length, 'snapshot(s)');
 
 /* ------------------------------------------------ are the standings current?

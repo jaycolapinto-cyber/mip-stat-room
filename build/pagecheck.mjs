@@ -90,7 +90,7 @@ ph.on('pageerror', (e) => errs.push('phone pageerror: ' + e.message));
 await go(ph, 'http://127.0.0.1:8321/');
 await ph.waitForTimeout(600);
 
-const VIEWS = ['home', 'records', 'player', 'compare', 'standings'];
+const VIEWS = ['home', 'records', 'player', 'compare', 'standings', 'power'];
 const panelState = () => ph.evaluate((views) => ({
   visible: views.filter((v) => !document.querySelector('#panel-' + v).hasAttribute('hidden')),
   selected: views.filter((v) => document.querySelector('#tab-' + v).getAttribute('aria-selected') === 'true'),
@@ -105,7 +105,7 @@ const panelState = () => ph.evaluate((views) => ({
   t('phone: it is the home panel', s0.visible[0] === 'home', s0.visible.join(','));
 }
 
-for (const view of ['compare', 'records', 'player', 'standings', 'home']) {
+for (const view of ['compare', 'records', 'player', 'standings', 'power', 'home']) {
   // Tap, not click - this is the phone context.
   await ph.tap('#tab-' + view);
   await ph.waitForTimeout(400);
@@ -606,6 +606,52 @@ await ph.waitForTimeout(500);
   await page.waitForTimeout(400);
   const back = await page.evaluate(() => ({ hash: location.hash, century: !!document.querySelector('.ccwrap') }));
   t('wall: All time goes back to the full wall', back.hash === '#/records' && back.century, JSON.stringify(back));
+}
+
+/* ------------------------------------------------- power rankings */
+// The table draws what the importer computed, so the checks are that it draws
+// ALL of it, in order, capped the way the page says, and that the player page
+// and the table agree about the same person.
+{
+  await go(page, 'http://127.0.0.1:8321/#/power');
+  await page.waitForTimeout(500);
+  const v = await page.evaluate(async () => {
+    const { DATA } = await import('./data.js');
+    const ranked = DATA.players.filter((p) => p.power?.rank).sort((a, b) => a.power.rank - b.power.rank);
+    const trs = [...document.querySelectorAll('#powerBody tbody tr')];
+    const vis = trs.filter((tr) => !tr.hidden);
+    return {
+      expected: ranked.length, count: DATA.power.rankedCount, rows: trs.length, visible: vis.length,
+      ranks: trs.map((tr) => Number(tr.cells[0].textContent)),
+      ratings: trs.map((tr) => Number(tr.cells[2].textContent)),
+      firstId: trs[0]?.dataset.player, firstTop: trs[0]?.classList.contains('pw-top'),
+      top1: ranked[0]?.id, meta: document.querySelector('#powerBody .card-h .meta')?.textContent ?? '',
+      movers: document.querySelectorAll('#powerBody tbody .pw-mover').length, mover: DATA.power.mover,
+      more: document.querySelector('#powerBody .morebtn')?.textContent ?? '',
+      noRating: DATA.players.filter((p) => !p.power && DATA.matches.some((m) => [...m.a, ...m.b].includes(p.id))).length,
+    };
+  });
+  t('power: every ranked player has a row', v.rows === v.expected && v.expected === v.count, `${v.rows} rows, ${v.expected} ranked, says ${v.count}`);
+  t('power: ranks run 1, 2, 3 ... with no gaps', v.ranks.every((r, i) => r === i + 1));
+  t('power: ratings never rise going down the table', v.ratings.every((r, i) => !i || r <= v.ratings[i - 1]));
+  t('power: the top 25 show until "Show all"', v.visible === Math.min(25, v.rows) && (v.rows <= 25 || /Show all/.test(v.more)), `${v.visible} visible, button "${v.more}"`);
+  t('power: row 1 is the top-rated player and is highlighted', v.firstId === v.top1 && v.firstTop);
+  t('power: the header says as of and updated nightly', /as of .* updated nightly/.test(v.meta), v.meta);
+  t('power: one Mover of the week tag, only when there is a mover', v.movers === (v.mover ? 1 : 0), String(v.movers));
+  t('power: every player with a game has a rating', v.noRating === 0, String(v.noRating));
+
+  await go(page, `http://127.0.0.1:8321/#/player/${v.top1}`);
+  await page.waitForTimeout(400);
+  const chip = await page.evaluate(() => {
+    const a = document.querySelector('#playerBody a.rankchip.power');
+    return a ? { text: a.textContent.trim(), href: a.getAttribute('href') } : null;
+  });
+  t('power: the player page shows the same rank, linked to the Power tab',
+    chip && chip.text.startsWith(`Power rank #1 of ${v.count}`) && chip.href === '#/power', JSON.stringify(chip));
+  await page.click('#playerBody a.rankchip.power');
+  await page.waitForTimeout(400);
+  const shown = await page.evaluate(() => !document.querySelector('#panel-power').hidden);
+  t('power: the chip opens the Power tab', shown);
 }
 
 t('no page errors anywhere', errs.length === 0, errs.slice(0, 3).join(' | '));
