@@ -557,7 +557,7 @@ const leagueOut = leagues.map((l) => ({
 const pw = computePower({ matches, players, leagues: leagueOut, gridStart: startDate });
 for (const p of players) {
   const x = pw.players.get(p.id);
-  if (x) p.power = x.power;
+  if (x) { p.power = x.power; p.form = x.form; }
 }
 
 const days = [...new Set(matches.map((m) => m.date))].sort();
@@ -595,6 +595,8 @@ const out = {
     standingsUpdated: [master.updated, ...leagues.map((l) => l.updated)].filter(Boolean).sort().at(-1) ?? null,
   },
   power: pw.power,
+  home: pw.home,
+  milestones: pw.milestones,
   players, leagues: leagueOut, master: masterOut, matches, dupr,
 };
 

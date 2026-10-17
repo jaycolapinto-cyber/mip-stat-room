@@ -1,5 +1,7 @@
 import { DATA, players, leagues, master, matches, dupr, coverage, source } from './data.js';
 const POWER = DATA.power ?? null;
+const HOME = DATA.home ?? null;
+const MILESTONES = DATA.milestones ?? null;
 
 /**
  * Head-to-head, rebuilt from the matches at load.
@@ -425,12 +427,38 @@ function centuryRoll(roll) {
       <span class="cc-rank">${i + 1}</span>
       <span class="cc-av" aria-hidden="true">${esc(initials(m.name))}</span>
       <span class="cc-body"><span class="cc-name">${esc(m.name)}</span>
-        <span class="cc-ctx">${esc(m.context)}</span></span>
+        <span class="cc-ctx">${esc(m.context)}${byId.get(m.id)?.form?.centuryDate ? ` \u00b7 since ${esc(prettyDate(byId.get(m.id).form.centuryDate))}` : ''}</span></span>
       <span class="cc-games num">${nf(m.games)}</span>
     </button>`).join('');
   return `<section class="wsec">
     <div class="wsec-h"><h3>${esc(roll.label)}</h3><span>${esc(roll.note)} \u00b7 ${roll.members.length} players</span></div>
     <div class="ccwrap">${chips}</div>
+  </section>`;
+}
+
+/**
+ * Milestones crossed recently: every hundredth win and every 250th game, with
+ * the night it happened. Counted by the importer from the games, so a late
+ * game that moves a milestone moves its date too.
+ */
+function milestoneRoll(ms) {
+  if (!ms?.recent?.length) return '';
+  const chip = (m) => `<button class="msc" data-goto="${esc(m.id)}">
+      <span class="cc-av" aria-hidden="true">${esc(initials(nameOf(m.id)))}</span>
+      <span class="cc-body"><span class="cc-name">${esc(nameOf(m.id))}</span>
+        <span class="cc-ctx">${esc(prettyDate(m.date))}</span></span>
+      <span class="msc-val"><b class="num">${nf(m.n)}</b> ${m.kind}</span>
+    </button>`;
+  // A busy month crosses forty-odd of these. The newest dozen lead and the
+  // rest stay one tap away, the way the long tables do.
+  const SHOW = 12;
+  const head = ms.recent.slice(0, SHOW).map(chip).join('');
+  const rest = ms.recent.slice(SHOW);
+  return `<section class="wsec">
+    <div class="wsec-h"><h3>Milestones</h3><span>Every ${ms.winsStep} wins and every ${ms.gamesStep} games, crossed since ${esc(shortDate(ms.since))} \u00b7 ${ms.recent.length}</span></div>
+    <div class="ccwrap mswrap">${head}</div>
+    ${rest.length ? `<details class="msmore"><summary>Show all ${ms.recent.length} milestones</summary>
+      <div class="ccwrap mswrap">${rest.map(chip).join('')}</div></details>` : ''}
   </section>`;
 }
 
@@ -537,6 +565,17 @@ const LAUNCH = [
   { view: 'standings', group: 'Leagues', title: 'Standings', blurb: 'Dave\u2019s published standings for every league, week by week.' },
 ];
 
+/** A short ranked list of names for the landing page. Names open the player. */
+function homeList(title, blurb, rows, kind) {
+  if (!rows.length) return '';
+  return `<div class="homelist ${kind}">
+      <h3>${esc(title)}</h3><p class="hl-blurb">${esc(blurb)}</p>
+      <ol>${rows.map((r) => `<li><button type="button" data-goto="${esc(r.id)}">
+        <span class="hl-name">${esc(nameOf(r.id))}</span>
+        <span class="hl-val num">${esc(r.val)}</span><span class="hl-sub">${esc(r.sub)}</span></button></li>`).join('')}</ol>
+    </div>`;
+}
+
 function renderHome() {
   const T = REC.totals;
   const gen = DATA.generated ? new Date(DATA.generated) : null;
@@ -586,11 +625,17 @@ function renderHome() {
       </button>`).join('')}
     </nav>
 
+    <div class="homerow">
     <div class="lastnight">
       <h3>Last time out</h3>
       <b>${longDate(ln.day)}</b>
       <span>${nf(ln.games)} games &middot; ${nf(ln.players)} players${
         ln.busiest ? ` &middot; most games: <b style="font-size:13px">${esc(nameOf(ln.busiest[0]))}</b> (${ln.busiest[1]})` : ''}</span>
+    </div>
+    ${homeList('Hot right now', `Longest current win streaks · played in the last ${HOME?.hotDays ?? 10} days`,
+      (HOME?.hot ?? []).map((h) => ({ id: h.id, val: `W${h.streak}`, sub: `last played ${shortDate(h.last)}` })), 'hot')}
+    ${homeList('Closing in', `Next 100 wins or 250 games · played in the last ${HOME?.closeDays ?? 30} days`,
+      (HOME?.closing ?? []).map((c) => ({ id: c.id, val: `${c.toGo}`, sub: `to ${nf(c.target)} ${c.kind}` })), 'close')}
     </div>
 
     <div class="strip">
@@ -670,6 +715,7 @@ function renderRecords() {
         [R.improved, R.giantKiller, R.scorer, R.pointDiff])}
 
     ${centuryRoll(REC.rolls?.century)}
+    ${yr ? '' : milestoneRoll(MILESTONES)}
 
     <div class="wof-foot">
       <p><b>Why the minimums.</b> A rate record with no floor is won by whoever played
@@ -781,6 +827,7 @@ function renderPlayer() {
           <h1 class="sb-name">${esc(p.name)}</h1>
           <p class="sb-club">${esc(p.club || 'Club not set')}${lrows.length ? ` · ${lrows.length} league${lrows.length > 1 ? 's' : ''}` : ''}</p>
           ${aliasLine}${conflictLine}
+          ${formStrip(p, dr)}
         </div>
         <div class="sb-right">
           ${ring(o.winPct, 'Win rate')}
@@ -872,6 +919,34 @@ function rivalCard(tag, r, kind = '') {
     <span class="row"><span class="nm">${esc(nameOf(r.id))}</span><span class="pct num">${r.w}–${r.l}</span></span>
     <span class="sub num">${n} meeting${n === 1 ? '' : 's'} · ${pct(n ? r.w / n : 0)} win rate</span>
     <span class="go">Compare ↗</span></button>`;
+}
+
+/**
+ * The three tiles under a player's name - current streak, career, DUPR - and,
+ * when one is close, the next milestone. All of it was counted by the importer
+ * (player.form); this only lays it out.
+ */
+function formStrip(p, dr) {
+  const f = p.form;
+  if (!f) return '';
+  const st = f.streak;
+  const streak = st > 0 ? `W${st}` : st < 0 ? `L${-st}` : '—';
+  const tile = (cls, lab, val, sub) => `<div class="ftile ${cls}"><span class="ft-lab">${lab}</span>
+    <b class="num">${val}</b><span class="ft-sub">${sub}</span></div>`;
+  const n = f.next;
+  const goal = !n ? '' : (() => {
+    const pctDone = Math.round(100 * (n.target - n.toGo - n.from) / (n.target - n.from));
+    return `<div class="closing" role="img" aria-label="${n.toGo} to go to ${nf(n.target)} career ${n.kind}">
+      <div class="cl-top"><span class="ft-lab">Closing in</span>
+        <span><b class="num">${nf(n.target)}</b> career ${n.kind} · <b class="num">${n.toGo}</b> to go</span></div>
+      <span class="cl-track"><span class="cl-fill" style="width:${pctDone}%"></span></span></div>`;
+  })();
+  return `<div class="fstrip">
+      ${tile(st > 0 ? 'win' : st < 0 ? 'loss' : '', 'Current streak', streak,
+        f.last ? `last played ${esc(shortDate(f.last))}${f.bestWin > 1 ? ` · best W${f.bestWin}` : ''}` : '')}
+      ${tile('', 'Career', `${nf(f.wins)}–${nf(f.losses)}`, `${nf(f.games)} games · ${pct(f.games ? f.wins / f.games : 0)} · ${nf(f.nights)} nights`)}
+      ${tile('', 'DUPR', dr ? dr.rating.toFixed(3) : '—', dr ? 'doubles' : 'none on file')}
+    </div>${goal}`;
 }
 
 /* ----------------------------------------------------------- compare view */

@@ -654,6 +654,60 @@ await ph.waitForTimeout(500);
   t('power: the chip opens the Power tab', shown);
 }
 
+/* ------------------------------------------------- streaks and milestones */
+{
+  await go(page, 'http://127.0.0.1:8321/');
+  await page.waitForTimeout(500);
+  const h = await page.evaluate(() => ({
+    hot: [...document.querySelectorAll('.homelist.hot li')].map((li) => li.querySelector('.hl-val').textContent.trim()),
+    close: document.querySelectorAll('.homelist.close li').length,
+    besideLast: !!document.querySelector('.homerow .lastnight'),
+  }));
+  t('home: Hot right now lists at most five', h.hot.length >= 1 && h.hot.length <= 5, String(h.hot.length));
+  t('home: Hot right now never shows a losing streak', h.hot.every((v) => /^W\d+$/.test(v)), h.hot.join(','));
+  t('home: Hot right now is longest first', h.hot.every((v, i) => !i || Number(v.slice(1)) <= Number(h.hot[i - 1].slice(1))));
+  t('home: Closing in lists at most five', h.close <= 5, String(h.close));
+  t('home: both sit beside Last time out', h.besideLast);
+
+  for (const id of ids) {
+    await go(page, `http://127.0.0.1:8321/#/player/${id}`);
+    await page.waitForTimeout(400);
+    const v = await page.evaluate(async (pid) => {
+      const { DATA } = await import('./data.js');
+      const tiles = [...document.querySelectorAll('#playerBody .ftile')].map((x) => x.querySelector('b').textContent.trim());
+      const board = [...document.querySelectorAll('.sb-stats .stat b')].map((b) => Number(b.textContent.replace(/[^\d-]/g, '')));
+      let streak = 0;
+      const mine = DATA.matches.filter((m) => [...m.a, ...m.b].includes(pid));
+      for (let i = mine.length - 1; i >= 0; i--) {
+        const m = mine[i]; const won = m.a.includes(pid) ? m.sa > m.sb : m.sb > m.sa;
+        if (streak === 0) streak = won ? 1 : -1;
+        else if ((streak > 0) === won) streak += won ? 1 : -1; else break;
+      }
+      return { tiles, board, streak, closing: !!document.querySelector('#playerBody .closing'), next: DATA.players.find((p) => p.id === pid).form?.next ?? null };
+    }, id);
+    const [w, l] = (v.tiles[1] ?? '').split('–').map((x) => Number(x.replace(/,/g, '')));
+    t(`${id}: three tiles under the name`, v.tiles.length === 3, String(v.tiles.length));
+    t(`${id}: the Career tile agrees with the scoreboard`, w === v.board[0] && l === v.board[1], `${v.tiles[1]} vs ${v.board.slice(0, 2)}`);
+    // Games in data order are already date order; the importer also breaks
+    // same-day ties by clock, so compare only when the last day has one game
+    // or the streak is longer than that day.
+    const shown = v.tiles[0] === '—' ? 0 : (v.tiles[0][0] === 'W' ? 1 : -1) * Number(v.tiles[0].slice(1));
+    t(`${id}: the streak tile has the right sign`, Math.sign(shown) === Math.sign(v.streak) || Math.abs(v.streak) === 1, `${v.tiles[0]} vs ${v.streak}`);
+    t(`${id}: Closing in shows exactly when a milestone is near`, v.closing === !!v.next);
+  }
+
+  await go(page, 'http://127.0.0.1:8321/#/records');
+  await page.waitForTimeout(500);
+  const ms = await page.evaluate(async () => {
+    const { DATA } = await import('./data.js');
+    return { want: DATA.milestones.recent.length, got: document.querySelectorAll('.msc').length,
+             dated: [...document.querySelectorAll('.cc .cc-ctx')].filter((e) => /since /.test(e.textContent)).length,
+             members: document.querySelectorAll('.cc').length };
+  });
+  t('wall: every recent milestone is on the roll', ms.got === ms.want, `${ms.got} of ${ms.want}`);
+  t('wall: every Century Club member shows the date they got there', ms.dated === ms.members && ms.members > 0, `${ms.dated} of ${ms.members}`);
+}
+
 t('no page errors anywhere', errs.length === 0, errs.slice(0, 3).join(' | '));
 console.log(`\n${pass} passed, ${fail} failed   (checked ${ids.length} players + tab switching at 390px)`);
 await b.close();

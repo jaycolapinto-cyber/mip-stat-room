@@ -51,5 +51,27 @@ t('season start reads Dave\'s grid header', parseSeasonStart('MIP Updated Head-t
   t('as of = newest game date', r.power.asOf === day(24));
 }
 
+// Streaks, milestones and the home lists.
+{
+  const games = [];
+  const day = (n) => new Date(Date.UTC(2026, 8, 7 + n)).toISOString().slice(0, 10);
+  // ace & bo win 98, then lose 2, then win 3: current W3, best W98, 101 wins.
+  let n = 0;
+  for (let i = 0; i < 98; i++) games.push({ date: day(Math.floor(n / 10)), ts: n++, a: ['ace', 'bo'], b: ['cy', 'di'], sa: 11, sb: 4 });
+  for (let i = 0; i < 2; i++) games.push({ date: day(Math.floor(n / 10)), ts: n++, a: ['ace', 'bo'], b: ['cy', 'di'], sa: 4, sb: 11 });
+  for (let i = 0; i < 3; i++) games.push({ date: day(Math.floor(n / 10)), ts: n++, a: ['ace', 'bo'], b: ['cy', 'di'], sa: 11, sb: 9 });
+  const players = ['ace', 'bo', 'cy', 'di'].map((id) => ({ id, leagues: [] }));
+  const r = computePower({ matches: games, players, leagues: [], gridStart: 'Start Date: 9/7/26' });
+  const f = (id) => r.players.get(id).form;
+  t('current streak counts back from the newest game', f('ace').streak === 3 && f('cy').streak === -3, `${f('ace').streak} ${f('cy').streak}`);
+  t('best win streak is the longest run ever', f('ace').bestWin === 98 && f('cy').bestWin === 2);
+  t('career totals', f('ace').wins === 101 && f('ace').losses === 2 && f('ace').games === 103);
+  t('nights are distinct dates', f('ace').nights === 11, String(f('ace').nights));
+  t('crossing 100 wins is a milestone with its date', r.milestones.recent.some((c) => c.id === 'ace' && c.kind === 'wins' && c.n === 100));
+  t('a far-off milestone is not shown', f('ace').next === null, JSON.stringify(f('ace').next));
+  t('no milestone shown when none is within reach', f('cy').next === null);
+  t('home never lists a losing streak', r.home.hot.every((h) => h.streak > 0) && !r.home.hot.some((h) => h.id === 'cy'));
+}
+
 console.log(`${pass} passed, ${fail} failed   (power rankings)`);
 process.exit(fail ? 1 : 0);
