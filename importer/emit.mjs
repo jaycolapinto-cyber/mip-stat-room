@@ -557,7 +557,7 @@ const leagueOut = leagues.map((l) => ({
 const pw = computePower({ matches, players, leagues: leagueOut, gridStart: startDate });
 for (const p of players) {
   const x = pw.players.get(p.id);
-  if (x) { p.power = x.power; p.form = x.form; }
+  if (x) { p.power = x.power; p.form = x.form; if (x.share) p.share = x.share; }
 }
 
 const days = [...new Set(matches.map((m) => m.date))].sort();

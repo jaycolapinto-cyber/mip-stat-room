@@ -29,6 +29,7 @@ import { perspective, summarize, partners, pairGames, partnershipEdges, recent }
 import { clubRecords } from './records.js';
 import { mountFeedback } from './feedback.js';
 import { duprPanel } from './duprchart.js';
+import { shareOrSave } from './sharecard.js';
 
 const MIN_TOGETHER = 5;
 const RECENT_ROWS = 6;
@@ -946,7 +947,23 @@ function formStrip(p, dr) {
         f.last ? `last played ${esc(shortDate(f.last))}${f.bestWin > 1 ? ` · best W${f.bestWin}` : ''}` : '')}
       ${tile('', 'Career', `${nf(f.wins)}–${nf(f.losses)}`, `${nf(f.games)} games · ${pct(f.games ? f.wins / f.games : 0)} · ${nf(f.nights)} nights`)}
       ${tile('', 'DUPR', dr ? dr.rating.toFixed(3) : '—', dr ? 'doubles' : 'none on file')}
-    </div>${goal}`;
+    </div>${goal}${p.share ? `<div class="sharebar">
+      <button type="button" class="sharebtn" data-share="share">Share my night</button>
+      <button type="button" class="sharebtn ghost" data-share="save">Save image</button>
+      <span class="share-note">${esc(shortDate(p.share.date))}: ${p.share.w}\u2013${p.share.l}</span></div>` : ''}`;
+}
+
+/** What the share card shows, from what the importer already counted. */
+function shareCard(p) {
+  const s = p.share, pw = p.power;
+  const d = pw?.rank && pw.lastWeekRank ? pw.lastWeekRank - pw.rank : null;
+  return {
+    name: p.name, date: s.date, league: s.league, w: s.w, l: s.l, season: s.season,
+    rank: pw?.rank ?? null, rating: pw?.rating ?? null,
+    move: !pw?.rank ? null : !pw.lastWeekRank ? { dir: 1, text: 'new' }
+      : d > 0 ? { dir: 1, text: `\u25B2 ${d}` } : d < 0 ? { dir: -1, text: `\u25BC ${-d}` } : { dir: 0, text: '\u2014' },
+    partner: s.partner ? { name: nameOf(s.partner.id), w: s.partner.w, l: s.partner.l } : null,
+  };
 }
 
 /* ----------------------------------------------------------- compare view */
@@ -1555,7 +1572,24 @@ function init() {
   });
   $('#selLeague').addEventListener('change', (e) => { state.league = e.target.value; render(); });
 
-  $('#playerBody').addEventListener('click', (e) => {
+  $('#playerBody').addEventListener('click', async (e) => {
+    const sh = e.target.closest('[data-share]');
+    if (sh) {
+      const p = byId.get(state.player);
+      if (!p?.share || sh.disabled) return;
+      sh.disabled = true;
+      const was = sh.textContent;
+      sh.textContent = 'Drawing\u2026';
+      try {
+        const how = await shareOrSave(shareCard(p), p.id, sh.dataset.share);
+        say(how === 'shared' ? 'Shared.' : how === 'cancelled' ? 'Sharing cancelled.' : 'Image saved to your downloads.');
+      } catch (err) {
+        say('Could not make the image on this device.');
+      } finally {
+        sh.disabled = false; sh.textContent = was;
+      }
+      return;
+    }
     const c = e.target.closest('[data-cmp]');
     if (c) return openCompare(state.player, c.dataset.cmp);
     const more = e.target.closest('#btnMore');

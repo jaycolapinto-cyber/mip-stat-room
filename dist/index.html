@@ -669,6 +669,15 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
 .cl-fill{display:block;height:100%;border-radius:99px;background:var(--lime)}
 @media (max-width:560px){ .ftile{padding:8px 9px} .ftile b{font-size:21px} .ft-sub{font-size:10px} }
 
+/* "Share my night" */
+.sharebar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px}
+.sharebtn{border:1px solid var(--lime);background:var(--lime);color:var(--lime-ink);font-weight:700;font-size:13px;
+  padding:8px 14px;border-radius:999px;cursor:pointer;transition:.15s}
+.sharebtn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.sharebtn.ghost{background:transparent;color:var(--lime);border-color:rgba(217,248,75,.45)}
+.sharebtn:disabled{opacity:.6;cursor:progress;transform:none}
+.share-note{font-size:12px;color:rgba(255,255,255,.55)}
+
 /* ---------- power rankings ---------- */
 .pwtable td{vertical-align:middle}
 .pwtable th{white-space:nowrap}

@@ -708,6 +708,32 @@ await ph.waitForTimeout(500);
   t('wall: every Century Club member shows the date they got there', ms.dated === ms.members && ms.members > 0, `${ms.dated} of ${ms.members}`);
 }
 
+/* ------------------------------------------------- share my night */
+{
+  const pick = await page.evaluate(async () => {
+    const { DATA } = await import('./data.js');
+    const yes = DATA.players.filter((p) => p.share).sort((a, b) => b.share.date.localeCompare(a.share.date))[0];
+    const no = DATA.players.find((p) => p.form && !p.share);
+    const newest = DATA.coverage.lastDate;
+    const back14 = new Date(Date.parse(newest + 'T00:00:00Z') - 13 * 86400000).toISOString().slice(0, 10);
+    const wrong = DATA.players.filter((p) => !!p.share !== (!!p.form && p.form.last >= back14)).length;
+    return { yes: yes?.id, date: yes?.share.date, no: no?.id, wrong };
+  });
+  t('share: offered exactly to players who played in the last 14 days', pick.wrong === 0, String(pick.wrong));
+  await go(page, `http://127.0.0.1:8321/#/player/${pick.no}`);
+  await page.waitForTimeout(300);
+  t('share: no button for someone who has not played lately', await page.locator('[data-share]').count() === 0, pick.no);
+  await go(page, `http://127.0.0.1:8321/#/player/${pick.yes}`);
+  await page.waitForTimeout(400);
+  t('share: both buttons for someone who has', await page.locator('[data-share]').count() === 2, pick.yes);
+  const [dl] = await Promise.all([page.waitForEvent('download', { timeout: 15000 }), page.click('[data-share="save"]')]);
+  t('share: Save image names the file mip-<player>-<date>.png', dl.suggestedFilename() === `mip-${pick.yes}-${pick.date}.png`, dl.suggestedFilename());
+  const buf = Buffer.from(await (await import('node:fs/promises')).readFile(await dl.path()));
+  const png = buf.subarray(1, 4).toString() === 'PNG';
+  t('share: the image is a 1080 x 1350 PNG', png && buf.readUInt32BE(16) === 1080 && buf.readUInt32BE(20) === 1350,
+    png ? `${buf.readUInt32BE(16)}x${buf.readUInt32BE(20)}` : 'not a PNG');
+}
+
 t('no page errors anywhere', errs.length === 0, errs.slice(0, 3).join(' | '));
 console.log(`\n${pass} passed, ${fail} failed   (checked ${ids.length} players + tab switching at 390px)`);
 await b.close();

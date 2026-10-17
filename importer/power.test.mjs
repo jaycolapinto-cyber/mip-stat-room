@@ -73,5 +73,25 @@ t('season start reads Dave\'s grid header', parseSeasonStart('MIP Updated Head-t
   t('home never lists a losing streak', r.home.hot.every((h) => h.streak > 0) && !r.home.hot.some((h) => h.id === 'cy'));
 }
 
+// The share card's night, season and best partner.
+{
+  const g = (date, ts, a, b, sa, sb, tournament) => ({ date, ts, a, b, sa, sb, tournament });
+  const games = [
+    g('2026-09-10', 1, ['me', 'pal'], ['x', 'y'], 11, 3, 'T1'),
+    g('2026-09-10', 2, ['me', 'pal'], ['x', 'y'], 11, 5, 'T1'),
+    g('2026-09-10', 3, ['me', 'pal'], ['x', 'y'], 2, 11, 'T1'),
+    g('2026-09-20', 4, ['me', 'other'], ['x', 'y'], 11, 9, 'T2'),
+    g('2026-09-20', 5, ['me', 'other'], ['x', 'y'], 9, 11, 'T2'),
+  ];
+  const players = [{ id: 'me', leagues: ['fri'] }, { id: 'pal', leagues: ['fri'] }, { id: 'x', leagues: ['fri'] },
+                   { id: 'y', leagues: [] }, { id: 'other', leagues: ['fri'] }];
+  const r = computePower({ matches: games, players, leagues: [{ id: 'fri', label: 'Friday AM' }], gridStart: '9/7/26' });
+  const s = r.players.get('me').share;
+  t('share: the night is the latest tournament', s.date === '2026-09-20' && s.w === 1 && s.l === 1, JSON.stringify(s));
+  t('share: the night\'s league is the one most of its players are in', s.league === 'Friday AM', s.league);
+  t('share: season record', s.season.w === 3 && s.season.l === 2);
+  t('share: best partner = most wins together, 3+ games', s.partner?.id === 'pal' && s.partner.w === 2 && s.partner.l === 1, JSON.stringify(s.partner));
+}
+
 console.log(`${pass} passed, ${fail} failed   (power rankings)`);
 process.exit(fail ? 1 : 0);
