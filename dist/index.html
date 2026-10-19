@@ -658,7 +658,11 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
 .fstrip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px;max-width:520px}
 .ftile{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:9px 12px;min-width:0}
 .ft-lab{display:block;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:700}
-.ftile b{display:block;font-family:var(--display);font-size:26px;font-weight:700;line-height:1.05;margin-top:2px}
+.ftile b{display:block;font-family:var(--display);font-size:26px;font-weight:700;line-height:1.05;margin-top:2px;white-space:nowrap}
+/* A career record like 1,214-749 stays on one line: it shrinks with its tile
+   rather than wrapping. 18cqi still fits 1,999-1,999 in the tile. */
+.ftile{container-type:inline-size}
+.ftile.rec b{font-size:min(26px,18cqi)}
 .ftile.win b{color:var(--lime)}
 .ftile.loss b{color:#FF9C90}
 .ft-sub{display:block;font-size:11px;color:rgba(255,255,255,.6);margin-top:1px}
@@ -667,7 +671,7 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
 .cl-top b{font-family:var(--display);font-size:16px;color:#fff}
 .cl-track{display:block;height:8px;border-radius:99px;background:rgba(255,255,255,.13);margin-top:5px;overflow:hidden}
 .cl-fill{display:block;height:100%;border-radius:99px;background:var(--lime)}
-@media (max-width:560px){ .ftile{padding:8px 9px} .ftile b{font-size:21px} .ft-sub{font-size:10px} }
+@media (max-width:560px){ .ftile{padding:8px 9px} .ftile b{font-size:21px} .ftile.rec b{font-size:min(21px,18cqi)} .ft-sub{font-size:10px} }
 
 /* "Share my night" */
 .sharebar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px}
@@ -701,9 +705,16 @@ th[aria-sort="ascending"], th[aria-sort="descending"]{color:var(--court)}
 a.rankchip.power{text-decoration:none}
 a.rankchip.power:hover{background:rgba(217,248,75,.22)}
 
+/* With the streak tiles, Closing in and Share bar, the scoreboard's left column
+   is too narrow to share a row with the ring and four totals below ~1100px
+   (at 900px the tiles were 84px wide). Stack it: identity on top, ring and
+   totals in a row underneath; 880px and down stacks those too. */
+@media (max-width:1100px){
+  .sb-grid{grid-template-columns:1fr}
+  .sb-stats{gap:22px 34px}
+}
 @media (max-width:880px){
   .grid,.grid2{grid-template-columns:1fr}
-  .sb-grid{grid-template-columns:1fr}
   .sb-right{flex-direction:column;align-items:flex-start;gap:18px}
   .sb-stats{grid-template-columns:repeat(4,1fr);gap:12px;width:100%}
 }

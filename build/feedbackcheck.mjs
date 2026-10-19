@@ -122,28 +122,49 @@ t('every link on the page resolves to the form host, and nowhere else',
 }
 
 /* ------------------------------------------- narrow screens have no gutter */
+//
+// The card is position:fixed, so where there is no gutter it floats over part
+// of a tall scoreboard - that is fine as long as it covers nothing a reader
+// clicks. Before Oct 19 2026 this tested the whole .scoreboard and failed the
+// nightly update once streak tiles + Closing in + Share made it taller. Now it
+// tests the real controls, on three kinds of scoreboard: the newest game's
+// player, one with no Share bar, and one with Share + Closing in.
 {
+  const extra = await page.evaluate(async () => {
+    const { players } = await import('./data.js');
+    const pick = (f) => players.find(f)?.id;
+    return [pick((p) => p.form && !p.share), pick((p) => p.share && p.form?.next)];
+  });
   const narrow = await b.newContext({ viewport: { width: 900, height: 800 } });
   const np = await narrow.newPage();
-  await go(np, `http://127.0.0.1:8321/#/player/${id}`);
-  await np.waitForTimeout(900);
-  const n = await np.evaluate(() => {
-    const card = document.querySelector('.feedback-link');
-    if (!card) return { err: 'no card' };
-    const c = card.getBoundingClientRect();
-    const hits = [];
-    for (const sel of ['.comboinput', '.tab', '.topbar', '.scoreboard']) {
-      for (const el of document.querySelectorAll(sel)) {
-        const r = el.getBoundingClientRect();
-        if (r.width === 0) continue;
-        if (c.left < r.right && c.right > r.left && c.top < r.bottom && c.bottom > r.top) { hits.push(sel); break; }
+  for (const pid of [id, ...extra.filter(Boolean)]) {
+    await go(np, `http://127.0.0.1:8321/#/player/${pid}`);
+    await np.waitForTimeout(900);
+    const n = await np.evaluate(() => {
+      const card = document.querySelector('.feedback-link');
+      if (!card) return { err: 'no card' };
+      const c = card.getBoundingClientRect();
+      const hits = [];
+      for (const sel of ['.comboinput', '.tab', '.topbar', 'button', 'a[href]', 'input', 'select',
+                         'textarea', '[role="tab"]', '.sharebtn']) {
+        for (const el of document.querySelectorAll(sel)) {
+          if (el.closest('.feedbar')) continue;   // the card itself, not something under it
+          const r = el.getBoundingClientRect();
+          if (r.width === 0) continue;
+          if (c.left < r.right && c.right > r.left && c.top < r.bottom && c.bottom > r.top) {
+            hits.push(sel + (el.textContent.trim() ? ` "${el.textContent.trim().slice(0, 30)}"` : ''));
+            break;
+          }
+        }
       }
-    }
-    return { overlaps: [...new Set(hits)], inView: c.right <= innerWidth && c.bottom <= innerHeight };
-  });
-  t('at 900px wide, where there is no gutter, it still covers no controls',
-    n.overlaps?.length === 0, JSON.stringify(n));
-  t('and is still fully on screen at that width', n.inView === true, JSON.stringify(n));
+      return { overlaps: [...new Set(hits)], inView: c.right <= innerWidth && c.bottom <= innerHeight };
+    });
+    t(`at 900px wide, where there is no gutter, it still covers no controls (${pid})`,
+      n.overlaps?.length === 0, JSON.stringify(n));
+    t(`and is still fully on screen at that width (${pid})`, n.inView === true, JSON.stringify(n));
+  }
+  t('the 900px check found a player with no Share bar and one with Share + Closing in',
+    extra.every(Boolean), JSON.stringify(extra));
   await narrow.close();
 }
 

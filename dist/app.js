@@ -945,7 +945,7 @@ function formStrip(p, dr) {
   return `<div class="fstrip">
       ${tile(st > 0 ? 'win' : st < 0 ? 'loss' : '', 'Current streak', streak,
         f.last ? `last played ${esc(shortDate(f.last))}${f.bestWin > 1 ? ` · best W${f.bestWin}` : ''}` : '')}
-      ${tile('', 'Career', `${nf(f.wins)}–${nf(f.losses)}`, `${nf(f.games)} games · ${pct(f.games ? f.wins / f.games : 0)} · ${nf(f.nights)} nights`)}
+      ${tile('rec', 'Career', `${nf(f.wins)}–${nf(f.losses)}`, `${nf(f.games)} games · ${pct(f.games ? f.wins / f.games : 0)} · ${nf(f.nights)} nights`)}
       ${tile('', 'DUPR', dr ? dr.rating.toFixed(3) : '—', dr ? 'doubles' : 'none on file')}
     </div>${goal}${p.share ? `<div class="sharebar">
       <button type="button" class="sharebtn" data-share="share">Share my night</button>
