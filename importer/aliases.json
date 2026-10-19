@@ -179,6 +179,12 @@
       "_day": "2026-10-13",
       "_source": "Dave Huber, Stat Room feedback form 2026-10-14: \"Michael C and Michael Crews. same player\". Tuesday AM night - same league as the three nights confirmed with it.",
       "Michael C.": "Michael Crews"
+    },
+    "wfjrn2xOuQT29E8BVmk8": {
+      "_day": "2026-10-18",
+      "_source": "Jay, 2026-10-19: 'Frank G is Frank Giana, Alex M is Alex Madnick'. MIP Tournament #3. Per tournament because 'Alex M.' is Alex Meyers or Alex Musheyev on other Scoreholio rosters.",
+      "Frank G.": "Frank Giana",
+      "Alex M.": "Alex Madnick"
     }
   },
   "_lutfyNote": "CONFIRMED by Jay 2026-10-17: Scoreholio's 'John Lufty' and DUPR's 'John Lutfy' (id john-lutfy) are one man, and Jay says the real spelling is Lufty - DUPR's account has the t and f swapped. So the handle maps to the DUPR row here (namedByHand matches on the roster's name, which comes from DUPR) and displayNames shows him as John Lufty. Scoreholio's own roster gave no help: it lists him as 'John Lufty / John Lufty', a full name that only repeats the nickname, which the importer rightly treats as blank, and the fuzzy matcher refuses to guess across the swap. Checked the way this map requires: 'John Lufty' and John Lutfy never appear in the same game. In namedByHand, not confirmed, because john-lutfy exists only in the DUPR-widened roster (see scoreholioHandles._why).",

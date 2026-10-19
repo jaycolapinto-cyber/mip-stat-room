@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19T13:38:19.180Z",
+ "generated": "2026-10-19T14:41:05.714Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -3588,67 +3588,6 @@
    "candidates": null
   },
   {
-   "handle": "Alex M.",
-   "games": 11,
-   "nights": 2,
-   "firstSeen": "2026-10-18",
-   "lastSeen": "2026-10-19",
-   "tournaments": [
-    "wfjrn2xOuQT29E8BVmk8"
-   ],
-   "playedWith": [
-    {
-     "handle": "Aaron katez L.",
-     "games": 4
-    },
-    {
-     "handle": "Adrian L.",
-     "games": 3
-    },
-    {
-     "handle": "Scott Martin",
-     "games": 2
-    },
-    {
-     "handle": "Peter D.",
-     "games": 2
-    },
-    {
-     "handle": "Laura, P",
-     "games": 1
-    },
-    {
-     "handle": "French Mike",
-     "games": 1
-    },
-    {
-     "handle": "Jake P.",
-     "games": 1
-    },
-    {
-     "handle": "Erik D.",
-     "games": 1
-    },
-    {
-     "handle": "Jami B.",
-     "games": 1
-    },
-    {
-     "handle": "Vincent C.",
-     "games": 1
-    },
-    {
-     "handle": "Brendan S.",
-     "games": 1
-    },
-    {
-     "handle": "🇺🇸 Scadutes 🇺🇸",
-     "games": 1
-    }
-   ],
-   "candidates": null
-  },
-  {
    "handle": "Anthony D.",
    "games": 11,
    "nights": 1,
@@ -5896,67 +5835,6 @@
     },
     {
      "handle": "Megan Bekel",
-     "games": 1
-    }
-   ],
-   "candidates": null
-  },
-  {
-   "handle": "Frank G.",
-   "games": 9,
-   "nights": 2,
-   "firstSeen": "2026-10-18",
-   "lastSeen": "2026-10-19",
-   "tournaments": [
-    "wfjrn2xOuQT29E8BVmk8"
-   ],
-   "playedWith": [
-    {
-     "handle": "Laura, P",
-     "games": 2
-    },
-    {
-     "handle": "J.Z.",
-     "games": 2
-    },
-    {
-     "handle": "Jerry F.",
-     "games": 2
-    },
-    {
-     "handle": "LANCE J.",
-     "games": 2
-    },
-    {
-     "handle": "Aaron katez L.",
-     "games": 1
-    },
-    {
-     "handle": "Matthew S.",
-     "games": 1
-    },
-    {
-     "handle": "Chase Gold",
-     "games": 1
-    },
-    {
-     "handle": "Matt R.",
-     "games": 1
-    },
-    {
-     "handle": "Vinz V.",
-     "games": 1
-    },
-    {
-     "handle": "Karen P.",
-     "games": 1
-    },
-    {
-     "handle": "Nick V.",
-     "games": 1
-    },
-    {
-     "handle": "Jonathan Gottesmann",
      "games": 1
     }
    ],
