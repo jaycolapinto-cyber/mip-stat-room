@@ -92,5 +92,60 @@ export function mountFeedback(el, { subject = null, label = 'Something look wron
 
   el.innerHTML = '';
   el.appendChild(a);
+  keepClear(el.closest('.feedbar'));
   return true;
+}
+
+/*
+ * Where there is no side gutter the card floats in the bottom-right corner,
+ * and whatever the page puts there at that moment is under it. On Oct 29 2026
+ * the player page lost its rating panel, the Rivals card moved up, and the
+ * card sat on "Most played" at 900px. Rather than hope the layout never moves
+ * again, the card checks the corner it is about to use and, if a control is
+ * under it, takes the top-right corner below the top bar instead - when that
+ * one is clear. Both stay on screen while scrolling.
+ */
+const WIDE = '(min-width:1580px)';      // the gutter card in index.html
+const CONTROLS = 'button, a[href], input, select, textarea, [role="tab"], .tab, .comboinput, .topbar';
+let watched = null;
+
+function coversControl(bar, left, top, w, h) {
+  for (let i = 0; i <= 4; i++) {
+    for (let j = 0; j <= 2; j++) {
+      const x = left + (w - 1) * i / 4, y = top + (h - 1) * j / 2;
+      for (const el of document.elementsFromPoint(x, y)) {
+        if (bar.contains(el)) continue;
+        if (el.closest(CONTROLS)) return true;
+      }
+    }
+  }
+  return false;
+}
+
+function place(bar) {
+  if (!bar) return;
+  bar.style.top = ''; bar.style.bottom = '';
+  if (matchMedia(WIDE).matches) return;
+  const r = bar.getBoundingClientRect();
+  if (!r.width) return;
+  if (!coversControl(bar, r.left, r.top, r.width, r.height)) return;
+  const tb = document.querySelector('.topbar')?.getBoundingClientRect().bottom ?? 0;
+  const top = Math.max(8, tb + 8);
+  if (!coversControl(bar, r.left, top, r.width, r.height)) {
+    bar.style.top = `${top}px`; bar.style.bottom = 'auto';
+  }
+}
+
+function keepClear(bar) {
+  if (!bar || typeof window === 'undefined') return;
+  if (watched !== bar) {
+    watched = bar;
+    let queued = false;
+    const soon = () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; place(bar); }); } };
+    addEventListener('scroll', soon, { passive: true });
+    addEventListener('resize', soon);
+    // The page under it is redrawn on every view change.
+    if (typeof ResizeObserver !== 'undefined') new ResizeObserver(soon).observe(document.body);
+  }
+  requestAnimationFrame(() => place(bar));
 }

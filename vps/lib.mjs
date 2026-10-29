@@ -91,7 +91,7 @@ Stuck? Paste this whole email into Claude Code and say: help me with this.
 
 /** The email for an expired login. Written for Jay nine months from now. */
 export function loginExpiredEmail(site) {
-  const name = { dupr: 'DUPR', scoreholio: 'Scoreholio' }[site] || site;
+  const name = { scoreholio: 'Scoreholio' }[site] || site;
   const whose = site === 'scoreholio' ? "Dave's Scoreholio" : `your ${name}`;
   const afterSignIn = site === 'scoreholio'
     ? `\n  If you don't see Dave's tournament list after signing in, click
@@ -101,7 +101,7 @@ export function loginExpiredEmail(site) {
     subject: `MIP Stats: please sign in to ${name} again (about 5 minutes)`,
     body: `
 ${name} has signed your server out, which websites do every few months.
-Until you sign in again, the Stat Room can't fetch ${site === 'dupr' ? 'the weekly DUPR ratings' : 'new league nights'}.
+Until you sign in again, the Stat Room can't fetch new league nights.
 
 You need: your Windows PC, Google Chrome, and ${whose} email and password.
 You will type the password into ${name}'s own page. Nobody else sees it.

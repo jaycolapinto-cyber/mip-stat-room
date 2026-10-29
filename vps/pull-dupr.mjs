@@ -1,3 +1,7 @@
+// RETIRED 2026-10-29 (Jay): no job runs this any more. DUPR now locks other
+// players' ratings in the club list, and the Stat Room no longer shows ratings.
+// Kept, with its parser and tests, in case DUPR comes back.
+//
 // Takes this week's DUPR club ratings reading into importer/live/dupr/<date>.tsv
 // - the job the Wednesday Claude task did by hand.
 //

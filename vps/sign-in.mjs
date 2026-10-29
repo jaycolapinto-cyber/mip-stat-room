@@ -1,6 +1,6 @@
 // One-time (every few months) sign-in for a site the updater reads.
 //
-//   sudo -u mipstats /home/mipstats/mip-stat-room/vps/sign-in.sh dupr
+//   sudo -u mipstats /home/mipstats/mip-stat-room/vps/sign-in.sh scoreholio
 //
 // The server has no screen, so this starts the server's browser with Chrome's
 // remote-debugging port open on the server's OWN localhost (port 9222). Jay

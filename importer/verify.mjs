@@ -23,7 +23,7 @@ const err = (m) => errors.push(m);
 const warn = (m) => warnings.push(m);
 const note = (m) => notes.push(m);
 
-const { players, matches, leagues, master, dupr, coverage } = DATA;
+const { players, matches, leagues, master, coverage } = DATA;
 const byId = new Map(players.map((p) => [p.id, p]));
 const today = new Date().toISOString().slice(0, 10);
 
@@ -202,12 +202,9 @@ for (const l of leagues) {
 for (const r of master.rows) if (!byId.has(r.id)) err(`master standings row points at unknown player "${r.id}"`);
 
 /* -------------------------------------------------------------- ratings */
-for (const [id, v] of Object.entries(dupr)) {
-  if (!byId.has(id)) err(`a DUPR rating is attached to unknown player "${id}"`);
-  if (!(v.rating > 1 && v.rating < 8)) err(`DUPR rating ${v.rating} for ${id} is outside any real range`);
-  if (!v.history?.length) err(`DUPR rating for ${id} has no history entries`);
-  if (v.history.at(-1).rating !== v.rating) err(`DUPR current rating for ${id} does not match the last reading`);
-}
+// None on the site (Jay, 2026-10-29): both free rating sources lock other
+// players' ratings, and a stale number beside a live record would mislead.
+if ('dupr' in DATA) err('the site data carries DUPR ratings again - they were retired on 2026-10-29');
 
 /* ------------------------------------------------------ possible duplicates */
 const maybes = players.filter((p) => p.maybe?.confident);

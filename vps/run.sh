@@ -1,7 +1,7 @@
 #!/bin/bash
 # The VPS updater's runner. One build and at most one push per run.
 #
-#   vps/run.sh weekly          # standings + DUPR ratings (the old Wednesday job)
+#   vps/run.sh weekly          # standings (the old Wednesday job)
 #   vps/run.sh daily           # the same, every morning at 6 AM (live)
 #   vps/run.sh nightly         # finished league nights from Scoreholio (11:15 PM)
 #
@@ -127,30 +127,9 @@ This email repeats each morning until the link is switched (or until Claude Code
   fi
 fi
 
-echo "-- dupr"
-# Paused by Jay 2026-10-29: DUPR now locks other players' ratings in the club
-# list, so every reading fails. Delete vps/dupr-paused to start again.
-if [ -f vps/dupr-paused ]; then
-  echo "  DUPR reading paused (vps/dupr-paused)"; D=0
-else
-node vps/pull-dupr.mjs; D=$?
-fi
-if [ $D -eq 3 ]; then
-  # The sign-in email says everything; no second "problem" email for this.
-  login_alert dupr
-  LOGIN_NOTE=" (DUPR needs signing in again - emailed)"
-elif [ $D -ne 0 ]; then
-  PROBLEMS+=("DUPR: the ratings reading failed its checks and was not saved (a short reading would drop players from the chart). Details are in $OUT on the server.")
-fi
-# Practice-only: pretend today's DUPR reading arrived (a copy of the last
-# one under today's date) so the build/check/commit path can be exercised
-# without DUPR. Refused unless DRY_RUN=1, so it can never be published.
-if [ "${MIP_TEST_FAKE_DUPR:-}" = "1" ] && [ "$DRY_RUN" = "1" ]; then
-  LAST=$(ls importer/live/dupr | grep -E '^[0-9-]+\.tsv$' | sort | tail -1)
-  cp "importer/live/dupr/$LAST" "importer/live/dupr/$(TZ=America/New_York date +%F).tsv"
-  echo "PRACTICE: copied $LAST as today's reading"
-fi
-[ -n "$(git status --porcelain -- importer/live/dupr)" ] && PULLED+=("dupr")
+# No DUPR step any more (Jay, 2026-10-29): DUPR and Scoreholio both lock other
+# players' ratings, so the Stat Room shows none. vps/pull-dupr.mjs is kept for
+# the day it comes back; the readings so far stay in importer/live/dupr.
 fi
 
 if [ "$JOB" = "nightly" ]; then
@@ -245,7 +224,6 @@ fi
 
 MSG=()
 [ -n "$NIGHTS_MSG" ] && MSG+=("$NIGHTS_MSG")
-[[ " ${PULLED[*]} " == *" dupr "* ]] && MSG+=("DUPR ratings reading for $(ls importer/live/dupr | grep -E '^[0-9-]+\.tsv$' | sort | tail -1 | cut -c1-10)")
 [[ " ${PULLED[*]} " == *" standings "* ]] && MSG+=("Standings refreshed from Dave's OneDrive")
 SUBJECT=$(IFS=';'; echo "${MSG[*]}" | sed 's/;/; /g')
 

@@ -734,6 +734,32 @@ await ph.waitForTimeout(500);
     png ? `${buf.readUInt32BE(16)}x${buf.readUInt32BE(20)}` : 'not a PNG');
 }
 
+/* ------------------------------------------- no ratings anywhere on the site */
+// Retired 2026-10-29 (Jay): DUPR and Scoreholio both lock other players'
+// ratings, so the site shows none. A leftover chip, column or note would show
+// a stale number as if it were current. Every view, every player checked above,
+// with the folded "where these numbers come from" note opened.
+{
+  const seen = [];
+  const look = async (hash, label) => {
+    await go(page, `http://127.0.0.1:8321/${hash}`);
+    await page.waitForTimeout(400);
+    const txt = await page.evaluate(() => {
+      document.querySelectorAll('details').forEach((d) => { d.open = true; });
+      return document.body.innerText + ' ' + [...document.querySelectorAll('[title]')].map((e) => e.title).join(' ');
+    });
+    if (/dupr/i.test(txt)) seen.push(`${label}: "${/.{0,40}dupr.{0,40}/is.exec(txt)[0].replace(/\s+/g, ' ')}"`);
+  };
+  await look('', 'home');
+  for (const v of ['records', 'standings', 'power', 'compare']) await look(`#/${v}`, v);
+  for (const id of ids) await look(`#/player/${id}`, id);
+  t('no DUPR rating, chip, column or note on any page', seen.length === 0, seen.slice(0, 3).join(' | '));
+  await go(page, 'http://127.0.0.1:8321/#/power');
+  await page.waitForTimeout(400);
+  const heads = await page.$$eval('.pwtable thead th', (th) => th.map((x) => x.textContent.trim()));
+  t('the Power table has no ratings column', heads.join('|') === '#|Player|Rating|vs last wk|This week', heads.join('|'));
+}
+
 t('no page errors anywhere', errs.length === 0, errs.slice(0, 3).join(' | '));
 console.log(`\n${pass} passed, ${fail} failed   (checked ${ids.length} players + tab switching at 390px)`);
 await b.close();

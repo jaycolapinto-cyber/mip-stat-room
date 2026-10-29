@@ -26,7 +26,7 @@ const PARTNER_MIN = 3;
 const DAY = 86400000;
 const addDays = (iso, n) => new Date(Date.parse(iso + 'T00:00:00Z') + n * DAY).toISOString().slice(0, 10);
 
-export const POWER_EXPLAIN = 'One rating for every player across all six leagues, worked out from game results alone: '
+export const POWER_EXPLAIN = 'One rating for every player across every MIP league, worked out from game results alone: '
   + 'beat a stronger team and you gain more than you would for beating a weaker one, and a lopsided score counts a little extra.';
 
 /** Games in the order they were played: by date, then by the Scoreholio clock. */

@@ -1,4 +1,4 @@
-import { DATA, players, leagues, master, matches, dupr, coverage, source } from './data.js';
+import { DATA, players, leagues, master, matches, coverage, source } from './data.js';
 const POWER = DATA.power ?? null;
 const HOME = DATA.home ?? null;
 const MILESTONES = DATA.milestones ?? null;
@@ -28,7 +28,6 @@ const h2h = (() => {
 import { perspective, summarize, partners, pairGames, partnershipEdges, recent } from './stats.js';
 import { clubRecords } from './records.js';
 import { mountFeedback } from './feedback.js';
-import { duprPanel } from './duprchart.js';
 import { shareOrSave } from './sharecard.js';
 
 const MIN_TOGETHER = 5;
@@ -734,10 +733,7 @@ function renderRecords() {
         The Century Club is a career honour, so it appears on the all-time wall only.</p>` : ''}
       <p><b>Giant killer</b> measures you against the ten players with the best win rate
         among everyone past ${nf(M.giantPool)} games${yr ? ` in ${yr}` : ''}: ${esc(giants)}. Those ten are ranked on this
-        club's own games rather than an outside rating, because ${yr
-          ? 'most of the club carries no DUPR figure'
-          : `only 68 of ${nf(T.players)} players carry a DUPR figure`} and a club record
-        should not quietly ignore the rest.</p>
+        club's own games, so every player who has played enough counts.</p>
       <p><b>Ties are shared, not broken.</b> Two people on the same mark both take the
         place, and the next place is the next distinct mark below them.</p>
     </div>`;
@@ -775,22 +771,6 @@ function renderPlayer() {
   const mine = recent(matches, id);
   const mstat = summarize(matches, id);
 
-  const dr = dupr[id];
-  // DUPR gives a current rating and no history, so any movement we can show is
-  // movement BETWEEN OUR OWN READINGS. With one reading there is no movement to
-  // show and the chip stays a bare number rather than implying a trend.
-  const duprChip = (() => {
-    if (!dr) return '';
-    const h = dr.history ?? [];
-    const first = h[0], last = h[h.length - 1];
-    const moved = h.length > 1 ? last.rating - first.rating : 0;
-    const arrow = !moved ? ''
-      : `<em class="dmove ${moved > 0 ? 'up' : 'down'}">${moved > 0 ? '\u25B2' : '\u25BC'}${Math.abs(moved).toFixed(3)}</em>`;
-    const title = (dr.readings ?? h.length) > 1
-      ? `Doubles rating from the Merrick In A Pickle DUPR club listing. ${first.rating.toFixed(3)} on ${first.date}, ${dr.rating.toFixed(3)} on ${dr.asOf ?? last.date} \u2014 change between our readings, not DUPR's own history.`
-      : `Doubles rating from the Merrick In A Pickle DUPR club listing, read ${dr.asOf ?? 'recently'}. One reading so far, so there is no history to chart yet.`;
-    return `<span class="rankchip dupr" title="${esc(title)}">DUPR ${dr.rating.toFixed(3)} \u00B7 doubles${arrow}</span>`;
-  })();
   // Power rank links to the Power tab. A player who is not ranked still has a
   // rating - the rank needs enough games this season and a recent one.
   const pw = p.power;
@@ -824,11 +804,11 @@ function renderPlayer() {
     <section class="scoreboard">${COURT}
       <div class="sb-grid">
         <div class="sb-id">
-          <div class="sb-chips"><span class="rankchip">${o.rank ? `#${o.rank} this week` : 'Season record'}${p.displayOnly ? ' · display name' : ''}</span>${duprChip}${powerChip}</div>
+          <div class="sb-chips"><span class="rankchip">${o.rank ? `#${o.rank} this week` : 'Season record'}${p.displayOnly ? ' · display name' : ''}</span>${powerChip}</div>
           <h1 class="sb-name">${esc(p.name)}</h1>
           <p class="sb-club">${esc(p.club || 'Club not set')}${lrows.length ? ` · ${lrows.length} league${lrows.length > 1 ? 's' : ''}` : ''}</p>
           ${aliasLine}${conflictLine}
-          ${formStrip(p, dr)}
+          ${formStrip(p)}
         </div>
         <div class="sb-right">
           ${ring(o.winPct, 'Win rate')}
@@ -842,8 +822,6 @@ function renderPlayer() {
       </div>
     </section>
 
-    ${duprPanel(dr)}
-
     <div class="grid">
       <div class="card">
         <div class="card-h"><h2>League records</h2><span class="badge ok">Published</span></div>
@@ -855,8 +833,8 @@ function renderPlayer() {
             <td class="num">${row.losses ?? '—'}</td><td class="num">${row.games ?? '—'}</td>
             <td class="num">${row.winPct != null ? pct(row.winPct) : '—'}</td>
             <td class="num">${row.points ?? '—'}</td></tr>`).join('')}</tbody></table></div>`
-          : `<div class="emptybox" style="margin-top:14px">${esc(p.name)} doesn't appear in any of the six published league files — their record here comes from tournament play.</div>`}
-        <p class="foot">Straight from the standings workbooks on merrickinapickle.com. These should match Dave's spreadsheets exactly.${dr ? ` DUPR ${dr.rating.toFixed(3)} is this player's doubles rating from the club's DUPR listing${dr.duprName !== p.name ? ` (listed there as ${esc(dr.duprName)})` : ''}, read ${dr.asOf ? prettyDate(dr.asOf) : 'recently'}${(dr.readings ?? dr.history?.length ?? 0) > 1 ? `. We hold ${dr.readings ?? dr.history.length} readings, back to ${prettyDate(dr.history[0].date)}` : ' — the only reading we hold so far'}.` : ''}</p>
+          : `<div class="emptybox" style="margin-top:14px">${esc(p.name)} doesn't appear in any of the published league files — their record here comes from tournament play.</div>`}
+        <p class="foot">Straight from the standings workbooks on merrickinapickle.com. These should match Dave's spreadsheets exactly.</p>
       </div>
 
       <div class="card">
@@ -923,11 +901,12 @@ function rivalCard(tag, r, kind = '') {
 }
 
 /**
- * The three tiles under a player's name - current streak, career, DUPR - and,
+ * The three tiles under a player's name - current streak, career, best win
+ * streak - and,
  * when one is close, the next milestone. All of it was counted by the importer
  * (player.form); this only lays it out.
  */
-function formStrip(p, dr) {
+function formStrip(p) {
   const f = p.form;
   if (!f) return '';
   const st = f.streak;
@@ -944,9 +923,9 @@ function formStrip(p, dr) {
   })();
   return `<div class="fstrip">
       ${tile(st > 0 ? 'win' : st < 0 ? 'loss' : '', 'Current streak', streak,
-        f.last ? `last played ${esc(shortDate(f.last))}${f.bestWin > 1 ? ` · best W${f.bestWin}` : ''}` : '')}
+        f.last ? `last played ${esc(shortDate(f.last))}` : '')}
       ${tile('rec', 'Career', `${nf(f.wins)}–${nf(f.losses)}`, `${nf(f.games)} games · ${pct(f.games ? f.wins / f.games : 0)} · ${nf(f.nights)} nights`)}
-      ${tile('', 'DUPR', dr ? dr.rating.toFixed(3) : '—', dr ? 'doubles' : 'none on file')}
+      ${tile('', 'Best win streak', f.bestWin > 0 ? `W${f.bestWin}` : '—', f.bestWin > 0 ? 'wins in a row, career' : 'no wins yet')}
     </div>${goal}${p.share ? `<div class="sharebar">
       <button type="button" class="sharebtn" data-share="share">Share my night</button>
       <button type="button" class="sharebtn ghost" data-share="save">Save image</button>
@@ -1224,14 +1203,14 @@ function renderPower() {
       <div class="card-h"><h2>MIP Power Rankings</h2><span class="meta">as of ${esc(shortDate(POWER.asOf))} · updated nightly · ${rows.length} ranked</span></div>
       <p class="foot" style="margin:2px 0 0">${esc(POWER.explain)}
         Ranked: ${POWER.rules.minSeasonGames}+ games since the season began (${esc(prettyDate(POWER.seasonStart))}) and a game in the last ${POWER.rules.activeDays} days.
-        Everyone else keeps a rating on their own page. It is separate from DUPR.</p>
+        Everyone else keeps a rating on their own page.</p>
       ${mover ? `<p class="pw-moverline"><span class="pw-mover">Mover of the week</span>
         <button class="namebtn" data-player="${esc(mover.id)}">${esc(mover.name)}</button>
         up ${mover.power.lastWeekRank - mover.power.rank} to #${mover.power.rank}</p>` : ''}
       <div class="scroller"><table class="pwtable" data-cap="${POWER_CAP}" data-cap-noun="ranked players">
-        <thead><tr><th>#</th><th>Player</th><th>Rating</th><th>vs last wk</th><th>This week</th><th>DUPR</th></tr></thead>
+        <thead><tr><th>#</th><th>Player</th><th>Rating</th><th>vs last wk</th><th>This week</th></tr></thead>
         <tbody>${rows.map((p) => {
-          const pw = p.power, mv = rankMove(pw), wk = pw.weekRecord, d = dupr[p.id];
+          const pw = p.power, mv = rankMove(pw), wk = pw.weekRecord;
           const lg = leagueNames(p);
           return `<tr data-player="${esc(p.id)}"${pw.rank === 1 ? ' class="pw-top"' : ''}>
             <td class="num pw-rank">${pw.rank}</td>
@@ -1239,8 +1218,7 @@ function renderPower() {
               <span class="pw-lg">${esc(lg.length ? lg.join(' · ') : 'Tournament play')}</span></td>
             <td class="num pw-rating">${pw.rating}</td>
             <td class="num" data-sort="${mv.sort}">${mv.html}</td>
-            <td class="num" data-sort="${wk ? wk.w : ''}">${wk ? `${wk.w}–${wk.l}` : '<span class="thin">did not play</span>'}</td>
-            <td class="num">${d ? d.rating.toFixed(3) : '—'}</td></tr>`;
+            <td class="num" data-sort="${wk ? wk.w : ''}">${wk ? `${wk.w}–${wk.l}` : '<span class="thin">did not play</span>'}</td></tr>`;
         }).join('')}</tbody></table></div>
       <p class="foot">Elo for doubles: everyone starts at ${POWER.rules.start}, a team is the average of its two players,
         and every game on record since ${esc(prettyDate(coverage.firstDate))} is replayed in order (K ${POWER.rules.k}, a blowout counts up to half again as much).
@@ -1505,7 +1483,6 @@ function renderNotice() {
   const el = $('#dataNotice');
   if (!el) return;
   const c = coverage;
-  const snaps = c.duprSnapshots ?? [];
   // The record now spans three calendar years, so a bare "Jan 9-Sep 11" reads
   // like one season. Every date here carries its year.
   const pretty = prettyDate;
@@ -1516,16 +1493,11 @@ function renderNotice() {
   // thing the page is actually for, and a caveat nobody reads because it is
   // wallpaper is worth no more than one that is hidden.
   const detail = [
-    `${n(c.games)} matches over ${c.days} playing days, ${pretty(c.firstDate)} to ${pretty(c.lastDate)}. They come from two places that agree with each other: Merrick In A Pickle's DUPR club record, and the club's own Scoreholio match logs${c.gamesFromScoreholioOnly ? ` \u2014 ${n(c.gamesFromScoreholioOnly)} of these games were played, scored and stored in Scoreholio and never submitted to DUPR` : ''}. A game in both is matched on its players, score and day and counted once. Partner records, rivals, head-to-head and every club record are computed from those same games, so no two panels can disagree.`,
+    `${n(c.games)} matches over ${c.days} playing days, ${pretty(c.firstDate)} to ${pretty(c.lastDate)}. They come from two places that agree with each other: the club's online match record, and the club's own Scoreholio match logs${c.gamesFromScoreholioOnly ? ` \u2014 ${n(c.gamesFromScoreholioOnly)} of these games exist only in Scoreholio` : ''}. A game in both is matched on its players, score and day and counted once. Partner records, rivals, head-to-head and every club record are computed from those same games, so no two panels can disagree.`,
     `League standings come from the ranking workbooks published on merrickinapickle.com and should match them exactly.`,
   ];
   if (c.gamesWithTimeAndCourt) {
     detail.push(`${n(c.gamesWithTimeAndCourt)} games also carry a start time and court, joined from Scoreholio. The rest have the date but no clock.`);
-  }
-  if (snaps.length) {
-    detail.push(snaps.length === 1
-      ? `DUPR ratings are a single reading of the club listing, ${pretty(snaps[0])}, covering ${c.duprMatched} players \u2014 no rating history yet.`
-      : `DUPR ratings come from ${snaps.length} readings of the club listing, ${pretty(snaps[0])} \u2013 ${pretty(snaps[snaps.length - 1])}, covering ${c.duprMatched} players.`);
   }
   if (c.possibleDuplicates) {
     detail.push(`<strong>${c.possibleDuplicates} people may be listed twice</strong> under slightly different spellings, which would also split their records. They are deliberately kept apart until someone who knows the club confirms it \u2014 merging two players by mistake would hand one of them the other's record.`);
@@ -1536,9 +1508,8 @@ function renderNotice() {
   // never the point - every figure here is checked against the match record on
   // every build. What a reader actually needs is the window the data covers and
   // the one honest caveat, with the rest a click away.
-  // A <details> at the foot of the landing page. The headline no longer claims
-  // DUPR as the source: most games now come from Scoreholio's own match logs,
-  // and a provenance note that names the wrong source is worse than none.
+  // A <details> at the foot of the landing page. Ratings are not shown (Jay,
+  // 2026-10-29: both free rating sources are locked), so it names none.
   el.innerHTML = `<summary>Where these numbers come from</summary>
     <div>${detail.join(' ')}</div>`;
 }

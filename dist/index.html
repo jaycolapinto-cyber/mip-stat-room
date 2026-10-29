@@ -474,9 +474,6 @@ select:hover{border-color:#C9D3C9}
 .sb-court{position:absolute;inset:0;width:100%;height:100%;color:var(--court-line);pointer-events:none}
 .sb-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 26px;align-items:center}
 .sb-id{min-width:0}
-.dmove{font-style:normal;font-weight:700;margin-left:6px;letter-spacing:0}
-.dmove.up{color:var(--win)} .dmove.down{color:var(--loss)}
-.rankchip.dupr{color:var(--lime-ink);background:var(--lime);border-color:var(--lime);margin-left:8px}
 .rankchip{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:var(--lime);background:rgba(217,248,75,.12);
   border:1px solid rgba(217,248,75,.25);padding:4px 10px;border-radius:999px;margin-bottom:10px}
@@ -764,34 +761,6 @@ a.rankchip.power:hover{background:rgba(217,248,75,.22)}
   .logdate.dated{display:inline}
   .ctl-note{display:none}
 }
-/* ---------- DUPR rating panel ----------
-   One series, so no legend: the heading names it. The line carries the shape
-   and the exact numbers live in a table underneath, which is also what a
-   screen reader gets - identity is never carried by colour alone here.
-   Values and labels wear text colours, never the line's colour. */
-.duprcard{margin-top:16px}
-.dnum{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 10px}
-.dnum b{font-family:var(--display);font-size:46px;line-height:1;letter-spacing:.01em}
-.dmv{display:inline-flex;align-items:baseline;gap:7px;font-size:13px;font-weight:600}
-.dmv.up{color:#1c7a4a}
-.dmv.down{color:#a2564b}
-.dpct{font-weight:700}
-/* The span is the honest caveat next to the number, so it stays readable
-   rather than shrinking into decoration. */
-.dspan{color:var(--muted,#6b7a72);font-weight:400}
-.dspark{display:block;max-width:100%;height:auto;margin:2px 0 4px;overflow:visible}
-.dline{stroke:#1c7a4a}
-.dspark.down .dline{stroke:#a2564b}
-.dpt{fill:#1c7a4a;opacity:.45}
-.dspark.down .dpt{fill:#a2564b}
-.dend{fill:#1c7a4a;stroke:#fff;stroke-width:2}
-.dspark.down .dend{fill:#a2564b}
-.dtable{margin-top:6px;font-size:13px}
-.dtable summary{cursor:pointer;color:var(--muted,#6b7a72);padding:4px 0}
-.dtable table{width:auto;margin-top:4px}
-.dtable th,.dtable td{padding:3px 18px 3px 0;text-align:left}
-.dnone,.dfoot{color:var(--muted,#6b7a72);font-size:13px;line-height:1.5;margin:8px 0 0}
-.dfoot{margin-top:12px;font-size:12px}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
