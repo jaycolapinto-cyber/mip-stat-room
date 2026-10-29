@@ -340,14 +340,17 @@ export function clubRecords(matches, players, { year = null } = {}) {
 
   // A partnership's detail is the games they LOST. For a pair who won 23 of 24
   // that is the whole story, and it is the first thing anybody asks.
+  // Named, not "they", for the same reason as perfectDetail below: the top pairs
+  // usually share a loss count (Oct 28: four places all "The 2 games they lost
+  // together"), so an unnamed lead repeats down the whole panel.
   const pairDetail = (h) => {
     const games = pairGames.get(pairKey(h.a, h.b)) ?? [];
     const losses = games.filter((g) => !g.won);
     return {
       kind: 'games',
       lead: losses.length
-        ? `${losses.length === 1 ? 'The one game' : `The ${losses.length} games`} they lost together`
-        : 'They never lost a game together',
+        ? `${losses.length === 1 ? 'The one game' : `The ${losses.length} games`} ${duoName(h)} lost together`
+        : `${duoName(h)} never lost a game together`,
       rows: losses.slice(0, MAX_DETAIL_GAMES).map((g) => ({
         date: g.date, score: `${g.mine}–${g.theirs}`,
         text: `lost to ${g.against.map(nameOf).join(' & ')}`,
@@ -389,7 +392,7 @@ export function clubRecords(matches, players, { year = null } = {}) {
     // Name whoever is actually ahead, and put the bigger number first. Reading
     // the score from A's side regardless printed "Vincent leads 27-53".
     const lead = aw === bw
-      ? `Dead level at ${aw}–${bw}`
+      ? `${duoName(h)} are dead level at ${aw}–${bw}`
       : `${nameOf(aw > bw ? h.a : h.b)} leads ${Math.max(aw, bw)}–${Math.min(aw, bw)}`;
     return {
       kind: 'facts',
@@ -410,7 +413,7 @@ export function clubRecords(matches, players, { year = null } = {}) {
       kind: 'facts',
       lead: r.endedBy
         ? `The run ended against ${r.endedBy.by.map(nameOf).join(' & ')}`
-        : 'The run was still alive at the end of the record',
+        : `${nameOf(h.id)}'s run was still alive at the end of the record`,
       rows: r.endedBy
         ? [{ date: r.endedBy.date, score: `${r.endedBy.mine}–${r.endedBy.theirs}`,
              text: `lost to ${r.endedBy.by.map(nameOf).join(' & ')}` }]
