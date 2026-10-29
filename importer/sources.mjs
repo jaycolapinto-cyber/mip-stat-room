@@ -46,8 +46,9 @@ export const DIR = process.env.MIP_STANDINGS_DIR
  * `share` is the id inside Dave's OneDrive share link for that league's
  * workbook. He keeps each one as an Excel file in his own OneDrive, types the
  * week's results into it by hand, and links it from merrickinapickle.com. The
- * link is stable - it names the file, not a version of it - so the same six
- * ids fetch this week's numbers every week, and `downloadUrl()` below turns
+ * link names the file, not a version of it, so one id fetches every week's
+ * numbers - until Dave saves a new copy and links that instead (all but one
+ * league on 2026-10-29; the 6 AM run now watches his page for it), and `downloadUrl()` below turns
  * one into a plain file download with no Excel Online in the way.
  *
  * There is deliberately no hand-written "Week 6" label here any more. There
@@ -63,16 +64,20 @@ export const DIR = process.env.MIP_STANDINGS_DIR
  * when a league's standings stop moving for weeks while its games keep
  * coming, this is the first place to look.
  */
+// `page` picks the league's button out of the Stats & Standings page on
+// merrickinapickle.com by its label, so vps/standings-page.mjs can say which
+// league a new link there belongs to.
 export const LEAGUES = [
-  { id: 'og-s9',         label: 'OG Season 9',             match: 'Player-Rankings-qPZaoc9bT9aNH9pGwC4t', share: 'IQCD90K-5FrYRqoXano6K34aAaF5iBmXGlS7rZzgzuZIPqQ' },
-  { id: 'tue-am',        label: 'Tuesday AM',              match: 'Player-Rankings-TznNqHP1zjSPHUOSSnko', share: 'IQAofmLaJ1HuS41ioD1-enLRAefog8Qtx4Wztv41YraBNzU' },
+  { id: 'og-s9',         label: 'OG Season 9',             match: 'Player-Rankings-qPZaoc9bT9aNH9pGwC4t', share: 'IQAnBlnhlo3zTIgBN0SMVL8BAesUTVyR2FHtj7XpqDelXyo', page: /\bOG\b/i },
+  { id: 'tue-am',        label: 'Tuesday AM',              match: 'Player-Rankings-TznNqHP1zjSPHUOSSnko', share: 'IQAzARPMGzkpT6AODmXZxwgHAenSfm_x1TL8PTbNv8Pafu8', page: /tuesday am/i },
   // `final`: the season is over and this is its closing table. It will never
   // change again, so the weekly job does not read "unchanged for a month" as a
   // sign Dave moved to a new workbook. Take the flag off when the league restarts.
-  { id: 'tue-pickle',    label: 'Tuesday Pickle Club',     match: 'Player-Rankings-1POLChlc4FtKzhtRqQRF', share: 'IQDbLXIAd5bdSbPcwWLcOMiqAToZXiQa57xEVZts5lkQxkE', final: true },
-  { id: 'wed-newbridge', label: 'Wednesday Newbridge Inn', match: 'Player-Rankings-HnAtFNN1bzW2DuOVGi3K', share: 'IQA6GlpMVisoSqL3cWOWYOtZAVI5qnZzx0qes3ejkBpXITI' },
-  { id: 'thu-carpenters',label: 'Thursday Carpenters Pub', match: 'Player-Rankings-k946hMkXbiIfXMms8bKB', share: 'IQBbS7ywOp2wSpZhKQT0o3f4AXO0fnjXmAey1wnW_2lt7ws' },
-  { id: 'fri-am',        label: 'Friday AM',               match: 'Player-Rankings-IpkPLQgrcTaT1jOUuymH', share: 'IQBijrfM5_s5TpWDh84NWQcfAdOyAoVP0d2K0ASOBXAAXO8' },
+  { id: 'tue-pickle',    label: 'Tuesday Pickle Club',     match: 'Player-Rankings-1POLChlc4FtKzhtRqQRF', share: 'IQDbLXIAd5bdSbPcwWLcOMiqAToZXiQa57xEVZts5lkQxkE', final: true, page: /pickle club/i },
+  { id: 'wed-newbridge', label: 'Wednesday Newbridge Inn', match: 'Player-Rankings-HnAtFNN1bzW2DuOVGi3K', share: 'IQBcyaYy8sfJSIS74pZuvJnUAW9QFjRfa1B3lbYIxUuyRJQ', page: /newbridge/i },
+  { id: 'thu-carpenters',label: 'Thursday Carpenters Pub', match: 'Player-Rankings-k946hMkXbiIfXMms8bKB', share: 'IQA8SuctVAiLSYaD5vZZVY2mAdtwiMUq0Fzj7TZ-dQ5lqZw', page: /carpenters/i },
+  { id: 'fri-am',        label: 'Friday AM',               match: 'Player-Rankings-IpkPLQgrcTaT1jOUuymH', share: 'IQAL-X-2ByrWTK4JKs-nwDlaASA3ENmUhyjhW9Dq17c1ki8', page: /friday am/i },
+  { id: 'sun-ladies',    label: 'Sunday AM Ladies',        match: 'Player-Rankings-c5tt1flK9ajdUjbxtNYy', share: 'IQBTClDdewxvSLIrBEmEJ0F4AUcHg9D7mgpqhrlpCNan-Pc', page: /sunday.*ladies|ladies.*sunday/i },
 ];
 
 /**
@@ -104,9 +109,9 @@ export const downloadUrl = (l) =>
  * download under the clean name `${MASTER}.xlsx`.
  */
 export const MASTER = 'MIP_Weekly_Standings';
-export const WEEKLY = { id: 'weekly', label: 'This week, all leagues', match: MASTER, share: 'IQC5PwTD2n3HR4y2uW7AGWOBAeZ-iA6cFThoDJaALOA_vs4' };
+export const WEEKLY = { id: 'weekly', label: 'This week, all leagues', match: MASTER, share: 'IQAprHtibwDyTqoeYLIJYgJbAWM3iIcGD5pKKDloY8oXccg', page: /view here|week of|this week/i };
 
-/** Every workbook the weekly job fetches: the six leagues, then the weekly table. */
+/** Every workbook the weekly job fetches: the leagues, then the weekly table. */
 export const ALL_WORKBOOKS = () => [...LEAGUES, WEEKLY];
 
 // Carries no stable id either; matched on the part of its name that holds still.

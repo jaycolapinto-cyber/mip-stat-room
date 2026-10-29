@@ -1,0 +1,3 @@
+DUPR daily reading paused by Jay on 2026-10-29.
+DUPR now shows a lock instead of other players' ratings in the club list, so every reading failed.
+Delete this file to start the reading again (run.sh checks for it).

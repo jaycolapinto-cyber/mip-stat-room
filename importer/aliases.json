@@ -32,7 +32,8 @@
   "_salNote": "RESOLVED by Jay 2026-09-12: the two Sal Farruggia rows are one man. Originally handled as a merge of the LI-Kick row into the Merrick in a Pickle row, which gave him the id sal-farruggia-merrick-in-a-pickle. That broke the first week the double row went away (Oct 7: every workbook lists him once, under LI-Kick), because an id that carries a club only exists while the name is doubled. He is now listed under sameNameOnePerson instead, so his id is plain sal-farruggia whether a workbook lists him once or twice. The separate lowercase DUPR account 'Sal farruggia' is still held apart pending confirmation - it was in use over the same months as 'Sal Farruggia' and shares four playing days with it.",
   "sameNameOnePerson": {
     "_why": "Names that appear twice in one league file under different clubs but are ONE person - a club typed two ways, not two people. Normally a doubled name is treated as two people kept apart by club (see roster.mjs); a name listed here is never treated that way, both rows fold into one player, and the id stays the plain name whatever the club column says that week. Only a human adds a name here.",
-    "Sal Farruggia": "confirmed by Jay 2026-09-12"
+    "Sal Farruggia": "confirmed by Jay 2026-09-12",
+    "Kenny Jee": "confirmed by Jay 2026-10-29 (Newbridge Inn season 8 workbook lists him on two rows, same club)"
   },
   "mergedPlayers": {
     "_why": "Roster rows Jay has confirmed are the same person. The league files list Sal Farruggia twice, under Merrick in a Pickle and under LI-Kick. Jay says that is one man and he is the Merrick in a Pickle one, so the LI-Kick row folds into it. Every reference to the left id becomes the right id.",

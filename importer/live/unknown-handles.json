@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T13:46:02.381Z",
+ "generated": "2026-10-29T15:15:59.477Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -3103,67 +3103,6 @@
     },
     {
      "handle": "Darling M.",
-     "games": 2
-    }
-   ],
-   "candidates": null
-  },
-  {
-   "handle": "Elle M.",
-   "games": 12,
-   "nights": 1,
-   "firstSeen": "2026-10-09",
-   "lastSeen": "2026-10-09",
-   "tournaments": [
-    "aGmaoobr5Gx8msPZvKz8"
-   ],
-   "playedWith": [
-    {
-     "handle": "Peter A.",
-     "games": 4
-    },
-    {
-     "handle": "Chasette Gold",
-     "games": 4
-    },
-    {
-     "handle": "Paul H.",
-     "games": 3
-    },
-    {
-     "handle": "🇺🇸 Scadutes 🇺🇸",
-     "games": 3
-    },
-    {
-     "handle": "Tim L",
-     "games": 3
-    },
-    {
-     "handle": "Laura, P",
-     "games": 2
-    },
-    {
-     "handle": "Andy",
-     "games": 2
-    },
-    {
-     "handle": "Jaime F.",
-     "games": 2
-    },
-    {
-     "handle": "Daniel G.",
-     "games": 2
-    },
-    {
-     "handle": "Maurice R.",
-     "games": 2
-    },
-    {
-     "handle": "Adam B",
-     "games": 2
-    },
-    {
-     "handle": "Wangsta 🫡",
      "games": 2
     }
    ],

@@ -103,8 +103,38 @@ If the league has simply finished for the year, tell Claude Code that instead an
 fi
 git diff --quiet -- importer/live/standings || PULLED+=("standings")
 
+# Dave sometimes links a NEW copy of a workbook on his site instead of
+# updating the old one. Report it; switching links stays Jay's decision.
+echo "-- standings page"
+node vps/standings-page.mjs > "$LOGS/.standingspage.log" 2>&1; SPG=$?
+cat "$LOGS/.standingspage.log"
+if [ $SPG -ne 0 ]; then
+  PROBLEMS+=("Standings page: couldn't read the Stats & Standings page on merrickinapickle.com to check for new standings links ($(tail -2 "$LOGS/.standingspage.log" | head -1 | sed 's/^ *//')). Standings were still downloaded from the links we already have.")
+else
+  NEWLINKS=$(node -e 'const r=JSON.parse(process.argv[1]); console.log(r.newLinks.map((l) => `  ${l.league ?? "(couldn'"'"'t tell which league)"} - the button reads "${l.label}"\n    ${l.url}`).join("\n"))' "$(tail -1 "$LOGS/.standingspage.log")")
+  if [ -n "$NEWLINKS" ]; then
+    alert "MIP Stats: Dave posted a new standings link" "This is the Stat Room updater on your server (stats.estimator.trade). Every morning it reads the Stats & Standings page on merrickinapickle.com, and today that page has a standings link the Stat Room is NOT using yet:
+
+$NEWLINKS
+
+Dave sometimes saves a new copy of a league's workbook and links that, instead of updating the old one. Until the Stat Room is switched to the new link, it keeps reading the old file, so that league's standings stop moving. Nothing was switched automatically.
+
+What to do:
+  1. Open the link above and check it's the right league and the latest week.
+  2. Open Claude Code and paste this whole email, then say: \"Switch the Stat Room to these new standings links (importer/sources.mjs on the VPS). Check the season id in each file and show me the top 3 rows first.\"
+
+This email repeats each morning until the link is switched (or until Claude Code is told to ignore it). The site keeps showing the last good standings meanwhile - nothing is broken."
+  fi
+fi
+
 echo "-- dupr"
+# Paused by Jay 2026-10-29: DUPR now locks other players' ratings in the club
+# list, so every reading fails. Delete vps/dupr-paused to start again.
+if [ -f vps/dupr-paused ]; then
+  echo "  DUPR reading paused (vps/dupr-paused)"; D=0
+else
 node vps/pull-dupr.mjs; D=$?
+fi
 if [ $D -eq 3 ]; then
   # The sign-in email says everything; no second "problem" email for this.
   login_alert dupr
