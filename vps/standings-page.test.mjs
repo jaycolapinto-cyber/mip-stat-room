@@ -1,5 +1,6 @@
-// The Stats & Standings watcher against the real page as it was on 2026-10-29,
-// the day Dave's new copies were found.
+// The Stats & Standings watcher against the real page as it was on 2026-10-30
+// (Newbridge Week 9, Carpenters Wk 6 and the weekly table on new links). When
+// Dave posts new links and sources.mjs follows, refresh this fixture too.
 import { readFileSync } from 'node:fs';
 import { linksFromPage, compareLinks } from './standings-page.mjs';
 import { ALL_WORKBOOKS } from '../importer/sources.mjs';
@@ -7,17 +8,16 @@ import { ALL_WORKBOOKS } from '../importer/sources.mjs';
 let pass = 0, fail = 0;
 const t = (name, ok, got) => { ok ? pass++ : fail++; if (!ok) console.log(`  FAIL: ${name}`, got ?? ''); };
 
-const html = readFileSync(new URL('./fixtures/stats-standings-2026-10-29.html', import.meta.url), 'utf8');
+const html = readFileSync(new URL('./fixtures/stats-standings-2026-10-30.html', import.meta.url), 'utf8');
 const links = linksFromPage(html);
 t('reads all ten buttons on the page', links.length === 10, links.length);
 t('reads a button label as shown', links.some((l) => l.label === 'SUNDAY AM LADIES 10/26/26 Week 1'), links.map((l) => l.label));
 
 const wbs = ALL_WORKBOOKS();
 const now = compareLinks(links, wbs);
-const newbridgeHeld = wbs.find((w) => w.id === 'wed-newbridge').share !== 'IQBcyaYy8sfJSIS74pZuvJnUAW9QFjRfa1B3lbYIxUuyRJQ';
 t('brackets are never reported', now.newLinks.every((l) => !/bracket/i.test(l.label)), now.newLinks);
-t('every link in sources.mjs is matched, apart from any held back',
-  now.newLinks.length === (newbridgeHeld ? 1 : 0), now.newLinks);
+t('every link on the page is in sources.mjs', now.newLinks.length === 0, now.newLinks);
+t('every link in sources.mjs is on the page', now.gone.length === 0, now.gone);
 
 // Pretend sources.mjs still had the old links from before 2026-10-29.
 const old = wbs.map((w) => ({ ...w, share: w.id === 'tue-pickle' ? w.share : `OLD-${w.id}` }));

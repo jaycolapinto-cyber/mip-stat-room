@@ -74,8 +74,8 @@ export const LEAGUES = [
   // change again, so the weekly job does not read "unchanged for a month" as a
   // sign Dave moved to a new workbook. Take the flag off when the league restarts.
   { id: 'tue-pickle',    label: 'Tuesday Pickle Club',     match: 'Player-Rankings-1POLChlc4FtKzhtRqQRF', share: 'IQDbLXIAd5bdSbPcwWLcOMiqAToZXiQa57xEVZts5lkQxkE', final: true, page: /pickle club/i },
-  { id: 'wed-newbridge', label: 'Wednesday Newbridge Inn', match: 'Player-Rankings-HnAtFNN1bzW2DuOVGi3K', share: 'IQBcyaYy8sfJSIS74pZuvJnUAW9QFjRfa1B3lbYIxUuyRJQ', page: /newbridge/i },
-  { id: 'thu-carpenters',label: 'Thursday Carpenters Pub', match: 'Player-Rankings-k946hMkXbiIfXMms8bKB', share: 'IQA8SuctVAiLSYaD5vZZVY2mAdtwiMUq0Fzj7TZ-dQ5lqZw', page: /carpenters/i },
+  { id: 'wed-newbridge', label: 'Wednesday Newbridge Inn', match: 'Player-Rankings-HnAtFNN1bzW2DuOVGi3K', share: 'IQCc0adUfd-9QpkKS0I6NBfaASdW0KCA0MreuT1OMgGjqb8', page: /newbridge/i },
+  { id: 'thu-carpenters',label: 'Thursday Carpenters Pub', match: 'Player-Rankings-k946hMkXbiIfXMms8bKB', share: 'IQAukQEYNkL1Qbwn5OtpXY-AAZ5pXdlZUl8_WpwAa2ghvs0', page: /carpenters/i },
   { id: 'fri-am',        label: 'Friday AM',               match: 'Player-Rankings-IpkPLQgrcTaT1jOUuymH', share: 'IQAL-X-2ByrWTK4JKs-nwDlaASA3ENmUhyjhW9Dq17c1ki8', page: /friday am/i },
   { id: 'sun-ladies',    label: 'Sunday AM Ladies',        match: 'Player-Rankings-c5tt1flK9ajdUjbxtNYy', share: 'IQBTClDdewxvSLIrBEmEJ0F4AUcHg9D7mgpqhrlpCNan-Pc', page: /sunday.*ladies|ladies.*sunday/i },
 ];
@@ -109,7 +109,7 @@ export const downloadUrl = (l) =>
  * download under the clean name `${MASTER}.xlsx`.
  */
 export const MASTER = 'MIP_Weekly_Standings';
-export const WEEKLY = { id: 'weekly', label: 'This week, all leagues', match: MASTER, share: 'IQAprHtibwDyTqoeYLIJYgJbAWM3iIcGD5pKKDloY8oXccg', page: /view here|week of|this week/i };
+export const WEEKLY = { id: 'weekly', label: 'This week, all leagues', match: MASTER, share: 'IQC-7LtobqgLSbQWTWTbaaewASG8f1U1kdEOgiLZmy2uK64', page: /view here|week of|this week/i };
 
 /** Every workbook the weekly job fetches: the leagues, then the weekly table. */
 export const ALL_WORKBOOKS = () => [...LEAGUES, WEEKLY];
