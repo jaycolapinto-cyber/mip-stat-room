@@ -1,5 +1,5 @@
-// The Stats & Standings watcher against the real page as it was on 2026-10-30
-// (Newbridge Week 9, Carpenters Wk 6 and the weekly table on new links). When
+// The Stats & Standings watcher against the real page as it was on 2026-11-02
+// (Friday AM Wk 9, Sunday AM Ladies Week 2 and the weekly table on new links). When
 // Dave posts new links and sources.mjs follows, refresh this fixture too.
 import { readFileSync } from 'node:fs';
 import { linksFromPage, compareLinks } from './standings-page.mjs';
@@ -8,10 +8,10 @@ import { ALL_WORKBOOKS } from '../importer/sources.mjs';
 let pass = 0, fail = 0;
 const t = (name, ok, got) => { ok ? pass++ : fail++; if (!ok) console.log(`  FAIL: ${name}`, got ?? ''); };
 
-const html = readFileSync(new URL('./fixtures/stats-standings-2026-10-30.html', import.meta.url), 'utf8');
+const html = readFileSync(new URL('./fixtures/stats-standings-2026-11-02.html', import.meta.url), 'utf8');
 const links = linksFromPage(html);
 t('reads all ten buttons on the page', links.length === 10, links.length);
-t('reads a button label as shown', links.some((l) => l.label === 'SUNDAY AM LADIES 10/26/26 Week 1'), links.map((l) => l.label));
+t('reads a button label as shown', links.some((l) => l.label === 'SUNDAY AM LADIES 11/01/26 Week 2'), links.map((l) => l.label));
 
 const wbs = ALL_WORKBOOKS();
 const now = compareLinks(links, wbs);
