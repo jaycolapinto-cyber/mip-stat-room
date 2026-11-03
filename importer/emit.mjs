@@ -567,6 +567,7 @@ const out = {
     note: 'Match history from the Merrick In A Pickle DUPR club listing (club 8246685522), read from the club match list. Standings from the workbooks published on merrickinapickle.com.',
     matchesAre: 'every game DUPR holds for the club over the dates covered, with real names and DUPR Match IDs',
     h2hAre: 'computed from those games, not from the published grid',
+    ratingsAre: 'doubles ratings read from the DUPR club listing on the dates in coverage.duprSnapshots',
     gridStart: startDate,
   },
   coverage: {
@@ -586,6 +587,8 @@ const out = {
     playersAddedFromDupr: wide.added.length,
     possibleDuplicates: wide.suggestions.filter((s) => s.confident).length,
     conflictedNames,
+    duprMatched: Object.keys(dupr).length,
+    duprSnapshots: dp.snapshots,
     h2hPairs: h2h.length,
     // The most recent day any standings workbook changed. One date for the
     // home page; each league carries its own beside its table.
@@ -594,9 +597,7 @@ const out = {
   power: pw.power,
   home: pw.home,
   milestones: pw.milestones,
-  // No `dupr` ratings (Jay, 2026-10-29): both free sources lock other players'
-  // ratings now, so the site shows none. The readings stay in importer/live/dupr.
-  players, leagues: leagueOut, master: masterOut, matches,
+  players, leagues: leagueOut, master: masterOut, matches, dupr,
 };
 
 writeFileSync(new URL('../dist/data.js', import.meta.url),
@@ -618,7 +619,7 @@ writeFileSync(new URL('../dist/data.js', import.meta.url),
 // moves; a redeploy of an unchanged file does not.
 
 export const DATA = ${JSON.stringify(out)};
-export const { players, leagues, master, matches, coverage, source, power } = DATA;
+export const { players, leagues, master, matches, dupr, coverage, source, power } = DATA;
 `);
 
 /* --------------------------------------------- the handles nobody can name
