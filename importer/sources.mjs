@@ -68,7 +68,7 @@ export const DIR = process.env.MIP_STANDINGS_DIR
 // merrickinapickle.com by its label, so vps/standings-page.mjs can say which
 // league a new link there belongs to.
 export const LEAGUES = [
-  { id: 'og-s9',         label: 'OG Season 9',             match: 'Player-Rankings-qPZaoc9bT9aNH9pGwC4t', share: 'IQAnBlnhlo3zTIgBN0SMVL8BAesUTVyR2FHtj7XpqDelXyo', page: /\bOG\b/i },
+  { id: 'og-s9',         label: 'OG Season 9',             match: 'Player-Rankings-qPZaoc9bT9aNH9pGwC4t', share: 'IQCCcHbrRPYuS6dP1-69rAIqASUMrukhb9fpMi9OAYasROI', page: /\bOG\b/i },
   { id: 'tue-am',        label: 'Tuesday AM',              match: 'Player-Rankings-TznNqHP1zjSPHUOSSnko', share: 'IQAzARPMGzkpT6AODmXZxwgHAenSfm_x1TL8PTbNv8Pafu8', page: /tuesday am/i },
   // `final`: the season is over and this is its closing table. It will never
   // change again, so the weekly job does not read "unchanged for a month" as a
@@ -109,7 +109,7 @@ export const downloadUrl = (l) =>
  * download under the clean name `${MASTER}.xlsx`.
  */
 export const MASTER = 'MIP_Weekly_Standings';
-export const WEEKLY = { id: 'weekly', label: 'This week, all leagues', match: MASTER, share: 'IQBReN_FA09WRY9qCCW3k_QeAdKNxUZEZfwc2Fs_Wl3id64', page: /view here|week of|this week/i };
+export const WEEKLY = { id: 'weekly', label: 'This week, all leagues', match: MASTER, share: 'IQB9CqXmHMi-S7UWZ8V0wyXRAbYqm73-uib9v4z92q4WLE0', page: /view here|week of|this week/i };
 
 /** Every workbook the weekly job fetches: the leagues, then the weekly table. */
 export const ALL_WORKBOOKS = () => [...LEAGUES, WEEKLY];
