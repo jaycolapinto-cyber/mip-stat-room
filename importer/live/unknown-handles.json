@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T11:02:12.147Z",
+ "generated": "2026-11-07T04:17:37.347Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -6442,6 +6442,43 @@
     },
     {
      "handle": "Joe  Davis",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Cindy Ludwig",
+   "games": 4,
+   "nights": 1,
+   "firstSeen": "2026-11-06",
+   "lastSeen": "2026-11-06",
+   "tournaments": [
+    "pyCSD2d8o6dypBZljS9G"
+   ],
+   "playedWith": [
+    {
+     "handle": "Don Desroches",
+     "games": 3
+    },
+    {
+     "handle": "Michael Bellini",
+     "games": 3
+    },
+    {
+     "handle": "Karen Mangione",
+     "games": 2
+    },
+    {
+     "handle": "Steven Somma",
+     "games": 2
+    },
+    {
+     "handle": "Jacob Singer",
+     "games": 1
+    },
+    {
+     "handle": "Gennaro Izzo",
      "games": 1
     }
    ],
