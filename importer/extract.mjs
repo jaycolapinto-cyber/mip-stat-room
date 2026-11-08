@@ -95,7 +95,10 @@ export function readMaster() {
   const h = findHeader(rows, ['rank', 'player', 'wins', 'losses']);
   const cols = rows[h].map(key);
   const at = (r, n) => { const i = cols.indexOf(n); return i >= 0 ? r[i] : null; };
-  const title = String(rows[0]?.[0] ?? '');
+  // The title row is the one carrying the dates: Dave's 11/8 layout opens with a
+  // bare "MERRICK IN A PICKLE" row and puts them on the row below it.
+  const title = rows.slice(0, h).map((r) => String(r?.[0] ?? '')).find((s) => /\b20\d\d\b/.test(s))
+    ?? String(rows[0]?.[0] ?? '');
   // Dave's own record of which handles he folded into one table row ("Name
   // Entered" -> "Combined Under"). A human decision, so it is used as given.
   // Absent from older copies of the workbook, which is fine.
