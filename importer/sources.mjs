@@ -77,7 +77,7 @@ export const LEAGUES = [
   { id: 'wed-newbridge', label: 'Wednesday Newbridge Inn', match: 'Player-Rankings-HnAtFNN1bzW2DuOVGi3K', share: 'IQASrcC8wQxvQZNSJlK3reR-AU247JzyDPMxNNU_ZqrjQ40', page: /newbridge/i },
   { id: 'thu-carpenters',label: 'Thursday Carpenters Pub', match: 'Player-Rankings-k946hMkXbiIfXMms8bKB', share: 'IQALtHo0FIMuRJtc1xV9ghYqAWyhPcPTuXHpwBX5bR0ZVNo', page: /carpenters/i },
   { id: 'fri-am',        label: 'Friday AM',               match: 'Player-Rankings-IpkPLQgrcTaT1jOUuymH', share: 'IQBqXBZ8IK0KRaCQVXJKRJKBAYGDBkmWQ-XiIOWaorcN6Yg', page: /friday am/i },
-  { id: 'sun-ladies',    label: 'Sunday AM Ladies',        match: 'Player-Rankings-c5tt1flK9ajdUjbxtNYy', share: 'IQB6fX1EGsm8RZwvxUr6mRaDASTzGZ2VPYwbLsuSQ-Ff9aY', page: /sunday.*ladies|ladies.*sunday/i },
+  { id: 'sun-ladies',    label: 'Sunday AM Ladies',        match: 'Player-Rankings-c5tt1flK9ajdUjbxtNYy', share: 'IQDlvW9ZkpVqQL1QW02EmQcDASmuHK8EQzmbcirc5aTAd4A', page: /sunday.*ladies|ladies.*sunday/i },
 ];
 
 /**
@@ -109,7 +109,7 @@ export const downloadUrl = (l) =>
  * download under the clean name `${MASTER}.xlsx`.
  */
 export const MASTER = 'MIP_Weekly_Standings';
-export const WEEKLY = { id: 'weekly', label: 'This week, all leagues', match: MASTER, share: 'IQC9TeAIrzssTpYfyT78yQE7AYyNpzlcFH5L88UdQvUbFF8', page: /view here|week of|this week/i };
+export const WEEKLY = { id: 'weekly', label: 'This week, all leagues', match: MASTER, share: 'IQBxfU1ItvxlRredkQKSeN0cAdffrX0jGcBIVVJSfJrubHw', page: /view here|week of|this week/i };
 
 /** Every workbook the weekly job fetches: the leagues, then the weekly table. */
 export const ALL_WORKBOOKS = () => [...LEAGUES, WEEKLY];
