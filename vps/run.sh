@@ -74,11 +74,42 @@ echo "games before: $BEFORE"
 
 PULLED=()
 PROBLEMS=()
+SWITCHED=""
 LOGIN_NOTE=""
 NOTE=""
 NIGHTS_MSG=""
 
 if [ "$JOB" = "weekly" ] || [ "$JOB" = "daily" ]; then
+# Dave often links a NEW copy of a league's workbook on his site instead of
+# updating the old one. Follow him by itself when the new file is provably the
+# same league and season (vps/switch-links.mjs); email Jay only for a link it
+# could not verify. Runs before the download so the switched links are used.
+echo "-- standings page"
+node vps/switch-links.mjs > "$LOGS/.standingspage.log" 2>&1; SPG=$?
+cat "$LOGS/.standingspage.log"
+SWITCHED=""
+if [ $SPG -ne 0 ]; then
+  PROBLEMS+=("Standings page: couldn't read the Stats & Standings page on merrickinapickle.com to check for new standings links ($(tail -2 "$LOGS/.standingspage.log" | head -1 | sed 's/^ *//')). Standings were still downloaded from the links we already have.")
+else
+  SPJ=$(tail -1 "$LOGS/.standingspage.log")
+  SWITCHED=$(node -e 'try{console.log(JSON.parse(process.argv[1]).switched.map((s) => s.league).join(", "))}catch{}' "$SPJ")
+  [ -n "$SWITCHED" ] && NOTE+=" (followed Dave's new link: $SWITCHED)"
+  NEWLINKS=$(node -e 'try{const r=JSON.parse(process.argv[1]); console.log(r.needsJay.map((l) => `  ${l.league ?? "(couldn'"'"'t tell which league)"} - the button reads "${l.label}"\n    ${l.url}\n    Not switched because ${l.reason}.`).join("\n\n"))}catch{}' "$SPJ")
+  if [ -n "$NEWLINKS" ]; then
+    alert "MIP Stats: Dave posted a standings link that needs you" "This is the Stat Room updater on your server (stats.estimator.trade). Every morning it reads the Stats & Standings page on merrickinapickle.com. Today that page has a standings link the Stat Room is NOT using, and the updater could not safely switch to it by itself:
+
+$NEWLINKS
+
+Background: Dave often saves a new copy of a league's workbook each week and links that. When the new copy is the same league and the same season, the updater now switches to it by itself and you hear nothing. It only emails you, like this, when something doesn't add up - usually a NEW season (Dave started a fresh workbook with a new season id) or a button whose name doesn't match a league.
+
+What to do:
+  1. Open the link above and look at which league and week it is.
+  2. Open Claude Code and paste this whole email, then say: \"Look at this standings link for the MIP Stat Room (importer/sources.mjs on the VPS). Tell me what's different about it and what you'd do, before changing anything.\"
+
+This email repeats each morning until it's sorted out (or until Claude Code is told to ignore that link). The site keeps showing the last good standings meanwhile - nothing is broken."
+  fi
+fi
+
 echo "-- standings"
 node vps/pull-standings.mjs > "$LOGS/.standings.log" 2>&1; S=$?
 cat "$LOGS/.standings.log"
@@ -101,31 +132,9 @@ What to do:
 
 If the league has simply finished for the year, tell Claude Code that instead and it will mark it as final so this email stops."
 fi
-git diff --quiet -- importer/live/standings || PULLED+=("standings")
-
-# Dave sometimes links a NEW copy of a workbook on his site instead of
-# updating the old one. Report it; switching links stays Jay's decision.
-echo "-- standings page"
-node vps/standings-page.mjs > "$LOGS/.standingspage.log" 2>&1; SPG=$?
-cat "$LOGS/.standingspage.log"
-if [ $SPG -ne 0 ]; then
-  PROBLEMS+=("Standings page: couldn't read the Stats & Standings page on merrickinapickle.com to check for new standings links ($(tail -2 "$LOGS/.standingspage.log" | head -1 | sed 's/^ *//')). Standings were still downloaded from the links we already have.")
-else
-  NEWLINKS=$(node -e 'const r=JSON.parse(process.argv[1]); console.log(r.newLinks.map((l) => `  ${l.league ?? "(couldn'"'"'t tell which league)"} - the button reads "${l.label}"\n    ${l.url}`).join("\n"))' "$(tail -1 "$LOGS/.standingspage.log")")
-  if [ -n "$NEWLINKS" ]; then
-    alert "MIP Stats: Dave posted a new standings link" "This is the Stat Room updater on your server (stats.estimator.trade). Every morning it reads the Stats & Standings page on merrickinapickle.com, and today that page has a standings link the Stat Room is NOT using yet:
-
-$NEWLINKS
-
-Dave sometimes saves a new copy of a league's workbook and links that, instead of updating the old one. Until the Stat Room is switched to the new link, it keeps reading the old file, so that league's standings stop moving. Nothing was switched automatically.
-
-What to do:
-  1. Open the link above and check it's the right league and the latest week.
-  2. Open Claude Code and paste this whole email, then say: \"Switch the Stat Room to these new standings links (importer/sources.mjs on the VPS). Check the season id in each file and show me the top 3 rows first.\"
-
-This email repeats each morning until the link is switched (or until Claude Code is told to ignore it). The site keeps showing the last good standings meanwhile - nothing is broken."
-  fi
-fi
+# sources.mjs too: a followed link can bring a byte-identical file, and the
+# new link must still be published or tomorrow switches it all over again.
+git diff --quiet -- importer/live/standings importer/sources.mjs || PULLED+=("standings")
 
 echo "-- dupr"
 # DUPR locked other players' ratings 2026-10-28 to 11-01; readable again from
@@ -246,7 +255,8 @@ fi
 MSG=()
 [ -n "$NIGHTS_MSG" ] && MSG+=("$NIGHTS_MSG")
 [[ " ${PULLED[*]} " == *" dupr "* ]] && MSG+=("DUPR ratings reading for $(ls importer/live/dupr | grep -E '^[0-9-]+\.tsv$' | sort | tail -1 | cut -c1-10)")
-[[ " ${PULLED[*]} " == *" standings "* ]] && MSG+=("Standings refreshed from Dave's OneDrive")
+if [ -n "$SWITCHED" ]; then MSG+=("Standings: followed Dave's new link for $SWITCHED")
+elif [[ " ${PULLED[*]} " == *" standings "* ]]; then MSG+=("Standings refreshed from Dave's OneDrive"); fi
 SUBJECT=$(IFS=';'; echo "${MSG[*]}" | sed 's/;/; /g')
 
 git add -A importer dist

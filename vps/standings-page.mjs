@@ -4,8 +4,9 @@
 // Dave doesn't always keep typing into the same workbook: on 2026-10-29 every
 // league but one was a NEW copy with a new link, and the 6 AM run spent three
 // weeks re-downloading the old files and reporting "unchanged". This catches
-// that the day it happens. It only reports - switching a league to a new link
-// stays a person's decision (Jay, 2026-10-29).
+// that the day it happens. This file only reports; vps/switch-links.mjs acts
+// on it (since 2026-11-13, Jay's call: same league + same season switches by
+// itself, anything else still emails).
 //
 // READ ONLY: one plain GET of a public page, nothing else.
 //
@@ -48,22 +49,26 @@ export function compareLinks(links, workbooks) {
   return { newLinks, gone };
 }
 
+/**
+ * Every OneDrive button on the live page.
+ * @throws when the page can't be read, or has no OneDrive links at all (a
+ *   redesign or an error page, not "all fine").
+ */
+export async function readPage() {
+  const r = await fetch(PAGE, { headers: { 'user-agent': 'Mozilla/5.0 (MIP Stat Room)' } });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const links = linksFromPage(await r.text());
+  if (!links.length) throw new Error('no OneDrive links on the page any more');
+  return links;
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  let html;
+  let links;
   try {
-    const r = await fetch(PAGE, { headers: { 'user-agent': 'Mozilla/5.0 (MIP Stat Room)' } });
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    html = await r.text();
+    links = await readPage();
   } catch (e) {
     console.log(`  could not read the Stats & Standings page: ${e.message}`);
     console.log(JSON.stringify({ error: e.message }));
-    process.exit(1);
-  }
-  const links = linksFromPage(html);
-  // A page with no links at all is a redesign or an error page, not "all fine".
-  if (!links.length) {
-    console.log('  the Stats & Standings page has no OneDrive links on it any more');
-    console.log(JSON.stringify({ error: 'no links on the page' }));
     process.exit(1);
   }
   const res = compareLinks(links, ALL_WORKBOOKS());

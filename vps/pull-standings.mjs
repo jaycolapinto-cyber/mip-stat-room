@@ -12,22 +12,14 @@
 //
 //   node vps/pull-standings.mjs
 
-import { chromium } from 'playwright';
-import { readFileSync, writeFileSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { tmpdir } from 'node:os';
-import XLSX from 'xlsx';
 import { ALL_WORKBOOKS, downloadUrl } from '../importer/sources.mjs';
 import { ROOT, todayET, daysBetween } from './lib.mjs';
+import { openDownloader } from './onedrive.mjs';
 
 const DIR = `${ROOT}importer/live/standings`;
 const STALE_DAYS = 21;
-
-/** A real workbook, not an error page that happens to have downloaded. */
-function isWorkbook(buf) {
-  if (buf.length < 1000 || buf[0] !== 0x50 || buf[1] !== 0x4b) return false; // "PK" zip
-  try { return XLSX.read(buf, { type: 'buffer' }).SheetNames.length > 0; } catch { return false; }
-}
 
 /** When git last saw this file change, as YYYY-MM-DD, or null. */
 function gitDate(file) {
@@ -37,38 +29,12 @@ function gitDate(file) {
   } catch { return null; }
 }
 
-const tmp = mkdtempSync(`${tmpdir()}/mip-standings-`);
-const browser = await chromium.launch({ channel: 'chromium', headless: true });
+const dl = await openDownloader();
 const result = { changed: [], unchanged: [], failed: [], stale: [] };
-
-async function fetchOnce(url, out) {
-  const ctx = await browser.newContext({ acceptDownloads: true });
-  const page = await ctx.newPage();
-  try {
-    const [dl] = await Promise.all([
-      page.waitForEvent('download', { timeout: 90000 }),
-      // goto itself rejects with "Download is starting" - that is the success path.
-      page.goto(url).catch(() => {}),
-    ]);
-    await dl.saveAs(out);
-    return readFileSync(out);
-  } finally {
-    await ctx.close();
-  }
-}
 
 for (const wb of ALL_WORKBOOKS()) {
   const dest = `${DIR}/${wb.match}.xlsx`;
-  let buf = null;
-  for (let attempt = 1; attempt <= 2 && !buf; attempt++) {
-    try {
-      const got = await fetchOnce(downloadUrl(wb), `${tmp}/${wb.id}.xlsx`);
-      if (isWorkbook(got)) buf = got;
-      else console.log(`  ${wb.label}: download was not a workbook (attempt ${attempt})`);
-    } catch (e) {
-      console.log(`  ${wb.label}: ${e.message.split('\n')[0]} (attempt ${attempt})`);
-    }
-  }
+  const buf = await dl.fetch(downloadUrl(wb), wb.label);
   if (!buf) { result.failed.push(wb.label); continue; }
 
   const same = existsSync(dest) && Buffer.compare(readFileSync(dest), buf) === 0;
@@ -88,7 +54,6 @@ for (const wb of ALL_WORKBOOKS()) {
   }
 }
 
-await browser.close();
-rmSync(tmp, { recursive: true, force: true });
+await dl.close();
 console.log(JSON.stringify(result));
 process.exit(result.failed.length ? 1 : 0);

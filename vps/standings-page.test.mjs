@@ -1,7 +1,12 @@
 // The Stats & Standings watcher against the real page as it was on 2026-11-13
 // (Newbridge week 11 on a new link; Carpenters and the weekly table's
-// "VIEW HERE" button were briefly off the page that day). When
-// Dave posts new links and sources.mjs follows, refresh this fixture too.
+// "VIEW HERE" button were briefly off the page that day).
+//
+// The links sources.mjs held that day are frozen below, so this test does not
+// depend on today's sources.mjs: since 2026-11-13 the updater switches links
+// by itself (vps/switch-links.mjs), and a test tied to the live list would
+// fail - and block publishing - the first time it did. The fixture no longer
+// needs refreshing on every switch.
 import { readFileSync } from 'node:fs';
 import { linksFromPage, compareLinks } from './standings-page.mjs';
 import { ALL_WORKBOOKS } from '../importer/sources.mjs';
@@ -14,10 +19,21 @@ const links = linksFromPage(html);
 t('reads all eight buttons on the page', links.length === 8, links.length);
 t('reads a button label as shown', links.some((l) => l.label === 'SUNDAY AM LADIES 11/10/26 Week 3'), links.map((l) => l.label));
 
-const wbs = ALL_WORKBOOKS();
+const SHARES_2026_11_13 = {
+  'og-s9': 'IQD32p_8VmUDT4_FsnGs5X6vAW-V5r-e52Bt21tpT3RFWMM',
+  'tue-am': 'IQAzARPMGzkpT6AODmXZxwgHAenSfm_x1TL8PTbNv8Pafu8',
+  'tue-pickle': 'IQDbLXIAd5bdSbPcwWLcOMiqAToZXiQa57xEVZts5lkQxkE',
+  'wed-newbridge': 'IQDtANzufydxRbO5vlm5mHgXARTVmUKtkPjhCxv_uZBpo2I',
+  'thu-carpenters': 'IQALtHo0FIMuRJtc1xV9ghYqAWyhPcPTuXHpwBX5bR0ZVNo',
+  'fri-am': 'IQBqXBZ8IK0KRaCQVXJKRJKBAYGDBkmWQ-XiIOWaorcN6Yg',
+  'sun-ladies': 'IQDlvW9ZkpVqQL1QW02EmQcDASmuHK8EQzmbcirc5aTAd4A',
+  weekly: 'IQBxfU1ItvxlRredkQKSeN0cAdffrX0jGcBIVVJSfJrubHw',
+};
+const wbs = ALL_WORKBOOKS().map((w) => ({ ...w, share: SHARES_2026_11_13[w.id] }));
+t('every workbook has a frozen link', wbs.every((w) => w.share), wbs.filter((w) => !w.share).map((w) => w.id));
 const now = compareLinks(links, wbs);
 t('brackets are never reported', now.newLinks.every((l) => !/bracket/i.test(l.label)), now.newLinks);
-t('every link on the page is in sources.mjs', now.newLinks.length === 0, now.newLinks);
+t('every link on the page was in sources.mjs', now.newLinks.length === 0, now.newLinks);
 t('only Carpenters and the weekly table are off the page',
   now.gone.map((g) => g.id).sort().join() === 'thu-carpenters,weekly', now.gone);
 
