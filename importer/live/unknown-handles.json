@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T19:39:42.472Z",
+ "generated": "2026-11-14T04:18:07.127Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -5984,6 +5984,47 @@
     },
     {
      "handle": "Peter Grawehr",
+     "games": 1
+    }
+   ],
+   "candidates": null
+  },
+  {
+   "handle": "Isabel McGlynn",
+   "games": 7,
+   "nights": 1,
+   "firstSeen": "2026-11-13",
+   "lastSeen": "2026-11-13",
+   "tournaments": [
+    "Qefe9HDeEkn9rnOwKpzo"
+   ],
+   "playedWith": [
+    {
+     "handle": "Halime Berkay",
+     "games": 5
+    },
+    {
+     "handle": "Jackie Mahoney",
+     "games": 5
+    },
+    {
+     "handle": "Michelle Leonard",
+     "games": 3
+    },
+    {
+     "handle": "Steven Somma",
+     "games": 3
+    },
+    {
+     "handle": "Gennaro Izzo",
+     "games": 3
+    },
+    {
+     "handle": "Dominick Izzo",
+     "games": 1
+    },
+    {
+     "handle": "Michael Bellini",
      "games": 1
     }
    ],
