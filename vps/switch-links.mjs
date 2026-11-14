@@ -34,24 +34,33 @@ import { ROOT } from './lib.mjs';
 const DIR = `${ROOT}importer/live/standings`;
 const SOURCES = `${ROOT}importer/sources.mjs`;
 
-const key = (s) => String(s ?? '').trim().toLowerCase();
+const key = (s) => String(s ?? '').replace(/[^\p{L}\p{N}%.\s]/gu, '').replace(/\s+/g, ' ').trim().toLowerCase();
 const rowsOf = (wb, name) => XLSX.utils.sheet_to_json(wb.Sheets[name], { header: 1, blankrows: false, defval: null });
 const findHeader = (rows, must) => rows.findIndex((r) =>
-  r && must.every((m) => r.some((c) => key(c) === m)));
+  r && must.every((m) => (Array.isArray(m) ? m : [m]).some((mm) => r.some((c) => key(c) === mm))));
 
-/** The table in a workbook as the build will read it: { players, week, title }. */
+/** The table in a workbook as the build will read it: { players, week, title, games }. */
 function readTable(buf, weekly) {
   const wb = XLSX.read(buf, { type: 'buffer' });
   const rows = rowsOf(wb, wb.SheetNames[0]);
-  const nameCol = weekly ? 'player' : 'name';
-  const h = findHeader(rows, ['rank', nameCol, 'wins', 'losses']);
+  // League workbooks call the name column "Name" (Scoreholio export) or
+  // "Player" (the layout Dave moved Carpenters to on 2026-11-14). The weekly
+  // table is told apart by having no Club column, not by its name column.
+  const h = findHeader(rows, ['rank', weekly ? 'player' : ['name', 'player'], 'wins', 'losses']);
   if (h < 0) return { sheets: wb.SheetNames, players: null };
-  const ni = rows[h].map(key).indexOf(nameCol);
-  const players = rows.slice(h + 1).filter((r) => typeof r?.[ni] === 'string' && r[ni].trim()).length;
+  const cols = rows[h].map(key);
+  if (!weekly && !cols.includes('club')) return { sheets: wb.SheetNames, players: null };
+  const ni = cols.includes('name') ? cols.indexOf('name') : cols.indexOf('player');
+  const wi = cols.indexOf('wins'), li = cols.indexOf('losses');
+  const body = rows.slice(h + 1).filter((r) => typeof r?.[ni] === 'string' && r[ni].trim()
+    && (typeof r[wi] === 'number' || typeof r[li] === 'number'));  // not a key/legend row
+  const players = body.length;
+  // Each player's games so far (wins + losses), for the same-season test.
+  const games = new Map(body.map((r) => [key(r[ni]), (Number(r[wi]) || 0) + (Number(r[li]) || 0)]));
   const above = rows.slice(0, h).flat().map((c) => String(c ?? ''));
   const wk = above.map((t) => t.match(/\bweek\s*(\d+)\b/i)).find(Boolean);
   const title = above.find((t) => /\b20\d\d\b/.test(t)) ?? null;
-  return { sheets: wb.SheetNames, players, week: wk ? Number(wk[1]) : null, title };
+  return { sheets: wb.SheetNames, players, week: wk ? Number(wk[1]) : null, title, games };
 }
 
 /**
@@ -78,11 +87,20 @@ export function checkWorkbook(wb, buf, oldBuf) {
   // A league workbook's sheet is named after the Scoreholio season id
   // (Excel cuts sheet names at 31 characters). A different id is a new
   // season or a different league: that needs a person.
+  //
+  // Dave sometimes renames the sheet without starting a new season - on
+  // 2026-11-14 he rebuilt Carpenters as "Season 6 Running Total". So a
+  // different sheet name is still accepted when the table provably carries on
+  // from ours: most of our players are in it and almost nobody's games went
+  // DOWN. A new season resets everyone to zero and fails that.
   const season = wb.match.slice(0, 31);
-  if (!now.sheets.includes(season)) {
-    return { ok: false, reason: `its sheet is "${now.sheets[0]}", not "${season}", so it is a different season or league` };
-  }
   if (now.players == null) return { ok: false, reason: 'it doesn\'t have the Rank / Name / Wins / Losses table' };
+  let carriedOn = null;
+  if (!now.sheets.includes(season)) {
+    const c = carriesOn(was, now);
+    if (!c.ok) return { ok: false, reason: `its sheet is "${now.sheets[0]}", not "${season}", and ${c.why}, so it is a different season or league` };
+    carriedOn = c.note;
+  }
   if (now.players === 0) return { ok: false, reason: 'its table has no players in it' };
   if (was?.players && now.players < Math.ceil(was.players / 2)) {
     return { ok: false, reason: `its table has ${now.players} players where ours has ${was.players}` };
@@ -90,7 +108,25 @@ export function checkWorkbook(wb, buf, oldBuf) {
   if (was?.week != null && now.week != null && now.week < was.week) {
     return { ok: false, reason: `it says Week ${now.week}, older than the Week ${was.week} we already have` };
   }
-  return { ok: true, summary: `same season (${season})${now.week != null ? `, Week ${now.week}` : ''}, ${now.players} players` };
+  return { ok: true, summary: `${carriedOn ?? `same season (${season})`}${now.week != null ? `, Week ${now.week}` : ''}, ${now.players} players` };
+}
+
+/**
+ * Does the new table carry on from the old one (same league, same season)?
+ * At least 3 in 4 of our players appear in it, and at least 9 in 10 of those
+ * have as many games as before or more.
+ */
+export function carriesOn(was, now) {
+  if (!was?.games?.size) return { ok: false, why: 'there is no current table to compare it with' };
+  const shared = [...was.games.keys()].filter((n) => now.games.has(n));
+  if (shared.length < Math.ceil(was.games.size * 0.75)) {
+    return { ok: false, why: `only ${shared.length} of our ${was.games.size} players are in it` };
+  }
+  const back = shared.filter((n) => now.games.get(n) < was.games.get(n));
+  if (back.length > Math.floor(shared.length / 10)) {
+    return { ok: false, why: `${back.length} of ${shared.length} players have fewer games than before` };
+  }
+  return { ok: true, note: `new sheet name "${now.sheets[0]}" but the same season carried on (${shared.length} of our ${was.games.size} players, no totals reset)` };
 }
 
 /**

@@ -75,7 +75,7 @@ export const LEAGUES = [
   // sign Dave moved to a new workbook. Take the flag off when the league restarts.
   { id: 'tue-pickle',    label: 'Tuesday Pickle Club',     match: 'Player-Rankings-1POLChlc4FtKzhtRqQRF', share: 'IQDbLXIAd5bdSbPcwWLcOMiqAToZXiQa57xEVZts5lkQxkE', final: true, page: /pickle club/i },
   { id: 'wed-newbridge', label: 'Wednesday Newbridge Inn', match: 'Player-Rankings-HnAtFNN1bzW2DuOVGi3K', share: 'IQDtANzufydxRbO5vlm5mHgXARTVmUKtkPjhCxv_uZBpo2I', page: /newbridge/i },
-  { id: 'thu-carpenters',label: 'Thursday Carpenters Pub', match: 'Player-Rankings-k946hMkXbiIfXMms8bKB', share: 'IQALtHo0FIMuRJtc1xV9ghYqAWyhPcPTuXHpwBX5bR0ZVNo', page: /carpenters/i },
+  { id: 'thu-carpenters',label: 'Thursday Carpenters Pub', match: 'Player-Rankings-k946hMkXbiIfXMms8bKB', share: 'IQDufnaVVa6YQq80cYfL4lx4AZIozE43bChJx-_n4OkHA_8', page: /carpenters/i },
   { id: 'fri-am',        label: 'Friday AM',               match: 'Player-Rankings-IpkPLQgrcTaT1jOUuymH', share: 'IQBqXBZ8IK0KRaCQVXJKRJKBAYGDBkmWQ-XiIOWaorcN6Yg', page: /friday am/i },
   { id: 'sun-ladies',    label: 'Sunday AM Ladies',        match: 'Player-Rankings-c5tt1flK9ajdUjbxtNYy', share: 'IQDlvW9ZkpVqQL1QW02EmQcDASmuHK8EQzmbcirc5aTAd4A', page: /sunday.*ladies|ladies.*sunday/i },
 ];

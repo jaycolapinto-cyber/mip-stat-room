@@ -48,6 +48,29 @@ t('a new season id is refused', !checkWorkbook(nb, fake('Player-Rankings-ZZZZZZZ
 t('with nothing to compare to, a sound file is accepted', checkWorkbook(nb, fake(season, 'WEEK 1', 3), null).ok);
 t('junk is refused, not thrown', !checkWorkbook(nb, Buffer.from('not a workbook at all'), file(nb)).ok);
 
+// --- a renamed sheet (Dave rebuilt Carpenters on 2026-11-14 as "Season 6
+// Running Total", same season, new columns and a colour key under the table)
+const carpOld = readFileSync(new URL('./fixtures/carpenters-week7-old-layout.xlsx', import.meta.url));
+const re = checkWorkbook(carp, file(carp), carpOld);
+t('Dave\'s rebuilt Carpenters file is accepted: same players, totals carried on', re.ok && /carried on/.test(re.summary), re);
+t('the colour key under the new table is not counted as a player', re.ok && /, 49 players/.test(re.summary), re.summary);
+/** A made-up "Player"-layout file: the given [name, wins, losses] rows. */
+function fakeNew(sheet, rows) {
+  const aoa = [['🍻 SOME LEAGUE'], ['Rank', 'Player', 'Club', '🥒 Points', 'Wins', 'Losses'],
+    ...rows.map(([n, w, l], i) => [`🥇 ${i + 1}`, n, 'MIP', w, w, l]), ['🎨 KEY', '1st', '2nd']];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(aoa), sheet);
+  return XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' });
+}
+const oldRows = XLSX.utils.sheet_to_json(XLSX.read(carpOld).Sheets[XLSX.read(carpOld).SheetNames[0]], { header: 1, defval: null })
+  .filter((r) => typeof r[0] === 'number').map((r) => [r[1], r[5], r[6]]);
+const reset = checkWorkbook(carp, fakeNew('Season 7 Running Total', oldRows.map(([n]) => [n, 1, 1])), carpOld);
+t('same players but everyone back near zero (a new season) is refused', !reset.ok && /fewer games/.test(reset.reason), reset);
+const strangers = checkWorkbook(carp, fakeNew('Season 6 Running Total', oldRows.map(([n, w, l], i) => [`Stranger ${i}`, w, l])), carpOld);
+t('a renamed sheet with different players is refused', !strangers.ok && /only 0 of our/.test(strangers.reason), strangers);
+t('a renamed sheet with nothing to compare to is refused', !checkWorkbook(carp, file(carp), null).ok);
+t('the weekly table is still refused as a league (no Club column)', !checkWorkbook(carp, file(WEEKLY), carpOld).ok);
+
 // --- planSwitches
 const L = (label, share = label) => ({ label, share, url: `https://1drv.ms/x/c/x/${share}` });
 const p1 = planSwitches([L('NEWBRIDGE INN Wednesday season 8 Week 12')], [...LEAGUES, WEEKLY]);

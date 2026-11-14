@@ -23,9 +23,18 @@ const sheet = (prefix, name, what) => {
 
 /** Header row may not be row 0; find the row that contains the expected labels. */
 const findHeader = (rows, must) => rows.findIndex((r) =>
-  r && must.every((m) => r.some((c) => String(c ?? '').trim().toLowerCase() === m)));
+  r && must.every((m) => (Array.isArray(m) ? m : [m]).some((mm) => r.some((c) => key(c) === mm))));
 
-const key = (s) => String(s ?? '').trim().toLowerCase();
+// Header labels as plain words. Dave's 11/14 Carpenters layout decorates them
+// ("🥒 Points", "🥇 Gold"); the emoji are dropped so "🥒 Points" reads as "points".
+const key = (s) => String(s ?? '').replace(/[^\p{L}\p{N}%.\s]/gu, '').replace(/\s+/g, ' ').trim().toLowerCase();
+
+/** "🥇 1" -> 1; a plain number is kept; anything else is left as it was. */
+const rankOf = (v) => {
+  if (typeof v === 'number') return v;
+  const m = String(v ?? '').match(/\d+/);
+  return m ? Number(m[0]) : v;
+};
 
 /**
  * What Dave wrote above the table, if anything - "WEEK 6", "5 Weeks".
@@ -41,6 +50,13 @@ const weekBanner = (rows, h) => {
     for (const c of r ?? []) {
       const t = String(c ?? '').replace(/\s+/g, ' ').trim();
       if (/\bweeks?\b/i.test(t)) return t.toLowerCase().replace(/\b\w/g, (ch) => ch.toUpperCase());
+    }
+  }
+  // Dave's 11/14 layout has no week on it, only "Standings through Nov 12, 2026".
+  for (const r of rows.slice(0, h)) {
+    for (const c of r ?? []) {
+      const m = String(c ?? '').match(/standings through ([A-Za-z]+\.? \d{1,2})/i);
+      if (m) return `Through ${m[1]}`;
     }
   }
   return null;
@@ -63,7 +79,9 @@ const updatedOn = (what) => {
 /** A league's published per-player standings (real totals from Dave's site). */
 export function readLeague(l) {
   const rows = sheet(l.match, null, l.label);
-  const h = findHeader(rows, ['rank', 'name', 'wins', 'losses']);
+  // The name column is "Name" in the Scoreholio export layout and "Player" in
+  // the layout Dave switched Carpenters to on 2026-11-14.
+  const h = findHeader(rows, ['rank', ['name', 'player'], 'wins', 'losses']);
   if (h < 0) throw new Error(`${l.label}: no header row with rank/name/wins/losses in ${l.match}`);
   const cols = rows[h].map(key);
   const at = (r, ...names) => {
@@ -72,18 +90,21 @@ export function readLeague(l) {
   };
   const players = [];
   for (const r of rows.slice(h + 1)) {
-    const name = at(r, 'name');
+    const name = at(r, 'name', 'player');
     if (!name || typeof name !== 'string') continue;
+    // Dave's 11/14 layout ends with a colour key ("🎨 KEY", "1st", "2nd") under
+    // the table: a row with no wins or losses is not a player.
+    if (typeof at(r, 'wins') !== 'number' && typeof at(r, 'losses') !== 'number') continue;
     let winPct = at(r, 'win %');
     if (winPct != null && winPct > 1.5) winPct /= 100;        // some files store 77.3, others 0.773
     players.push({
-      rank: at(r, 'rank'), name: name.trim(), club: at(r, 'club'),
+      rank: rankOf(at(r, 'rank')), name: name.trim(), club: at(r, 'club'),
       points: at(r, 'points'), wins: at(r, 'wins'), losses: at(r, 'losses'),
       games: at(r, 'gms', 'games'),
-      pf: at(r, 'pts for', 'pts. for', 'total points for'),
-      pa: at(r, 'pts aga', 'total points against'),
+      pf: at(r, 'pts for', 'pts. for', 'total points for', 'pf'),
+      pa: at(r, 'pts aga', 'total points against', 'pa'),
       diff: at(r, 'diff', 'total points diff'),
-      winPct, weeks: at(r, 'wks'),
+      winPct, weeks: at(r, 'wks', 'weeks'),
     });
   }
   return { ...l, players, banner: weekBanner(rows, h), updated: updatedOn(l.label) };
