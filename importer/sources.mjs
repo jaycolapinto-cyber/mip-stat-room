@@ -109,7 +109,7 @@ export const downloadUrl = (l) =>
  * download under the clean name `${MASTER}.xlsx`.
  */
 export const MASTER = 'MIP_Weekly_Standings';
-export const WEEKLY = { id: 'weekly', label: 'This week, all leagues', match: MASTER, share: 'IQBxfU1ItvxlRredkQKSeN0cAdffrX0jGcBIVVJSfJrubHw', page: /view here|week of|this week/i };
+export const WEEKLY = { id: 'weekly', label: 'This week, all leagues', match: MASTER, share: 'IQDu4cQuKCxGRb5ABCVxPKedAeq0wVyTQ52VhI54QRtWlTY', page: /view here|week of|this week/i };
 
 /** Every workbook the weekly job fetches: the leagues, then the weekly table. */
 export const ALL_WORKBOOKS = () => [...LEAGUES, WEEKLY];
