@@ -1,0 +1,1 @@
+Paused 2026-11-16: since 11/14 DUPR blocks headless browsers (api.dupr.com returns 400 to the HeadlessChrome user agent), so the club list never loads. Waiting on Jay. Delete this file to resume.
