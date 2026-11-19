@@ -30,6 +30,7 @@
     "Sal Farruggia": "sal-farruggia"
   },
   "_salNote": "RESOLVED by Jay 2026-09-12: the two Sal Farruggia rows are one man. Originally handled as a merge of the LI-Kick row into the Merrick in a Pickle row, which gave him the id sal-farruggia-merrick-in-a-pickle. That broke the first week the double row went away (Oct 7: every workbook lists him once, under LI-Kick), because an id that carries a club only exists while the name is doubled. He is now listed under sameNameOnePerson instead, so his id is plain sal-farruggia whether a workbook lists him once or twice. The separate lowercase DUPR account 'Sal farruggia' is still held apart pending confirmation - it was in use over the same months as 'Sal Farruggia' and shares four playing days with it.",
+  "_salSrNote": "2026-11-19: Dave's new Friday AM web page names the second Sal Farruggia row \"Sal Farruggia Sr.\". Folded into sal-farruggia under Jay's 2026-09-12 ruling (the two rows are one man) so nothing on the site moves. ASKED JAY whether Sr. is really a different person (father/son); if so, remove the sal-farruggia-sr line from mergedPlayers and decide who Scoreholio's \"Sal F.\" (11 games, 2026-09-18) is.",
   "sameNameOnePerson": {
     "_why": "Names that appear twice in one league file under different clubs but are ONE person - a club typed two ways, not two people. Normally a doubled name is treated as two people kept apart by club (see roster.mjs); a name listed here is never treated that way, both rows fold into one player, and the id stays the plain name whatever the club column says that week. Only a human adds a name here.",
     "Sal Farruggia": "confirmed by Jay 2026-09-12",
@@ -41,6 +42,7 @@
     "_evidence": "Consistent with the Friday AM known-answer test: treating the two rows as one person reproduced all 48 games of that session, exactly as pointing DUPR's Sal at either single row did. The arithmetic could not tell the two explanations apart - Jay could.",
     "sal-farruggia-li-kick": "sal-farruggia",
     "sal-farruggia-merrick-in-a-pickle": "sal-farruggia",
+    "sal-farruggia-sr": "sal-farruggia",
     "brett-ritholt": "brett-ritholtz",
     "brett": "brett-ritholtz",
     "vinz-viz": "vincent-vizcarra",

@@ -18,7 +18,11 @@ function parts(name) {
   const bits = strip(name).split(' ').filter(Boolean);
   if (!bits.length) return null;
   const first = bits[0];
-  const last = bits.length > 1 ? bits[bits.length - 1] : '';
+  // "Sal Farruggia Sr." is a Farruggia, not an "Sr": a trailing Jr/Sr/II/III/IV
+  // is not the surname. Without this, Dave's 11/19 Friday page ("Sal Farruggia
+  // Sr.") made Scoreholio's "Sal S." (Sal Saputo) look like two people.
+  const named = bits.length > 2 && /^(jr|sr|ii|iii|iv)$/.test(bits[bits.length - 1]) ? bits.slice(0, -1) : bits;
+  const last = named.length > 1 ? named[named.length - 1] : '';
   return { first, last, fi: first[0] ?? '', li: last[0] ?? '', full: bits.join(' ') };
 }
 

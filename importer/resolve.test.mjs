@@ -67,5 +67,14 @@ try { createResolver([{ id: 'a', name: 'Ann A', aliases: ['x'] }, { id: 'b', nam
 catch { threw = true; }
 ok('conflicting alias throws', threw, true);
 
+// A Jr/Sr suffix is not a surname (Dave's 11/19 Friday page: "Sal Farruggia Sr.").
+{
+  const rs = createResolver([{ id: 'sal-saputo', name: 'Sal Saputo' }, { id: 'sal-farruggia-sr', name: 'Sal Farruggia Sr.' }, { id: 'pd', name: 'Peter Delucia Jr' }]);
+  ok('"Sal S." is not the Sr.', rs.resolve('Sal S.').id, 'sal-saputo');
+  ok('"Sal F." finds the Sr.', rs.resolve('Sal F.').id, 'sal-farruggia-sr');
+  ok('"Peter D." finds the Jr', rs.resolve('Peter D.').id, 'pd');
+  ok('full name with suffix still exact', rs.resolve('Sal Farruggia Sr.').id, 'sal-farruggia-sr');
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
