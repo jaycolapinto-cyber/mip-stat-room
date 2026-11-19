@@ -1,5 +1,7 @@
-// Fetches Dave's seven standings workbooks from OneDrive into
-// importer/live/standings/<match>.xlsx - the job the Wednesday Claude task did.
+// Fetches Dave's standings into importer/live/standings/<match>.xlsx - the job
+// the Wednesday Claude task did. Leagues with a `web` page in sources.mjs are
+// read off merrickinapickle.com (since 2026-11-19, vps/webstandings.mjs) and
+// saved as a workbook; the rest are still OneDrive workbooks.
 //
 // OneDrive refuses a plain download from a server (403), but serves the file
 // to a headless browser, byte-for-byte the same file a desktop Chrome gets
@@ -17,6 +19,8 @@ import { execFileSync } from 'node:child_process';
 import { ALL_WORKBOOKS, downloadUrl } from '../importer/sources.mjs';
 import { ROOT, todayET, daysBetween } from './lib.mjs';
 import { openDownloader } from './onedrive.mjs';
+import { chromium } from 'playwright';
+import { readPage, toSheetRows, toWorkbook, rowsOfWorkbook } from './webstandings.mjs';
 
 const DIR = `${ROOT}importer/live/standings`;
 const STALE_DAYS = 21;
@@ -30,14 +34,38 @@ function gitDate(file) {
 }
 
 const dl = await openDownloader();
+const browser = await chromium.launch({ channel: 'chromium', headless: true });
 const result = { changed: [], unchanged: [], failed: [], stale: [] };
+
+/** A web league's table as a workbook, or null (logged) when the page failed. */
+async function fromWeb(wb) {
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const { lines, table } = await readPage(browser, wb.web);
+      return { rows: toSheetRows(lines, table) };
+    } catch (e) {
+      console.log(`  ${wb.label}: ${e.message.split('\n')[0]} (attempt ${attempt})`);
+    }
+  }
+  return null;
+}
 
 for (const wb of ALL_WORKBOOKS()) {
   const dest = `${DIR}/${wb.match}.xlsx`;
-  const buf = await dl.fetch(downloadUrl(wb), wb.label);
-  if (!buf) { result.failed.push(wb.label); continue; }
-
-  const same = existsSync(dest) && Buffer.compare(readFileSync(dest), buf) === 0;
+  let buf, same;
+  if (wb.web) {
+    const got = await fromWeb(wb);
+    if (!got) { result.failed.push(wb.label); continue; }
+    // Compared by contents, not bytes: a freshly written workbook carries its
+    // own timestamp, so the bytes differ every day even when no number did.
+    same = existsSync(dest)
+      && JSON.stringify(rowsOfWorkbook(readFileSync(dest))) === JSON.stringify(got.rows);
+    buf = same ? null : toWorkbook(got.rows, wb.match);   // sheet named like Dave's own exports
+  } else {
+    buf = await dl.fetch(downloadUrl(wb), wb.label);
+    if (!buf) { result.failed.push(wb.label); continue; }
+    same = existsSync(dest) && Buffer.compare(readFileSync(dest), buf) === 0;
+  }
   if (same) {
     result.unchanged.push(wb.label);
     const since = gitDate(`importer/live/standings/${wb.match}.xlsx`);
@@ -55,5 +83,6 @@ for (const wb of ALL_WORKBOOKS()) {
 }
 
 await dl.close();
+await browser.close();
 console.log(JSON.stringify(result));
 process.exit(result.failed.length ? 1 : 0);

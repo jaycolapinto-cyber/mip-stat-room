@@ -26,7 +26,7 @@ const season = nb.match.slice(0, 31);
 // --- checkWorkbook: the real files
 const same = checkWorkbook(nb, file(nb), file(nb));
 t('Newbridge\'s own file is accepted as Newbridge', same.ok, same);
-t('the summary names the week and the player count', same.ok && /Week 11/.test(same.summary) && /\d+ players/.test(same.summary), same.summary);
+t('the summary names the week and the player count', same.ok && /Week \d+/.test(same.summary) && /\d+ players/.test(same.summary), same.summary);
 const other = checkWorkbook(nb, file(carp), file(nb));
 t('Carpenters\' file is refused for Newbridge (different season id)', !other.ok && /different season or league/.test(other.reason), other);
 t('every league\'s own file passes for that league',
