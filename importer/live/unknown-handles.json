@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-23T04:16:49.684Z",
+ "generated": "2026-11-23T11:01:30.966Z",
  "handles": [
   {
    "handle": "Player P.",
@@ -4474,63 +4474,6 @@
     {
      "handle": "Nova L.",
      "games": 2
-    }
-   ],
-   "candidates": null
-  },
-  {
-   "handle": "M B.",
-   "games": 11,
-   "nights": 1,
-   "firstSeen": "2025-06-23",
-   "lastSeen": "2025-06-23",
-   "tournaments": [
-    "8vsgV3YpWMZHC9krJrSv"
-   ],
-   "playedWith": [
-    {
-     "handle": "Cole S.",
-     "games": 5
-    },
-    {
-     "handle": "Jim R.",
-     "games": 4
-    },
-    {
-     "handle": "R.Mentz 🏴‍☠️",
-     "games": 4
-    },
-    {
-     "handle": "Matt G.",
-     "games": 3
-    },
-    {
-     "handle": "Tom B.",
-     "games": 3
-    },
-    {
-     "handle": "Shane M.",
-     "games": 3
-    },
-    {
-     "handle": "joe P.",
-     "games": 3
-    },
-    {
-     "handle": "Brett 🦅",
-     "games": 3
-    },
-    {
-     "handle": "Adam S. 🇺🇸🍻",
-     "games": 2
-    },
-    {
-     "handle": "David A.",
-     "games": 2
-    },
-    {
-     "handle": "Rudolf K.",
-     "games": 1
     }
    ],
    "candidates": null
